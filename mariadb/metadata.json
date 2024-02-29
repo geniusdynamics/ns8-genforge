@@ -1,0 +1,22 @@
+{
+  "name": "MariaDB",
+  "description": {
+    "en": "MariaDB Server is a SQL database, it contains also the PhpMyadmin administration interface",
+    "it": "MariaDB Server è un database SQL, include l'interfaccia di amministrazione PhpMyadmin"
+  },
+  "categories": [
+    "database"
+  ],
+  "authors": [
+    {
+      "name": "Stephane de Labrusse",
+      "email": "stephdl@de-labrusse.fr"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://hub.docker.com/_/mariadb",
+    "bug_url": "https://github.com/NethServer/dev",
+    "code_url": "https://github.com/NethServer/ns8-mariadb"
+  },
+  "source": "ghcr.io/nethserver/mariadb"
+}

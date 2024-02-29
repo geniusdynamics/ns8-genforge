@@ -1,0 +1,22 @@
+{
+  "name": "Dokuwiki",
+  "description": {
+    "en": "The wiki that doesn't require a database",
+    "it": "Il wiki che non richiede un database"
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Giacomo Sanchietti",
+      "email": "giacomo.sanchietti@nethesis.it"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.dokuwiki.org/dokuwiki",
+    "bug_url": "https://github.com/NethServer/dev",
+    "code_url": "https://github.com/NethServer/ns8-dokuwiki"
+  },
+  "source": "ghcr.io/nethserver/dokuwiki"
+}
