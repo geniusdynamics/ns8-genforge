@@ -1,0 +1,20 @@
+{
+  "name": "Prometheus",
+  "description": {
+    "en": "Prometheus metrics storage",
+    "it": "Prometheus: archivio per le metriche"
+  },
+  "categories": ["monitoring"],
+  "authors": [
+    {
+      "name": "Giacomo Sanchietti",
+      "email": "giacomo.sanchietti@nethesis.it"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://prometheus.io/docs/introduction/overview/",
+    "bug_url": "https://github.com/NethServer/dev",
+    "code_url": "https://github.com/author/ns8-prometheus"
+  },
+  "source": "ghcr.io/nethserver/prometheus"
+}
