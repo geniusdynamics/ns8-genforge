@@ -1,8 +1,7 @@
 {
-  {
     "name": "GLPI",
     "description": {
-      "en": "GLPI is an incredible Service Management software based on open source technologies. It helps you plan and manage IT changes in an easy way, solve problems efficiently, automate your business processes and gain control over your IT infrastructure."
+      "en": "GLPI Your open source tool to manage Helpdesk and IT assets!."
     },
     "categories": ["collaboration"],
     "authors": [
