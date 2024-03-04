@@ -13,6 +13,7 @@ page](https://docs.nethserver.org/projects/ns8/en/latest/modules.html#software-r
 and set the following URL:
 
     https://forge.genius.ke/ns8/updates/
+    
 Under settings, Chose Software Repository
 ![image](https://github.com/geniusdynamics/ns8-genforge/assets/16150798/512b9de4-cb81-44ab-9565-ce4f22e7c692)
 
