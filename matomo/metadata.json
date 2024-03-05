@@ -1,0 +1,19 @@
+{
+  "name": "Matomo",
+  "description": {
+    "en": "Google Analytics alternative"
+  },
+  "categories": [ "monitoring" ],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://matomo.org/help/",
+    "bug_url": "https://github.com/compgeniuses/ns8-matomo/issues",
+    "code_url": "https://github.com/compgeniuses/ns8-matomo/"
+  },
+  "source": "ghcr.io/compgeniuses/matomo"
+}
