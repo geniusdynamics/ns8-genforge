@@ -1,0 +1,24 @@
+{
+    "name": "GLPI",
+    "description": {
+      "en": "GLPI Your open source tool to manage Helpdesk and IT assets!."
+    },
+    "categories": ["collaboration"],
+    "authors": [
+      {
+        "name": "Kemboi Elvis",
+        "email": "kemboielvis@genius.ke"
+      },
+      {
+        "name": "Martin Bhuong",
+        "email": "martin@genius.ke"
+      }
+    ],
+    "docs": {
+      "documentation_url": "https://glpi-project.org/documentation/",
+      "bug_url": "https://github.com/geniusdynamics/ns8-glpi",
+      "code_url": "https://github.com/geniusdynamics/ns8-glpi"
+    },
+    "source": "ghcr.io/geniusdynamics/glpi"
+  }
+

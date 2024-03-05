@@ -1,0 +1,19 @@
+{
+  "name": "N8N",
+  "description": {
+    "en": "Workflow automation for technical people"
+  },
+  "categories": [ "development" ],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.n8n.io/",
+    "bug_url": "https://github.com/compgeniuses/ns8-n8n/issues",
+    "code_url": "https://github.com/compgeniuses/ns8-n8n"
+  },
+  "source": "ghcr.io/compgeniuses/n8n"
+}
