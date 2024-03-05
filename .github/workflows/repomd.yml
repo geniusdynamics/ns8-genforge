@@ -43,4 +43,6 @@ jobs:
           echo ""
           echo "https://github.com/${{ github.repository }}/tree/${REMOTE_BRANCH}"
           echo ""
+          echo 'forge.genius.ke' > ./build/CNAME && gh-pages -d build"
+          echo ""
         } >> $GITHUB_STEP_SUMMARY
