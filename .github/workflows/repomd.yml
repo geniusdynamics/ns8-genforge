@@ -29,7 +29,7 @@ jobs:
         mv -v repodata.json .dst/ns8/updates
         cp -av $(ls -d */) .dst/ns8/updates/
         cp -v README.md .dst/index.md
-        echo forge.nethserver.org > .dst/CNAME
+        echo forge.genius.ke > .dst/CNAME
         git add .dst/
         TREE=$(git write-tree --prefix=.dst)
         COMMIT=$(git commit-tree -m "${COMMIT_MESSAGE}" ${TREE})
@@ -42,7 +42,5 @@ jobs:
           echo "Source"
           echo ""
           echo "https://github.com/${{ github.repository }}/tree/${REMOTE_BRANCH}"
-          echo ""
-          echo 'forge.genius.ke' > ./build/CNAME && gh-pages -d build"
           echo ""
         } >> $GITHUB_STEP_SUMMARY
