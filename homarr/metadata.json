@@ -1,0 +1,19 @@
+{
+  "name": "Homarr",
+  "description": {
+    "en": "A simple yet powerful dashboard for your server"
+  },
+  "categories": ["monitoring"],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://homarr.dev/docs",
+    "bug_url": "https://github.com/compgeniuses/ns8-homarr/issues",
+    "code_url": "https://github.com/compgeniuses/ns8-homarr"
+  },
+  "source": "ghcr.io/compgeniuses/homarr"
+}
