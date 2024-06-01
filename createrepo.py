@@ -24,12 +24,22 @@ path = '.'
 index = []
 defaults = {
     "name": "",
-    "description": { "en": "" },
+    "description": {"en": ""},
     "logo": None,
     "screenshots": [],
-    "categories" : [ "unknown" ],
-    "authors" : [ {"name": "unknown", "email": "info@nethserver.org" } ],
-    "docs": { 
+    "categories": ["unknown"],
+    "authors": [
+        {"name": "unknown", "email": "info@nethserver.org"},
+        {
+            "name": "Kemboi Elvis",
+            "email": "kemboielvis@genius.ke"
+        },
+        {
+            "name": "Martin Bhuong",
+            "email": "martin@genius.ke"
+        }
+    ],
+    "docs": {
         "documentation_url": "https://docs.nethserver.org",
         "bug_url": "https://github.com/NethServer/dev",
         "code_url": "https://github.com/NethServer/"
@@ -42,9 +52,9 @@ if len(sys.argv) >= 2:
     path = sys.argv[1]
 
 # Walk all subdirectories
-for entry_path in glob.glob(path + '/*'): # do not match .git and similar
+for entry_path in glob.glob(path + '/*'):  # do not match .git and similar
     if not os.path.isdir(entry_path):
-        continue # ignore files
+        continue  # ignore files
 
     entry_name = entry_path[len(path + '/'):]
 
@@ -77,11 +87,12 @@ for entry_path in glob.glob(path + '/*'): # do not match .git and similar
         with os.scandir(screenshot_dirs) as sdir:
             for screenshot in sdir:
                 if imghdr.what(screenshot) == "png":
-                    metadata["screenshots"].append(os.path.join("screenshots",screenshot.name))
+                    metadata["screenshots"].append(os.path.join("screenshots", screenshot.name))
 
     print("Inspect " + metadata["source"])
     # Parse the image info from remote registry to retrieve tags
-    with subprocess.Popen(["skopeo", "inspect", f'docker://{metadata["source"]}'], stdout=subprocess.PIPE, stderr=sys.stderr) as proc:
+    with subprocess.Popen(["skopeo", "inspect", f'docker://{metadata["source"]}'], stdout=subprocess.PIPE,
+                          stderr=sys.stderr) as proc:
         info = json.load(proc.stdout)
         metadata["versions"] = []
         versions = []
@@ -89,7 +100,8 @@ for entry_path in glob.glob(path + '/*'): # do not match .git and similar
             try:
                 versions.append(semver.VersionInfo.parse(tag))
                 # Retrieve labels for each valid version
-                p = subprocess.Popen(["skopeo", "inspect", f'docker://{metadata["source"]}:{tag}'], stdout=subprocess.PIPE, stderr=sys.stderr)
+                p = subprocess.Popen(["skopeo", "inspect", f'docker://{metadata["source"]}:{tag}'],
+                                     stdout=subprocess.PIPE, stderr=sys.stderr)
                 info_tags = json.load(p.stdout)
                 version_labels[tag] = info_tags['Labels']
             except:
@@ -98,9 +110,10 @@ for entry_path in glob.glob(path + '/*'): # do not match .git and similar
 
         # Sort by most recent
         for v in sorted(versions, reverse=True):
-            metadata["versions"].append({"tag": f"{v}", "testing": (not v.prerelease is None),  "labels": version_labels[f"{v}"]})
+            metadata["versions"].append(
+                {"tag": f"{v}", "testing": (not v.prerelease is None), "labels": version_labels[f"{v}"]})
 
     index.append(metadata)
 
-with open (os.path.join(path, 'repodata.json'), 'w') as outfile:
+with open(os.path.join(path, 'repodata.json'), 'w') as outfile:
     json.dump(index, outfile, separators=(',', ':'))
