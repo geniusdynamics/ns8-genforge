@@ -1,0 +1,23 @@
+{
+  "name": "Linkwarden",
+  "description": {
+    "en": "Webpage Management for Individuals and Teams"
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    },
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.linkwarden.app/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-linkwarden/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-linkwarden"
+  },
+  "source": "ghcr.io/geniusdynamics/linkwarden"
+}
