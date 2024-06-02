@@ -1,0 +1,23 @@
+{
+  "name": "docuseal",
+  "description": {
+    "en": "DocuSeal. Open source document filling and signing"
+  },
+  "categories": ["collaboration", "files"],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    },
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.docuseal.co/docs/",
+    "bug_url": "https://github.com/compgeniuses/docuseal",
+    "code_url": "https://github.com/compgeniuses/docuseal"
+  },
+  "source": "ghcr.io/compgeniuses/docuseal"
+}
