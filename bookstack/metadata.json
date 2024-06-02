@@ -1,0 +1,23 @@
+{
+  "name": "bookstack",
+  "description": {
+    "en": "Simple & Free Wiki Software"
+  },
+  "categories": ["blog", "wiki", "collaboration"],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    },
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.bookstackapp.com/docs/",
+    "bug_url": "https://github.com/compgeniuses/ns8-bookstack/issues",
+    "code_url": "https://github.com/compgeniuses/ns8-bookstack"
+  },
+  "source": "ghcr.io/compgeniuses/bookstack"
+}
