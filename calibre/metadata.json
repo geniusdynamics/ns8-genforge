@@ -1,0 +1,23 @@
+{
+  "name": "Calibre Web",
+  "description": {
+    "en": "calibre-Web is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database. It is also possible to integrate google drive and edit metadata and your calibre library through the app itself."
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    },
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://calibre-ebook.com/help",
+    "bug_url": "https://github.com/geniusdynamics/ns8-calibre",
+    "code_url": "https://github.com/geniusdynamics/ns8-calibre"
+  },
+  "source": "ghcr.io/geniusdynamics/calibre"
+}
