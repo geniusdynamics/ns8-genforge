@@ -1,0 +1,23 @@
+{
+  "name": "ntfy",
+  "description": {
+    "en": "ntfy is a simple HTTP-based pub-sub notification service. It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API."
+  },
+  "categories": ["communication"],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    },
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.ntfy.sh/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-ntfy/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-ntfy"
+  },
+  "source": "ghcr.io/geniusdynamics/ntfy"
+}
