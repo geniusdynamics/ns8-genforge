@@ -3,7 +3,7 @@
   "description": {
     "en": "Simple & Free Wiki Software"
   },
-  "categories": ["blog", "wiki", "collaboration"],
+  "categories": ["collaboration"],
   "authors": [
     {
       "name": "Martin Bhuong",
