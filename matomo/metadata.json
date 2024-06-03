@@ -16,8 +16,8 @@
   ],
   "docs": {
     "documentation_url": "https://matomo.org/help/",
-    "bug_url": "https://github.com/compgeniuses/ns8-matomo/issues",
-    "code_url": "https://github.com/compgeniuses/ns8-matomo/"
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-matomo/"
   },
-  "source": "ghcr.io/compgeniuses/matomo"
+  "source": "ghcr.io/geniusdynamics/matomo"
 }

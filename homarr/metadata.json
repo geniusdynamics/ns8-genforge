@@ -16,8 +16,8 @@
   ],
   "docs": {
     "documentation_url": "https://homarr.dev/docs",
-    "bug_url": "https://github.com/compgeniuses/ns8-homarr/issues",
-    "code_url": "https://github.com/compgeniuses/ns8-homarr"
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-homarr"
   },
   "source": "ghcr.io/compgeniuses/homarr"
 }

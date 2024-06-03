@@ -16,8 +16,8 @@
   ],
   "docs": {
     "documentation_url": "https://www.docuseal.co/docs/",
-    "bug_url": "https://github.com/compgeniuses/docuseal",
-    "code_url": "https://github.com/compgeniuses/docuseal"
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-docuseal"
   },
-  "source": "ghcr.io/compgeniuses/docuseal"
+  "source": "ghcr.io/geniusdynamics/docuseal"
 }

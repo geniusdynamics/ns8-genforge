@@ -12,8 +12,8 @@
   ],
   "docs": {
     "documentation_url": "https://docs.n8n.io/",
-    "bug_url": "https://github.com/compgeniuses/ns8-n8n/issues",
-    "code_url": "https://github.com/compgeniuses/ns8-n8n"
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-n8n"
   },
-  "source": "ghcr.io/compgeniuses/n8n"
+  "source": "ghcr.io/geniusdynamics/n8n"
 }

@@ -16,8 +16,8 @@
   ],
   "docs": {
     "documentation_url": "https://www.bookstackapp.com/docs/",
-    "bug_url": "https://github.com/compgeniuses/ns8-bookstack/issues",
-    "code_url": "https://github.com/compgeniuses/ns8-bookstack"
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-bookstack"
   },
-  "source": "ghcr.io/compgeniuses/bookstack"
+  "source": "ghcr.io/geniusdynamics/bookstack"
 }

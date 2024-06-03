@@ -16,7 +16,7 @@
   ],
   "docs": {
     "documentation_url": "https://www.dolibarr.org/documentation-home.php",
-    "bug_url": "https://github.com/geniusdynamics/ns8-dolibarr/issues",
+    "bug_url": "https://github.com/geniusdynamics/dev",
     "code_url": "https://github.com/geniusdynamics/ns8-dolibarr"
   },
   "source": "ghcr.io/geniusdynamics/dolibarr"

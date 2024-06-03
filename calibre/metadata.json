@@ -16,7 +16,7 @@
   ],
   "docs": {
     "documentation_url": "https://calibre-ebook.com/help",
-    "bug_url": "https://github.com/geniusdynamics/ns8-calibre",
+    "bug_url": "https://github.com/geniusdynamics/dev",
     "code_url": "https://github.com/geniusdynamics/ns8-calibre"
   },
   "source": "ghcr.io/geniusdynamics/calibre"

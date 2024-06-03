@@ -16,8 +16,8 @@
   ],
   "docs": {
     "documentation_url": "https://joplinapp.org/help/",
-    "bug_url": "https://github.com/compgeniuses/ns8-joplinserver/issues",
-    "code_url": "https://github.com/compgeniuses/ns8-joplinserver/"
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-joplinserver/"
   },
-  "source": "ghcr.io/compgeniuses/joplin"
+  "source": "ghcr.io/geniusdynamics/joplin"
 }

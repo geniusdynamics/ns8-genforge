@@ -16,7 +16,7 @@
   ],
   "docs": {
     "documentation_url": "https://docs.linkwarden.app/",
-    "bug_url": "https://github.com/geniusdynamics/ns8-linkwarden/issues",
+    "bug_url": "https://github.com/geniusdynamics/dev",
     "code_url": "https://github.com/geniusdynamics/ns8-linkwarden"
   },
   "source": "ghcr.io/geniusdynamics/linkwarden"

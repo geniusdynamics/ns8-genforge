@@ -16,8 +16,8 @@
   ],
   "docs": {
     "documentation_url": "https://stirlingtools.com/docs/Overview/What%20is%20Stirling-PDF",
-    "bug_url": "https://github.com/compgeniuses/ns8-Stirling-PDF/issues",
-    "code_url": "https://github.com/compgeniuses/ns8-Stirling-PDF/"
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-Stirling-PDF/"
   },
-  "source": "ghcr.io/compgeniuses/stirlingpdf"
+  "source": "ghcr.io/geniusdynamics/stirlingpdf"
 }

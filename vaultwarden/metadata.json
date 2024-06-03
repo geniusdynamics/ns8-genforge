@@ -16,8 +16,8 @@
   ],
   "docs": {
     "documentation_url": "https://github.com/dani-garcia/vaultwarden/wiki",
-    "bug_url": "https://github.com/compgeniuses/ns8-vaultwarden",
-    "code_url": "https://github.com/compgeniuses/ns8-vaultwarden"
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-vaultwarden"
   },
-  "source": "ghcr.io/compgeniuses/vaultwarden"
+  "source": "ghcr.io/geniusdynamics/vaultwarden"
 }

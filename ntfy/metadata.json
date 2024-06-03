@@ -16,7 +16,7 @@
   ],
   "docs": {
     "documentation_url": "https://docs.ntfy.sh/",
-    "bug_url": "https://github.com/geniusdynamics/ns8-ntfy/issues",
+    "bug_url": "https://github.com/geniusdynamics/dev",
     "code_url": "https://github.com/geniusdynamics/ns8-ntfy"
   },
   "source": "ghcr.io/geniusdynamics/ntfy"
