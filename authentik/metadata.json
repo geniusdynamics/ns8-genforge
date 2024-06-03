@@ -1,9 +1,9 @@
 {
   "name": "Authentik",
   "description": {
-    "en": "authentik is an open-source Identity Provider, focused on flexibility and versatility. With authentik, site administrators, application developers, and security engineers have a dependable and secure solution for authentication in almost any type of environment. There are robust recovery actions available for the users and applications, including user profile and password management. You can quickly edit, deactivate, or even impersonate a user profile, and set a new password for new users or reset an existing password."
+    "en": "authentik is an open-source Identity Provider, focused on flexibility and versatility."
   },
-  "categories": ["authentication", "identity", "security"],
+  "categories": ["security"],
   "authors": [
     {
       "name": "Kemboi Elvis",
