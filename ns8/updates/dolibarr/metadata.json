@@ -1,0 +1,23 @@
+{
+  "name": "dolibarr",
+  "description": {
+    "en": "Open Source ERP & CRM for business"
+  },
+  "categories": [ "office" ],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    },
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.dolibarr.org/documentation-home.php",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-dolibarr"
+  },
+  "source": "ghcr.io/geniusdynamics/dolibarr"
+}
