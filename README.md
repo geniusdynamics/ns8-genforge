@@ -16,7 +16,7 @@ and set the following URL:
 
 Alternative URL:
 
-    https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates/)
+    https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates/
 
 
 Under settings, Chose Software Repository
