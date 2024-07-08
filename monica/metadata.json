@@ -1,0 +1,23 @@
+{
+  "name": "monica",
+  "description": {
+    "en": "Personal CRM"
+  },
+  "categories": ["office"],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    },
+    {
+        "name": "Kemboi Elvis",
+        "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.monicahq.com/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-monica"
+  },
+  "source": "ghcr.io/geniusdynamics/monica"
+}
