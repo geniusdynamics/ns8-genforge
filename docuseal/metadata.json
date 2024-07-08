@@ -3,7 +3,7 @@
   "description": {
     "en": "DocuSeal. Open source document filling and signing"
   },
-  "categories": ["collaboration", "Office"],
+  "categories": ["Office"],
   "authors": [
     {
       "name": "Martin Bhuong",
