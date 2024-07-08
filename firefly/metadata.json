@@ -1,0 +1,23 @@
+{
+  "name": "firefly",
+  "description": {
+    "en": "A free and open source personal finance manager"
+  },
+  "categories": [],
+  "authors": [
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    },
+    {
+      "name": "Martin Bhoung",
+      "email": "martin@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.firefly-iii.org/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-fireflyiii"
+  },
+  "source": "ghcr.io/geniusdynamics/firefly"
+}
