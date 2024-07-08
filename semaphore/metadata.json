@@ -19,5 +19,5 @@
     "bug_url": "https://github.com/geniusdynamics/dev",
     "code_url": "https://github.com/geniusdynamics/ns8-semaphoreui"
   },
-  "source": "ghcr.io/nethserver/semaphoreui"
+  "source": "ghcr.io/geniusdynamics/semaphoreui"
 }
