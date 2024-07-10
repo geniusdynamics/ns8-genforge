@@ -1,0 +1,23 @@
+{
+  "name": "chiefonboarding",
+  "description": {
+    "en": "Onboarding a new hire is often complicated and chaotic, especially in remote teams. We will help you structure your onboarding process for IT, HR, managers, buddies, and, of course, your new hires.."
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Martin Bhuong",
+      "email": "martin@genius.ke"
+    },
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.chiefonboarding.com/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-chiefonboarding"
+  },
+  "source": "ghcr.io/geniusdynamics/chiefonboarding"
+}
