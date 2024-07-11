@@ -3,15 +3,11 @@
   "description": {
     "en": "A free and open source personal finance manager"
   },
-  "categories": [],
+  "categories": ["collaboration"],
   "authors": [
     {
-      "name": "Kemboi Elvis",
-      "email": "kemboielvis@genius.ke"
-    },
-    {
-      "name": "Martin Bhoung",
-      "email": "martin@genius.ke"
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
     }
   ],
   "docs": {
