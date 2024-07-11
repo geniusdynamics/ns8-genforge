@@ -1,0 +1,19 @@
+{
+  "name": "zitadel",
+  "description": {
+    "en": "These features include multi-tenancy with branding customization, secure login, self-service, OpenID Connect, OAuth2.x, SAML2, Passwordless with FIDO2 (including Passkeys), OTP, U2F, and an unlimited audit trail. "
+  },
+  "categories": ["authentication", "authorization", "identity"],
+  "authors": [
+    {
+      "name": "Kemboi Elvis",
+      "email": "kemboielvis@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://zitadel.com/docs",
+    "bug_url": "https://github.com/geniusdynamics/ndev",
+    "code_url": "https://github.com/geniusdynamics/ns8-zitadel"
+  },
+  "source": "ghcr.io/geniusdynamics/zitadel"
+}
