@@ -12,7 +12,7 @@
   ],
   "docs": {
     "documentation_url": "https://zitadel.com/docs",
-    "bug_url": "https://github.com/geniusdynamics/ndev",
+    "bug_url": "https://github.com/geniusdynamics/dev",
     "code_url": "https://github.com/geniusdynamics/ns8-zitadel"
   },
   "source": "ghcr.io/geniusdynamics/zitadel"
