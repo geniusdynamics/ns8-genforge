@@ -3,7 +3,7 @@
   "description": {
     "en": "multi-tenancy Identity Infrastructure with branding customization, secure login, self-service, OpenID Connect, OAuth2.x, SAML2, Passwordless with FIDO2 (including Passkeys), OTP, U2F, and an unlimited audit trail. "
   },
-  "categories": ["authentication", "authorization", "identity"],
+  "categories": ["security"],
   "authors": [
     {
       "name": "Genius Dynamics",
