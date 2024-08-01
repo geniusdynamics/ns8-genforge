@@ -1,0 +1,19 @@
+{
+  "name": "umami",
+  "description": {
+    "en": "umami. Open-source collaborative wiki and documentation software"
+  },
+  "categories": ["Office"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://umami.is/docs",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-umami"
+  },
+  "source": "ghcr.io/geniusdynamics/umami"
+}
