@@ -2,6 +2,36 @@
 
 This is the official GenForge NS8 index of modules.
 
+### Table of Contents
+<!-- TOC -->
+* [GenForge modules index for NS8](#genforge-modules-index-for-ns8)
+    * [Table of Contents](#table-of-contents)
+  * [Application List](#application-list)
+* [Categories](#categories)
+  * [1) Auth & SSO](#1-auth--sso)
+  * [2) Backend as a Service](#2-backend-as-a-service)
+  * [3) Design](#3-design)
+  * [4) Digital Signature](#4-digital-signature)
+  * [5) ERP](#5-erp)
+  * [6) Email Marketing](#6-email-marketing)
+  * [7) File Hosting](#7-file-hosting)
+  * [8) Form Building](#8-form-building)
+  * [9) Market SAAS](#9-market-saas-)
+  * [10) Messaging](#10-messaging-)
+  * [11) No Code Database](#11-no-code-database)
+  * [12) Note Taking](#12-note-taking)
+  * [13) Password Manager](#13-password-manager)
+  * [14) Project Management](#14-project-management)
+  * [15) PAAS(Platform As A Service)](#15-paasplatform-as-a-service)
+  * [16) Scheduling](#16-scheduling)
+  * [17) Video Conferencing](#17-video-conferencing)
+  * [18) Web Analytics](#18-web-analytics-)
+  * [19) Workflow Automation](#19-workflow-automation)
+  * [20) Database](#20-database)
+  * [21) Documents And Files](#21-documents-and-files-)
+  * [22) List manager](#22-list-manager-)
+<!-- TOC -->
+
 Metadata are built every 4 hours at 00:25, 06:25 ,12:25, 18:25 UTC and on each commit to the `main` branch.
 
 If you want to add a module to this repository, just follow the
