@@ -11,13 +11,17 @@ for `ns8-repomd`, finally open the pull request here!
 To use the modules listed here as NS8 repository, see the [manual
 page](https://docs.nethserver.org/projects/ns8/en/latest/modules.html#software-repositories)
 and set the following URL:
-
-    https://forge.genius.ke/ns8/updates/
+```shell
+https://forge.genius.ke/ns8/updates/
+```
+    
 
 Alternative URL:
+```shell
+https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates/
 
-    https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates/
-
+```
+    
 
 Under settings, Chose Software Repository
 
