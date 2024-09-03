@@ -43,7 +43,7 @@ Note that Apps installed with Testing Toggle enable may not be suitable for prod
 
 All apps are sorted by categories and listed alphabetically. Click on the stars badge to visit the product's GitHub repository. Apps not yet listed but available in the Software Center can be added upon request. **Happy searching!**
 
-<!-- BEGIN STARTUP LIST -->
+<!-- BEGIN STARTUP LIST FOR APPS -->
 
 | Category                 | Company                                      | Description                                                                                     |                                                                     GitHub Stars                                                                      |                                                                            Alternative to                                                                            |                            NS8link                             |
 |:-------------------------|:---------------------------------------------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------:|
