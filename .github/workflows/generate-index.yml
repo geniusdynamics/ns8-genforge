@@ -1,4 +1,4 @@
-name: Generate index.html from README
+name: Generate beautiful index.html from README
 
 on:
   push:
@@ -28,9 +28,9 @@ jobs:
             echo "run_index=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Generate HTML from README
+      - name: Generate beautiful index.html from README
         if: steps.changed.outputs.run_index == 'true'
-        run: python3 createrepo.py
+        run: python3 generate_index.py
 
       - name: Commit and push index.html
         if: steps.changed.outputs.run_index == 'true'
