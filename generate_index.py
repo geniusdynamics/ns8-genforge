@@ -82,6 +82,8 @@ def generate_html(intro_text, cards):
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
     categories = sorted(set(card['category'] for card in cards))
 
+    toc = "<ul>" + "".join([f'<li><a href="#{cat.lower().replace(" ", "-")}">{cat}</a></li>' for cat in categories]) + "</ul>"
+
     html_template = Template("""
     <!DOCTYPE html>
     <html lang=\"en\">
@@ -92,9 +94,13 @@ def generate_html(intro_text, cards):
         <style>
             body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; background-color: #f6f8fa; margin: 0; }
             .container { max-width: 1200px; margin: auto; padding: 20px; }
-            header { text-align: center; padding: 20px 0 40px 0; }
+            header { text-align: center; padding: 20px 0 20px 0; }
             header h1 { font-size: 2.5em; color: #0366d6; }
             header p { font-size: 1.1em; color: #586069; }
+            nav { background: #fff; border-bottom: 1px solid #e1e4e8; padding: 10px; margin-bottom: 20px; position: sticky; top: 0; z-index: 100; }
+            nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+            nav li { display: inline; }
+            nav a { text-decoration: none; color: #0366d6; font-weight: 600; }
             .category-section h2 { padding-bottom: 12px; border-bottom: 2px solid #e1e4e8; margin-top: 40px; color: #0366d6; font-size: 1.8em; }
             .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
             .app-card { background-color: #fff; border: 1px solid #d1d5da; border-radius: 6px; padding: 20px; transition: box-shadow 0.2s, transform 0.2s; }
@@ -117,6 +123,10 @@ def generate_html(intro_text, cards):
                 <p>A community-curated list of applications available for NethServer 8</p>
                 <p><small>Metadata generated on {{ timestamp }}</small></p>
             </header>
+
+            <nav>
+                {{ toc|safe }}
+            </nav>
 
             <div class=\"intro\">
                 {{ intro_text|safe }}
@@ -151,7 +161,7 @@ def generate_html(intro_text, cards):
     </html>
     """)
 
-    return html_template.render(timestamp=timestamp, intro_text=intro_text, categories=categories, cards=cards)
+    return html_template.render(timestamp=timestamp, intro_text=intro_text, categories=categories, cards=cards, toc=toc)
 
 
 def main():
