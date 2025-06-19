@@ -3,29 +3,40 @@ name: Generate index.html from README
 on:
   push:
     branches: [main]
-    paths:
-      - 'README.md'
-      - 'createrepo.py'
+  schedule:
+    - cron: '0 */4 * * *'  # Every 4 hours like repomd.yml
 
 jobs:
   build-html:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          fetch-depth: 0  # Needed to compare commits
 
-      - name: Generate index.html
+      - name: Check for new folders or README/createrepo changes
+        id: changed
+        run: |
+          git fetch origin main
+          changed_dirs=$(git diff --name-only HEAD^ HEAD | grep '/$' || true)
+          changed_files=$(git diff --name-only HEAD^ HEAD | grep -E 'README.md|createrepo.py' || true)
+          if [[ -n "$changed_dirs" || -n "$changed_files" ]]; then
+            echo "run_index=true" >> $GITHUB_OUTPUT
+          else
+            echo "run_index=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate HTML from README
+        if: steps.changed.outputs.run_index == 'true'
         run: python3 createrepo.py
 
       - name: Commit and push index.html
+        if: steps.changed.outputs.run_index == 'true'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Martin Bhuong"
+          git config user.email "your-email@example.com"
           git add index.html
-          git commit -m "Auto-update index.html from README" || echo "No changes to commit"
+          git commit -m "Auto-update index.html from new changes" || echo "No changes"
           git push
