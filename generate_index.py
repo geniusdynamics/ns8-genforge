@@ -1,4 +1,4 @@
-from pathlib import Path
+""from pathlib import Path
 import re
 from datetime import datetime
 import hashlib
@@ -30,7 +30,7 @@ def convert_markdown_table_to_html(md_table):
     return html
 
 def extract_tables_by_section(readme_text):
-    sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
+    sections = re.split(r'^##\\s+', readme_text, flags=re.MULTILINE)
     content_blocks = []
 
     for section in sections:
@@ -46,7 +46,7 @@ def extract_tables_by_section(readme_text):
             table_html = convert_markdown_table_to_html(table)
             if table_html:
                 section_id = heading.lower().replace(" ", "-")
-                content_blocks.append(f"<section id='{section_id}'><h2>{heading}</h2><input class='table-search' placeholder='🔍 Filter...'><table class='sortable filterable'>{table_html}</table></section>")
+                content_blocks.append(f"<section id='{section_id}'><h2>{heading}</h2><input class='table-search' placeholder='🔍 Filter apps...'><div class='table-wrapper'><table class='sortable filterable'>{table_html}</table></div></section>")
 
     return "\n".join(content_blocks)
 
@@ -82,38 +82,46 @@ def main():
   <title>NS8 AppForge Index</title>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/simpledotcss/simple.min.css'>
   <script src='https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js'></script>
   <style>
-    body {{ max-width: 1200px; margin: auto; }}
-    nav {{ position: fixed; left: 0; top: 0; width: 220px; height: 100vh; overflow-y: auto; background: #f9f9f9; padding: 1rem; border-right: 1px solid #ccc; }}
-    main {{ margin-left: 240px; padding: 1rem; }}
-    nav ul {{ list-style: none; padding: 0; }}
-    nav li {{ margin-bottom: 0.5rem; }}
-    section {{ padding-top: 2rem; margin-bottom: 3rem; }}
-    .table-search {{ width: 100%; margin-bottom: 0.5rem; padding: 0.5rem; font-size: 1rem; }}
-    .dark-mode {{ background: #121212; color: #f1f1f1; }}
-    .dark-mode table {{ border-color: #444; }}
-    .dark-mode a {{ color: #90caf9; }}
-    .theme-toggle {{ position: fixed; top: 1rem; right: 1rem; cursor: pointer; padding: 0.5rem 1rem; }}
+    body {{ margin: 0; font-family: system-ui, sans-serif; }}
+    header {{ background: #0b7285; color: white; padding: 1.5rem; text-align: center; }}
+    .metadata-note {{ font-size: 0.9rem; background: #e3fafc; color: #0b7285; padding: 0.5rem; margin-bottom: 1.5rem; border-left: 4px solid #0b7285; }}
+    .sidebar {{ position: fixed; top: 0; left: 0; width: 220px; height: 100vh; overflow-y: auto; background: #f8f9fa; padding: 1rem; border-right: 1px solid #dee2e6; }}
+    .sidebar h2 {{ font-size: 1.1rem; margin-bottom: 0.5rem; }}
+    .sidebar ul {{ list-style: none; padding-left: 0; }}
+    .sidebar li {{ margin-bottom: 0.4rem; }}
+    .sidebar a {{ text-decoration: none; color: #0b7285; }}
+    main {{ margin-left: 240px; padding: 2rem; }}
+    section {{ margin-bottom: 3rem; }}
+    .table-wrapper {{ overflow-x: auto; }}
+    .table-search {{ width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }}
+    .theme-toggle {{ position: fixed; top: 1rem; right: 1rem; background: #0b7285; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; }}
+    .dark-mode {{ background-color: #1e1e1e; color: #f1f1f1; }}
+    .dark-mode .sidebar {{ background: #292929; border-color: #444; }}
+    .dark-mode .sidebar a {{ color: #91d1ff; }}
+    .dark-mode .theme-toggle {{ background: #91d1ff; color: #111; }}
   </style>
 </head>
 <body>
   <button class='theme-toggle' onclick='toggleTheme()'>🌙 Toggle Theme</button>
-  <nav>
-    <h2>📚 Sections</h2>
+  <aside class='sidebar'>
+    <h2>📚 Contents</h2>
     <ul>
-      {''.join([f'<li><a href="#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
+      {''.join([f'<li><a href="#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
     </ul>
-  </nav>
+  </aside>
   <main>
     <header>
-      <h1>NS8 AppForge App Index</h1>
-      <p>Generated on {timestamp}</p>
+      <h1>NS8 AppForge</h1>
+      <p class='metadata-note'>📅 Metadata are built every 4 hours at 00:25, 06:25, 12:25, 18:25 UTC and on each commit to the main branch.</p>
     </header>
-    {content_html}
+    <section id='apps'>
+      <h2>🧩 Application List</h2>
+      {content_html}
+    </section>
     <hr>
     <section id='readme-full'>
-      <h2>📘 Full README Content</h2>
+      <h2>📘 Full README</h2>
       {full_readme_html}
     </section>
     <footer>
