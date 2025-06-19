@@ -143,7 +143,7 @@ def generate_html(cards):
         f'<li><a href="#" data-filter="{c}" class="hover:underline">{c}</a></li>' for c in categories
     )
 
-    return html_template.substitute(
+    return html_template.safe_substitute(
         timestamp=timestamp,
         category_links=category_links,
         json_cards=json_cards
