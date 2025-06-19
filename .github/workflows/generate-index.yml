@@ -15,8 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main branch
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # required to push to other branches
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -29,16 +31,15 @@ jobs:
       - name: Generate index.html
         run: python3 generate_index.py
 
-      - name: Deploy to gh-pages branch
+      - name: Deploy to existing gh-pages branch
         run: |
-          mkdir gh-pages-temp
-          cp index.html gh-pages-temp/
-
-          cd gh-pages-temp
-          git init
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin gh-pages
+          git switch gh-pages
+          git rm -rf .
+          cp ../index.html ./  # index.html from main branch workspace
           git add index.html
-          git commit -m "🚀 Update index.html"
-          git branch -M gh-pages
-          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
+          git commit -m "🚀 Update GitHub Pages with latest index"
+          git push origin gh-pages
