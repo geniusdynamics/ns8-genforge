@@ -26,11 +26,13 @@ def parse_readme_tables(readme_text):
                     app_name = cols[0]
                     description = cols[1] if len(cols) > 1 else ""
                     link = cols[2] if len(cols) > 2 else ""
+                    icon = cols[3] if len(cols) > 3 else ""
                     app_cards.append({
                         "category": category,
                         "name": app_name,
                         "desc": description,
-                        "link": link
+                        "link": link,
+                        "icon": icon
                     })
     return app_cards
 
@@ -42,12 +44,12 @@ def generate_html(cards):
 
     html_template = Template("""
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang=\"en\">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset=\"UTF-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>NS8 AppForge</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <script src=\"https://cdn.tailwindcss.com\"></script>
         <script>
           tailwind.config = { darkMode: 'class' }
         </script>
@@ -64,25 +66,25 @@ def generate_html(cards):
             }
         </style>
     </head>
-    <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-        <div class="flex">
-            <aside class="w-64 min-h-screen p-4 border-r border-gray-300 dark:border-gray-700">
-                <h2 class="text-lg font-semibold mb-4">🧭 Categories</h2>
-                <ul id="category-list" class="space-y-2">
-                    <li><a href="#" data-filter="All" class="text-blue-600 hover:underline">All</a></li>
+    <body class=\"bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200\">
+        <div class=\"flex\">
+            <aside class=\"w-64 min-h-screen p-4 border-r border-gray-300 dark:border-gray-700\">
+                <h2 class=\"text-lg font-semibold mb-4\">🧭 Categories</h2>
+                <ul id=\"category-list\" class=\"space-y-2\">
+                    <li><a href=\"#\" data-filter=\"All\" class=\"text-blue-600 hover:underline\">All</a></li>
                     $category_links
                 </ul>
-                <div class="mt-6">
-                    <button onclick="toggleTheme()" class="bg-gray-700 text-white px-3 py-1 rounded">Toggle Theme</button>
+                <div class=\"mt-6\">
+                    <button onclick=\"toggleTheme()\" class=\"bg-gray-700 text-white px-3 py-1 rounded\">Toggle Theme</button>
                 </div>
             </aside>
-            <main class="flex-1 p-6">
-                <h1 class="text-3xl font-bold mb-2">NS8 AppForge</h1>
-                <p class="text-sm text-gray-500 mb-6">Metadata built at $timestamp UTC</p>
+            <main class=\"flex-1 p-6\">
+                <h1 class=\"text-3xl font-bold mb-2\">NS8 AppForge</h1>
+                <p class=\"text-sm text-gray-500 mb-6\">Metadata built at $timestamp UTC</p>
 
-                <input id="search" type="text" placeholder="🔍 Search apps..." class="w-full px-4 py-2 mb-6 border rounded"/>
+                <input id=\"search\" type=\"text\" placeholder=\"🔍 Search apps...\" class=\"w-full px-4 py-2 mb-6 border rounded\"/>
 
-                <div id="app-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                <div id=\"app-grid\" class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\"></div>
             </main>
         </div>
 
@@ -106,10 +108,14 @@ def generate_html(cards):
               const el = document.createElement('div');
               el.className = 'card';
               el.innerHTML = `
+                ${app.icon ? `<img src="${app.icon}" alt="${app.name}" class="h-10 w-10 mb-2">` : ''}
                 <h3 class='text-xl font-semibold mb-1'>${app.name}</h3>
                 <p class='text-sm text-gray-600 dark:text-gray-400 mb-2'>${app.category}</p>
-                <p class='mb-2'>${app.desc}</p>
-                ${app.link ? `<a href="${app.link}" class="text-blue-500 underline" target="_blank">🔗 Visit</a>` : ''}
+                <p class='mb-2 line-clamp-3'>${app.desc}</p>
+                <div class='flex gap-2 mt-2'>
+                  ${app.link ? `<a href="${app.link}" class="text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" target="_blank">📥 Download</a>` : ''}
+                  <button onclick="alert(\"${app.desc.replace(/'/g, "\'")}\")" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
+                </div>
               `;
               grid.appendChild(el);
             }
