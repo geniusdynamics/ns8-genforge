@@ -122,7 +122,7 @@ def main():
   <aside class='sidebar'>
     <h2>📚 Contents</h2>
     <ul>
-      $sidebar_html
+      ${sidebar_html}
     </ul>
   </aside>
   <main>
@@ -132,10 +132,10 @@ def main():
     </header>
     <section id='apps'>
       <h2>🧩 Application List</h2>
-      $content_html
+      ${content_html}
     </section>
     <footer>
-      <small>Hash: $combined_hash | Last generated on $timestamp</small>
+      <small>Hash: ${combined_hash} | Last generated on ${timestamp}</small>
     </footer>
   </main>
   <script>
