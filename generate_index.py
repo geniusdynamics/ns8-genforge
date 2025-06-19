@@ -2,6 +2,7 @@ from pathlib import Path
 import re
 from datetime import datetime
 import hashlib
+import markdown
 
 def convert_markdown_table_to_html(md_table):
     lines = md_table.strip().split("\n")
@@ -72,6 +73,7 @@ def main():
     timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
     readme_text = readme_file.read_text(encoding="utf-8")
     content_html = extract_tables_by_section(readme_text)
+    full_readme_html = markdown.markdown(readme_text)
 
     output = f"""<!DOCTYPE html>
 <html lang=\"en\">
@@ -101,6 +103,11 @@ def main():
     </ul>
   </nav>
   {content_html}
+  <hr>
+  <section id=\"readme-full\">
+    <h2>📘 Full README Content</h2>
+    {full_readme_html}
+  </section>
   <footer>
     <small>Hash: {combined_hash} | Last generated on {timestamp}</small>
   </footer>
