@@ -1,6 +1,7 @@
 from pathlib import Path
 import re
 from datetime import datetime
+import hashlib
 
 def convert_markdown_table_to_html(md_table):
     lines = md_table.strip().split("\n")
@@ -48,15 +49,29 @@ def extract_tables_by_section(readme_text):
 
     return "\n".join(content_blocks)
 
+def hash_file(filepath):
+    hasher = hashlib.md5()
+    with open(filepath, 'rb') as f:
+        hasher.update(f.read())
+    return hasher.hexdigest()
+
 def main():
     readme_file = Path("README.md")
+    script_file = Path(__file__)
+    index_file = Path("index.html")
+
     if not readme_file.exists():
         print("README.md not found.")
         return
 
+    # Check for changes in script or README
+    readme_hash = hash_file(readme_file)
+    script_hash = hash_file(script_file)
+    combined_hash = hashlib.md5((readme_hash + script_hash).encode()).hexdigest()
+
+    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
     readme_text = readme_file.read_text(encoding="utf-8")
     content_html = extract_tables_by_section(readme_text)
-    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
 
     output = f"""<!DOCTYPE html>
 <html lang=\"en\">
@@ -70,9 +85,9 @@ def main():
     body {{ max-width: 1200px; margin: auto; }}
     nav {{ position: sticky; top: 0; background: #fff; padding: 1rem; border-bottom: 1px solid #eee; }}
     nav ul {{ list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; }}
-    section { padding-top: 2rem; }
-    table.sortable { width: 100%; border-collapse: collapse; }
-    table.sortable th, table.sortable td { padding: 0.5em; border: 1px solid #ddd; }
+    section {{ padding-top: 2rem; }}
+    table.sortable {{ width: 100%; border-collapse: collapse; }}
+    table.sortable th, table.sortable td {{ padding: 0.5em; border: 1px solid #ddd; }}
   </style>
 </head>
 <body>
@@ -86,14 +101,17 @@ def main():
     </ul>
   </nav>
   {content_html}
+  <footer>
+    <small>Hash: {combined_hash} | Last generated on {timestamp}</small>
+  </footer>
   <script>
     document.querySelectorAll('table').forEach(t => new Tablesort(t));
   </script>
 </body>
 </html>"""
 
-    Path("index.html").write_text(output, encoding="utf-8")
-    print("✅ index.html generated with filters, navigation, and styles.")
+    index_file.write_text(output, encoding="utf-8")
+    print("✅ index.html regenerated with timestamp and script hash.")
 
 if __name__ == "__main__":
     main()
