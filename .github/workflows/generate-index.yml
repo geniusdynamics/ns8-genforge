@@ -1,38 +1,46 @@
-name: Generate Index Page
+name: Deploy GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - 'README.md'
-      - 'generate_index.py'
+      - README.md
+      - generate_index.py
   workflow_dispatch:
   schedule:
     - cron: '0 */6 * * *'  # Every 6 hours
 
 jobs:
-  build-index:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: 3.x
 
-      - name: Install Python dependencies
+      - name: Install Markdown package
         run: pip install markdown
 
-      - name: Generate index.html from README
+      - name: Generate index.html
         run: python3 generate_index.py
 
-      - name: Commit index.html if changed
+      - name: Commit index.html to gh-pages branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git switch --orphan gh-pages-temp
+          mv index.html temp-index.html
+          rm -rf *
+          mv temp-index.html index.html
+
           git add index.html
-          git diff --cached --quiet && echo "No changes to commit" || git commit -m "🔄 Auto-regenerated index.html"
-          git push
+          git commit -m "🚀 Deploy updated index.html to gh-pages"
+          git branch -M gh-pages
+          git push --force origin gh-pages
