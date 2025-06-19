@@ -1,45 +1,48 @@
-name: Deploy GitHub Pages
+name: Generate GitHub Pages Index
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
-      - README.md
-      - generate_index.py
-  workflow_dispatch:
+      - 'README.md'
+      - 'generate_index.py'
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '25 */6 * * *'
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # required to push to other branches
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Required for gh-pages switching
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.x
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
 
-      - name: Install dependencies
-        run: pip install markdown
+    - name: Install dependencies
+      run: pip install --upgrade pip
 
-      - name: Generate index.html
-        run: python3 generate_index.py
+    - name: Generate index.html from README
+      run: python3 generate_index.py
 
-      - name: Deploy to existing gh-pages branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    - name: Configure Git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git fetch origin gh-pages
-          git switch gh-pages
-          git rm -rf .
-          cp ../index.html ./  # index.html from main branch workspace
-          git add index.html
-          git commit -m "🚀 Update GitHub Pages with latest index"
-          git push origin gh-pages
+    - name: Commit index.html to gh-pages
+      run: |
+        git switch gh-pages || git checkout --orphan gh-pages
+        git reset --hard
+        git clean -fdx
+        mv index.html ./index.html
+        git add index.html
+        git commit -m "🔄 Auto-update index.html from main" || echo "No changes to commit"
+        git push origin gh-pages --force
