@@ -42,7 +42,7 @@ jobs:
         git switch gh-pages || git checkout --orphan gh-pages
         git reset --hard
         git clean -fdx
-        mv index.html ./index.html
+        cp ../index.html ./index.html
         git add index.html
         git commit -m "🔄 Auto-update index.html from main" || echo "No changes to commit"
         git push origin gh-pages --force
