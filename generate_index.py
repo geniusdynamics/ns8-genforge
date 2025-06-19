@@ -24,16 +24,20 @@ def parse_readme_tables(readme_text):
             for row in rows:
                 cols = [c.strip() for c in row.split('|') if c.strip()]
                 if len(cols) >= 2:
-                    app_name = cols[0]
+                    name = cols[0]  # Company/App Name
                     description = cols[1] if len(cols) > 1 else ""
                     link = cols[2] if len(cols) > 2 else ""
                     icon = cols[3] if len(cols) > 3 else ""
+                    stars = cols[4] if len(cols) > 4 else ""
+                    alt = cols[5] if len(cols) > 5 else ""
                     app_cards.append({
                         "category": category,
-                        "name": app_name,
+                        "name": name,
                         "desc": description,
                         "link": link,
-                        "icon": icon
+                        "icon": icon,
+                        "stars": stars,
+                        "alt": alt
                     })
     return app_cards
 
@@ -58,8 +62,12 @@ def generate_html(cards):
             .card {
                 background: white;
                 border-radius: 0.5rem;
-                padding: 1rem;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                padding: 1.25rem;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
             }
             .dark .card {
                 background-color: #1e293b;
@@ -83,7 +91,7 @@ def generate_html(cards):
                 <h1 class=\"text-3xl font-bold mb-2\">NS8 AppForge</h1>
                 <p class=\"text-sm text-gray-500 mb-6\">Metadata built at $timestamp</p>
 
-                <input id=\"search\" type=\"text\" placeholder=\"🔍 Search apps...\" class=\"w-full px-4 py-2 mb-6 border rounded\"/>
+                <input id=\"search\" type=\"text\" placeholder=\"🔍 Search apps...\" class=\"w-full px-4 py-2 mb-6 border rounded"/>
 
                 <div id=\"app-grid\" class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\"></div>
             </main>
@@ -109,11 +117,12 @@ def generate_html(cards):
               const el = document.createElement('div');
               el.className = 'card';
               el.innerHTML = `
-                ${app.icon ? `<img src="${app.icon}" alt="${app.name}" class="h-10 w-10 mb-2">` : ''}
-                <h3 class='text-xl font-semibold mb-1'>${app.name}</h3>
-                <p class='text-sm text-gray-600 dark:text-gray-400 mb-2'>${app.category}</p>
-                <p class='mb-2 line-clamp-3'>${app.desc}</p>
-                <div class='flex gap-2 mt-2'>
+                <h3 class='text-lg font-bold mb-1'>${app.name}</h3>
+                <p class='text-sm text-gray-400 dark:text-gray-500 mb-2 italic'>${app.category}</p>
+                <p class='text-sm mb-2'>${app.desc}</p>
+                ${app.stars ? `<p class='text-xs mb-1 text-yellow-500'>⭐ GitHub Stars: ${app.stars}</p>` : ''}
+                ${app.alt ? `<p class='text-xs text-gray-500 dark:text-gray-400 mb-2'>🧭 Alternative to: ${app.alt}</p>` : ''}
+                <div class='flex gap-2 mt-auto'>
                   ${app.link ? `<a href="${app.link}" class="text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" target="_blank">📥 Download</a>` : ''}
                   <button onclick="alert(JSON.stringify(app.desc))" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
                 </div>
