@@ -1,6 +1,6 @@
 from pathlib import Path
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from string import Template
 import json
 from html import escape
@@ -31,7 +31,7 @@ def parse_readme_tables(readme_text):
                     app_cards.append({
                         "category": category,
                         "name": app_name,
-                        "desc": escape(description.replace('"', '\\"')),
+                        "desc": description,
                         "link": link,
                         "icon": icon
                     })
@@ -39,7 +39,7 @@ def parse_readme_tables(readme_text):
 
 
 def generate_html(cards):
-    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+    timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
     categories = sorted(set(card['category'] for card in cards))
     json_cards = json.dumps(cards)
 
@@ -81,7 +81,7 @@ def generate_html(cards):
             </aside>
             <main class=\"flex-1 p-6\">
                 <h1 class=\"text-3xl font-bold mb-2\">NS8 AppForge</h1>
-                <p class=\"text-sm text-gray-500 mb-6\">Metadata built at $timestamp UTC</p>
+                <p class=\"text-sm text-gray-500 mb-6\">Metadata built at $timestamp</p>
 
                 <input id=\"search\" type=\"text\" placeholder=\"🔍 Search apps...\" class=\"w-full px-4 py-2 mb-6 border rounded\"/>
 
@@ -115,7 +115,7 @@ def generate_html(cards):
                 <p class='mb-2 line-clamp-3'>${app.desc}</p>
                 <div class='flex gap-2 mt-2'>
                   ${app.link ? `<a href="${app.link}" class="text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" target="_blank">📥 Download</a>` : ''}
-                  <button onclick="alert('${app.desc}')" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
+                  <button onclick="alert(JSON.stringify(app.desc))" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
                 </div>
               `;
               grid.appendChild(el);
