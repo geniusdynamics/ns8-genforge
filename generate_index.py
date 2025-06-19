@@ -5,7 +5,6 @@ from string import Template
 import json
 from html import escape
 
-
 def parse_readme_tables(readme_text):
     sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
     app_cards = []
@@ -24,23 +23,25 @@ def parse_readme_tables(readme_text):
             for row in rows:
                 cols = [c.strip() for c in row.split('|') if c.strip()]
                 if len(cols) >= 2:
-                    name = cols[0]  # Company/App Name
+                    name = cols[0]  # Markdown link format [AppName](url)
+                    m = re.match(r'\[(.*?)\]\((.*?)\)', name)
+                    app_name = m.group(1) if m else name
+                    app_link = m.group(2) if m else ""
+
                     description = cols[1] if len(cols) > 1 else ""
-                    link = cols[2] if len(cols) > 2 else ""
                     icon = cols[3] if len(cols) > 3 else ""
                     stars = cols[4] if len(cols) > 4 else ""
                     alt = cols[5] if len(cols) > 5 else ""
                     app_cards.append({
                         "category": category,
-                        "name": name,
+                        "name": app_name,
                         "desc": description,
-                        "link": link,
+                        "link": app_link,
                         "icon": icon,
                         "stars": stars,
                         "alt": alt
                     })
     return app_cards
-
 
 def generate_html(cards):
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
@@ -55,9 +56,7 @@ def generate_html(cards):
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>NS8 AppForge</title>
         <script src=\"https://cdn.tailwindcss.com\"></script>
-        <script>
-          tailwind.config = { darkMode: 'class' }
-        </script>
+        <script>tailwind.config = { darkMode: 'class' }</script>
         <style>
             .card {
                 background: white;
@@ -91,7 +90,7 @@ def generate_html(cards):
                 <h1 class=\"text-3xl font-bold mb-2\">NS8 AppForge</h1>
                 <p class=\"text-sm text-gray-500 mb-6\">Metadata built at $timestamp</p>
 
-                <input id=\"search\" type=\"text\" placeholder=\"🔍 Search apps...\" class=\"w-full px-4 py-2 mb-6 border rounded"/>
+                <input id=\"search\" type=\"text\" placeholder=\"🔍 Search apps...\" class=\"w-full px-4 py-2 mb-6 border rounded\"/>
 
                 <div id=\"app-grid\" class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\"></div>
             </main>
@@ -158,7 +157,6 @@ def generate_html(cards):
         json_cards=json_cards
     )
 
-
 def main():
     readme_path = Path("README.md")
     output_path = Path("index.html")
@@ -172,7 +170,6 @@ def main():
     html_output = generate_html(cards)
     output_path.write_text(html_output, encoding="utf-8")
     print("✅ index.html generated successfully.")
-
 
 if __name__ == '__main__':
     main()
