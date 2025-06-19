@@ -8,6 +8,7 @@ from jinja2 import Template
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
+
 def get_github_stars(repo_url, github_token=None):
     api_url = f"https://api.github.com/repos/{repo_url.replace('https://github.com/', '')}"
     headers = {'Accept': 'application/vnd.github.v3+json'}
@@ -20,6 +21,7 @@ def get_github_stars(repo_url, github_token=None):
         return data.get('stargazers_count', 0)
     except:
         return 0
+
 
 def parse_readme_tables(readme_text):
     sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
@@ -61,6 +63,7 @@ def parse_readme_tables(readme_text):
                     })
     return app_cards
 
+
 def generate_html(cards):
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
     categories = sorted(set(card['category'] for card in cards))
@@ -68,100 +71,70 @@ def generate_html(cards):
 
     html_template = Template("""
     <!DOCTYPE html>
-    <html lang=\"en\">
+    <html lang="en">
     <head>
-        <meta charset=\"UTF-8\">
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-        <title>NS8 AppForge</title>
-        <script src=\"https://cdn.tailwindcss.com\"></script>
-        <script>tailwind.config = { darkMode: 'class' }</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GenForge App Directory</title>
         <style>
-            .card { background: white; border-radius: 0.5rem; padding: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
-            .dark .card { background-color: #1e293b; color: #e2e8f0; }
-            .modal { background-color: rgba(0,0,0,0.5); position: fixed; top:0; left:0; right:0; bottom:0; display: flex; justify-content: center; align-items: center; }
-            .modal-content { background: white; padding: 1.5rem; border-radius: 8px; max-width: 600px; width: 90%; }
-            .dark .modal-content { background: #1e293b; color: #e2e8f0; }
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; background-color: #f6f8fa; margin: 0; }
+            .container { max-width: 1200px; margin: auto; padding: 20px; }
+            header { text-align: center; padding: 20px 0 40px 0; }
+            header h1 { font-size: 2.5em; color: #0366d6; }
+            header p { font-size: 1.1em; color: #586069; }
+            .category-section h2 { padding-bottom: 12px; border-bottom: 2px solid #e1e4e8; margin-top: 40px; color: #0366d6; font-size: 1.8em; }
+            .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+            .app-card { background-color: #fff; border: 1px solid #d1d5da; border-radius: 6px; padding: 20px; transition: box-shadow 0.2s, transform 0.2s; }
+            .app-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); transform: translateY(-3px); }
+            .app-card h3 { margin: 0 0 12px 0; font-size: 1.4em; }
+            .app-card h3 a { text-decoration: none; color: #005cc5; font-weight: 600; }
+            .app-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+            .app-links a { display: inline-block; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; }
+            .app-links a.github { background-color: #24292e; color: #fff; }
+            .app-links a.nethserver { background-color: #28a745; color: #fff; }
+            .alternatives { font-size: 0.95em; color: #586069; }
+            footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #e1e4e8; font-size: 0.9em; color: #6a737d; }
         </style>
     </head>
-    <body class=\"bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200\">
-        <div class=\"flex\">
-            <aside class=\"w-64 min-h-screen p-4 border-r border-gray-300 dark:border-gray-700\">
-                <h2 class=\"text-lg font-semibold mb-4\">🧭 Categories</h2>
-                <ul id=\"category-list\" class=\"space-y-2\">
-                    <li><a href=\"#\" data-filter=\"All\" class=\"text-blue-600 hover:underline\">All</a></li>
-                    {% for cat in categories %}<li><a href=\"#\" data-filter=\"{{ cat }}\" class=\"hover:underline\">{{ cat }}</a></li>{% endfor %}
-                </ul>
-                <div class=\"mt-6\">
-                    <button onclick=\"toggleTheme()\" class=\"bg-gray-700 text-white px-3 py-1 rounded\">🌓 Toggle Theme</button>
-                </div>
-            </aside>
-            <main class=\"flex-1 p-6\">
-                <h1 class=\"text-3xl font-bold mb-2\">NS8 AppForge</h1>
-                <p class=\"text-sm text-gray-500 mb-6\">Metadata built at {{ timestamp }}</p>
-                <input id=\"search\" type=\"text\" placeholder=\"🔍 Search apps...\" class=\"w-full px-4 py-2 mb-6 border rounded\"/>
-                <div id=\"app-grid\" class=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\"></div>
+    <body>
+        <div class="container">
+            <header>
+                <h1>GenForge App Directory</h1>
+                <p>A community-curated list of applications available for NethServer 8</p>
+                <p><small>Metadata generated on {{ timestamp }}</small></p>
+            </header>
+
+            <main>
+                {% for category in categories %}
+                <section class="category-section" id="{{ category|lower|replace(' ', '-') }}">
+                    <h2>{{ category }}</h2>
+                    <div class="app-grid">
+                        {% for app in json_cards|from_json if app.category == category %}
+                        <div class="app-card">
+                            <h3><a href="{{ app.link }}" target="_blank">{{ app.name }}</a></h3>
+                            <p>{{ app.desc }}</p>
+                            <div class="app-links">
+                                {% if app.repo_link %}<a href="{{ app.repo_link }}" class="github" target="_blank">⭐ {{ app.stars }} Stars</a>{% endif %}
+                                <a href="https://github.com/geniusdynamics/ns8-{{ app.name|lower|replace(' ', '-') }}" class="nethserver" target="_blank">NS8 Module</a>
+                            </div>
+                            {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> {{ app.alt }}</div>{% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endfor %}
             </main>
+
+            <footer>
+                <p>This page is automatically generated via GitHub Actions from the <a href="https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md">README.md</a> file.</p>
+            </footer>
         </div>
-        <div id=\"modal\" class=\"modal hidden\">
-            <div class=\"modal-content\">
-                <h3 class=\"text-xl font-semibold mb-2\">App Details</h3>
-                <div id=\"modal-text\"></div>
-                <button onclick=\"closeModal()\" class=\"mt-4 px-4 py-2 bg-blue-500 text-white rounded\">Close</button>
-            </div>
-        </div>
-        <script>
-          const apps = {{ json_cards|safe }};
-          const grid = document.getElementById('app-grid');
-          const search = document.getElementById('search');
-          const links = document.querySelectorAll('#category-list a');
-          const modal = document.getElementById('modal');
-          const modalText = document.getElementById('modal-text');
-          let currentFilter = 'All';
-
-          function render() {
-            grid.innerHTML = '';
-            const query = search.value.toLowerCase();
-            const filtered = apps.filter(app => {
-              const matchFilter = currentFilter === 'All' || app.category === currentFilter;
-              const matchQuery = app.name.toLowerCase().includes(query) || app.desc.toLowerCase().includes(query);
-              return matchFilter && matchQuery;
-            });
-            for (const app of filtered) {
-              const el = document.createElement('div');
-              el.className = 'card';
-              el.innerHTML = `
-                <h3 class='text-lg font-bold mb-1'><a href='${app.link}' target='_blank' rel='noopener'>${app.name}</a></h3>
-                <p class='text-sm text-gray-400 dark:text-gray-500 mb-2 italic'>${app.category}</p>
-                <p class='text-sm mb-2'>${app.desc}</p>
-                ${app.stars ? `<p class='text-xs mb-1 text-yellow-500'>⭐ GitHub Stars: ${app.stars}</p>` : ''}
-                ${app.alt ? `<p class='text-xs text-gray-500 dark:text-gray-400 mb-2'>🧭 Alternative to: ${app.alt}</p>` : ''}
-                <div class='flex gap-2 mt-auto'>
-                  ${app.link ? `<a href="${app.link}" class="text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" target="_blank">🌐 Visit Website</a>` : ''}
-                  ${app.repo_link ? `<a href="${app.repo_link}" class="text-sm bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700" target="_blank">🧩 NS8 Module</a>` : ''}
-                  <button onclick="openModal('🔗 <a href='${app.link}' target='_blank'>${app.name}</a><br/><br/>📄 ${app.desc}')" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
-                </div>`;
-              grid.appendChild(el);
-            }
-          }
-
-          function openModal(text) {
-            modalText.innerHTML = text;
-            modal.classList.remove('hidden');
-          }
-          function closeModal() {
-            modal.classList.add('hidden');
-          }
-
-          links.forEach(link => link.addEventListener('click', e => { e.preventDefault(); currentFilter = e.target.dataset.filter; render(); }));
-          search.addEventListener('input', render);
-          render();
-          function toggleTheme() { document.body.classList.toggle('dark'); }
-        </script>
     </body>
     </html>
     """)
 
     return html_template.render(timestamp=timestamp, categories=categories, json_cards=json_cards)
+
 
 def main():
     readme_path = Path("README.md")
@@ -176,6 +149,7 @@ def main():
     html_output = generate_html(cards)
     output_path.write_text(html_output, encoding="utf-8")
     print("✅ index.html generated successfully.")
+
 
 if __name__ == '__main__':
     main()
