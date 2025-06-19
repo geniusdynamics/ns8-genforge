@@ -97,7 +97,7 @@ def main():
   </header>
   <nav>
     <ul>
-      {''.join([f'<li><a href="#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
+      {''.join([f'<li><a href=\"#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'\">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
     </ul>
   </nav>
   {content_html}
