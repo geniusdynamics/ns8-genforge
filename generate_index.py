@@ -149,7 +149,7 @@ def generate_html(intro_text, cards):
         </div>
     </body>
     </html>
-    ")
+    """)
 
     return html_template.render(timestamp=timestamp, intro_text=intro_text, categories=categories, cards=cards)
 
