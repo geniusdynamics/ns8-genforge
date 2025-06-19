@@ -71,7 +71,7 @@ def generate_sidebar_toc(readme_text):
             continue
         heading = lines[0].strip()
         anchor = heading.lower().replace(" ", "-")
-        toc.append(f'<li><a href="#{anchor}">{heading}</a></li>')
+        toc.append(f'<li><a href="#${anchor}">{heading}</a></li>')
     return "\n".join(toc)
 
 
