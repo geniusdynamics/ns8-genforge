@@ -8,39 +8,37 @@ on:
       - generate_index.py
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: '0 */6 * * *'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.x
 
-      - name: Install Markdown package
+      - name: Install dependencies
         run: pip install markdown
 
       - name: Generate index.html
         run: python3 generate_index.py
 
-      - name: Commit index.html to gh-pages branch
+      - name: Deploy to gh-pages branch
         run: |
+          mkdir gh-pages-temp
+          cp index.html gh-pages-temp/
+
+          cd gh-pages-temp
+          git init
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git switch --orphan gh-pages-temp
-          mv index.html temp-index.html
-          rm -rf *
-          mv temp-index.html index.html
-
           git add index.html
-          git commit -m "🚀 Deploy updated index.html to gh-pages"
+          git commit -m "🚀 Update index.html"
           git branch -M gh-pages
-          git push --force origin gh-pages
+          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
