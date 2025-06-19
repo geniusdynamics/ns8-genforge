@@ -16,7 +16,7 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # needed for switching branches later
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,14 +32,23 @@ jobs:
           mkdir -p /tmp/output
           cp index.html /tmp/output/index.html
 
-      - name: Switch to gh-pages branch
+      - name: Restore CNAME if exists
+        run: |
+          if [ -f CNAME ]; then
+            cp CNAME /tmp/output/CNAME
+          else
+            echo "forge.genius.ke" > /tmp/output/CNAME
+          fi
+
+      - name: Switch to gh-pages branch and deploy
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch gh-pages || git checkout --orphan gh-pages
           git reset --hard
-          rm -f index.html
+          rm -f index.html CNAME
           cp /tmp/output/index.html ./index.html
-          git add index.html
-          git commit -m "📄 Update generated index page" || echo "No changes to commit"
+          cp /tmp/output/CNAME ./CNAME
+          git add index.html CNAME
+          git commit -m "📄 Update index page and CNAME" || echo "No changes to commit"
           git push origin gh-pages --force
