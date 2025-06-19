@@ -1,4 +1,4 @@
-name: Generate beautiful index.html from README
+name: Generate Index Page
 
 on:
   push:
@@ -6,41 +6,33 @@ on:
     paths:
       - 'README.md'
       - 'generate_index.py'
-  schedule:
-    - cron: '0 */4 * * *'
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
 
 jobs:
-  build-html:
+  build-index:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          fetch-depth: 0  # Needed to compare commits
+          python-version: '3.x'
 
-      - name: Check for new folders or README/createrepo changes
-        id: changed
-        run: |
-          git fetch origin main
-          changed_dirs=$(git diff --name-only HEAD^ HEAD | grep '/$' || true)
-          changed_files=$(git diff --name-only HEAD^ HEAD | grep -E 'README.md|createrepo.py' || true)
-          if [[ -n "$changed_dirs" || -n "$changed_files" ]]; then
-            echo "run_index=true" >> $GITHUB_OUTPUT
-          else
-            echo "run_index=false" >> $GITHUB_OUTPUT
-          fi
+      - name: Install Python dependencies
+        run: pip install markdown
 
-      - name: Generate beautiful index.html from README
-        if: steps.changed.outputs.run_index == 'true'
+      - name: Generate index.html from README
         run: python3 generate_index.py
 
-      - name: Commit and push index.html
-        if: steps.changed.outputs.run_index == 'true'
+      - name: Commit index.html if changed
         run: |
-          git config user.name "Martin Bhuong"
-          git config user.email "your-email@example.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Auto-update index.html from new changes" || echo "No changes"
+          git diff --cached --quiet && echo "No changes to commit" || git commit -m "🔄 Auto-regenerated index.html"
           git push
