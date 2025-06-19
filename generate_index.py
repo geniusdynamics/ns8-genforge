@@ -1,8 +1,8 @@
-""from pathlib import Path
+"from pathlib import Path
 import re
 from datetime import datetime
 import hashlib
-import markdown
+
 
 def convert_markdown_table_to_html(md_table):
     lines = md_table.strip().split("\n")
@@ -29,8 +29,9 @@ def convert_markdown_table_to_html(md_table):
     html += "</tbody>"
     return html
 
+
 def extract_tables_by_section(readme_text):
-    sections = re.split(r'^##\\s+', readme_text, flags=re.MULTILINE)
+    sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
     content_blocks = []
 
     for section in sections:
@@ -50,11 +51,13 @@ def extract_tables_by_section(readme_text):
 
     return "\n".join(content_blocks)
 
+
 def hash_file(filepath):
     hasher = hashlib.md5()
     with open(filepath, 'rb') as f:
         hasher.update(f.read())
     return hasher.hexdigest()
+
 
 def main():
     readme_file = Path("README.md")
@@ -72,7 +75,6 @@ def main():
     timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
     readme_text = readme_file.read_text(encoding="utf-8")
     content_html = extract_tables_by_section(readme_text)
-    full_readme_html = markdown.markdown(readme_text)
 
     output = f"""<!DOCTYPE html>
 <html lang='en'>
@@ -107,7 +109,7 @@ def main():
   <aside class='sidebar'>
     <h2>📚 Contents</h2>
     <ul>
-      {''.join([f'<li><a href="#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
+      {''.join([f'<li><a href="#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
     </ul>
   </aside>
   <main>
@@ -118,11 +120,6 @@ def main():
     <section id='apps'>
       <h2>🧩 Application List</h2>
       {content_html}
-    </section>
-    <hr>
-    <section id='readme-full'>
-      <h2>📘 Full README</h2>
-      {full_readme_html}
     </section>
     <footer>
       <small>Hash: {combined_hash} | Last generated on {timestamp}</small>
@@ -148,6 +145,7 @@ def main():
 
     index_file.write_text(output, encoding="utf-8")
     print("✅ index.html regenerated with timestamp and script hash.")
+
 
 if __name__ == "__main__":
     main()
