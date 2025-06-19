@@ -1,7 +1,6 @@
 from pathlib import Path
 import re
 from datetime import datetime, timezone
-import json
 import os
 import requests
 from jinja2 import Template
@@ -67,17 +66,16 @@ def parse_readme_tables(readme_text):
 def generate_html(cards):
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
     categories = sorted(set(card['category'] for card in cards))
-    json_cards = json.dumps(cards)
 
     html_template = Template("""
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang=\"en\">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset=\"UTF-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>GenForge App Directory</title>
         <style>
-            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; background-color: #f6f8fa; margin: 0; }
+            body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; background-color: #f6f8fa; margin: 0; }
             .container { max-width: 1200px; margin: auto; padding: 20px; }
             header { text-align: center; padding: 20px 0 40px 0; }
             header h1 { font-size: 2.5em; color: #0366d6; }
@@ -97,7 +95,7 @@ def generate_html(cards):
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class=\"container\">
             <header>
                 <h1>GenForge App Directory</h1>
                 <p>A community-curated list of applications available for NethServer 8</p>
@@ -106,18 +104,18 @@ def generate_html(cards):
 
             <main>
                 {% for category in categories %}
-                <section class="category-section" id="{{ category|lower|replace(' ', '-') }}">
+                <section class=\"category-section\" id=\"{{ category|lower|replace(' ', '-') }}\">
                     <h2>{{ category }}</h2>
-                    <div class="app-grid">
-                        {% for app in json_cards|from_json if app.category == category %}
-                        <div class="app-card">
-                            <h3><a href="{{ app.link }}" target="_blank">{{ app.name }}</a></h3>
+                    <div class=\"app-grid\">
+                        {% for app in cards if app.category == category %}
+                        <div class=\"app-card\">
+                            <h3><a href=\"{{ app.link }}\" target=\"_blank\">{{ app.name }}</a></h3>
                             <p>{{ app.desc }}</p>
-                            <div class="app-links">
-                                {% if app.repo_link %}<a href="{{ app.repo_link }}" class="github" target="_blank">⭐ {{ app.stars }} Stars</a>{% endif %}
-                                <a href="https://github.com/geniusdynamics/ns8-{{ app.name|lower|replace(' ', '-') }}" class="nethserver" target="_blank">NS8 Module</a>
+                            <div class=\"app-links\">
+                                {% if app.repo_link %}<a href=\"{{ app.repo_link }}\" class=\"github\" target=\"_blank\">⭐ {{ app.stars }} Stars</a>{% endif %}
+                                <a href=\"https://github.com/geniusdynamics/ns8-{{ app.name|lower|replace(' ', '-') }}\" class=\"nethserver\" target=\"_blank\">NS8 Module</a>
                             </div>
-                            {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> {{ app.alt }}</div>{% endif %}
+                            {% if app.alt %}<div class=\"alternatives\"><strong>Alternatives:</strong> {{ app.alt }}</div>{% endif %}
                         </div>
                         {% endfor %}
                     </div>
@@ -126,14 +124,14 @@ def generate_html(cards):
             </main>
 
             <footer>
-                <p>This page is automatically generated via GitHub Actions from the <a href="https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md">README.md</a> file.</p>
+                <p>This page is automatically generated via GitHub Actions from the <a href=\"https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md\">README.md</a> file.</p>
             </footer>
         </div>
     </body>
     </html>
     """)
 
-    return html_template.render(timestamp=timestamp, categories=categories, json_cards=json_cards)
+    return html_template.render(timestamp=timestamp, categories=categories, cards=cards)
 
 
 def main():
