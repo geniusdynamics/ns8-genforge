@@ -2,7 +2,7 @@ from pathlib import Path
 import re
 from datetime import datetime
 import hashlib
-
+from string import Template
 
 def convert_markdown_table_to_html(md_table):
     lines = md_table.strip().split("\n")
@@ -29,7 +29,6 @@ def convert_markdown_table_to_html(md_table):
     html += "</tbody>"
     return html
 
-
 def extract_tables_by_section(readme_text):
     sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
     content_blocks = []
@@ -54,13 +53,11 @@ def extract_tables_by_section(readme_text):
 
     return "\n".join(content_blocks)
 
-
 def hash_file(filepath):
     hasher = hashlib.md5()
     with open(filepath, 'rb') as f:
         hasher.update(f.read())
     return hasher.hexdigest()
-
 
 def generate_sidebar_toc(readme_text):
     toc = []
@@ -73,7 +70,6 @@ def generate_sidebar_toc(readme_text):
         anchor = heading.lower().replace(" ", "-")
         toc.append(f'<li><a href="#{anchor}">{heading}</a></li>')
     return "\n".join(toc)
-
 
 def main():
     readme_file = Path("README.md")
@@ -93,7 +89,7 @@ def main():
     content_html = extract_tables_by_section(readme_text)
     sidebar_html = generate_sidebar_toc(readme_text)
 
-    output = f"""<!DOCTYPE html>
+    template = Template("""<!DOCTYPE html>
 <html lang='en'>
 <head>
   <meta charset='utf-8'>
@@ -102,23 +98,23 @@ def main():
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/simpledotcss/simple.min.css'>
   <script src='https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js'></script>
   <style>
-    body {{ margin: 0; font-family: system-ui, sans-serif; }}
-    header {{ background: #0b7285; color: white; padding: 1.5rem; text-align: center; }}
-    .metadata-note {{ font-size: 0.9rem; background: #e3fafc; color: #0b7285; padding: 0.5rem; margin-bottom: 1.5rem; border-left: 4px solid #0b7285; }}
-    .sidebar {{ position: fixed; top: 0; left: 0; width: 220px; height: 100vh; overflow-y: auto; background: #f8f9fa; padding: 1rem; border-right: 1px solid #dee2e6; }}
-    .sidebar h2 {{ font-size: 1.1rem; margin-bottom: 0.5rem; }}
-    .sidebar ul {{ list-style: none; padding-left: 0; }}
-    .sidebar li {{ margin-bottom: 0.4rem; }}
-    .sidebar a {{ text-decoration: none; color: #0b7285; }}
-    main {{ margin-left: 240px; padding: 2rem; }}
-    section {{ margin-bottom: 3rem; }}
-    .table-wrapper {{ overflow-x: auto; }}
-    .table-search {{ width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }}
-    .theme-toggle {{ position: fixed; top: 1rem; right: 1rem; background: #0b7285; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; }}
-    .dark-mode {{ background-color: #1e1e1e; color: #f1f1f1; }}
-    .dark-mode .sidebar {{ background: #292929; border-color: #444; }}
-    .dark-mode .sidebar a {{ color: #91d1ff; }}
-    .dark-mode .theme-toggle {{ background: #91d1ff; color: #111; }}
+    body { margin: 0; font-family: system-ui, sans-serif; }
+    header { background: #0b7285; color: white; padding: 1.5rem; text-align: center; }
+    .metadata-note { font-size: 0.9rem; background: #e3fafc; color: #0b7285; padding: 0.5rem; margin-bottom: 1.5rem; border-left: 4px solid #0b7285; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; overflow-y: auto; background: #f8f9fa; padding: 1rem; border-right: 1px solid #dee2e6; }
+    .sidebar h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .sidebar ul { list-style: none; padding-left: 0; }
+    .sidebar li { margin-bottom: 0.4rem; }
+    .sidebar a { text-decoration: none; color: #0b7285; }
+    main { margin-left: 240px; padding: 2rem; }
+    section { margin-bottom: 3rem; }
+    .table-wrapper { overflow-x: auto; }
+    .table-search { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; background: #0b7285; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; }
+    .dark-mode { background-color: #1e1e1e; color: #f1f1f1; }
+    .dark-mode .sidebar { background: #292929; border-color: #444; }
+    .dark-mode .sidebar a { color: #91d1ff; }
+    .dark-mode .theme-toggle { background: #91d1ff; color: #111; }
   </style>
 </head>
 <body>
@@ -126,7 +122,7 @@ def main():
   <aside class='sidebar'>
     <h2>📚 Contents</h2>
     <ul>
-      {sidebar_html}
+      $sidebar_html
     </ul>
   </aside>
   <main>
@@ -136,10 +132,10 @@ def main():
     </header>
     <section id='apps'>
       <h2>🧩 Application List</h2>
-      {content_html}
+      $content_html
     </section>
     <footer>
-      <small>Hash: {combined_hash} | Last generated on {timestamp}</small>
+      <small>Hash: $combined_hash | Last generated on $timestamp</small>
     </footer>
   </main>
   <script>
@@ -158,11 +154,17 @@ def main():
     }
   </script>
 </body>
-</html>"""
+</html>""")
+
+    output = template.substitute(
+        sidebar_html=sidebar_html,
+        content_html=content_html,
+        combined_hash=combined_hash,
+        timestamp=timestamp
+    )
 
     index_file.write_text(output, encoding="utf-8")
     print("✅ index.html regenerated with timestamp and script hash.")
-
 
 if __name__ == "__main__":
     main()
