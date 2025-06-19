@@ -33,8 +33,12 @@ def parse_readme_tables(readme_text):
             continue
 
         if i == 0:
-            # Extract intro section
-            intro = section.split("Application List")[0].strip()
+            intro_lines = []
+            for line in lines:
+                if line.strip().startswith("## Application List"):
+                    break
+                intro_lines.append(line)
+            intro = "\n".join(intro_lines).strip()
             continue
 
         category = lines[0].strip()
