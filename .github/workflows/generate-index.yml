@@ -3,8 +3,12 @@ name: Generate beautiful index.html from README
 on:
   push:
     branches: [main]
+    paths:
+      - 'README.md'
+      - 'generate_index.py'
   schedule:
-    - cron: '0 */4 * * *'  # Every 4 hours like repomd.yml
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
 
 jobs:
   build-html:
