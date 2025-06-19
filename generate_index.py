@@ -105,7 +105,7 @@ def generate_html(cards):
         <div id=\"modal\" class=\"modal hidden\">
             <div class=\"modal-content\">
                 <h3 class=\"text-xl font-semibold mb-2\">App Details</h3>
-                <p id=\"modal-text\"></p>
+                <div id=\"modal-text\"></div>
                 <button onclick=\"closeModal()\" class=\"mt-4 px-4 py-2 bg-blue-500 text-white rounded\">Close</button>
             </div>
         </div>
