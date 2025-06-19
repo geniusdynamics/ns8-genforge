@@ -39,6 +39,9 @@ def extract_tables_by_section(readme_text):
             continue
 
         lines = section.strip().splitlines()
+        if not lines:
+            continue
+
         heading = lines[0].strip()
         body = '\n'.join(lines[1:])
 
@@ -59,6 +62,19 @@ def hash_file(filepath):
     return hasher.hexdigest()
 
 
+def generate_sidebar_toc(readme_text):
+    toc = []
+    sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
+    for section in sections:
+        lines = section.strip().splitlines()
+        if not lines:
+            continue
+        heading = lines[0].strip()
+        anchor = heading.lower().replace(" ", "-")
+        toc.append(f'<li><a href="#{anchor}">{heading}</a></li>')
+    return "\n".join(toc)
+
+
 def main():
     readme_file = Path("README.md")
     script_file = Path(__file__)
@@ -75,6 +91,7 @@ def main():
     timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
     readme_text = readme_file.read_text(encoding="utf-8")
     content_html = extract_tables_by_section(readme_text)
+    sidebar_html = generate_sidebar_toc(readme_text)
 
     output = f"""<!DOCTYPE html>
 <html lang='en'>
@@ -109,7 +126,7 @@ def main():
   <aside class='sidebar'>
     <h2>📚 Contents</h2>
     <ul>
-      {''.join([f'<li><a href="#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
+      {sidebar_html}
     </ul>
   </aside>
   <main>
