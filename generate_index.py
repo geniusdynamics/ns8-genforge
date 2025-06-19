@@ -53,7 +53,7 @@ def parse_readme_tables(readme_text):
                     app_cards.append({
                         "category": category,
                         "name": app_name,
-                        "desc": f"{app_name} ({app_link})",
+                        "desc": description,
                         "link": app_link,
                         "repo_link": stars_raw if stars_raw.startswith("http") else "",
                         "stars": stars,
@@ -130,22 +130,22 @@ def generate_html(cards):
               const el = document.createElement('div');
               el.className = 'card';
               el.innerHTML = `
-                <h3 class='text-lg font-bold mb-1'><a href='${app.link}' target='_blank'>${app.name}</a></h3>
+                <h3 class='text-lg font-bold mb-1'><a href='${app.link}' target='_blank' rel='noopener'>${app.name}</a></h3>
                 <p class='text-sm text-gray-400 dark:text-gray-500 mb-2 italic'>${app.category}</p>
                 <p class='text-sm mb-2'>${app.desc}</p>
                 ${app.stars ? `<p class='text-xs mb-1 text-yellow-500'>⭐ GitHub Stars: ${app.stars}</p>` : ''}
                 ${app.alt ? `<p class='text-xs text-gray-500 dark:text-gray-400 mb-2'>🧭 Alternative to: ${app.alt}</p>` : ''}
                 <div class='flex gap-2 mt-auto'>
-                  ${app.link ? `<a href="${app.link}" class="text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" target="_blank">📥 Go to Website</a>` : ''}
+                  ${app.link ? `<a href="${app.link}" class="text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" target="_blank">🌐 Visit Website</a>` : ''}
                   ${app.repo_link ? `<a href="${app.repo_link}" class="text-sm bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700" target="_blank">🧩 NS8 Module</a>` : ''}
-                  <button onclick="openModal(\`${app.desc.replace(/`/g, '\`')}\`)" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
+                  <button onclick="openModal('🔗 <a href='${app.link}' target='_blank'>${app.name}</a><br/><br/>📄 ${app.desc}')" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
                 </div>`;
               grid.appendChild(el);
             }
           }
 
           function openModal(text) {
-            modalText.innerText = text;
+            modalText.innerHTML = text;
             modal.classList.remove('hidden');
           }
           function closeModal() {
