@@ -1,170 +1,102 @@
 from pathlib import Path
 import re
 from datetime import datetime
-import hashlib
 from string import Template
 
-def convert_markdown_table_to_html(md_table):
-    lines = md_table.strip().split("\n")
-    if len(lines) < 2:
-        return ""
 
-    headers = [col.strip() for col in lines[0].split('|') if col.strip()]
-    rows = lines[2:]
-
-    html = "<thead><tr>"
-    for header in headers:
-        html += f"<th>{header}</th>"
-    html += "</tr></thead><tbody>"
-
-    for row in rows:
-        cols = [col.strip() for col in row.split('|') if col.strip()]
-        if len(cols) != len(headers):
-            continue
-        html += "<tr>"
-        for col in cols:
-            html += f"<td>{col}</td>"
-        html += "</tr>"
-
-    html += "</tbody>"
-    return html
-
-def extract_tables_by_section(readme_text):
+def parse_readme_tables(readme_text):
     sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
-    content_blocks = []
+    app_cards = []
 
     for section in sections:
-        if not section.strip():
-            continue
-
         lines = section.strip().splitlines()
         if not lines:
             continue
 
-        heading = lines[0].strip()
+        category = lines[0].strip()
         body = '\n'.join(lines[1:])
 
         tables = re.findall(r'(\|.*\n\|[-|: ]+\n(?:\|.*\n?)*)', body)
         for table in tables:
-            table_html = convert_markdown_table_to_html(table)
-            if table_html:
-                section_id = heading.lower().replace(" ", "-")
-                content_blocks.append(f"<section id='{section_id}'><h2>{heading}</h2><input class='table-search-global' placeholder='🔍 Global search...'><div class='table-wrapper'><table class='sortable filterable'>{table_html}</table></div></section>")
+            rows = table.strip().splitlines()[2:]  # Skip headers
+            for row in rows:
+                cols = [c.strip() for c in row.split('|') if c.strip()]
+                if len(cols) >= 2:
+                    app_name = cols[0]
+                    description = cols[1] if len(cols) > 1 else ""
+                    link = cols[2] if len(cols) > 2 else ""
+                    app_cards.append({
+                        "category": category,
+                        "name": app_name,
+                        "desc": description,
+                        "link": link
+                    })
+    return app_cards
 
-    return "\n".join(content_blocks)
 
-def hash_file(filepath):
-    hasher = hashlib.md5()
-    with open(filepath, 'rb') as f:
-        hasher.update(f.read())
-    return hasher.hexdigest()
+def generate_html(cards):
+    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+    card_html = ""
+    for app in cards:
+        card_html += f"""
+        <div class='card'>
+            <h3>{app['name']}</h3>
+            <p><strong>Category:</strong> {app['category']}</p>
+            <p>{app['desc']}</p>
+            {'<a href="'+app['link']+'" target="_blank">🔗 Visit</a>' if app['link'] else ''}
+        </div>
+        """
 
-def generate_sidebar_toc(readme_text):
-    toc = []
-    sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
-    for section in sections:
-        lines = section.strip().splitlines()
-        if not lines:
-            continue
-        heading = lines[0].strip()
-        anchor = heading.lower().replace(" ", "-")
-        toc.append(f'<li><a href="#${anchor}">{heading}</a></li>')
-    return "\n".join(toc)
+    html_template = Template("""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NS8 AppForge</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+            body { padding: 2rem; font-family: system-ui, sans-serif; background-color: #f8fafc; }
+            .card {
+                background: white;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                margin-bottom: 1.5rem;
+            }
+            .card a {
+                color: #2563eb;
+                font-weight: 500;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="text-3xl font-bold mb-4">🧩 NS8 AppForge</h1>
+        <p class="text-sm text-gray-500 mb-8">Metadata built at $timestamp UTC</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            $card_html
+        </div>
+    </body>
+    </html>
+    """)
+
+    return html_template.substitute(card_html=card_html, timestamp=timestamp)
+
 
 def main():
-    readme_file = Path("README.md")
-    script_file = Path(__file__)
-    index_file = Path("index.html")
+    readme_path = Path("README.md")
+    output_path = Path("index.html")
 
-    if not readme_file.exists():
-        print("README.md not found.")
+    if not readme_path.exists():
+        print("❌ README.md not found")
         return
 
-    readme_hash = hash_file(readme_file)
-    script_hash = hash_file(script_file)
-    combined_hash = hashlib.md5((readme_hash + script_hash).encode()).hexdigest()
+    readme_content = readme_path.read_text(encoding="utf-8")
+    cards = parse_readme_tables(readme_content)
+    html_output = generate_html(cards)
+    output_path.write_text(html_output, encoding="utf-8")
+    print("✅ index.html generated successfully.")
 
-    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
-    readme_text = readme_file.read_text(encoding="utf-8")
-    content_html = extract_tables_by_section(readme_text)
-    sidebar_html = generate_sidebar_toc(readme_text)
 
-    template = Template("""<!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <title>NS8 AppForge Index</title>
-  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/simpledotcss/simple.min.css'>
-  <script src='https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js'></script>
-  <style>
-    body { margin: 0; font-family: system-ui, sans-serif; scroll-behavior: smooth; }
-    header { background: #0b7285; color: white; padding: 1.5rem; text-align: center; }
-    .metadata-note { font-size: 0.9rem; background: #e3fafc; color: #0b7285; padding: 0.5rem; margin-bottom: 1.5rem; border-left: 4px solid #0b7285; }
-    .sidebar { position: sticky; top: 0; float: left; width: 220px; height: 100vh; overflow-y: auto; background: #f8f9fa; padding: 1rem; border-right: 1px solid #dee2e6; }
-    .sidebar ul { list-style: none; padding-left: 0; }
-    .sidebar li { margin-bottom: 0.4rem; }
-    .sidebar a { text-decoration: none; color: #0b7285; }
-    main { margin-left: 240px; padding: 2rem; }
-    section { margin-bottom: 3rem; }
-    .table-wrapper { overflow-x: auto; margin-bottom: 2rem; }
-    .table-search-global { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }
-    .theme-toggle { position: fixed; top: 1rem; right: 1rem; background: #0b7285; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; z-index: 999; }
-    .dark-mode { background-color: #1e1e1e; color: #f1f1f1; }
-    .dark-mode .sidebar { background: #292929; border-color: #444; }
-    .dark-mode .sidebar a { color: #91d1ff; }
-    .dark-mode .theme-toggle { background: #91d1ff; color: #111; }
-  </style>
-</head>
-<body>
-  <button class='theme-toggle' onclick='toggleTheme()'>🌙 Toggle Theme</button>
-  <aside class='sidebar'>
-    <h2>📚 Contents</h2>
-    <ul>
-      ${sidebar_html}
-    </ul>
-  </aside>
-  <main>
-    <header>
-      <h1>NS8 AppForge</h1>
-      <p class='metadata-note'>📅 Metadata are built every 4 hours at 00:25, 06:25, 12:25, 18:25 UTC and on each commit to the main branch.</p>
-    </header>
-    <section id='apps'>
-      <h2>🧩 Application List</h2>
-      ${content_html}
-    </section>
-    <footer>
-      <small>Hash: ${combined_hash} | Last generated on ${timestamp}</small>
-    </footer>
-  </main>
-  <script>
-    document.querySelectorAll('table.sortable').forEach(t => new Tablesort(t));
-    document.querySelectorAll('input.table-search-global').forEach(input => {
-      input.addEventListener('input', e => {
-        const filter = e.target.value.toLowerCase();
-        const section = e.target.closest('section');
-        const rows = section.querySelectorAll('tbody tr');
-        rows.forEach(row => {
-          row.style.display = [...row.children].some(td => td.textContent.toLowerCase().includes(filter)) ? '' : 'none';
-        });
-      });
-    });
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-    }
-  </script>
-</body>
-</html>""")
-
-    output = template.substitute(
-        sidebar_html=sidebar_html,
-        content_html=content_html,
-        combined_hash=combined_hash,
-        timestamp=timestamp
-    )
-
-    index_file.write_text(output, encoding="utf-8")
-    print("✅ index.html regenerated with timestamp and script hash.")
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
