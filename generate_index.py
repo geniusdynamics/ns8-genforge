@@ -23,12 +23,18 @@ def get_github_stars(repo_url, github_token=None):
 
 
 def parse_readme_tables(readme_text):
-    sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
+    intro = ""
     app_cards = []
+    sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
 
-    for section in sections:
+    for i, section in enumerate(sections):
         lines = section.strip().splitlines()
         if not lines:
+            continue
+
+        if i == 0:
+            # Extract intro section
+            intro = section.split("Application List")[0].strip()
             continue
 
         category = lines[0].strip()
@@ -60,10 +66,10 @@ def parse_readme_tables(readme_text):
                         "stars": stars,
                         "alt": alt
                     })
-    return app_cards
+    return intro, app_cards
 
 
-def generate_html(cards):
+def generate_html(intro_text, cards):
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
     categories = sorted(set(card['category'] for card in cards))
 
@@ -92,6 +98,7 @@ def generate_html(cards):
             .app-links a.nethserver { background-color: #28a745; color: #fff; }
             .alternatives { font-size: 0.95em; color: #586069; }
             footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #e1e4e8; font-size: 0.9em; color: #6a737d; }
+            .intro { background: #fffbea; border: 1px solid #f0e6d2; padding: 1em; border-radius: 6px; margin-bottom: 2em; }
         </style>
     </head>
     <body>
@@ -101,6 +108,10 @@ def generate_html(cards):
                 <p>A community-curated list of applications available for NethServer 8</p>
                 <p><small>Metadata generated on {{ timestamp }}</small></p>
             </header>
+
+            <div class=\"intro\">
+                {{ intro_text|safe }}
+            </div>
 
             <main>
                 {% for category in categories %}
@@ -131,7 +142,7 @@ def generate_html(cards):
     </html>
     """)
 
-    return html_template.render(timestamp=timestamp, categories=categories, cards=cards)
+    return html_template.render(timestamp=timestamp, intro_text=intro_text, categories=categories, cards=cards)
 
 
 def main():
@@ -143,8 +154,8 @@ def main():
         return
 
     readme_content = readme_path.read_text(encoding="utf-8")
-    cards = parse_readme_tables(readme_content)
-    html_output = generate_html(cards)
+    intro, cards = parse_readme_tables(readme_content)
+    html_output = generate_html(intro, cards)
     output_path.write_text(html_output, encoding="utf-8")
     print("✅ index.html generated successfully.")
 
