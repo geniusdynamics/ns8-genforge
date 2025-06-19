@@ -49,7 +49,7 @@ def extract_tables_by_section(readme_text):
             table_html = convert_markdown_table_to_html(table)
             if table_html:
                 section_id = heading.lower().replace(" ", "-")
-                content_blocks.append(f"<section id='{section_id}'><h2>{heading}</h2><input class='table-search' placeholder='🔍 Filter apps...'><div class='table-wrapper'><table class='sortable filterable'>{table_html}</table></div></section>")
+                content_blocks.append(f"<section id='{section_id}'><h2>{heading}</h2><input class='table-search-global' placeholder='🔍 Global search...'><div class='table-wrapper'><table class='sortable filterable'>{table_html}</table></div></section>")
 
     return "\n".join(content_blocks)
 
@@ -68,7 +68,7 @@ def generate_sidebar_toc(readme_text):
             continue
         heading = lines[0].strip()
         anchor = heading.lower().replace(" ", "-")
-        toc.append(f'<li><a href="#{anchor}">{heading}</a></li>')
+        toc.append(f'<li><a href="#${anchor}">{heading}</a></li>')
     return "\n".join(toc)
 
 def main():
@@ -98,19 +98,18 @@ def main():
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/simpledotcss/simple.min.css'>
   <script src='https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js'></script>
   <style>
-    body { margin: 0; font-family: system-ui, sans-serif; }
+    body { margin: 0; font-family: system-ui, sans-serif; scroll-behavior: smooth; }
     header { background: #0b7285; color: white; padding: 1.5rem; text-align: center; }
     .metadata-note { font-size: 0.9rem; background: #e3fafc; color: #0b7285; padding: 0.5rem; margin-bottom: 1.5rem; border-left: 4px solid #0b7285; }
-    .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; overflow-y: auto; background: #f8f9fa; padding: 1rem; border-right: 1px solid #dee2e6; }
-    .sidebar h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .sidebar { position: sticky; top: 0; float: left; width: 220px; height: 100vh; overflow-y: auto; background: #f8f9fa; padding: 1rem; border-right: 1px solid #dee2e6; }
     .sidebar ul { list-style: none; padding-left: 0; }
     .sidebar li { margin-bottom: 0.4rem; }
     .sidebar a { text-decoration: none; color: #0b7285; }
     main { margin-left: 240px; padding: 2rem; }
     section { margin-bottom: 3rem; }
-    .table-wrapper { overflow-x: auto; }
-    .table-search { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }
-    .theme-toggle { position: fixed; top: 1rem; right: 1rem; background: #0b7285; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; }
+    .table-wrapper { overflow-x: auto; margin-bottom: 2rem; }
+    .table-search-global { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; background: #0b7285; color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; z-index: 999; }
     .dark-mode { background-color: #1e1e1e; color: #f1f1f1; }
     .dark-mode .sidebar { background: #292929; border-color: #444; }
     .dark-mode .sidebar a { color: #91d1ff; }
@@ -140,10 +139,11 @@ def main():
   </main>
   <script>
     document.querySelectorAll('table.sortable').forEach(t => new Tablesort(t));
-    document.querySelectorAll('input.table-search').forEach(input => {
+    document.querySelectorAll('input.table-search-global').forEach(input => {
       input.addEventListener('input', e => {
         const filter = e.target.value.toLowerCase();
-        const rows = e.target.nextElementSibling.querySelectorAll('tbody tr');
+        const section = e.target.closest('section');
+        const rows = section.querySelectorAll('tbody tr');
         rows.forEach(row => {
           row.style.display = [...row.children].some(td => td.textContent.toLowerCase().includes(filter)) ? '' : 'none';
         });
