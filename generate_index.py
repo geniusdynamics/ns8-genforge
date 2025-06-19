@@ -3,6 +3,7 @@ import re
 from datetime import datetime
 from string import Template
 import json
+from html import escape
 
 
 def parse_readme_tables(readme_text):
@@ -30,7 +31,7 @@ def parse_readme_tables(readme_text):
                     app_cards.append({
                         "category": category,
                         "name": app_name,
-                        "desc": description,
+                        "desc": escape(description.replace('"', '\\"')),
                         "link": link,
                         "icon": icon
                     })
@@ -114,7 +115,7 @@ def generate_html(cards):
                 <p class='mb-2 line-clamp-3'>${app.desc}</p>
                 <div class='flex gap-2 mt-2'>
                   ${app.link ? `<a href="${app.link}" class="text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600" target="_blank">📥 Download</a>` : ''}
-                  <button onclick="alert(\"${app.desc.replace(/'/g, "\'")}\")" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
+                  <button onclick="alert('${app.desc}')" class="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded">📄 Details</button>
                 </div>
               `;
               grid.appendChild(el);
