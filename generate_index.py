@@ -138,8 +138,7 @@ def generate_html(cards):
     </html>
     """)
 
-    template = Template(html_template.template)
-    return template.render(timestamp=timestamp, categories=categories, json_cards=json_cards)
+    return html_template.render(timestamp=timestamp, categories=categories, json_cards=json_cards)
 
 def main():
     readme_path = Path("README.md")
