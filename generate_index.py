@@ -46,7 +46,7 @@ def extract_tables_by_section(readme_text):
             table_html = convert_markdown_table_to_html(table)
             if table_html:
                 section_id = heading.lower().replace(" ", "-")
-                content_blocks.append(f"<section id='{section_id}'><h2>{heading}</h2><table class='sortable'>{table_html}</table></section>")
+                content_blocks.append(f"<section id='{section_id}'><h2>{heading}</h2><input class='table-search' placeholder='🔍 Filter...'><table class='sortable filterable'>{table_html}</table></section>")
 
     return "\n".join(content_blocks)
 
@@ -65,7 +65,6 @@ def main():
         print("README.md not found.")
         return
 
-    # Check for changes in script or README
     readme_hash = hash_file(readme_file)
     script_hash = hash_file(script_file)
     combined_hash = hashlib.md5((readme_hash + script_hash).encode()).hexdigest()
@@ -76,43 +75,65 @@ def main():
     full_readme_html = markdown.markdown(readme_text)
 
     output = f"""<!DOCTYPE html>
-<html lang=\"en\">
+<html lang='en'>
 <head>
-  <meta charset=\"utf-8\">
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
   <title>NS8 AppForge Index</title>
-  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/simpledotcss/simple.min.css\">
-  <script src=\"https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js\"></script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/simpledotcss/simple.min.css'>
+  <script src='https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js'></script>
   <style>
     body {{ max-width: 1200px; margin: auto; }}
-    nav {{ position: sticky; top: 0; background: #fff; padding: 1rem; border-bottom: 1px solid #eee; }}
-    nav ul {{ list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; padding: 0; }}
-    section {{ padding-top: 2rem; }}
-    table.sortable {{ width: 100%; border-collapse: collapse; }}
-    table.sortable th, table.sortable td {{ padding: 0.5em; border: 1px solid #ddd; }}
+    nav {{ position: fixed; left: 0; top: 0; width: 220px; height: 100vh; overflow-y: auto; background: #f9f9f9; padding: 1rem; border-right: 1px solid #ccc; }}
+    main {{ margin-left: 240px; padding: 1rem; }}
+    nav ul {{ list-style: none; padding: 0; }}
+    nav li {{ margin-bottom: 0.5rem; }}
+    section {{ padding-top: 2rem; margin-bottom: 3rem; }}
+    .table-search {{ width: 100%; margin-bottom: 0.5rem; padding: 0.5rem; font-size: 1rem; }}
+    .dark-mode {{ background: #121212; color: #f1f1f1; }}
+    .dark-mode table {{ border-color: #444; }}
+    .dark-mode a {{ color: #90caf9; }}
+    .theme-toggle {{ position: fixed; top: 1rem; right: 1rem; cursor: pointer; padding: 0.5rem 1rem; }}
   </style>
 </head>
 <body>
-  <header>
-    <h1>NS8 AppForge App Index</h1>
-    <p>Generated on {timestamp}</p>
-  </header>
+  <button class='theme-toggle' onclick='toggleTheme()'>🌙 Toggle Theme</button>
   <nav>
+    <h2>📚 Sections</h2>
     <ul>
-      {''.join([f'<li><a href=\"#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'\">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
+      {''.join([f'<li><a href="#'+sec.strip().splitlines()[0].lower().replace(' ', '-')+'">'+sec.strip().splitlines()[0]+'</a></li>' for sec in re.split(r'^##\s+', readme_text, flags=re.MULTILINE) if sec.strip()])}
     </ul>
   </nav>
-  {content_html}
-  <hr>
-  <section id=\"readme-full\">
-    <h2>📘 Full README Content</h2>
-    {full_readme_html}
-  </section>
-  <footer>
-    <small>Hash: {combined_hash} | Last generated on {timestamp}</small>
-  </footer>
+  <main>
+    <header>
+      <h1>NS8 AppForge App Index</h1>
+      <p>Generated on {timestamp}</p>
+    </header>
+    {content_html}
+    <hr>
+    <section id='readme-full'>
+      <h2>📘 Full README Content</h2>
+      {full_readme_html}
+    </section>
+    <footer>
+      <small>Hash: {combined_hash} | Last generated on {timestamp}</small>
+    </footer>
+  </main>
   <script>
-    document.querySelectorAll('table').forEach(t => new Tablesort(t));
+    document.querySelectorAll('table.sortable').forEach(t => new Tablesort(t));
+    document.querySelectorAll('input.table-search').forEach(input => {
+      input.addEventListener('input', e => {
+        const filter = e.target.value.toLowerCase();
+        const rows = e.target.nextElementSibling.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+          row.style.display = [...row.children].some(td => td.textContent.toLowerCase().includes(filter)) ? '' : 'none';
+        });
+      });
+    });
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
   </script>
 </body>
 </html>"""
