@@ -2,6 +2,7 @@ from pathlib import Path
 import re
 from datetime import datetime
 from string import Template
+import json
 
 
 def parse_readme_tables(readme_text):
@@ -36,16 +37,8 @@ def parse_readme_tables(readme_text):
 
 def generate_html(cards):
     timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
-    card_html = ""
-    for app in cards:
-        card_html += f"""
-        <div class='card'>
-            <h3>{app['name']}</h3>
-            <p><strong>Category:</strong> {app['category']}</p>
-            <p>{app['desc']}</p>
-            {'<a href="'+app['link']+'" target="_blank">🔗 Visit</a>' if app['link'] else ''}
-        </div>
-        """
+    categories = sorted(set(card['category'] for card in cards))
+    json_cards = json.dumps(cards)
 
     html_template = Template("""
     <!DOCTYPE html>
@@ -54,33 +47,100 @@ def generate_html(cards):
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>NS8 AppForge</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+          tailwind.config = { darkMode: 'class' }
+        </script>
         <style>
-            body { padding: 2rem; font-family: system-ui, sans-serif; background-color: #f8fafc; }
             .card {
                 background: white;
                 border-radius: 0.5rem;
                 padding: 1rem;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                margin-bottom: 1.5rem;
             }
-            .card a {
-                color: #2563eb;
-                font-weight: 500;
+            .dark .card {
+                background-color: #1e293b;
+                color: #e2e8f0;
             }
         </style>
     </head>
-    <body>
-        <h1 class="text-3xl font-bold mb-4">🧩 NS8 AppForge</h1>
-        <p class="text-sm text-gray-500 mb-8">Metadata built at $timestamp UTC</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            $card_html
+    <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+        <div class="flex">
+            <aside class="w-64 min-h-screen p-4 border-r border-gray-300 dark:border-gray-700">
+                <h2 class="text-lg font-semibold mb-4">🧭 Categories</h2>
+                <ul id="category-list" class="space-y-2">
+                    <li><a href="#" data-filter="All" class="text-blue-600 hover:underline">All</a></li>
+                    $category_links
+                </ul>
+                <div class="mt-6">
+                    <button onclick="toggleTheme()" class="bg-gray-700 text-white px-3 py-1 rounded">Toggle Theme</button>
+                </div>
+            </aside>
+            <main class="flex-1 p-6">
+                <h1 class="text-3xl font-bold mb-2">NS8 AppForge</h1>
+                <p class="text-sm text-gray-500 mb-6">Metadata built at $timestamp UTC</p>
+
+                <input id="search" type="text" placeholder="🔍 Search apps..." class="w-full px-4 py-2 mb-6 border rounded"/>
+
+                <div id="app-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            </main>
         </div>
+
+        <script>
+          const apps = $json_cards;
+          const grid = document.getElementById('app-grid');
+          const search = document.getElementById('search');
+          const links = document.querySelectorAll('#category-list a');
+
+          let currentFilter = 'All';
+
+          function render() {
+            grid.innerHTML = '';
+            const query = search.value.toLowerCase();
+            const filtered = apps.filter(app => {
+              const matchFilter = currentFilter === 'All' || app.category === currentFilter;
+              const matchQuery = app.name.toLowerCase().includes(query) || app.desc.toLowerCase().includes(query);
+              return matchFilter && matchQuery;
+            });
+            for (const app of filtered) {
+              const el = document.createElement('div');
+              el.className = 'card';
+              el.innerHTML = `
+                <h3 class='text-xl font-semibold mb-1'>${app.name}</h3>
+                <p class='text-sm text-gray-600 dark:text-gray-400 mb-2'>${app.category}</p>
+                <p class='mb-2'>${app.desc}</p>
+                ${app.link ? `<a href="${app.link}" class="text-blue-500 underline" target="_blank">🔗 Visit</a>` : ''}
+              `;
+              grid.appendChild(el);
+            }
+          }
+
+          links.forEach(link => link.addEventListener('click', e => {
+            e.preventDefault();
+            currentFilter = e.target.dataset.filter;
+            render();
+          }));
+
+          search.addEventListener('input', render);
+          render();
+
+          function toggleTheme() {
+            document.body.classList.toggle('dark');
+          }
+        </script>
     </body>
     </html>
     """)
 
-    return html_template.substitute(card_html=card_html, timestamp=timestamp)
+    category_links = '\n'.join(
+        f'<li><a href="#" data-filter="{c}" class="hover:underline">{c}</a></li>' for c in categories
+    )
+
+    return html_template.substitute(
+        timestamp=timestamp,
+        category_links=category_links,
+        json_cards=json_cards
+    )
 
 
 def main():
