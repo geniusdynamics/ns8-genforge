@@ -25,20 +25,25 @@ def get_github_stars(repo_url, github_token=None):
 def parse_readme_tables(readme_text):
     intro = ""
     app_cards = []
-    sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
+    lines = readme_text.splitlines()
+    intro_lines = []
+    found_app_list = False
 
-    for i, section in enumerate(sections):
+    for line in lines:
+        if not found_app_list:
+            if "application list" in line.strip().lower():
+                found_app_list = True
+            else:
+                intro_lines.append(line)
+        else:
+            break
+
+    intro = "\n".join(intro_lines).strip()
+
+    sections = re.split(r'^##\s+', readme_text, flags=re.MULTILINE)
+    for section in sections:
         lines = section.strip().splitlines()
         if not lines:
-            continue
-
-        if i == 0:
-            intro_lines = []
-            for line in lines:
-                if line.strip().startswith("## Application List"):
-                    break
-                intro_lines.append(line)
-            intro = "\n".join(intro_lines).strip()
             continue
 
         category = lines[0].strip()
@@ -144,7 +149,7 @@ def generate_html(intro_text, cards):
         </div>
     </body>
     </html>
-    """)
+    ")
 
     return html_template.render(timestamp=timestamp, intro_text=intro_text, categories=categories, cards=cards)
 
