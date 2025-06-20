@@ -82,7 +82,7 @@ def generate_html(intro_text, cards):
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
     categories = sorted(set(card['category'] for card in cards))
 
-    toc = "<ul>" + "".join([f'<li><a href="#{cat.lower().replace(" ", "-")}">{cat}</a></li>' for cat in categories]) + "</ul>"
+    sidebar_links = "".join([f'<li><a href="#{cat.lower().replace(" ", "-")}">{cat}</a></li>' for cat in categories])
 
     html_template = Template("""
     <!DOCTYPE html>
@@ -92,46 +92,39 @@ def generate_html(intro_text, cards):
         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>GenForge App Directory</title>
         <style>
-            body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif; line-height: 1.6; color: #24292e; background-color: #f6f8fa; margin: 0; }
-            .container { max-width: 1200px; margin: auto; padding: 20px; }
-            header { text-align: center; padding: 20px 0 20px 0; }
-            header h1 { font-size: 2.5em; color: #0366d6; }
-            header p { font-size: 1.1em; color: #586069; }
-            nav { background: #fff; border-bottom: 1px solid #e1e4e8; padding: 10px; margin-bottom: 20px; position: sticky; top: 0; z-index: 100; }
-            nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-            nav li { display: inline; }
-            nav a { text-decoration: none; color: #0366d6; font-weight: 600; }
-            .category-section h2 { padding-bottom: 12px; border-bottom: 2px solid #e1e4e8; margin-top: 40px; color: #0366d6; font-size: 1.8em; }
-            .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-            .app-card { background-color: #fff; border: 1px solid #d1d5da; border-radius: 6px; padding: 20px; transition: box-shadow 0.2s, transform 0.2s; }
-            .app-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); transform: translateY(-3px); }
-            .app-card h3 { margin: 0 0 12px 0; font-size: 1.4em; }
-            .app-card h3 a { text-decoration: none; color: #005cc5; font-weight: 600; }
-            .app-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
-            .app-links a { display: inline-block; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; }
-            .app-links a.github { background-color: #24292e; color: #fff; }
-            .app-links a.nethserver { background-color: #28a745; color: #fff; }
-            .alternatives { font-size: 0.95em; color: #586069; }
-            footer { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #e1e4e8; font-size: 0.9em; color: #6a737d; }
-            .intro { background: #fffbea; border: 1px solid #f0e6d2; padding: 1em; border-radius: 6px; margin-bottom: 2em; }
+            body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif; margin: 0; background: #f6f8fa; }
+            .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; overflow-y: auto; background: #fff; border-right: 1px solid #ddd; padding: 20px; }
+            .sidebar h3 { margin-top: 0; }
+            .sidebar ul { list-style: none; padding: 0; }
+            .sidebar li { margin-bottom: 10px; }
+            .sidebar a { color: #0366d6; text-decoration: none; font-weight: 500; }
+            .container { margin-left: 240px; padding: 20px; }
+            header h1 { font-size: 2em; color: #0366d6; }
+            .category-section h2 { border-bottom: 2px solid #e1e4e8; margin-top: 40px; color: #0366d6; font-size: 1.6em; }
+            .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+            .app-card { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 15px; }
+            .app-card h3 { margin: 0; font-size: 1.2em; }
+            .app-card h3 a { color: #005cc5; text-decoration: none; }
+            .app-links { margin-top: 10px; }
+            .app-links a { margin-right: 8px; padding: 4px 8px; font-size: 0.85em; background: #0366d6; color: white; text-decoration: none; border-radius: 4px; }
+            .alternatives { font-size: 0.85em; margin-top: 8px; color: #586069; }
+            .intro { margin-bottom: 20px; padding: 10px; background: #fffbea; border: 1px solid #f0e6d2; border-radius: 6px; }
+            footer { text-align: center; margin-top: 40px; font-size: 0.9em; color: #6a737d; }
         </style>
     </head>
     <body>
+        <div class=\"sidebar\">
+            <h3>Categories</h3>
+            <ul>
+                {{ sidebar_links|safe }}
+            </ul>
+        </div>
         <div class=\"container\">
             <header>
                 <h1>GenForge App Directory</h1>
-                <p>A community-curated list of applications available for NethServer 8</p>
                 <p><small>Metadata generated on {{ timestamp }}</small></p>
             </header>
-
-            <nav>
-                {{ toc|safe }}
-            </nav>
-
-            <div class=\"intro\">
-                {{ intro_text|safe }}
-            </div>
-
+            <div class=\"intro\">{{ intro_text|safe }}</div>
             <main>
                 {% for category in categories %}
                 <section class=\"category-section\" id=\"{{ category|lower|replace(' ', '-') }}\">
@@ -142,26 +135,25 @@ def generate_html(intro_text, cards):
                             <h3><a href=\"{{ app.link }}\" target=\"_blank\">{{ app.name }}</a></h3>
                             <p>{{ app.desc }}</p>
                             <div class=\"app-links\">
-                                {% if app.repo_link %}<a href=\"{{ app.repo_link }}\" class=\"github\" target=\"_blank\">⭐ {{ app.stars }} Stars</a>{% endif %}
-                                <a href=\"https://github.com/geniusdynamics/ns8-{{ app.name|lower|replace(' ', '-') }}\" class=\"nethserver\" target=\"_blank\">NS8 Module</a>
+                                {% if app.repo_link %}<a href=\"{{ app.repo_link }}\" target=\"_blank\">⭐ {{ app.stars }}</a>{% endif %}
+                                <a href=\"https://github.com/geniusdynamics/ns8-{{ app.name|lower|replace(' ', '-') }}\" target=\"_blank\">NS8</a>
                             </div>
-                            {% if app.alt %}<div class=\"alternatives\"><strong>Alternatives:</strong> {{ app.alt }}</div>{% endif %}
+                            {% if app.alt %}<div class=\"alternatives\"><strong>Alt:</strong> {{ app.alt }}</div>{% endif %}
                         </div>
                         {% endfor %}
                     </div>
                 </section>
                 {% endfor %}
             </main>
-
             <footer>
-                <p>This page is automatically generated via GitHub Actions from the <a href=\"https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md\">README.md</a> file.</p>
+                <p>This page is generated via GitHub Actions from the <a href=\"https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md\">README.md</a>.</p>
             </footer>
         </div>
     </body>
     </html>
     """)
 
-    return html_template.render(timestamp=timestamp, intro_text=intro_text, categories=categories, cards=cards, toc=toc)
+    return html_template.render(timestamp=timestamp, intro_text=intro_text, categories=categories, cards=cards, sidebar_links=sidebar_links)
 
 
 def main():
