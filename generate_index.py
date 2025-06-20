@@ -82,7 +82,7 @@ def generate_html(intro_text, cards):
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
     categories = sorted(set(card['category'] for card in cards))
 
-    sidebar_links = "".join([f'<li><a href="#{cat.lower().replace(" ", "-")}">{cat}</a></li>' for cat in categories])
+    sidebar_links = "".join([f'<li><button class="collapsible">{cat}</button><div class="content"><a href="#{cat.lower().replace(" ", "-")}">Go to</a></div></li>' for cat in categories])
 
     html_template = Template("""
     <!DOCTYPE html>
@@ -93,12 +93,14 @@ def generate_html(intro_text, cards):
         <title>GenForge App Directory</title>
         <style>
             body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif; margin: 0; background: #f6f8fa; }
-            .sidebar { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; overflow-y: auto; background: #fff; border-right: 1px solid #ddd; padding: 20px; }
+            .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; overflow-y: auto; background: #fff; border-right: 1px solid #ddd; padding: 20px; }
             .sidebar h3 { margin-top: 0; }
             .sidebar ul { list-style: none; padding: 0; }
             .sidebar li { margin-bottom: 10px; }
-            .sidebar a { color: #0366d6; text-decoration: none; font-weight: 500; }
-            .container { margin-left: 240px; padding: 20px; }
+            .collapsible { background-color: #f1f1f1; color: #0366d6; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-weight: 500; }
+            .content { display: none; padding-left: 10px; margin-top: 5px; }
+            .content a { text-decoration: none; color: #0366d6; }
+            .container { margin-left: 260px; padding: 20px; }
             header h1 { font-size: 2em; color: #0366d6; }
             .category-section h2 { border-bottom: 2px solid #e1e4e8; margin-top: 40px; color: #0366d6; font-size: 1.6em; }
             .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
@@ -149,6 +151,20 @@ def generate_html(intro_text, cards):
                 <p>This page is generated via GitHub Actions from the <a href=\"https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md\">README.md</a>.</p>
             </footer>
         </div>
+        <script>
+            const collapsibles = document.querySelectorAll(".collapsible");
+            collapsibles.forEach(btn => {
+                btn.addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    const content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            });
+        </script>
     </body>
     </html>
     """)
