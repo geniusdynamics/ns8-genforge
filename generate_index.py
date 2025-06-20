@@ -82,7 +82,7 @@ def generate_html(intro_text, cards):
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
     categories = sorted(set(card['category'] for card in cards))
 
-    sidebar_links = "".join([f'<li><button class="collapsible">{cat}</button><div class="content"><a href="#{cat.lower().replace(" ", "-")}">Go to</a></div></li>' for cat in categories])
+    sidebar_links = "".join([f'<li><a href="#' + cat.lower().replace(" ", "-") + '">' + cat + '</a></li>' for cat in categories])
 
     html_template = Template("""
     <!DOCTYPE html>
@@ -93,15 +93,13 @@ def generate_html(intro_text, cards):
         <title>GenForge App Directory</title>
         <style>
             body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif; margin: 0; background: #f6f8fa; }
-            .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; overflow-y: auto; background: #fff; border-right: 1px solid #ddd; padding: 20px; }
-            .sidebar h3 { margin-top: 0; }
-            .sidebar ul { list-style: none; padding: 0; }
-            .sidebar li { margin-bottom: 10px; }
-            .collapsible { background-color: #f1f1f1; color: #0366d6; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-weight: 500; }
-            .content { display: none; padding-left: 10px; margin-top: 5px; }
-            .content a { text-decoration: none; color: #0366d6; }
-            .container { margin-left: 260px; padding: 20px; }
             header h1 { font-size: 2em; color: #0366d6; }
+            .navbar-toggle { display: none; background-color: #0366d6; color: white; border: none; padding: 10px; width: 100%; text-align: left; font-size: 1em; }
+            nav.sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; overflow-y: auto; background: #fff; border-right: 1px solid #ddd; padding: 20px; transition: transform 0.3s ease; }
+            nav.sidebar h3 { margin-top: 0; }
+            nav.sidebar ul { list-style: none; padding: 0; }
+            nav.sidebar li { margin-bottom: 10px; }
+            .container { margin-left: 260px; padding: 20px; }
             .category-section h2 { border-bottom: 2px solid #e1e4e8; margin-top: 40px; color: #0366d6; font-size: 1.6em; }
             .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
             .app-card { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 15px; }
@@ -112,15 +110,23 @@ def generate_html(intro_text, cards):
             .alternatives { font-size: 0.85em; margin-top: 8px; color: #586069; }
             .intro { margin-bottom: 20px; padding: 10px; background: #fffbea; border: 1px solid #f0e6d2; border-radius: 6px; }
             footer { text-align: center; margin-top: 40px; font-size: 0.9em; color: #6a737d; }
+
+            @media (max-width: 768px) {
+                nav.sidebar { transform: translateX(-100%); position: fixed; z-index: 9999; }
+                nav.sidebar.active { transform: translateX(0); }
+                .container { margin-left: 0; }
+                .navbar-toggle { display: block; }
+            }
         </style>
     </head>
     <body>
-        <div class=\"sidebar\">
+        <button class=\"navbar-toggle\" onclick=\"document.querySelector('nav.sidebar').classList.toggle('active')\">☰ Menu</button>
+        <nav class=\"sidebar\">
             <h3>Categories</h3>
             <ul>
                 {{ sidebar_links|safe }}
             </ul>
-        </div>
+        </nav>
         <div class=\"container\">
             <header>
                 <h1>GenForge App Directory</h1>
@@ -151,20 +157,6 @@ def generate_html(intro_text, cards):
                 <p>This page is generated via GitHub Actions from the <a href=\"https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md\">README.md</a>.</p>
             </footer>
         </div>
-        <script>
-            const collapsibles = document.querySelectorAll(".collapsible");
-            collapsibles.forEach(btn => {
-                btn.addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    const content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            });
-        </script>
     </body>
     </html>
     """)
