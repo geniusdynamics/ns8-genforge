@@ -1,0 +1,19 @@
+{
+  "name": "COUCHDB",
+  "description": {
+    "en": "CouchDB is a terrific single-node database that works just like any other database behind an application server of your choice."
+  },
+  "categories": ["development", "database"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://couchdb.apache.org/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-couchdb"
+  },
+  "source": "ghcr.io/geniusdynamics/couchdb"
+}
