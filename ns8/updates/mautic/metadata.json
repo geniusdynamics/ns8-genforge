@@ -1,0 +1,19 @@
+{
+  "name": "mautic",
+  "description": {
+    "en": "Mautic & Open Source Marketing Automation"
+  },
+  "categories": ["office"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.mautic.org/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-mautic"
+  },
+  "source": "ghcr.io/geniusdynamics/mautic"
+}

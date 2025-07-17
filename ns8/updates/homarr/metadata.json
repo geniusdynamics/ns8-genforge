@@ -1,0 +1,19 @@
+{
+  "name": "Homarr",
+  "description": {
+    "en": "A simple yet powerful dashboard for your server"
+  },
+  "categories": ["monitoring"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://homarr.dev/docs",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-homarr"
+  },
+  "source": "ghcr.io/compgeniuses/homarr"
+}
