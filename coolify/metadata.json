@@ -1,0 +1,19 @@
+{
+  "name": "coolify",
+  "description": {
+    "en": "Coolify. An open-source & self-hostable Heroku / Netlify / Vercel alternative."
+  },
+  "categories": ["Development"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://coolify.io/docs/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-coolify"
+  },
+  "source": "ghcr.io/geniusdynamics/coolify"
+}
