@@ -3,7 +3,7 @@
   "description": {
     "en": "Coolify. An open-source & self-hostable Heroku / Netlify / Vercel alternative."
   },
-  "categories": ["Development"],
+  "categories": ["development"],
   "authors": [
     {
       "name": "Genius Dynamics",

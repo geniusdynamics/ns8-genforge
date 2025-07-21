@@ -1,9 +1,9 @@
 {
-  "name": "ddokploy",
+  "name": "dokploy",
   "description": {
     "en": "Dokploy. multi-server deployments, advanced user control, and flexible database management—all with Dokploy’s developer-focused features."
   },
-  "categories": ["Development"],
+  "categories": ["development"],
   "authors": [
     {
       "name": "Genius Dynamics",
