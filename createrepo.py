@@ -187,6 +187,7 @@ def parse_readme_tables(readme_text):
                     ns8_link = ns8_link_tag['href'] if ns8_link_tag else f"https://github.com/geniusdynamics/ns8-{app_name.lower().replace(' ', '-')}"
 
 
+                    print(f"DEBUG: category={category}, app_name={app_name}, description={description}, app_link={app_link}")
                     app_cards.append({
                         "category": category,
                         "name": app_name,
