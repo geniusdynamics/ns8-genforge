@@ -217,6 +217,7 @@ def generate_html(cards):
                 --text-color: #24292e;
                 --subtle-text-color: #586069;
                 --border-color: #e1e4e8;
+                --shadow-color: rgba(0, 0, 0, 0.1);
             }
             body {
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -226,46 +227,78 @@ def generate_html(cards):
             }
             .container {
                 display: flex;
-                flex-direction: column;
-                min-height: 100vh;
+            }
+            .sidebar {
+                width: 250px;
+                background-color: var(--card-background);
+                border-right: 1px solid var(--border-color);
+                padding: 20px;
+                height: 100vh;
+                position: fixed;
+                overflow-y: auto;
+                transition: transform 0.3s ease;
+            }
+            .sidebar h2 {
+                font-size: 1.5em;
+                color: var(--primary-color);
+                margin-top: 0;
+            }
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+            .sidebar li {
+                margin-bottom: 10px;
+            }
+            .sidebar a {
+                text-decoration: none;
+                color: var(--subtle-text-color);
+                font-weight: 600;
+            }
+            .sidebar a:hover {
+                color: var(--primary-color);
+            }
+            .main-content {
+                margin-left: 270px;
+                padding: 20px;
+                width: calc(100% - 270px);
             }
             header {
-                padding: 20px;
-                border-bottom: 1px solid var(--border-color);
-                background-color: var(--card-background);
                 text-align: center;
+                margin-bottom: 40px;
             }
             header h1 {
-                font-size: 2.5em;
+                font-size: 3em;
                 color: var(--primary-color);
                 margin: 0;
             }
             header p {
                 color: var(--subtle-text-color);
+                margin-top: 5px;
+            }
+            .about-section {
+                background-color: var(--card-background);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 20px;
+                margin-bottom: 40px;
+            }
+            .about-section details {
+                cursor: pointer;
+            }
+            .about-section summary {
+                font-weight: 600;
+                color: var(--primary-color);
             }
             .search-container {
-                margin-top: 20px;
+                margin-bottom: 40px;
             }
             #search-input {
-                width: 50%;
-                padding: 12px;
-                font-size: 1em;
-                border: 1px solid var(--border-color);
-                border-radius: 6px;
-            }
-            main {
-                flex: 1;
-                padding: 20px;
-                max-width: 1200px;
-                margin: 0 auto;
                 width: 100%;
-            }
-            .category-section h2 {
-                font-size: 2em;
-                color: var(--primary-color);
-                border-bottom: 2px solid var(--primary-color);
-                padding-bottom: 10px;
-                margin-top: 40px;
+                padding: 15px;
+                font-size: 1.2em;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
             }
             .app-grid {
                 display: grid;
@@ -280,23 +313,31 @@ def generate_html(cards):
                 display: flex;
                 flex-direction: column;
                 transition: transform 0.2s, box-shadow 0.2s;
+                box-shadow: 0 2px 4px var(--shadow-color);
             }
             .app-card:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                box-shadow: 0 6px 12px var(--shadow-color);
             }
             .app-card h3 {
                 margin: 0 0 10px 0;
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
             .app-card h3 a {
                 color: var(--text-color);
                 text-decoration: none;
-                font-weight: 600;
+                font-weight: 700;
             }
-            .app-card p {
+            .app-card .category {
+                font-size: 0.9em;
+                font-weight: 600;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+            }
+            .app-card .description {
                 flex-grow: 1;
                 color: var(--subtle-text-color);
+                margin-bottom: 15px;
             }
             .app-links {
                 margin-top: 15px;
@@ -315,53 +356,90 @@ def generate_html(cards):
                 align-items: center;
                 gap: 5px;
             }
-            .alternatives {
-                font-size: 0.9em;
-                margin-top: 15px;
-                color: var(--subtle-text-color);
-            }
             footer {
                 text-align: center;
                 padding: 20px;
+                margin-top: 40px;
                 font-size: 0.9em;
                 color: var(--subtle-text-color);
                 border-top: 1px solid var(--border-color);
-                background-color: var(--card-background);
+            }
+            @media (max-width: 768px) {
+                .container {
+                    flex-direction: column;
+                }
+                .sidebar {
+                    position: static;
+                    width: 100%;
+                    height: auto;
+                    border-right: none;
+                    border-bottom: 1px solid var(--border-color);
+                }
+                .main-content {
+                    margin-left: 0;
+                    width: 100%;
+                }
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <header>
-                <h1>GenForge App Directory</h1>
-                <p>Last updated: {{ timestamp }}</p>
-                <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search for applications...">
+            <nav class="sidebar">
+                <h2>Categories</h2>
+                <ul>
+                    {% for category in categories %}
+                    <li><a href="#{{ category.lower().replace(' ', '-') }}">{{ category }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <div class="main-content">
+                <header>
+                    <h1>GenForge App Directory</h1>
+                    <p>Last updated: {{ timestamp }}</p>
+                    <p>Metadata are built every 4 hours at 00:25, 06:25 ,12:25, 18:25 UTC and on each commit to the main branch.</p>
+                </header>
+                <div class="about-section">
+                    <details>
+                        <summary>About this page and how to contribute</summary>
+                        <p>If you want to add a module to this repository, just follow the
+ <a href="https://nethserver.github.io/ns8-core/modules/new_module/#step-5-publish-to-ns8-software-repository">
+  instructions
+ </a>
+ for
+ <code>
+  ns8-repomd
+ </code>
+ , finally open the pull request here!</p>
+                    </details>
                 </div>
-            </header>
-            <main>
-                {% for category in categories %}
-                <section class="category-section" id="{{ category.lower().replace(' ', '-') }}">
-                    <h2>{{ category }}</h2>
-                    <div class="app-grid">
-                        {% for app in cards if app.category == category %}
-                        <div class="app-card" data-name="{{ app.name.lower() }}" data-category="{{ app.category.lower() }}">
-                            <h3><a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">{{ app.name }}</a></h3>
-                            <p>{{ app.desc }}</p>
-                            {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> {{ app.alt }}</div>{% endif %}
-                            <div class="app-links">
-                                {% if app.repo_link %}<a href="{{ app.repo_link }}" target="_blank" rel="noopener noreferrer">⭐ {{ app.stars }} Stars</a>{% endif %}
-                                <a href="{{ app.ns8_link }}" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        {% endfor %}
+                <main>
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search for applications...">
                     </div>
-                </section>
-                {% endfor %}
-            </main>
-            <footer>
-                <p>This page is generated from the <a href="https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
-            </footer>
+                    {% for category in categories %}
+                    <section class="category-section" id="{{ category.lower().replace(' ', '-') }}">
+                        <h2>{{ category }}</h2>
+                        <div class="app-grid">
+                            {% for app in cards if app.category == category %}
+                            <div class="app-card" data-name="{{ app.name.lower() }}" data-category="{{ app.category.lower() }}">
+                                <p class="category">{{ app.category }}</p>
+                                <h3><a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">{{ app.name }}</a></h3>
+                                <p class="description">{{ app.desc }}</p>
+                                {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> {{ app.alt }}</div>{% endif %}
+                                <div class="app-links">
+                                    {% if app.repo_link %}<a href="{{ app.repo_link }}" target="_blank" rel="noopener noreferrer">⭐ {{ app.stars }} Stars</a>{% endif %}
+                                    <a href="{{ app.ns8_link }}" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                    {% endfor %}
+                </main>
+                <footer>
+                    <p>This page is generated from the <a href="https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
+                </footer>
+            </div>
         </div>
         <script>
             document.getElementById('search-input').addEventListener('input', function(e) {
