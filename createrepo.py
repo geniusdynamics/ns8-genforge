@@ -163,12 +163,11 @@ def parse_readme_tables(readme_text):
             for row in table.find_all('tr')[1:]:  # Skip header row
                 cols = row.find_all('td')
                 if len(cols) >= 2:
-                    company_cell = cols[0].text.strip()
+                    company_cell = cols[0]
                     description = cols[1].text.strip()
                     
-                    # Extracting app name and link from the first column
-                    app_link_tag = cols[0].find('a')
-                    app_name = app_link_tag.text.strip() if app_link_tag else company_cell
+                    app_link_tag = company_cell.find('a')
+                    app_name = app_link_tag.text.strip() if app_link_tag else company_cell.text.strip()
                     app_link = app_link_tag['href'] if app_link_tag else ""
 
                     # Github stars
@@ -437,8 +436,8 @@ def generate_html(cards):
                         <div class="app-grid">
                             {% for app in cards if app.category == category %}
                             <div class="app-card" data-name="{{ app.name.lower() }}" data-category="{{ app.category.lower() }}">
-                                <p class="category">{{ app.category }}</p>
                                 <h3><a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">{{ app.name }}</a></h3>
+                                <p class="category">{{ app.category }}</p>
                                 <p class="description">{{ app.desc }}</p>
                                 {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> 
                                 {% for alt in app.alt %}
