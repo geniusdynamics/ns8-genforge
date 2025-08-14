@@ -177,7 +177,11 @@ def parse_readme_tables(readme_text):
                     stars = get_github_stars(repo_link, GITHUB_TOKEN)
 
                     # Alternatives
-                    alt_text = cols[4].text.strip() if len(cols) > 4 else ""
+                    alt_cell = cols[4] if len(cols) > 4 else None
+                    alternatives = []
+                    if alt_cell:
+                        for link in alt_cell.find_all('a'):
+                            alternatives.append({'name': link.text.strip(), 'link': link['href']})
 
                     # NS8 Link
                     ns8_link_tag = cols[5].find('a') if len(cols) > 5 else None
@@ -191,10 +195,289 @@ def parse_readme_tables(readme_text):
                         "link": app_link,
                         "repo_link": repo_link,
                         "stars": stars,
-                        "alt": alt_text,
+                        "alt": alternatives,
                         "ns8_link": ns8_link
                     })
     return app_cards
+
+def generate_html(cards):
+    timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
+    
+    def get_category_sort_key(category_string):
+        match = re.match(r'(\d+)', category_string)
+        if match:
+            return int(match.group(1))
+        return float('inf')  # Put categories without numbers at the end
+
+    categories = sorted(list(set(card['category'] for card in cards)), key=get_category_sort_key)
+
+    html_template = Template(r'''
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GenForge App Directory</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --primary-color: #0366d6;
+                --background-color: #f6f8fa;
+                --card-background: #ffffff;
+                --text-color: #24292e;
+                --subtle-text-color: #586069;
+                --border-color: #e1e4e8;
+                --shadow-color: rgba(0, 0, 0, 0.1);
+            }
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                margin: 0;
+                background-color: var(--background-color);
+                color: var(--text-color);
+            }
+            .container {
+                display: flex;
+            }
+            .sidebar {
+                width: 250px;
+                background-color: var(--card-background);
+                border-right: 1px solid var(--border-color);
+                padding: 20px;
+                height: 100vh;
+                position: fixed;
+                overflow-y: auto;
+                transition: transform 0.3s ease;
+            }
+            .sidebar h2 {
+                font-size: 1.5em;
+                color: var(--primary-color);
+                margin-top: 0;
+            }
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+            .sidebar li {
+                margin-bottom: 10px;
+            }
+            .sidebar a {
+                text-decoration: none;
+                color: var(--subtle-text-color);
+                font-weight: 600;
+            }
+            .sidebar a:hover {
+                color: var(--primary-color);
+            }
+            .main-content {
+                margin-left: 270px;
+                padding: 20px;
+                width: calc(100% - 270px);
+            }
+            header {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            header h1 {
+                font-size: 3em;
+                color: var(--primary-color);
+                margin: 0;
+            }
+            header p {
+                color: var(--subtle-text-color);
+                margin-top: 5px;
+            }
+            .about-section {
+                background-color: var(--card-background);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 20px;
+                margin-bottom: 40px;
+            }
+            .about-section details {
+                cursor: pointer;
+            }
+            .about-section summary {
+                font-weight: 600;
+                color: var(--primary-color);
+            }
+            .search-container {
+                margin-bottom: 40px;
+            }
+            #search-input {
+                width: 100%;
+                padding: 15px;
+                font-size: 1.2em;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+            }
+            .app-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 24px;
+            }
+            .app-card {
+                background: var(--card-background);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.2s, box-shadow 0.2s;
+                box-shadow: 0 2px 4px var(--shadow-color);
+            }
+            .app-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 12px var(--shadow-color);
+            }
+            .app-card h3 {
+                margin: 0 0 10px 0;
+                font-size: 1.8em;
+            }
+            .app-card h3 a {
+                color: var(--text-color);
+                text-decoration: none;
+                font-weight: 700;
+            }
+            .app-card .category {
+                font-size: 0.9em;
+                font-weight: 600;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+            }
+            .app-card .description {
+                flex-grow: 1;
+                color: var(--subtle-text-color);
+                margin-bottom: 15px;
+            }
+            .app-links {
+                margin-top: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .app-links a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                background-color: var(--primary-color);
+                color: white;
+                text-decoration: none;
+                border-radius: 6px;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+            .alternatives {
+                font-size: 0.9em;
+                margin-top: 15px;
+                color: var(--subtle-text-color);
+            }
+            footer {
+                text-align: center;
+                padding: 20px;
+                margin-top: 40px;
+                font-size: 0.9em;
+                color: var(--subtle-text-color);
+                border-top: 1px solid var(--border-color);
+            }
+            @media (max-width: 768px) {
+                .container {
+                    flex-direction: column;
+                }
+                .sidebar {
+                    position: static;
+                    width: 100%;
+                    height: auto;
+                    border-right: none;
+                    border-bottom: 1px solid var(--border-color);
+                }
+                .main-content {
+                    margin-left: 0;
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="sidebar">
+                <h2>Categories</h2>
+                <ul>
+                    {% for category in categories %}
+                    <li><a href="#{{ category.lower().replace(' ', '-') }}">{{ category }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <div class="main-content">
+                <header>
+                    <h1>GenForge App Directory</h1>
+                    <p>Last updated: {{ timestamp }}</p>
+                    <p>Metadata are built every 4 hours at 00:25, 06:25 ,12:25, 18:25 UTC and on each commit to the main branch.</p>
+                </header>
+                <div class="about-section">
+                    <details>
+                        <summary>About this page and how to contribute</summary>
+                        <p>If you want to add a module to this repository, just follow the
+ <a href="https://nethserver.github.io/ns8-core/modules/new_module/#step-5-publish-to-ns8-software-repository">
+  instructions
+ </a>
+ for
+ <code>
+  ns8-repomd
+ </code>
+ , finally open the pull request here!</p>
+                    </details>
+                </div>
+                <main>
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search for applications...">
+                    </div>
+                    {% for category in categories %}
+                    <section class="category-section" id="{{ category.lower().replace(' ', '-') }}">
+                        <h2>{{ category }}</h2>
+                        <div class="app-grid">
+                            {% for app in cards if app.category == category %}
+                            <div class="app-card" data-name="{{ app.name.lower() }}" data-category="{{ app.category.lower() }}">
+                                <p class="category">{{ app.category }}</p>
+                                <h3><a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">{{ app.name }}</a></h3>
+                                <p class="description">{{ app.desc }}</p>
+                                {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> 
+                                {% for alt in app.alt %}
+                                <a href="{{ alt.link }}" target="_blank" rel="noopener noreferrer">{{ alt.name }}</a>{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                                </div>{% endif %}
+                                <div class="app-links">
+                                    {% if app.repo_link %}<a href="{{ app.repo_link }}" target="_blank" rel="noopener noreferrer">⭐ {{ app.stars }} Stars</a>{% endif %}
+                                    <a href="{{ app.ns8_link }}" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                    {% endfor %}
+                </main>
+                <footer>
+                    <p>This page is generated from the <a href="https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
+                </footer>
+            </div>
+        </div>
+        <script>
+            document.getElementById('search-input').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                document.querySelectorAll('.app-card').forEach(card => {
+                    const appName = card.dataset.name;
+                    if (appName.includes(searchTerm)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+    </body>
+    </html>
+    ''')
+
+    return html_template.render(timestamp=timestamp, categories=categories, cards=cards)
 
 
 def generate_html(cards):
