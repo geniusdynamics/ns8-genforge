@@ -14,6 +14,7 @@
                 --text-color: #24292e;
                 --subtle-text-color: #586069;
                 --border-color: #e1e4e8;
+                --shadow-color: rgba(0, 0, 0, 0.1);
             }
             body {
                 font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -23,46 +24,78 @@
             }
             .container {
                 display: flex;
-                flex-direction: column;
-                min-height: 100vh;
+            }
+            .sidebar {
+                width: 250px;
+                background-color: var(--card-background);
+                border-right: 1px solid var(--border-color);
+                padding: 20px;
+                height: 100vh;
+                position: fixed;
+                overflow-y: auto;
+                transition: transform 0.3s ease;
+            }
+            .sidebar h2 {
+                font-size: 1.5em;
+                color: var(--primary-color);
+                margin-top: 0;
+            }
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+            .sidebar li {
+                margin-bottom: 10px;
+            }
+            .sidebar a {
+                text-decoration: none;
+                color: var(--subtle-text-color);
+                font-weight: 600;
+            }
+            .sidebar a:hover {
+                color: var(--primary-color);
+            }
+            .main-content {
+                margin-left: 270px;
+                padding: 20px;
+                width: calc(100% - 270px);
             }
             header {
-                padding: 20px;
-                border-bottom: 1px solid var(--border-color);
-                background-color: var(--card-background);
                 text-align: center;
+                margin-bottom: 40px;
             }
             header h1 {
-                font-size: 2.5em;
+                font-size: 3em;
                 color: var(--primary-color);
                 margin: 0;
             }
             header p {
                 color: var(--subtle-text-color);
+                margin-top: 5px;
+            }
+            .about-section {
+                background-color: var(--card-background);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 20px;
+                margin-bottom: 40px;
+            }
+            .about-section details {
+                cursor: pointer;
+            }
+            .about-section summary {
+                font-weight: 600;
+                color: var(--primary-color);
             }
             .search-container {
-                margin-top: 20px;
+                margin-bottom: 40px;
             }
             #search-input {
-                width: 50%;
-                padding: 12px;
-                font-size: 1em;
-                border: 1px solid var(--border-color);
-                border-radius: 6px;
-            }
-            main {
-                flex: 1;
-                padding: 20px;
-                max-width: 1200px;
-                margin: 0 auto;
                 width: 100%;
-            }
-            .category-section h2 {
-                font-size: 2em;
-                color: var(--primary-color);
-                border-bottom: 2px solid var(--primary-color);
-                padding-bottom: 10px;
-                margin-top: 40px;
+                padding: 15px;
+                font-size: 1.2em;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
             }
             .app-grid {
                 display: grid;
@@ -77,23 +110,31 @@
                 display: flex;
                 flex-direction: column;
                 transition: transform 0.2s, box-shadow 0.2s;
+                box-shadow: 0 2px 4px var(--shadow-color);
             }
             .app-card:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                box-shadow: 0 6px 12px var(--shadow-color);
             }
             .app-card h3 {
                 margin: 0 0 10px 0;
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
             .app-card h3 a {
                 color: var(--text-color);
                 text-decoration: none;
-                font-weight: 600;
+                font-weight: 700;
             }
-            .app-card p {
+            .app-card .category {
+                font-size: 0.9em;
+                font-weight: 600;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+            }
+            .app-card .description {
                 flex-grow: 1;
                 color: var(--subtle-text-color);
+                margin-bottom: 15px;
             }
             .app-links {
                 margin-top: 15px;
@@ -112,828 +153,975 @@
                 align-items: center;
                 gap: 5px;
             }
-            .alternatives {
-                font-size: 0.9em;
-                margin-top: 15px;
-                color: var(--subtle-text-color);
-            }
             footer {
                 text-align: center;
                 padding: 20px;
+                margin-top: 40px;
                 font-size: 0.9em;
                 color: var(--subtle-text-color);
                 border-top: 1px solid var(--border-color);
-                background-color: var(--card-background);
+            }
+            @media (max-width: 768px) {
+                .container {
+                    flex-direction: column;
+                }
+                .sidebar {
+                    position: static;
+                    width: 100%;
+                    height: auto;
+                    border-right: none;
+                    border-bottom: 1px solid var(--border-color);
+                }
+                .main-content {
+                    margin-left: 0;
+                    width: 100%;
+                }
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <header>
-                <h1>GenForge App Directory</h1>
-                <p>Last updated: 2025-08-14 11:56 UTC</p>
-                <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search for applications...">
+            <nav class="sidebar">
+                <h2>Categories</h2>
+                <ul>
+                    
+                    <li><a href="#1)-auth-&-sso">1) Auth & SSO</a></li>
+                    
+                    <li><a href="#10)-messaging">10) Messaging</a></li>
+                    
+                    <li><a href="#11)-no-code-database">11) No Code Database</a></li>
+                    
+                    <li><a href="#12)-note-taking">12) Note Taking</a></li>
+                    
+                    <li><a href="#13)-passwords">13) Passwords</a></li>
+                    
+                    <li><a href="#14)-project-management">14) Project Management</a></li>
+                    
+                    <li><a href="#15)-paas(platform-as-a-service)">15) PAAS(Platform As A Service)</a></li>
+                    
+                    <li><a href="#16)-scheduling">16) Scheduling</a></li>
+                    
+                    <li><a href="#17)-video-conferencing">17) Video Conferencing</a></li>
+                    
+                    <li><a href="#18)-web-analytics">18) Web Analytics</a></li>
+                    
+                    <li><a href="#19)-workflow-automation">19) Workflow Automation</a></li>
+                    
+                    <li><a href="#2)-backend-as-a-service">2) Backend as a Service</a></li>
+                    
+                    <li><a href="#20)-database">20) Database</a></li>
+                    
+                    <li><a href="#21)-documents-and-files">21) Documents And Files</a></li>
+                    
+                    <li><a href="#22)-list-manager">22) List manager</a></li>
+                    
+                    <li><a href="#23)-finance">23) Finance</a></li>
+                    
+                    <li><a href="#24)-hr">24) HR</a></li>
+                    
+                    <li><a href="#25)-documentation-&-wiki">25) Documentation & Wiki</a></li>
+                    
+                    <li><a href="#26)-tools">26) Tools</a></li>
+                    
+                    <li><a href="#3)-design">3) Design</a></li>
+                    
+                    <li><a href="#4)-digital-signature">4) Digital Signature</a></li>
+                    
+                    <li><a href="#5)-erp-&-crm">5) ERP & CRM</a></li>
+                    
+                    <li><a href="#6)-marketing">6) Marketing</a></li>
+                    
+                    <li><a href="#7)-file-hosting">7) File Hosting</a></li>
+                    
+                    <li><a href="#8)-form-building">8) Form Building</a></li>
+                    
+                    <li><a href="#9)-market-saas">9) Market SAAS</a></li>
+                    
+                </ul>
+            </nav>
+            <div class="main-content">
+                <header>
+                    <h1>GenForge App Directory</h1>
+                    <p>Last updated: 2025-08-14 12:48 UTC</p>
+                    <p>Metadata are built every 4 hours at 00:25, 06:25 ,12:25, 18:25 UTC and on each commit to the main branch.</p>
+                </header>
+                <div class="about-section">
+                    <details>
+                        <summary>About this page and how to contribute</summary>
+                        <p>If you want to add a module to this repository, just follow the
+ <a href="https://nethserver.github.io/ns8-core/modules/new_module/#step-5-publish-to-ns8-software-repository">
+  instructions
+ </a>
+ for
+ <code>
+  ns8-repomd
+ </code>
+ , finally open the pull request here!</p>
+                    </details>
                 </div>
-            </header>
-            <main>
-                
-                <section class="category-section" id="1)-auth-&-sso">
-                    <h2>1) Auth & SSO</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="auth & sso" data-category="1) auth & sso">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Auth & SSO</a></h3>
-                            <p>Zitadel</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Okta, Auth0</div>
-                            <div class="app-links">
-                                <a href="https://github.com/zitadel/zitadel" target="_blank" rel="noopener noreferrer">⭐ 11443 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-zitadel/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="auth & sso" data-category="1) auth & sso">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Auth & SSO</a></h3>
-                            <p>Authentik</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Okta, Auth0</div>
-                            <div class="app-links">
-                                <a href="https://github.com/goauthentik/authentik" target="_blank" rel="noopener noreferrer">⭐ 17736 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-goauthentik/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="auth & sso" data-category="1) auth & sso">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Auth & SSO</a></h3>
-                            <p>2FAuth</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Google Authenticator, Microsoft authenticator</div>
-                            <div class="app-links">
-                                <a href="https://github.com/Bubka/2FAuth" target="_blank" rel="noopener noreferrer">⭐ 3297 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-2fauth/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
+                <main>
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search for applications...">
                     </div>
-                </section>
-                
-                <section class="category-section" id="10)-messaging">
-                    <h2>10) Messaging</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="messaging" data-category="10) messaging">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Messaging</a></h3>
-                            <p>Element</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Slack</div>
-                            <div class="app-links">
-                                <a href="https://github.com/vector-im/element-web" target="_blank" rel="noopener noreferrer">⭐ 11999 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-element/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="messaging" data-category="10) messaging">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Messaging</a></h3>
-                            <p>Mattermost</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Slack</div>
-                            <div class="app-links">
-                                <a href="https://github.com/mattermost/mattermost-server" target="_blank" rel="noopener noreferrer">⭐ 33374 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-mattermost/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="messaging" data-category="10) messaging">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Messaging</a></h3>
-                            <p>Rocket.chat</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Slack</div>
-                            <div class="app-links">
-                                <a href="https://github.com/RocketChat/Rocket.Chat" target="_blank" rel="noopener noreferrer">⭐ 43197 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-rocketchat/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="11)-no-code-database">
-                    <h2>11) No Code Database</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="no-code database" data-category="11) no code database">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">No-code Database</a></h3>
-                            <p>NocoDB</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Airtable</div>
-                            <div class="app-links">
-                                <a href="https://github.com/nocodb/nocodb" target="_blank" rel="noopener noreferrer">⭐ 56411 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-nocodb/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="no-code database" data-category="11) no code database">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">No-code Database</a></h3>
-                            <p>Seatable</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Airtable</div>
-                            <div class="app-links">
-                                <a href="https://github.com/seatable/seatable" target="_blank" rel="noopener noreferrer">⭐ 644 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-seatable/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="12)-note-taking">
-                    <h2>12) Note Taking</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="notetaking" data-category="12) note taking">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Notetaking</a></h3>
-                            <p>Logseq</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Evernote, OneNote, Roam Research</div>
-                            <div class="app-links">
-                                <a href="https://github.com/logseq/logseq" target="_blank" rel="noopener noreferrer">⭐ 37966 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-logseq/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="notetaking" data-category="12) note taking">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Notetaking</a></h3>
-                            <p>Outline</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Notion</div>
-                            <div class="app-links">
-                                <a href="https://github.com/outline/outline" target="_blank" rel="noopener noreferrer">⭐ 34450 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-outline/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="13)-passwords">
-                    <h2>13) Passwords</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="password manager" data-category="13) passwords">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Password Manager</a></h3>
-                            <p>VaultWarden</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> 1Password</div>
-                            <div class="app-links">
-                                <a href="https://github.com/dani-garcia/vaultwarden" target="_blank" rel="noopener noreferrer">⭐ 47905 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-vaultwarden/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="password" data-category="13) passwords">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Password</a></h3>
-                            <p>Password Pusher</p>
+                    
+                    <section class="category-section" id="1)-auth-&-sso">
+                        <h2>1) Auth & SSO</h2>
+                        <div class="app-grid">
                             
-                            <div class="app-links">
-                                <a href="https://github.com/pglombardo/PasswordPusher" target="_blank" rel="noopener noreferrer">⭐ 2575 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-passwordpusher/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="auth & sso" data-category="1) auth & sso">
+                                <p class="category">1) Auth & SSO</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Auth & SSO</a></h3>
+                                <p class="description">Zitadel</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Okta, Auth0</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/zitadel/zitadel" target="_blank" rel="noopener noreferrer">⭐ 11444 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-zitadel/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="14)-project-management">
-                    <h2>14) Project Management</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="project management" data-category="14) project management">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Project Management</a></h3>
-                            <p>Plane</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Linear, JIRA, Trello, Height</div>
-                            <div class="app-links">
-                                <a href="https://github.com/makeplane/plane" target="_blank" rel="noopener noreferrer">⭐ 38046 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-plane/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="project management" data-category="14) project management">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Project Management</a></h3>
-                            <p>Taiga</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Asana, Trello, JIRA</div>
-                            <div class="app-links">
-                                <a href="https://github.com/kaleidos-ventures/taiga-docker" target="_blank" rel="noopener noreferrer">⭐ 1731 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-taiga/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="project management" data-category="14) project management">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Project Management</a></h3>
-                            <p>Vikunja</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Todoist, Trello, Asana</div>
-                            <div class="app-links">
-                                <a href="https://github.com/go-vikunja/api" target="_blank" rel="noopener noreferrer">⭐ 2153 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-vikunja/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="15)-paas(platform-as-a-service)">
-                    <h2>15) PAAS(Platform As A Service)</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="paas" data-category="15) paas(platform as a service)">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">PaaS</a></h3>
-                            <p>Coolify</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Heroku</div>
-                            <div class="app-links">
-                                <a href="https://github.com/coollabsio/coolify" target="_blank" rel="noopener noreferrer">⭐ 44246 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-coolify/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="16)-scheduling">
-                    <h2>16) Scheduling</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="scheduling" data-category="16) scheduling">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Scheduling</a></h3>
-                            <p>Cal.com</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Calendly</div>
-                            <div class="app-links">
-                                <a href="https://github.com/calendso/calendso" target="_blank" rel="noopener noreferrer">⭐ 37566 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-cal/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="17)-video-conferencing">
-                    <h2>17) Video Conferencing</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="video conferencing" data-category="17) video conferencing">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Video Conferencing</a></h3>
-                            <p>Jitsi</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Zoom</div>
-                            <div class="app-links">
-                                <a href="https://github.com/jitsi/jitsi-meet" target="_blank" rel="noopener noreferrer">⭐ 26483 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-jitsi/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="video conferencing" data-category="17) video conferencing">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Video Conferencing</a></h3>
-                            <p>LiveKit</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Twilio, Agora</div>
-                            <div class="app-links">
-                                <a href="https://github.com/livekit/livekit-server" target="_blank" rel="noopener noreferrer">⭐ 13766 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-livekit/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="18)-web-analytics">
-                    <h2>18) Web Analytics</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="web analytics" data-category="18) web analytics">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Web Analytics</a></h3>
-                            <p>Matomo</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Google Analytics</div>
-                            <div class="app-links">
-                                <a href="https://github.com/matomo-org/matomo" target="_blank" rel="noopener noreferrer">⭐ 20751 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-matomo/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="web analytics" data-category="18) web analytics">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Web Analytics</a></h3>
-                            <p>Plausible</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Google Analytics</div>
-                            <div class="app-links">
-                                <a href="https://github.com/plausible/analytics" target="_blank" rel="noopener noreferrer">⭐ 23103 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-plausible/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="web analytics" data-category="18) web analytics">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Web Analytics</a></h3>
-                            <p>Swetrix</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Google Analytics</div>
-                            <div class="app-links">
-                                <a href="https://github.com/Swetrix/swetrix-api" target="_blank" rel="noopener noreferrer">⭐ 526 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-swetrix/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="web analytics" data-category="18) web analytics">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Web Analytics</a></h3>
-                            <p>Umami</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Google Analytics</div>
-                            <div class="app-links">
-                                <a href="https://github.com/mikecao/umami" target="_blank" rel="noopener noreferrer">⭐ 29827 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-umami/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="19)-workflow-automation">
-                    <h2>19) Workflow Automation</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
-                            <p>Activepieces</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Zapier, Tray</div>
-                            <div class="app-links">
-                                <a href="https://github.com/activepieces/activepieces" target="_blank" rel="noopener noreferrer">⭐ 16300 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-activepieces/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
-                            <p>N8N</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Zapier</div>
-                            <div class="app-links">
-                                <a href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener noreferrer">⭐ 129554 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-n8n/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
-                            <p>Pipedream</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Zapier, Integromat</div>
-                            <div class="app-links">
-                                <a href="https://github.com/PipedreamHQ/pipedream" target="_blank" rel="noopener noreferrer">⭐ 10419 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-pipedream/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
-                            <p>Temporal</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Airflow, AWS Step Functions</div>
-                            <div class="app-links">
-                                <a href="https://github.com/temporalio/temporal" target="_blank" rel="noopener noreferrer">⭐ 15274 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-temporal/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
-                            <p>Semaphore UI</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/semaphoreui/semaphore" target="_blank" rel="noopener noreferrer">⭐ 12340 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-semaphoreui/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="auth & sso" data-category="1) auth & sso">
+                                <p class="category">1) Auth & SSO</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Auth & SSO</a></h3>
+                                <p class="description">Authentik</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Okta, Auth0</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/goauthentik/authentik" target="_blank" rel="noopener noreferrer">⭐ 17736 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-goauthentik/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="2)-backend-as-a-service">
-                    <h2>2) Backend as a Service</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="backend as a service" data-category="2) backend as a service">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Backend as a Service</a></h3>
-                            <p>PocketBase</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Firebase</div>
-                            <div class="app-links">
-                                <a href="https://github.com/pocketbase/pocketbase" target="_blank" rel="noopener noreferrer">⭐ 49882 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-pocketbase/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="20)-database">
-                    <h2>20) Database</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="database" data-category="20) database">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Database</a></h3>
-                            <p>SurrealDB</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> PostgresDB, MariaDB</div>
-                            <div class="app-links">
-                                <a href="https://github.com/surrealdb/surrealdb" target="_blank" rel="noopener noreferrer">⭐ 29855 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-surrealdb/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="database" data-category="20) database">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Database</a></h3>
-                            <p>CouchDB</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> PostgresDB, MariaDB</div>
-                            <div class="app-links">
-                                <a href="https://github.com/surrealdb/surrealdb" target="_blank" rel="noopener noreferrer">⭐ 29855 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-couchdb/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="21)-documents-and-files">
-                    <h2>21) Documents And Files</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="documents & files" data-category="21) documents and files">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Documents & Files</a></h3>
-                            <p>Striling PDF</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Adobe Acrobat Reader</div>
-                            <div class="app-links">
-                                <a href="https://github.com/Stirling-Tools/Stirling-PDF" target="_blank" rel="noopener noreferrer">⭐ 64312 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-Stirling-PDF" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="books" data-category="21) documents and files">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Books</a></h3>
-                            <p>Calibre</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/kovidgoyal/calibre" target="_blank" rel="noopener noreferrer">⭐ 22172 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-calibre" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="auth & sso" data-category="1) auth & sso">
+                                <p class="category">1) Auth & SSO</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Auth & SSO</a></h3>
+                                <p class="description">2FAuth</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Google Authenticator, Microsoft authenticator</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/Bubka/2FAuth" target="_blank" rel="noopener noreferrer">⭐ 3298 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-2fauth/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="books" data-category="21) documents and files">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Books</a></h3>
-                            <p>Calibre-web</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/janeczku/calibre-web" target="_blank" rel="noopener noreferrer">⭐ 15239 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-calibre-web" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
                         </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="22)-list-manager">
-                    <h2>22) List manager</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="list manager" data-category="22) list manager">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">List Manager</a></h3>
-                            <p>List Monk</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Keila</div>
-                            <div class="app-links">
-                                <a href="https://github.com/knadh/listmonk" target="_blank" rel="noopener noreferrer">⭐ 17601 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-listmonk" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="23)-finance">
-                    <h2>23) Finance</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="finance" data-category="23) finance">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Finance</a></h3>
-                            <p>Fireflyiii</p>
+                    </section>
+                    
+                    <section class="category-section" id="10)-messaging">
+                        <h2>10) Messaging</h2>
+                        <div class="app-grid">
                             
-                            <div class="app-links">
-                                <a href="https://github.com/firefly-iii/firefly-iii" target="_blank" rel="noopener noreferrer">⭐ 20052 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-fireflyiii" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="messaging" data-category="10) messaging">
+                                <p class="category">10) Messaging</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Messaging</a></h3>
+                                <p class="description">Element</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Slack</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/vector-im/element-web" target="_blank" rel="noopener noreferrer">⭐ 12000 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-element/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="finance" data-category="23) finance">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Finance</a></h3>
-                            <p>Wallos</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/ellite/Wallos" target="_blank" rel="noopener noreferrer">⭐ 5823 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-wallos" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="messaging" data-category="10) messaging">
+                                <p class="category">10) Messaging</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Messaging</a></h3>
+                                <p class="description">Mattermost</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Slack</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/mattermost/mattermost-server" target="_blank" rel="noopener noreferrer">⭐ 33374 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-mattermost/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="finance" data-category="23) finance">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Finance</a></h3>
-                            <p>Maybe</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/maybe-finance/maybe" target="_blank" rel="noopener noreferrer">⭐ 52963 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-maybe" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="messaging" data-category="10) messaging">
+                                <p class="category">10) Messaging</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Messaging</a></h3>
+                                <p class="description">Rocket.chat</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Slack</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/RocketChat/Rocket.Chat" target="_blank" rel="noopener noreferrer">⭐ 43197 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-rocketchat/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="24)-hr">
-                    <h2>24) HR</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="hr" data-category="24) hr">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">HR</a></h3>
-                            <p>Chief On Boarding</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> MintHCM</div>
-                            <div class="app-links">
-                                <a href="https://github.com/chiefonboarding/ChiefOnboarding" target="_blank" rel="noopener noreferrer">⭐ 804 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-chiefonboarding" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="25)-documentation-&-wiki">
-                    <h2>25) Documentation & Wiki</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="documentation" data-category="25) documentation & wiki">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Documentation</a></h3>
-                            <p>Docmost</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Notion Confluence</div>
-                            <div class="app-links">
-                                <a href="https://github.com/docmost/docmost" target="_blank" rel="noopener noreferrer">⭐ 16803 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-docmost" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="documentation" data-category="25) documentation & wiki">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Documentation</a></h3>
-                            <p>Bookstack</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/BookStackApp/BookStack" target="_blank" rel="noopener noreferrer">⭐ 17176 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-bookstack" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
                         </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="26)-tools">
-                    <h2>26) Tools</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="tools" data-category="26) tools">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Tools</a></h3>
-                            <p>IT Tools</p>
+                    </section>
+                    
+                    <section class="category-section" id="11)-no-code-database">
+                        <h2>11) No Code Database</h2>
+                        <div class="app-grid">
                             
-                            <div class="app-links">
-                                <a href="https://github.com/CorentinTh/it-tools" target="_blank" rel="noopener noreferrer">⭐ 32046 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-ittools" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="no-code database" data-category="11) no code database">
+                                <p class="category">11) No Code Database</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">No-code Database</a></h3>
+                                <p class="description">NocoDB</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Airtable</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/nocodb/nocodb" target="_blank" rel="noopener noreferrer">⭐ 56412 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-nocodb/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="tools" data-category="26) tools">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Tools</a></h3>
-                            <p>Gitea</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Github Gitlab</div>
-                            <div class="app-links">
-                                <a href="https://github.com/go-gitea/gitea" target="_blank" rel="noopener noreferrer">⭐ 50101 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-gitea" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="bookmarks" data-category="26) tools">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Bookmarks</a></h3>
-                            <p>Linkwarden</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/linkwarden/linkwarden" target="_blank" rel="noopener noreferrer">⭐ 14212 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-linkwarden" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="no-code database" data-category="11) no code database">
+                                <p class="category">11) No Code Database</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">No-code Database</a></h3>
+                                <p class="description">Seatable</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Airtable</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/seatable/seatable" target="_blank" rel="noopener noreferrer">⭐ 644 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-seatable/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="tools" data-category="26) tools">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Tools</a></h3>
-                            <p>NTFY</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/binwiederhier/ntfy" target="_blank" rel="noopener noreferrer">⭐ 25715 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-ntfy" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
                         </div>
-                        
-                        <div class="app-card" data-name="tools" data-category="26) tools">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Tools</a></h3>
-                            <p>Homarr</p>
+                    </section>
+                    
+                    <section class="category-section" id="12)-note-taking">
+                        <h2>12) Note Taking</h2>
+                        <div class="app-grid">
                             
-                            <div class="app-links">
-                                <a href="https://github.com/ajnart/homarr" target="_blank" rel="noopener noreferrer">⭐ 6907 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-homarr" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="notetaking" data-category="12) note taking">
+                                <p class="category">12) Note Taking</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Notetaking</a></h3>
+                                <p class="description">Logseq</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Evernote, OneNote, Roam Research</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/logseq/logseq" target="_blank" rel="noopener noreferrer">⭐ 37968 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-logseq/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="3)-design">
-                    <h2>3) Design</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="design" data-category="3) design">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Design</a></h3>
-                            <p>Penpot</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Figma</div>
-                            <div class="app-links">
-                                <a href="https://github.com/penpot/penpot" target="_blank" rel="noopener noreferrer">⭐ 39560 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-penpot/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="4)-digital-signature">
-                    <h2>4) Digital Signature</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="digital signature" data-category="4) digital signature">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Digital Signature</a></h3>
-                            <p>DocuSeal</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> DocuSign</div>
-                            <div class="app-links">
-                                <a href="https://github.com/docusealco/docuseal" target="_blank" rel="noopener noreferrer">⭐ 9653 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-docuseal/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="digital signature" data-category="4) digital signature">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Digital Signature</a></h3>
-                            <p>Documenso</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> DocuSign</div>
-                            <div class="app-links">
-                                <a href="https://github.com/documenso/documenso" target="_blank" rel="noopener noreferrer">⭐ 11470 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-documenso/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="5)-erp-&-crm">
-                    <h2>5) ERP & CRM</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="erp" data-category="5) erp & crm">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">ERP</a></h3>
-                            <p>Dolibarr</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Oracle Fusion ERP, Odoo</div>
-                            <div class="app-links">
-                                <a href="https://github.com/Dolibarr/dolibarr" target="_blank" rel="noopener noreferrer">⭐ 6402 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-dolibarr/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="erp" data-category="5) erp & crm">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">ERP</a></h3>
-                            <p>ERPNext</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> SAP Business One, Odoo</div>
-                            <div class="app-links">
-                                <a href="https://github.com/frappe/erpnext" target="_blank" rel="noopener noreferrer">⭐ 27709 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-erpnext/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="crm" data-category="5) erp & crm">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">CRM</a></h3>
-                            <p>Monica HQ</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/monicahq/monica" target="_blank" rel="noopener noreferrer">⭐ 23270 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-erpnext/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="notetaking" data-category="12) note taking">
+                                <p class="category">12) Note Taking</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Notetaking</a></h3>
+                                <p class="description">Outline</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Notion</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/outline/outline" target="_blank" rel="noopener noreferrer">⭐ 34450 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-outline/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="crm" data-category="5) erp & crm">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">CRM</a></h3>
-                            <p>GLPI</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/glpi-project/glpi" target="_blank" rel="noopener noreferrer">⭐ 5026 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-glpi/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
                         </div>
-                        
-                        <div class="app-card" data-name="crm" data-category="5) erp & crm">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">CRM</a></h3>
-                            <p>Espo CRM</p>
+                    </section>
+                    
+                    <section class="category-section" id="13)-passwords">
+                        <h2>13) Passwords</h2>
+                        <div class="app-grid">
                             
-                            <div class="app-links">
-                                <a href="https://github.com/espocrm/espocrm" target="_blank" rel="noopener noreferrer">⭐ 2408 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-espocrm/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="password manager" data-category="13) passwords">
+                                <p class="category">13) Passwords</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Password Manager</a></h3>
+                                <p class="description">VaultWarden</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> 1Password</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/dani-garcia/vaultwarden" target="_blank" rel="noopener noreferrer">⭐ 47904 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-vaultwarden/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="6)-marketing">
-                    <h2>6) Marketing</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="email marketing" data-category="6) marketing">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Email Marketing</a></h3>
-                            <p>Keila</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Mailchimp, Sendinblue</div>
-                            <div class="app-links">
-                                <a href="https://github.com/pentacent/keila" target="_blank" rel="noopener noreferrer">⭐ 1775 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-keila/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
-                            </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="marketing automation" data-category="6) marketing">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Marketing Automation</a></h3>
-                            <p>Mautic</p>
                             
-                            <div class="app-links">
-                                <a href="https://github.com/mautic/mautic" target="_blank" rel="noopener noreferrer">⭐ 8531 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-mautic/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            <div class="app-card" data-name="password" data-category="13) passwords">
+                                <p class="category">13) Passwords</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Password</a></h3>
+                                <p class="description">Password Pusher</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/pglombardo/PasswordPusher" target="_blank" rel="noopener noreferrer">⭐ 2575 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-passwordpusher/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
+                            
                         </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="7)-file-hosting">
-                    <h2>7) File Hosting</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="file hosting" data-category="7) file hosting">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">File Hosting</a></h3>
-                            <p>Filestash</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Dropbox, Google Drive</div>
-                            <div class="app-links">
-                                <a href="https://github.com/mickael-kerjean/filestash" target="_blank" rel="noopener noreferrer">⭐ 11997 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-filestash/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                    </section>
+                    
+                    <section class="category-section" id="14)-project-management">
+                        <h2>14) Project Management</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="project management" data-category="14) project management">
+                                <p class="category">14) Project Management</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Project Management</a></h3>
+                                <p class="description">Plane</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Linear, JIRA, Trello, Height</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/makeplane/plane" target="_blank" rel="noopener noreferrer">⭐ 38047 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-plane/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="app-card" data-name="file hosting" data-category="7) file hosting">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">File Hosting</a></h3>
-                            <p>Spacedrive</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Dropbox, Google Drive</div>
-                            <div class="app-links">
-                                <a href="https://github.com/spacedriveapp/spacedrive" target="_blank" rel="noopener noreferrer">⭐ 35228 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-spacedrive/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            
+                            <div class="app-card" data-name="project management" data-category="14) project management">
+                                <p class="category">14) Project Management</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Project Management</a></h3>
+                                <p class="description">Taiga</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Asana, Trello, JIRA</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/kaleidos-ventures/taiga-docker" target="_blank" rel="noopener noreferrer">⭐ 1731 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-taiga/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="8)-form-building">
-                    <h2>8) Form Building</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="form building" data-category="8) form building">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Form Building</a></h3>
-                            <p>Formbricks</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Typeform, Google Forms, React Hook Form</div>
-                            <div class="app-links">
-                                <a href="https://github.com/formbricks/formbricks" target="_blank" rel="noopener noreferrer">⭐ 11091 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-formbricks/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            
+                            <div class="app-card" data-name="project management" data-category="14) project management">
+                                <p class="category">14) Project Management</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Project Management</a></h3>
+                                <p class="description">Vikunja</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Todoist, Trello, Asana</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/go-vikunja/api" target="_blank" rel="noopener noreferrer">⭐ 2153 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-vikunja/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
+                            
                         </div>
-                        
-                        <div class="app-card" data-name="form building" data-category="8) form building">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Form Building</a></h3>
-                            <p>Formio</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Vueform, Typeform</div>
-                            <div class="app-links">
-                                <a href="https://github.com/formio/formio" target="_blank" rel="noopener noreferrer">⭐ 2213 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-formio/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                    </section>
+                    
+                    <section class="category-section" id="15)-paas(platform-as-a-service)">
+                        <h2>15) PAAS(Platform As A Service)</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="paas" data-category="15) paas(platform as a service)">
+                                <p class="category">15) PAAS(Platform As A Service)</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">PaaS</a></h3>
+                                <p class="description">Coolify</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Heroku</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/coollabsio/coolify" target="_blank" rel="noopener noreferrer">⭐ 44247 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-coolify/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
+                            
                         </div>
-                        
-                    </div>
-                </section>
-                
-                <section class="category-section" id="9)-market-saas">
-                    <h2>9) Market SAAS</h2>
-                    <div class="app-grid">
-                        
-                        <div class="app-card" data-name="marketing saas" data-category="9) market saas">
-                            <h3><a href="" target="_blank" rel="noopener noreferrer">Marketing SaaS</a></h3>
-                            <p>Dub</p>
-                            <div class="alternatives"><strong>Alternatives:</strong> Bitly</div>
-                            <div class="app-links">
-                                <a href="https://github.com/steven-tey/dub" target="_blank" rel="noopener noreferrer">⭐ 22086 Stars</a>
-                                <a href="https://github.com/geniusdynamics/ns8-dub/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                    </section>
+                    
+                    <section class="category-section" id="16)-scheduling">
+                        <h2>16) Scheduling</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="scheduling" data-category="16) scheduling">
+                                <p class="category">16) Scheduling</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Scheduling</a></h3>
+                                <p class="description">Cal.com</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Calendly</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/calendso/calendso" target="_blank" rel="noopener noreferrer">⭐ 37567 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-cal/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
                             </div>
+                            
                         </div>
-                        
-                    </div>
-                </section>
-                
-            </main>
-            <footer>
-                <p>This page is generated from the <a href="https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
-            </footer>
+                    </section>
+                    
+                    <section class="category-section" id="17)-video-conferencing">
+                        <h2>17) Video Conferencing</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="video conferencing" data-category="17) video conferencing">
+                                <p class="category">17) Video Conferencing</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Video Conferencing</a></h3>
+                                <p class="description">Jitsi</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Zoom</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/jitsi/jitsi-meet" target="_blank" rel="noopener noreferrer">⭐ 26487 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-jitsi/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="video conferencing" data-category="17) video conferencing">
+                                <p class="category">17) Video Conferencing</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Video Conferencing</a></h3>
+                                <p class="description">LiveKit</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Twilio, Agora</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/livekit/livekit-server" target="_blank" rel="noopener noreferrer">⭐ 13768 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-livekit/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="18)-web-analytics">
+                        <h2>18) Web Analytics</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="web analytics" data-category="18) web analytics">
+                                <p class="category">18) Web Analytics</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Web Analytics</a></h3>
+                                <p class="description">Matomo</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Google Analytics</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/matomo-org/matomo" target="_blank" rel="noopener noreferrer">⭐ 20751 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-matomo/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="web analytics" data-category="18) web analytics">
+                                <p class="category">18) Web Analytics</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Web Analytics</a></h3>
+                                <p class="description">Plausible</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Google Analytics</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/plausible/analytics" target="_blank" rel="noopener noreferrer">⭐ 23103 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-plausible/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="web analytics" data-category="18) web analytics">
+                                <p class="category">18) Web Analytics</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Web Analytics</a></h3>
+                                <p class="description">Swetrix</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Google Analytics</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/Swetrix/swetrix-api" target="_blank" rel="noopener noreferrer">⭐ 526 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-swetrix/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="web analytics" data-category="18) web analytics">
+                                <p class="category">18) Web Analytics</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Web Analytics</a></h3>
+                                <p class="description">Umami</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Google Analytics</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/mikecao/umami" target="_blank" rel="noopener noreferrer">⭐ 29835 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-umami/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="19)-workflow-automation">
+                        <h2>19) Workflow Automation</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
+                                <p class="category">19) Workflow Automation</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
+                                <p class="description">Activepieces</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Zapier, Tray</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/activepieces/activepieces" target="_blank" rel="noopener noreferrer">⭐ 16300 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-activepieces/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
+                                <p class="category">19) Workflow Automation</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
+                                <p class="description">N8N</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Zapier</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener noreferrer">⭐ 129561 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-n8n/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
+                                <p class="category">19) Workflow Automation</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
+                                <p class="description">Pipedream</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Zapier, Integromat</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/PipedreamHQ/pipedream" target="_blank" rel="noopener noreferrer">⭐ 10419 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-pipedream/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
+                                <p class="category">19) Workflow Automation</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
+                                <p class="description">Temporal</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Airflow, AWS Step Functions</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/temporalio/temporal" target="_blank" rel="noopener noreferrer">⭐ 15274 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-temporal/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="workflow automation" data-category="19) workflow automation">
+                                <p class="category">19) Workflow Automation</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Workflow Automation</a></h3>
+                                <p class="description">Semaphore UI</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/semaphoreui/semaphore" target="_blank" rel="noopener noreferrer">⭐ 12341 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-semaphoreui/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="2)-backend-as-a-service">
+                        <h2>2) Backend as a Service</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="backend as a service" data-category="2) backend as a service">
+                                <p class="category">2) Backend as a Service</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Backend as a Service</a></h3>
+                                <p class="description">PocketBase</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Firebase</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/pocketbase/pocketbase" target="_blank" rel="noopener noreferrer">⭐ 49883 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-pocketbase/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="20)-database">
+                        <h2>20) Database</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="database" data-category="20) database">
+                                <p class="category">20) Database</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Database</a></h3>
+                                <p class="description">SurrealDB</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> PostgresDB, MariaDB</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/surrealdb/surrealdb" target="_blank" rel="noopener noreferrer">⭐ 29856 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-surrealdb/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="database" data-category="20) database">
+                                <p class="category">20) Database</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Database</a></h3>
+                                <p class="description">CouchDB</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> PostgresDB, MariaDB</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/surrealdb/surrealdb" target="_blank" rel="noopener noreferrer">⭐ 29856 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-couchdb/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="21)-documents-and-files">
+                        <h2>21) Documents And Files</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="documents & files" data-category="21) documents and files">
+                                <p class="category">21) Documents And Files</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Documents & Files</a></h3>
+                                <p class="description">Striling PDF</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Adobe Acrobat Reader</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/Stirling-Tools/Stirling-PDF" target="_blank" rel="noopener noreferrer">⭐ 64314 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-Stirling-PDF" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="books" data-category="21) documents and files">
+                                <p class="category">21) Documents And Files</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Books</a></h3>
+                                <p class="description">Calibre</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/kovidgoyal/calibre" target="_blank" rel="noopener noreferrer">⭐ 22173 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-calibre" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="books" data-category="21) documents and files">
+                                <p class="category">21) Documents And Files</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Books</a></h3>
+                                <p class="description">Calibre-web</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/janeczku/calibre-web" target="_blank" rel="noopener noreferrer">⭐ 15239 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-calibre-web" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="22)-list-manager">
+                        <h2>22) List manager</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="list manager" data-category="22) list manager">
+                                <p class="category">22) List manager</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">List Manager</a></h3>
+                                <p class="description">List Monk</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Keila</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/knadh/listmonk" target="_blank" rel="noopener noreferrer">⭐ 17601 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-listmonk" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="23)-finance">
+                        <h2>23) Finance</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="finance" data-category="23) finance">
+                                <p class="category">23) Finance</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Finance</a></h3>
+                                <p class="description">Fireflyiii</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/firefly-iii/firefly-iii" target="_blank" rel="noopener noreferrer">⭐ 20052 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-fireflyiii" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="finance" data-category="23) finance">
+                                <p class="category">23) Finance</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Finance</a></h3>
+                                <p class="description">Wallos</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/ellite/Wallos" target="_blank" rel="noopener noreferrer">⭐ 5823 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-wallos" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="finance" data-category="23) finance">
+                                <p class="category">23) Finance</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Finance</a></h3>
+                                <p class="description">Maybe</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/maybe-finance/maybe" target="_blank" rel="noopener noreferrer">⭐ 52962 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-maybe" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="24)-hr">
+                        <h2>24) HR</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="hr" data-category="24) hr">
+                                <p class="category">24) HR</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">HR</a></h3>
+                                <p class="description">Chief On Boarding</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> MintHCM</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/chiefonboarding/ChiefOnboarding" target="_blank" rel="noopener noreferrer">⭐ 804 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-chiefonboarding" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="25)-documentation-&-wiki">
+                        <h2>25) Documentation & Wiki</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="documentation" data-category="25) documentation & wiki">
+                                <p class="category">25) Documentation & Wiki</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Documentation</a></h3>
+                                <p class="description">Docmost</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Notion Confluence</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/docmost/docmost" target="_blank" rel="noopener noreferrer">⭐ 16803 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-docmost" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="documentation" data-category="25) documentation & wiki">
+                                <p class="category">25) Documentation & Wiki</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Documentation</a></h3>
+                                <p class="description">Bookstack</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/BookStackApp/BookStack" target="_blank" rel="noopener noreferrer">⭐ 17176 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-bookstack" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="26)-tools">
+                        <h2>26) Tools</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="tools" data-category="26) tools">
+                                <p class="category">26) Tools</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Tools</a></h3>
+                                <p class="description">IT Tools</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/CorentinTh/it-tools" target="_blank" rel="noopener noreferrer">⭐ 32047 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-ittools" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="tools" data-category="26) tools">
+                                <p class="category">26) Tools</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Tools</a></h3>
+                                <p class="description">Gitea</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Github Gitlab</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/go-gitea/gitea" target="_blank" rel="noopener noreferrer">⭐ 50103 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-gitea" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="bookmarks" data-category="26) tools">
+                                <p class="category">26) Tools</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Bookmarks</a></h3>
+                                <p class="description">Linkwarden</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/linkwarden/linkwarden" target="_blank" rel="noopener noreferrer">⭐ 14212 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-linkwarden" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="tools" data-category="26) tools">
+                                <p class="category">26) Tools</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Tools</a></h3>
+                                <p class="description">NTFY</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/binwiederhier/ntfy" target="_blank" rel="noopener noreferrer">⭐ 25716 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-ntfy" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="tools" data-category="26) tools">
+                                <p class="category">26) Tools</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Tools</a></h3>
+                                <p class="description">Homarr</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/ajnart/homarr" target="_blank" rel="noopener noreferrer">⭐ 6907 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-homarr" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="3)-design">
+                        <h2>3) Design</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="design" data-category="3) design">
+                                <p class="category">3) Design</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Design</a></h3>
+                                <p class="description">Penpot</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Figma</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/penpot/penpot" target="_blank" rel="noopener noreferrer">⭐ 39562 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-penpot/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="4)-digital-signature">
+                        <h2>4) Digital Signature</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="digital signature" data-category="4) digital signature">
+                                <p class="category">4) Digital Signature</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Digital Signature</a></h3>
+                                <p class="description">DocuSeal</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> DocuSign</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/docusealco/docuseal" target="_blank" rel="noopener noreferrer">⭐ 9653 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-docuseal/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="digital signature" data-category="4) digital signature">
+                                <p class="category">4) Digital Signature</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Digital Signature</a></h3>
+                                <p class="description">Documenso</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> DocuSign</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/documenso/documenso" target="_blank" rel="noopener noreferrer">⭐ 11470 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-documenso/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="5)-erp-&-crm">
+                        <h2>5) ERP & CRM</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="erp" data-category="5) erp & crm">
+                                <p class="category">5) ERP & CRM</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">ERP</a></h3>
+                                <p class="description">Dolibarr</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Oracle Fusion ERP, Odoo</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/Dolibarr/dolibarr" target="_blank" rel="noopener noreferrer">⭐ 6402 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-dolibarr/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="erp" data-category="5) erp & crm">
+                                <p class="category">5) ERP & CRM</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">ERP</a></h3>
+                                <p class="description">ERPNext</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> SAP Business One, Odoo</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/frappe/erpnext" target="_blank" rel="noopener noreferrer">⭐ 27709 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-erpnext/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="crm" data-category="5) erp & crm">
+                                <p class="category">5) ERP & CRM</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">CRM</a></h3>
+                                <p class="description">Monica HQ</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/monicahq/monica" target="_blank" rel="noopener noreferrer">⭐ 23271 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-erpnext/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="crm" data-category="5) erp & crm">
+                                <p class="category">5) ERP & CRM</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">CRM</a></h3>
+                                <p class="description">GLPI</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/glpi-project/glpi" target="_blank" rel="noopener noreferrer">⭐ 5026 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-glpi/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="crm" data-category="5) erp & crm">
+                                <p class="category">5) ERP & CRM</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">CRM</a></h3>
+                                <p class="description">Espo CRM</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/espocrm/espocrm" target="_blank" rel="noopener noreferrer">⭐ 2408 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-espocrm/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="6)-marketing">
+                        <h2>6) Marketing</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="email marketing" data-category="6) marketing">
+                                <p class="category">6) Marketing</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Email Marketing</a></h3>
+                                <p class="description">Keila</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Mailchimp, Sendinblue</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/pentacent/keila" target="_blank" rel="noopener noreferrer">⭐ 1775 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-keila/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="marketing automation" data-category="6) marketing">
+                                <p class="category">6) Marketing</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Marketing Automation</a></h3>
+                                <p class="description">Mautic</p>
+                                
+                                <div class="app-links">
+                                    <a href="https://github.com/mautic/mautic" target="_blank" rel="noopener noreferrer">⭐ 8531 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-mautic/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="7)-file-hosting">
+                        <h2>7) File Hosting</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="file hosting" data-category="7) file hosting">
+                                <p class="category">7) File Hosting</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">File Hosting</a></h3>
+                                <p class="description">Filestash</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Dropbox, Google Drive</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/mickael-kerjean/filestash" target="_blank" rel="noopener noreferrer">⭐ 11998 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-filestash/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="file hosting" data-category="7) file hosting">
+                                <p class="category">7) File Hosting</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">File Hosting</a></h3>
+                                <p class="description">Spacedrive</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Dropbox, Google Drive</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/spacedriveapp/spacedrive" target="_blank" rel="noopener noreferrer">⭐ 35228 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-spacedrive/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="8)-form-building">
+                        <h2>8) Form Building</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="form building" data-category="8) form building">
+                                <p class="category">8) Form Building</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Form Building</a></h3>
+                                <p class="description">Formbricks</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Typeform, Google Forms, React Hook Form</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/formbricks/formbricks" target="_blank" rel="noopener noreferrer">⭐ 11091 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-formbricks/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                            <div class="app-card" data-name="form building" data-category="8) form building">
+                                <p class="category">8) Form Building</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Form Building</a></h3>
+                                <p class="description">Formio</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Vueform, Typeform</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/formio/formio" target="_blank" rel="noopener noreferrer">⭐ 2213 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-formio/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                    <section class="category-section" id="9)-market-saas">
+                        <h2>9) Market SAAS</h2>
+                        <div class="app-grid">
+                            
+                            <div class="app-card" data-name="marketing saas" data-category="9) market saas">
+                                <p class="category">9) Market SAAS</p>
+                                <h3><a href="" target="_blank" rel="noopener noreferrer">Marketing SaaS</a></h3>
+                                <p class="description">Dub</p>
+                                <div class="alternatives"><strong>Alternatives:</strong> Bitly</div>
+                                <div class="app-links">
+                                    <a href="https://github.com/steven-tey/dub" target="_blank" rel="noopener noreferrer">⭐ 22086 Stars</a>
+                                    <a href="https://github.com/geniusdynamics/ns8-dub/" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+                </main>
+                <footer>
+                    <p>This page is generated from the <a href="https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
+                </footer>
+            </div>
         </div>
         <script>
             document.getElementById('search-input').addEventListener('input', function(e) {
