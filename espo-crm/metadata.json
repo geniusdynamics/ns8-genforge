@@ -1,0 +1,19 @@
+{
+  "name": "EspoCRM",
+  "description": {
+    "en": "EspoCRM is a web application that allows users to see, enter and evaluate all your company relationships regardless of the type."
+  },
+  "categories": ["office"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.espocrm.com/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-espocrm"
+  },
+  "source": "ghcr.io/geniusdynamics/espocrm"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "dokploy",
+  "description": {
+    "en": "Dokploy. multi-server deployments, advanced user control, and flexible database management—all with Dokploy’s developer-focused features."
+  },
+  "categories": ["development"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.dokploy.com/docs/core",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-dokploy"
+  },
+  "source": "ghcr.io/geniusdynamics/dokploy"
+}
