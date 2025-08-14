@@ -163,8 +163,8 @@ def parse_readme_tables(readme_text):
             for row in table.find_all('tr')[1:]:  # Skip header row
                 cols = row.find_all('td')
                 if len(cols) >= 2:
-                    company_cell = cols[0]
-                    description = cols[1].text.strip()
+                    company_cell = cols[1]
+                    description = cols[2].text.strip()
                     
                     app_link_tag = company_cell.find('a')
                     app_name = app_link_tag.text.strip() if app_link_tag else company_cell.text.strip()
@@ -187,6 +187,7 @@ def parse_readme_tables(readme_text):
                     ns8_link = ns8_link_tag['href'] if ns8_link_tag else f"https://github.com/geniusdynamics/ns8-{app_name.lower().replace(' ', '-')}"
 
 
+                    print(f"DEBUG: category={category}, app_name={app_name}, description={description}, app_link={app_link}")
                     app_cards.append({
                         "category": category,
                         "name": app_name,
