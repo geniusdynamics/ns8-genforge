@@ -1,3 +1,4 @@
+# This workflow is manually triggerable
 name: repomd
 on: 
   push:

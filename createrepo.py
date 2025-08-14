@@ -148,18 +148,25 @@ def get_github_stars(repo_url, github_token=None):
 
 
 def parse_readme_tables(readme_text):
+    print("--- STARTING README PARSING ---")
     html = markdown.markdown(readme_text)
+    print("--- README CONVERTED TO HTML ---")
     soup = BeautifulSoup(html, 'html.parser')
     app_cards = []
 
     categories_header = soup.find('h1', string='Categories')
     if not categories_header:
+        print("!!! ERROR: Could not find H1 'Categories' header !!!")
         return []
+    
+    print(f"--- FOUND H1 HEADER: {categories_header.text} ---")
 
     for header in categories_header.find_all_next('h2'):
         category = header.text.strip()
+        print(f"--- FOUND H2 CATEGORY: {category} ---")
         table = header.find_next_sibling('table')
         if table:
+            print(f"--- FOUND TABLE FOR CATEGORY: {category} ---")
             for row in table.find_all('tr')[1:]:  # Skip header row
                 cols = row.find_all('td')
                 if len(cols) >= 2:
@@ -183,8 +190,7 @@ def parse_readme_tables(readme_text):
                     ns8_link_tag = cols[5].find('a') if len(cols) > 5 else None
                     ns8_link = ns8_link_tag['href'] if ns8_link_tag else f"https://github.com/geniusdynamics/ns8-{app_name.lower().replace(' ', '-')}"
 
-
-                    app_cards.append({
+                    app_card = {
                         "category": category,
                         "name": app_name,
                         "desc": description,
@@ -193,7 +199,11 @@ def parse_readme_tables(readme_text):
                         "stars": stars,
                         "alt": alt_text,
                         "ns8_link": ns8_link
-                    })
+                    }
+                    app_cards.append(app_card)
+                    print(f"--- CREATED APP CARD: {app_name} ---")
+    
+    print(f"--- FINISHED PARSING, FOUND {len(app_cards)} APPS ---")
     return app_cards
 
 
