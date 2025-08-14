@@ -152,7 +152,11 @@ def parse_readme_tables(readme_text):
     soup = BeautifulSoup(html, 'html.parser')
     app_cards = []
 
-    for header in soup.find_all('h2'):
+    categories_header = soup.find('h1', string='Categories')
+    if not categories_header:
+        return []
+
+    for header in categories_header.find_all_next('h2'):
         category = header.text.strip()
         table = header.find_next_sibling('table')
         if table:
