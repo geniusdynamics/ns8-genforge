@@ -441,7 +441,7 @@ def generate_html(cards):
                                 <p class="description">{{ app.desc }}</p>
                                 {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> 
                                 {% for alt in app.alt %}
-                                <a href="{{ alt.link }}" target="_blank" rel="noopener noreferrer">{{ alt.name }}</a>{% if not loop.last %}, {% endif %}
+                                {{ alt.name }}{% if not loop.last %}, {% endif %}
                                 {% endfor %}
                                 </div>{% endif %}
                                 <div class="app-links">
