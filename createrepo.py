@@ -707,7 +707,11 @@ def generate_html(cards):
                                 <p class="category">{{ app.category }}</p>
                                 <h3><a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">{{ app.name }}</a></h3>
                                 <p class="description">{{ app.desc }}</p>
-                                {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> {{ app.alt }}</div>{% endif %}
+                                {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong>
+                                {% for alt in app.alt %}
+                                <a href="{{ alt.link }}" target="_blank" rel="noopener noreferrer">{{ alt.name }}</a>{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                                </div>{% endif %}
                                 <div class="app-links">
                                     {% if app.repo_link %}<a href="{{ app.repo_link }}" target="_blank" rel="noopener noreferrer">⭐ {{ app.stars }} Stars</a>{% endif %}
                                     <a href="{{ app.ns8_link }}" target="_blank" rel="noopener noreferrer">NS8 Module</a>
