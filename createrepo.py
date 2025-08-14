@@ -152,6 +152,7 @@ def parse_readme_tables(readme_text):
     html = markdown.markdown(readme_text)
     print("--- README CONVERTED TO HTML ---")
     soup = BeautifulSoup(html, 'html.parser')
+    print(soup.prettify())
     app_cards = []
 
     categories_header = soup.find('h1', string='Categories')
