@@ -2,6 +2,10 @@ name: repomd
 on: 
   push:
     branches: main
+    paths:
+      - '**.py'
+      - '**.sh'
+      - 'README.md'
   workflow_dispatch:
   schedule:
   - cron:  '25 0,6,12,18 * * *'

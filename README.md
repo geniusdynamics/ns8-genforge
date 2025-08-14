@@ -1,6 +1,6 @@
 # GenForge modules index for NS8
 
-This is the official GenForge NS8 index of modules.
+This is the official GenForge NS8 index of modules built for Nethserver 8.
 Wit All the cool Modules We have curated for you
 
 ### Table of Contents
