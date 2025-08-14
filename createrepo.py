@@ -436,8 +436,8 @@ def generate_html(cards):
                         <div class="app-grid">
                             {% for app in cards if app.category == category %}
                             <div class="app-card" data-name="{{ app.name.lower() }}" data-category="{{ app.category.lower() }}">
-                                <h3><a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">{{ app.name }}</a></h3>
                                 <p class="category">{{ app.category }}</p>
+                                <h3><a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">{{ app.name }}</a></h3>
                                 <p class="description">{{ app.desc }}</p>
                                 {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> 
                                 {% for alt in app.alt %}
