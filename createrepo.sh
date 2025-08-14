@@ -29,7 +29,7 @@ if ! buildah containers --format "{{.ContainerName}}" | grep -q repomd-builder; 
 cd /usr/src
 python -mvenv /opt/pyenv --upgrade-deps
 source /opt/pyenv/bin/activate
-pip install semver
+pip install semver markdown beautifulsoup4 requests jinja2
 apk add skopeo
 EOF
 fi

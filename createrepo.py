@@ -117,3 +117,289 @@ for entry_path in glob.glob(path + '/*'):  # do not match .git and similar
 
 with open(os.path.join(path, 'repodata.json'), 'w') as outfile:
     json.dump(index, outfile, separators=(',', ':'))
+
+from pathlib import Path
+import re
+from datetime import datetime, timezone
+import os
+import requests
+from jinja2 import Template
+import markdown
+from bs4 import BeautifulSoup
+
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+
+
+def get_github_stars(repo_url, github_token=None):
+    if not repo_url or not repo_url.startswith("https://github.com/"):
+        return 0
+    api_url = f"https://api.github.com/repos/{repo_url.replace('https://github.com/', '')}"
+    headers = {'Accept': 'application/vnd.github.v3+json'}
+    if github_token:
+        headers['Authorization'] = f'token {github_token}'
+    try:
+        response = requests.get(api_url, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        return data.get('stargazers_count', 0)
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching stars for {repo_url}: {e}")
+        return 0
+
+
+def parse_readme_tables(readme_text):
+    html = markdown.markdown(readme_text)
+    soup = BeautifulSoup(html, 'html.parser')
+    app_cards = []
+
+    for header in soup.find_all('h2'):
+        category = header.text.strip()
+        table = header.find_next_sibling('table')
+        if table:
+            for row in table.find_all('tr')[1:]:  # Skip header row
+                cols = row.find_all('td')
+                if len(cols) >= 2:
+                    company_cell = cols[0].text.strip()
+                    description = cols[1].text.strip()
+                    
+                    # Extracting app name and link from the first column
+                    app_link_tag = cols[0].find('a')
+                    app_name = app_link_tag.text.strip() if app_link_tag else company_cell
+                    app_link = app_link_tag['href'] if app_link_tag else ""
+
+                    # Github stars
+                    stars_link_tag = cols[3].find('a') if len(cols) > 3 else None
+                    repo_link = stars_link_tag['href'] if stars_link_tag else ""
+                    stars = get_github_stars(repo_link, GITHUB_TOKEN)
+
+                    # Alternatives
+                    alt_text = cols[4].text.strip() if len(cols) > 4 else ""
+
+                    # NS8 Link
+                    ns8_link_tag = cols[5].find('a') if len(cols) > 5 else None
+                    ns8_link = ns8_link_tag['href'] if ns8_link_tag else f"https://github.com/geniusdynamics/ns8-{app_name.lower().replace(' ', '-')}"
+
+
+                    app_cards.append({
+                        "category": category,
+                        "name": app_name,
+                        "desc": description,
+                        "link": app_link,
+                        "repo_link": repo_link,
+                        "stars": stars,
+                        "alt": alt_text,
+                        "ns8_link": ns8_link
+                    })
+    return app_cards
+
+
+def generate_html(cards):
+    timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
+    categories = sorted(list(set(card['category'] for card in cards)))
+
+    html_template = Template(r'''
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GenForge App Directory</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --primary-color: #0366d6;
+                --background-color: #f6f8fa;
+                --card-background: #ffffff;
+                --text-color: #24292e;
+                --subtle-text-color: #586069;
+                --border-color: #e1e4e8;
+            }
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                margin: 0;
+                background-color: var(--background-color);
+                color: var(--text-color);
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            header {
+                padding: 20px;
+                border-bottom: 1px solid var(--border-color);
+                background-color: var(--card-background);
+                text-align: center;
+            }
+            header h1 {
+                font-size: 2.5em;
+                color: var(--primary-color);
+                margin: 0;
+            }
+            header p {
+                color: var(--subtle-text-color);
+            }
+            .search-container {
+                margin-top: 20px;
+            }
+            #search-input {
+                width: 50%;
+                padding: 12px;
+                font-size: 1em;
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+            }
+            main {
+                flex: 1;
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+            }
+            .category-section h2 {
+                font-size: 2em;
+                color: var(--primary-color);
+                border-bottom: 2px solid var(--primary-color);
+                padding-bottom: 10px;
+                margin-top: 40px;
+            }
+            .app-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 24px;
+            }
+            .app-card {
+                background: var(--card-background);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .app-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+            .app-card h3 {
+                margin: 0 0 10px 0;
+                font-size: 1.5em;
+            }
+            .app-card h3 a {
+                color: var(--text-color);
+                text-decoration: none;
+                font-weight: 600;
+            }
+            .app-card p {
+                flex-grow: 1;
+                color: var(--subtle-text-color);
+            }
+            .app-links {
+                margin-top: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .app-links a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                background-color: var(--primary-color);
+                color: white;
+                text-decoration: none;
+                border-radius: 6px;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+            .alternatives {
+                font-size: 0.9em;
+                margin-top: 15px;
+                color: var(--subtle-text-color);
+            }
+            footer {
+                text-align: center;
+                padding: 20px;
+                font-size: 0.9em;
+                color: var(--subtle-text-color);
+                border-top: 1px solid var(--border-color);
+                background-color: var(--card-background);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>GenForge App Directory</h1>
+                <p>Last updated: {{ timestamp }}</p>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search for applications...">
+                </div>
+            </header>
+            <main>
+                {% for category in categories %}
+                <section class="category-section" id="{{ category.lower().replace(' ', '-') }}">
+                    <h2>{{ category }}</h2>
+                    <div class="app-grid">
+                        {% for app in cards if app.category == category %}
+                        <div class="app-card" data-name="{{ app.name.lower() }}" data-category="{{ app.category.lower() }}">
+                            <h3><a href="{{ app.link }}" target="_blank" rel="noopener noreferrer">{{ app.name }}</a></h3>
+                            <p>{{ app.desc }}</p>
+                            {% if app.alt %}<div class="alternatives"><strong>Alternatives:</strong> {{ app.alt }}</div>{% endif %}
+                            <div class="app-links">
+                                {% if app.repo_link %}<a href="{{ app.repo_link }}" target="_blank" rel="noopener noreferrer">⭐ {{ app.stars }} Stars</a>{% endif %}
+                                <a href="{{ app.ns8_link }}" target="_blank" rel="noopener noreferrer">NS8 Module</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endfor %}
+            </main>
+            <footer>
+                <p>This page is generated from the <a href="https://github.com/geniusdynamics/ns8-genforge/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a> on GitHub.</p>
+            </footer>
+        </div>
+        <script>
+            document.getElementById('search-input').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                document.querySelectorAll('.app-card').forEach(card => {
+                    const appName = card.dataset.name;
+                    if (appName.includes(searchTerm)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+    </body>
+    </html>
+    ''')
+
+    return html_template.render(timestamp=timestamp, categories=categories, cards=cards)
+
+
+def generate_index_main():
+    readme_path = Path("README.md")
+    output_path = Path("index.html")
+
+    if not readme_path.exists():
+        print("❌ README.md not found")
+        return
+
+    try:
+        readme_content = readme_path.read_text(encoding="utf-8")
+        cards = parse_readme_tables(readme_content)
+        if not cards:
+            print("⚠️ No application cards were parsed from the README. The output file will be empty.")
+        
+        html_output = generate_html(cards)
+        output_path.write_text(html_output, encoding="utf-8")
+        print(f"✅ index.html generated successfully with {len(cards)} apps.")
+
+    except Exception as e:
+        print(f"❌ An error occurred: {e}")
+
+
+if __name__ == '__main__':
+    generate_index_main()
