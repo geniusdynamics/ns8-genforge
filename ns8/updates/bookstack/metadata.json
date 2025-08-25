@@ -1,0 +1,19 @@
+{
+  "name": "bookstack",
+  "description": {
+    "en": "Simple & Free Wiki Software"
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.bookstackapp.com/docs/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-bookstack"
+  },
+  "source": "ghcr.io/geniusdynamics/bookstack"
+}
