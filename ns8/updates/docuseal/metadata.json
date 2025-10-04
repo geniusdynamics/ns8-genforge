@@ -1,0 +1,19 @@
+{
+  "name": "docuseal",
+  "description": {
+    "en": "DocuSeal. Open source document filling and signing"
+  },
+  "categories": ["office"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.docuseal.co/docs/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-docuseal"
+  },
+  "source": "ghcr.io/geniusdynamics/docuseal"
+}
