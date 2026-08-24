@@ -1,0 +1,6 @@
+---
+# Since the introduction of the labels `org.nethserver.min-core` and
+# `org.nethserver.min-from` in core 2.10, we can pin specific image tags
+# to ensure they are always visible to clients, allowing for gradual
+# upgrades between breaking releases.
+{}
