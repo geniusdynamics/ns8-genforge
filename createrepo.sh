@@ -12,7 +12,7 @@ if ! buildah containers --format "{{.ContainerName}}" | grep -q nethforgemd-buil
     buildah from --name nethforgemd-builder -v "${PWD}:/usr/src:Z" docker.io/library/python:3.11-alpine
     buildah run nethforgemd-builder sh <<EOF
 python3 -mvenv /opt/pyenv --upgrade-deps
-/opt/pyenv/bin/pip3 install semver==3.0.1 filetype PyYAML
+/opt/pyenv/bin/pip3 install semver==3.0.1 filetype PyYAML requests jinja2 markdown beautifulsoup4
 apk add skopeo
 EOF
 fi
