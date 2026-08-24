@@ -10,6 +10,7 @@ Wit All the cool Modules We have curated for you
 - [GenForge modules index for NS8](#genforge-modules-index-for-ns8)
   - [Table of Contents](#table-of-contents)
   - [Application List](#application-list)
+  - [Pinning](#Pinning-image-tags-(pins.yml))
 - [Categories](#categories)
   - [1) Auth & SSO](#1-auth--sso)
   - [2) Backend as a Service](#2-backend-as-a-service)
@@ -59,7 +60,40 @@ Alternative URL:
 https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates/
 
 ```
+## Pinning image tags (pins.yml)
 
+`pins.yml` lets you control image visibility and ordering for modules to support staged upgrades and hide broken tags. Each module key contains a list of pin rules:
+
+- `tag: <semver>`, `prepend: <True|False>` — ensure a specific tag is listed; prepend True puts it at the top, False appends it.
+- `match: "<Python semver match string>"`, `remove: True` — hide matching tags from clients. E.g. `<2.0.0`.
+
+Use cases:
+- Maintain upgrade path across breaking releases (e.g., Nextcloud NC27→NC28):
+
+  ```yml
+  nextcloud:
+    - { tag: 1.2.1, prepend: False }
+  ```
+
+- Keep a known-good baseline visible for older cores:
+
+  ```yml
+  core:
+    - { tag: 2.9.6, prepend: True }
+  ```
+
+- Hide buggy module versions:
+
+  ```yml
+  mail:
+    - { match: "1.7.0", remove: True }
+    - { match: "1.7.1", remove: True }
+  ```
+
+Editing workflow:
+- Edit `pins.yml` and commit to `main` branch; metadata will rebuild automatically on schedule and on push.
+- Prefer `prepend: True` only for critical baseline tags; otherwise use prepend: False to keep natural ordering.
+- Use `remove: True` for temporary blacklisting; add comments with issue references for traceability.
 Under settings, Chose Software Repository
 
 ![image](https://github.com/geniusdynamics/ns8-genforge/assets/16150798/512b9de4-cb81-44ab-9565-ce4f22e7c692)
