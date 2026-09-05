@@ -1,0 +1,19 @@
+{
+	"name": "termix",
+	"description": {
+		"en": "Termix is a web-based server management platform with SSH terminal, tunneling, and file editing capabilities."
+	},
+	"categories": ["collaboration"],
+	"authors": [
+		{
+			"name": "Genius Dynamics",
+			"email": "support@genius.ke"
+		}
+	],
+	"docs": {
+		"documentation_url": "https://docs.termix.site/",
+		"bug_url": "https://github.com/geniusdynamics/dev",
+		"code_url": "https://github.com/eniusdynamics/ns8-termix"
+	},
+	"source": "ghcr.io/geniusdynamics/termix"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "vikunja",
+  "description": {
+    "en": "The open-source to-do app. Organize everything, on all platforms."
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://vikunja.io/docs",
+    "bug_url": "https://github.com/geniusdynamic/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-vikunja"
+  },
+  "source": "ghcr.io/geniusdynamics/vikunja"
+}
