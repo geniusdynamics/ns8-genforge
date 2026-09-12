@@ -1,0 +1,19 @@
+{
+  "name": "docmost",
+  "description": {
+    "en": "Docmost. Open-source collaborative wiki and documentation software"
+  },
+  "categories": ["office"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docmost.com/docs",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-docmost"
+  },
+  "source": "ghcr.io/geniusdynamics/docmost"
+}

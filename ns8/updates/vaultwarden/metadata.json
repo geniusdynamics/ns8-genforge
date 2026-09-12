@@ -1,0 +1,19 @@
+{
+  "name": "Vaultwarden",
+  "description": {
+    "en": "Alternative implementation of the Bitwarden server API written in Rust and compatible with upstream Bitwarden clients*, perfect for self-hosted deployment where running the official resource-heavy service might not be ideal.."
+  },
+  "categories": ["security", "collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/dani-garcia/vaultwarden/wiki",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-vaultwarden"
+  },
+  "source": "ghcr.io/geniusdynamics/vaultwarden"
+}

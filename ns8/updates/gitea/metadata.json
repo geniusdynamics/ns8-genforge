@@ -1,0 +1,19 @@
+{
+  "name": "Gitea",
+  "description": {
+    "en": "Private, Fast, Reliable DevOps Platform"
+  },
+  "categories": ["development"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.gitea.com/",
+    "bug_url": "https://github.com/geniusdynamic/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-gitea"
+  },
+  "source": "ghcr.io/geniusdynamics/gitea"
+}

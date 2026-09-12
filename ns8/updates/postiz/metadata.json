@@ -1,0 +1,19 @@
+{
+  "name": "postiz",
+  "description": {
+    "en": "postiz offers everything you need to manage your social media posts, build an audience, capture leads, and grow your business faster with AI"
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.postiz.com/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-postiz"
+  },
+  "source": "ghcr.io/geniusdynamics/postiz"
+}

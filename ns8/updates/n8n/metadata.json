@@ -1,0 +1,19 @@
+{
+  "name": "N8N",
+  "description": {
+    "en": "Workflow automation for technical people"
+  },
+  "categories": [ "development" ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.n8n.io/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-n8n"
+  },
+  "source": "ghcr.io/geniusdynamics/n8n"
+}

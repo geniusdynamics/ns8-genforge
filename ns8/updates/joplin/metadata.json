@@ -1,0 +1,19 @@
+{
+  "name": "JoplinServer",
+  "description": {
+    "en": "Joplin is an open source note-taking app. Capture your thoughts and securely access them from any device."
+  },
+  "categories": [ "collaboration" ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://joplinapp.org/help/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-joplinserver/"
+  },
+  "source": "ghcr.io/geniusdynamics/joplin"
+}
