@@ -1,0 +1,19 @@
+{
+  "name": "Authentik",
+  "description": {
+    "en": "authentik is an open-source Identity Provider, focused on flexibility and versatility."
+  },
+  "categories": ["security"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.goauthentik.io/docs/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-goauthentik"
+  },
+  "source": "ghcr.io/geniusdynamics/goauthentik"
+}

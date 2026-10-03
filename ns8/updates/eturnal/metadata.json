@@ -1,0 +1,19 @@
+{
+  "name": "eturnal",
+  "description": {
+    "en": "eturnal is a clean, scalable STUN and TURN server for Unix-like operating systems and Microsoft Windows"
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://eturnal.net/doc/",
+    "bug_url": "https://github.com/NethServer/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-eturnal"
+  },
+  "source": "ghcr.io/geniusdynamics/eturnal"
+}

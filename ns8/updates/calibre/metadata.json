@@ -1,0 +1,19 @@
+{
+  "name": "Calibre",
+  "description": {
+    "en": "calibre is the one stop solution to all your e-books needs."
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://calibre-ebook.com/help",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-calibre"
+  },
+  "source": "ghcr.io/geniusdynamics/calibre"
+}
