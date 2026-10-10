@@ -1,0 +1,19 @@
+{
+  "name": "wallos",
+  "description": {
+    "en": "Wallos is a powerful, open-source, and self-hostable web application designed to empower you in managing your finances with ease."
+  },
+  "categories": ["office"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://wallosapp.com/",
+    "bug_url": "https://github.com/geniusdynamic/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-wallos"
+  },
+  "source": "ghcr.io/geniusdynamics/wallos"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Calibre Web",
+  "description": {
+    "en": "calibre-Web is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database"},
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/janeczku/calibre-web/wiki",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-calibre-web"
+  },
+  "source": "ghcr.io/geniusdynamics/calibre-web"
+}

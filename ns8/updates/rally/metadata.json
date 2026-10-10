@@ -1,0 +1,19 @@
+{
+  "name": "Rally",
+  "description": {
+    "en": "Rallly is an open-source scheduling and collaboration tool designed to make organizing events and meetings easier."
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://wiki.nethserver.org/doku.php?id=ns8:rally",
+    "bug_url": "https://github.com/geniusdynamic/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-rally"
+  },
+  "source": "ghcr.io/geniusdynamics/rally"
+}
