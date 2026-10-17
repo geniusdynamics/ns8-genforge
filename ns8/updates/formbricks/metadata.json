@@ -1,0 +1,19 @@
+{
+  "name": "formbricks",
+  "description": {
+    "en": "Formbricks is an Experience Management Suite built on the largest open source survey stack worldwide."
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://formbricks.com/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-formbricks"
+  },
+  "source": "ghcr.io/geniusdynamics/formbricks"
+}
