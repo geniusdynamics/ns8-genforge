@@ -1,0 +1,19 @@
+{
+  "name": "umami",
+  "description": {
+    "en": "umami. Effortless analytics and real-time insights."
+  },
+  "categories": ["office"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://umami.is/docs",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-umami"
+  },
+  "source": "ghcr.io/geniusdynamics/umami"
+}
