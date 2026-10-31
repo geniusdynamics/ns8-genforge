@@ -1,0 +1,19 @@
+{
+  "name": "AFFiNE",
+  "description": {
+    "en": "AFFiNE is a workspace with fully merged docs, whiteboards and databases. Get more things done, your creativity isn’t monotone."
+  },
+  "categories": ["collaboration"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://wiki.nethserver.org/doku.php?id=ns8:affine",
+    "bug_url": "https://github.com/geniusdynamic/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-affine"
+  },
+  "source": "ghcr.io/geniusdynamics/affine"
+}

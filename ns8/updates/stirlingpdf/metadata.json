@@ -1,0 +1,19 @@
+{
+  "name": "stirlingpdf",
+  "description": {
+    "en": "#1 Locally hosted web application that allows you to perform various operations on PDF files"
+  },
+  "categories": [ "collaboration" ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://stirlingtools.com/docs/Overview/What%20is%20Stirling-PDF",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-Stirling-PDF/"
+  },
+  "source": "ghcr.io/geniusdynamics/stirlingpdf"
+}
