@@ -1,0 +1,19 @@
+{
+  "name": "Password Pusher",
+  "description": {
+    "en": "an open source application to communicate passwords over the web. Links to passwords expire after a certain number of views and/or time has passed."
+  },
+  "categories": ["security"],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.pwpush.com/",
+    "bug_url": "https://github.com/geniusdynamic/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-passwordpusher"
+  },
+  "source": "ghcr.io/geniusdynamics/passwordpusher"
+}
