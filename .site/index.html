@@ -83,8 +83,8 @@ nav.main a:hover { color: var(--text); text-decoration: none; }
 .panel p { margin: 0; color: var(--muted); }
 .eyebrow { font: 600 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
 .panel .actions { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 10px; }
-ol.steps { margin: 0; padding-left: 20px; color: var(--muted); }
-ol.steps li { margin: 4px 0; }
+.steps { margin: 0; padding-left: 20px; color: var(--muted); }
+.steps li { margin: 4px 0; }
 
 /* Toolbar */
 .sec-head { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; justify-content: space-between; margin-bottom: 18px; }
@@ -169,7 +169,8 @@ footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <nav class="main" aria-label="Sections">
       <a href="#modules">Modules</a>
       <a href="#development" class="hide-s" id="nav-dev" hidden>In development</a>
-      <a href="#contribute" class="hide-s">Contribute</a>
+      <a href="#services" class="hide-s">Services</a>
+      <a href="https://github.com/sponsors/geniusdynamics" class="hide-s" target="_blank" rel="noopener">Sponsor</a>
       <a href="https://github.com/geniusdynamics/ns8-genforge" class="hide-s" target="_blank" rel="noopener">GitHub</a>
       <button class="icon-btn" id="theme" type="button" aria-label="Switch between dark and light theme" title="Switch theme">◐</button>
     </nav>
@@ -199,25 +200,44 @@ footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
   </div>
 </div>
 
-<section id="contribute" style="border-top:1px solid var(--border); background: var(--bg-alt)">
+<section id="services" style="border-top:1px solid var(--border); background: var(--bg-alt)">
   <div class="wrap duo">
     <div class="panel">
-      <span class="eyebrow">Install</span>
-      <h3>Use GenForge on your cluster</h3>
-      <ol class="steps">
-        <li>Open <b>Settings › Software repositories</b> in the cluster admin UI.</li>
-        <li>Choose <b>Add repository</b> and paste the URL above.</li>
-        <li>Turn on <b>Testing</b> only if you want pre-releases. They are not meant for production.</li>
-        <li>Install the modules from the <b>Software Center</b>.</li>
-      </ol>
+      <span class="eyebrow">Services</span>
+      <h3>Need help with NethServer 8?</h3>
+      <p><a href="https://genius.africa/" target="_blank" rel="noopener">Genius Dynamics</a> is a technology consultancy in East Africa. We build and maintain the modules listed here, and we can do the same for you.</p>
+      <ul class="steps">
+        <li>Package your application as a NethServer 8 module</li>
+        <li>Deploy, migrate and support NethServer clusters</li>
+        <li>Process automation and system integration</li>
+        <li>Cloud and managed infrastructure services</li>
+      </ul>
+      <ul class="facts">
+        <li><span>Email</span><span><a href="mailto:hello@genius.africa">hello@genius.africa</a></span></li>
+        <li><span>Website</span><span><a href="https://genius.africa/" target="_blank" rel="noopener">genius.africa</a></span></li>
+      </ul>
+      <div class="actions">
+        <a class="btn" href="https://genius.africa/" target="_blank" rel="noopener">Visit genius.africa →</a>
+      </div>
     </div>
     <div class="panel">
+      <span class="eyebrow">Donation</span>
+      <h3>Support this work</h3>
+      <p>These modules are free and open source. Building, testing and hosting them is not. If they help you, a donation keeps the work going.</p>
+      <p>Do you earn your living with these modules? Please consider a recurring sponsorship.</p>
+      <p style="font-size:13px">Not a donor? A star on GitHub, a bug report or a translation helps too.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/sponsors/geniusdynamics" target="_blank" rel="noopener">♥ Sponsor on GitHub</a>
+      </div>
+    </div>
+    <div class="panel" id="contribute">
       <span class="eyebrow">Community</span>
       <h3>Missing an app, or found a bug?</h3>
-      <p>Every module has its own repository on GitHub. Report a bug there, ask for a new app, or send a pull request. A star on GitHub, a translation or a screenshot helps too.</p>
+      <p>Every module has its own repository on GitHub. Report a bug there, ask for a new app, or send a pull request.</p>
+      <p>To install: open <b>Settings › Software repositories</b> on your cluster, add the URL above, then use the <b>Software Center</b>. Turn on <b>Testing</b> only if you want pre-releases.</p>
       <div class="actions">
         <a class="btn" href="https://github.com/geniusdynamics/ns8-genforge/issues" target="_blank" rel="noopener">Request an app</a>
-        <a class="btn" href="https://github.com/geniusdynamics" target="_blank" rel="noopener">Genius Dynamics on GitHub</a>
+        <a class="btn" href="https://github.com/geniusdynamics" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </div>
@@ -285,6 +305,8 @@ footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <span id="generated">GenForge, the NS8 software repository of Genius Dynamics.</span>
     <nav aria-label="Footer">
       <a href="https://github.com/geniusdynamics/ns8-genforge/issues" target="_blank" rel="noopener">Report a bug</a>
+      <a href="https://genius.africa/" target="_blank" rel="noopener">genius.africa</a>
+      <a href="https://github.com/sponsors/geniusdynamics" target="_blank" rel="noopener">Sponsor</a>
       <a href="https://github.com/geniusdynamics/ns8-genforge" target="_blank" rel="noopener">GitHub</a>
       <a href="ns8/updates/repodata.json">repodata.json</a>
       <a href="https://github.com/geniusdynamics/ns8-genforge#quality-score" target="_blank" rel="noopener">Quality score</a>
