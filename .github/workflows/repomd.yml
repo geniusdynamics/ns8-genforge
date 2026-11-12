@@ -1,57 +1,72 @@
-# This workflow is manually triggerable
 name: repomd
-on: 
+on:
   push:
     branches: main
-    paths:
-      - '**.py'
-      - '**.sh'
-      - 'README.md'
   workflow_dispatch:
   schedule:
   - cron:  '25 0,6,12,18 * * *'
+
+# The job only pushes the published branches, so the token gets nothing else.
+permissions:
+  contents: write
+
+# Two runs must not publish at the same time.
+concurrency:
+  group: repomd
+  cancel-in-progress: false
 
 jobs:
   repomd:
     runs-on: ubuntu-latest
     steps:
     - id: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - id: buildmd
+      name: "Build repodata.json"
       run: |
         bash createrepo.sh
 
-    - id: lpublish
-      name: "Publish metadata on GitHub"
+    - id: buildsite
+      name: "Build the website data"
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        # The website still works without catalog.json, so a failure here must not stop the publish.
+        if ! python3 buildsite.py --repodata repodata.json --output catalog.json; then
+          echo "::warning::catalog.json could not be built"
+          rm -f catalog.json
+        fi
+
+    - id: publish
+      name: "Publish metadata and website on GitHub"
       run: |
         git config user.name nethbot
         git config user.email nethbot@nethesis.it
         BRANCH=$(basename ${{ github.ref }})
         COMMIT_MESSAGE="repomd@$BRANCH"
-        REMOTE_BRANCH="repomd"
+        DOMAIN=$(jq -r .domain site.json)
+        # One tree holds everything: the website at the root, the NS8 repository under ns8/updates/.
         mkdir -vp .dst/ns8/updates/
-        mv -v repodata.json .dst/ns8/updates
-        cp -av $(ls -d */) .dst/ns8/updates/
-        cp -v README.md .dst/index.md
-        echo forge.genius.ke > .dst/CNAME
-        git add .dst/
+        mv -v repodata.json .dst/ns8/updates/
+        cp -a $(ls -d */) .dst/ns8/updates/
+        cp -av .site/. .dst/
+        if [ -f catalog.json ]; then mv -v catalog.json .dst/; fi
+        touch .dst/.nojekyll
+        echo "$DOMAIN" > .dst/CNAME
+        git add -f .dst/
         TREE=$(git write-tree --prefix=.dst)
         COMMIT=$(git commit-tree -m "${COMMIT_MESSAGE}" ${TREE})
-        git push -f origin $COMMIT:refs/heads/${REMOTE_BRANCH}
+        # repomd is the branch NethServer and the NS8 App Index read through raw.githubusercontent.com.
+        # gh-pages is the branch GitHub Pages serves on the custom domain. Both get the same commit.
+        git push -f origin $COMMIT:refs/heads/repomd $COMMIT:refs/heads/gh-pages
         {
           echo "Repository metadata has been published to"
           echo ""
-          echo "https://raw.githubusercontent.com/${{ github.repository }}/${REMOTE_BRANCH}/repodata.json"
+          echo "- https://${DOMAIN}/ns8/updates/repodata.json"
+          echo "- https://raw.githubusercontent.com/${{ github.repository }}/repomd/ns8/updates/repodata.json"
           echo ""
-          echo "Source"
+          echo "Website: https://${DOMAIN}/"
           echo ""
-          echo "https://github.com/${{ github.repository }}/tree/${REMOTE_BRANCH}"
-          echo ""
+          echo "Source: https://github.com/${{ github.repository }}/tree/repomd"
         } >> $GITHUB_STEP_SUMMARY
-
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .

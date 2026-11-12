@@ -10,6 +10,7 @@ Wit All the cool Modules We have curated for you
 - [GenForge modules index for NS8](#genforge-modules-index-for-ns8)
   - [Table of Contents](#table-of-contents)
   - [Application List](#application-list)
+  - [Website and publishing](#website-and-publishing)
   - [Pinning image tags (pins.yml)](#pinning-image-tags-pinsyml)
   - [Quality score](#quality-score)
 - [Categories](#categories)
@@ -41,7 +42,7 @@ Wit All the cool Modules We have curated for you
   - [26) Tools](#26-tools)
   <!-- TOC -->
 
-Metadata are built every 4 hours at 00:25, 06:25 ,12:25, 18:25 UTC and on each commit to the `main` branch.
+Metadata are built every 6 hours at 00:25, 06:25, 12:25, 18:25 UTC and on each commit to the `main` branch.
 
 If you want to add a module to this repository, just follow the
 [instructions](https://nethserver.github.io/ns8-core/modules/new_module/#step-5-publish-to-ns8-software-repository)
@@ -61,6 +62,50 @@ Alternative URL:
 https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates/
 
 ```
+## Website and publishing
+
+The `repomd` workflow builds everything and publishes one tree:
+
+| Path | Content |
+| --- | --- |
+| `/index.html`, `/favicon.svg` | The website, copied from `.site/`. |
+| `/catalog.json` | Extra data for the website, built by `buildsite.py`. |
+| `/ns8/updates/repodata.json` | The repository metadata NethServer reads, built by `createrepo.py`. |
+| `/ns8/updates/<module>/` | Logo and screenshots of each module. |
+| `/CNAME`, `/.nojekyll` | Custom domain and plain file serving for GitHub Pages. |
+
+The same commit is pushed to two branches:
+
+- `repomd`, read through `raw.githubusercontent.com` by NethServer and by the [NS8 App Index](https://github.com/NethServer/ns8-apps).
+- `gh-pages`, served by GitHub Pages on `https://forge.genius.ke/`.
+
+So both repository URLs always serve the same files. In the repository settings, GitHub Pages must use **Deploy from a branch**, branch `gh-pages`, folder `/ (root)`, with `forge.genius.ke` as custom domain.
+
+What each file does:
+
+- `createrepo.py` only writes `repodata.json`. It is kept close to the NethForge original.
+- `buildsite.py` writes `catalog.json`: stars, release dates and the [quality score](#quality-score) of each published module, plus the `ns8-*` repositories of the organization that are not published yet. The website lists those under "In development". The "Alternative to" and upstream links come from the tables of this README.
+- `site.json` holds the settings: organization, custom domain, `tools` (`ns8-*` repositories that are not modules) and `exclude` (repositories to hide).
+- `.site/index.html` is the website. It loads `repodata.json` and `catalog.json` in the browser, and still works when `catalog.json` is missing.
+
+To preview the website locally, build a copy of the published tree and serve it:
+
+```bash
+mkdir -p /tmp/forge/ns8/updates && cp -a .site/. /tmp/forge/ && cp -a */ /tmp/forge/ns8/updates/
+```
+
+```bash
+curl -sSo /tmp/forge/ns8/updates/repodata.json https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates/repodata.json
+```
+
+```bash
+python3 buildsite.py --repodata /tmp/forge/ns8/updates/repodata.json --output /tmp/forge/catalog.json
+```
+
+```bash
+python3 -m http.server -d /tmp/forge 8000
+```
+
 ## Pinning image tags (pins.yml)
 
 `pins.yml` lets you control image visibility and ordering for modules to support staged upgrades and hide broken tags. Each module key contains a list of pin rules:
