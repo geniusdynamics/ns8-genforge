@@ -10,7 +10,8 @@ Wit All the cool Modules We have curated for you
 - [GenForge modules index for NS8](#genforge-modules-index-for-ns8)
   - [Table of Contents](#table-of-contents)
   - [Application List](#application-list)
-  - [Pinning](#Pinning-image-tags-(pins.yml))
+  - [Pinning image tags (pins.yml)](#pinning-image-tags-pinsyml)
+  - [Quality score](#quality-score)
 - [Categories](#categories)
   - [1) Auth & SSO](#1-auth--sso)
   - [2) Backend as a Service](#2-backend-as-a-service)
@@ -68,6 +69,7 @@ https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates
 - `match: "<Python semver match string>"`, `remove: True` — hide matching tags from clients. E.g. `<2.0.0`.
 
 Use cases:
+
 - Maintain upgrade path across breaking releases (e.g., Nextcloud NC27→NC28):
 
   ```yml
@@ -91,9 +93,67 @@ Use cases:
   ```
 
 Editing workflow:
+
 - Edit `pins.yml` and commit to `main` branch; metadata will rebuild automatically on schedule and on push.
-- Prefer `prepend: True` only for critical baseline tags; otherwise use prepend: False to keep natural ordering.
+- Prefer `prepend: True` only for critical baseline tags; otherwise use `prepend: False` to keep natural ordering.
 - Use `remove: True` for temporary blacklisting; add comments with issue references for traceability.
+
+## Quality score
+
+The [NS8 apps catalog](https://github.com/NethServer/ns8-apps) shows each app with a quality score out of 9. The score does not judge the software; it measures how complete the listing is, so administrators can choose with confidence. The crawler computes every check from public data and the new score appears after the next crawl.
+
+| Check | Passes when | How to fix it |
+| --- | --- | --- |
+| GitHub topic `ns8` | The code repository has the `ns8` topic. | GitHub: gear icon next to "About", then Topics. |
+| Standard categories | `categories` is not empty and every entry is a Software Center category: `collaboration`, `communication`, `core`, `database`, `development`, `documentation`, `monitoring`, `multimedia`, `office`, `security`, `storage`, `system_administration`, `web`. | Replace custom names in `metadata.json`. |
+| Logo | The app has a logo in `repodata.json`. | Put a `logo.png` next to `metadata.json`. |
+| Screenshots | The app has at least one screenshot in `repodata.json`. | Put PNG files in a `screenshots/` folder next to `metadata.json`. |
+| Description of 60+ characters | `description.en` is at least 60 characters long. | Write one or two sentences about what the software does for the user. |
+| Translated description | `description` has a language besides `en`. | Add `fr`, `it`, `de`, `es`, `pt`, `pt_BR`, `eu` or any other. |
+| Documentation and bug links | `docs.documentation_url` and `docs.bug_url` are both set. | Fill both in `metadata.json`. |
+| Minimum core label | The image of the version shown has the `org.nethserver.min-core` label. | Add `--label="org.nethserver.min-core=3.x.y"` in `build-images.sh` and publish a release. |
+| License file | GitHub detects a license in the code repository. | Add a `LICENSE` file with a standard license at the repository root. |
+
+When `docs.code_url` is missing or points to a repository the crawler cannot read, the topic and license checks fail, and stars and dates stay empty.
+
+### Example of a complete `metadata.json`
+
+```json
+{
+  "name": "dnshelper",
+  "description": {
+    "en": "Manage DNS records through DNS provider APIs, for other modules",
+    "de": "Verwaltet DNS-Einträge über die APIs von DNS-Anbietern, für andere Module",
+    "es": "Gestiona registros DNS a través de las API de los proveedores DNS, para otros módulos",
+    "eu": "DNS erregistroak kudeatzen ditu DNS hornitzaileen APIen bidez, beste moduluentzat",
+    "fr": "Gère les enregistrements DNS via les API des hébergeurs DNS, pour les autres modules",
+    "it": "Gestisce i record DNS tramite le API dei provider DNS, per altri moduli",
+    "pt": "Gere registos DNS através das APIs dos fornecedores de DNS, para outros módulos",
+    "pt_BR": "Gerencia registros DNS por meio das APIs dos provedores de DNS, para outros módulos"
+  },
+  "categories": [
+    "system_administration",
+    "security"
+  ],
+  "authors": [
+    {
+      "name": "Dan Brown",
+      "email": "dan@familybrown.org"
+    }
+  ],
+  "docs": {
+    "terms_url": "https://github.com/danb35/ns8-dnshelper/blob/master/TERMS.md",
+    "documentation_url": "https://github.com/danb35/ns8-dnshelper/blob/master/docs/USER-GUIDE.md",
+    "bug_url": "https://github.com/danb35/ns8-dnshelper/issues",
+    "code_url": "https://github.com/danb35/ns8-dnshelper",
+    "relnotes_url": "https://github.com/danb35/ns8-dnshelper/releases"
+  },
+  "source": "ghcr.io/danb35/dnshelper"
+}
+```
+
+Each module directory also needs a `logo.png` and a `screenshots/` folder, next to its `metadata.json`.
+
 Under settings, Chose Software Repository
 
 ![image](https://github.com/geniusdynamics/ns8-genforge/assets/16150798/512b9de4-cb81-44ab-9565-ce4f22e7c692)
@@ -211,6 +271,7 @@ All apps are sorted by categories and listed alphabetically. Click on the stars 
 | :------------------- | :------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------: | :--------------------------------------------------------------: |
 | **Password Manager** | [VaultWarden](https://vaultwarden.co/)      | Password manager for teams and individuals                                                                                                                        |   [![GitHub Stars](https://img.shields.io/github/stars/dani-garcia/vaultwarden?style=social)](https://github.com/dani-garcia/vaultwarden)   | [1Password](https://1password.com/) |  [NS8link](https://github.com/geniusdynamics/ns8-vaultwarden/)   |
 | **Password**         | [Password Pusher](https://docs.pwpush.com/) | Securely share sensitive information with automatic expiration & deletion after a set number of views or duration. Track who, what and when with full audit logs. | [![GitHub Stars](https://img.shields.io/github/stars/pglombardo/PasswordPusher?style=social)](https://github.com/pglombardo/PasswordPusher) |                                     | [NS8link](https://github.com/geniusdynamics/ns8-passwordpusher/) |
+| **Secrets Manager**  | [OpenBao](https://openbao.org/)             | Secrets manager to store and control access to tokens, passwords, certificates and encryption keys. Open source fork of HashiCorp Vault with Raft storage, PKI, audit log and LDAP/AD login. Release [1.0.1](https://github.com/geniusdynamics/ns8-openbao/releases/tag/1.0.1) | [![GitHub Stars](https://img.shields.io/github/stars/openbao/openbao?style=social)](https://github.com/openbao/openbao) | [HashiCorp Vault](https://www.vaultproject.io/), [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) | [NS8link](https://github.com/geniusdynamics/ns8-openbao/) |
 
 ## 14) Project Management
 
