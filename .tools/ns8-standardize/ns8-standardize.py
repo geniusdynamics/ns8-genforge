@@ -155,4 +155,60 @@ if not os.path.exists(p("ui/yarn.lock")) or extra:
 rd = read(p("README.md")) if os.path.exists(p("README.md")) else ""
 if "template module" in rd or "Use this template" in rd:
     todo.append("README still has the template boilerplate")
+# 8. fixes that are safe to apply automatically
+for root, _, files in os.walk(p("imageroot/systemd")):
+    for f in files:
+        fp = os.path.join(root, f)
+        s0 = read(fp)
+        s1 = s0.replace("%S/state", "%E/state")
+        if s1 != s0:
+            write(fp, s1)
+            todo.append(f"{f}: %S/state changed to %E/state (review the bind mounts that remain)")
+for hook in ("bin/discover-smarthost", "events/smarthost-changed"):
+    hp = p("imageroot", hook)
+    if os.path.isdir(hp):
+        shutil.rmtree(hp)
+    elif os.path.exists(hp):
+        os.remove(hp)
+for root, _, files in os.walk(p("imageroot")):
+    for f in files:
+        fp = os.path.join(root, f)
+        try:
+            s0 = read(fp)
+        except (UnicodeDecodeError, IsADirectoryError):
+            continue
+        if "smarthost" in s0:
+            lines = [l for l in s0.splitlines(keepends=True) if "smarthost" not in l]
+            write(fp, "".join(lines))
+            todo.append(f"{os.path.relpath(fp, repo)}: smarthost lines removed, check the unit still starts")
+
+# 9. image pins: floating tags and variables used but not in the label
+bi_text = read(p("build-images.sh")) if os.path.exists(p("build-images.sh")) else ""
+var_vals = dict(re.findall(r'^([a-z_]+_image)="([^"]+)"', bi_text, re.M))
+label = re.search(r'org\.nethserver\.images=([^"]*)"', bi_text)
+label_items = []
+if label:
+    for item in label.group(1).split():
+        label_items.append(item)
+for k, v in var_vals.items():
+    if v not in label_items:
+        pass
+expanded = " ".join(var_vals.get(i[2:-1], i) if i.startswith("${") else i
+                     for i in (label.group(1).split() if label else []))
+for img in expanded.split():
+    tag = img.rsplit(":", 1)[1] if ":" in img.split("/")[-1] else ""
+    if tag in ("", "latest", "main", "stable", "lts") or re.fullmatch(r"\d+(\.\d+)?", tag or "x") \
+            or tag.endswith("-alpine") and not re.search(r"\d", tag):
+        todo.append(f"floating or partial image tag, pin a full version: {img}")
+used = set()
+for root, _, files in os.walk(p("imageroot")):
+    for f in files:
+        try:
+            used |= set(re.findall(r"\$\{?([A-Z][A-Z0-9_]*_IMAGE)\}?", read(os.path.join(root, f))))
+        except (UnicodeDecodeError, IsADirectoryError):
+            pass
+names = {os.path.basename(i.rsplit(":", 1)[0]).upper().replace("-", "_") + "_IMAGE" for i in expanded.split()}
+for u in sorted(used - names):
+    todo.append(f"{u} is used by the module but no image in the label provides it: leftover from the template?")
+
 print("\n".join("TODO " + t for t in todo))

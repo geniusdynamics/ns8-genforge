@@ -17,11 +17,14 @@ every top-level directory as a module and skips the ones starting with a dot.
 - Removes `package.json`, `test-module.sh` and `tests/pythonreq.txt`, adds the
   kickstart `tests/__init__.robot` and a `tests/<name>.robot` starting point.
 - Fixes `ui/public/metadata.json` (authors, bug and code URLs, image source).
+- Rewrites `%S/state` to `%E/state` in the systemd units and removes the
+  smarthost hook files and lines, which were removed from the current module.
 - It is idempotent: running it twice gives the same result.
 
-It prints a `TODO` list for everything that needs a human look: image pins,
-`%S/state` paths, secrets passed through `agent.set_env()`, smarthost leftovers,
-placeholder metadata and README boilerplate.
+It prints a `TODO` list for everything that needs a human look: floating or
+partial image tags, image variables the units use that the label does not
+provide (a sign of a leftover from another template), secrets passed through
+`agent.set_env()`, placeholder metadata and README boilerplate.
 
 ## What it does not do
 
