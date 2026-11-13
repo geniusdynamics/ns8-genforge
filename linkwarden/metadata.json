@@ -1,7 +1,7 @@
 {
   "name": "Linkwarden",
   "description": {
-    "en": "Webpage Management for Individuals and Teams",
+    "en": "Linkwarden is a self-hosted bookmark manager that saves, organizes and archives web pages, for individuals and teams.",
     "it": "Linkwarden salva, organizza e archivia pagine web, per singoli e per team."
   },
   "categories": [

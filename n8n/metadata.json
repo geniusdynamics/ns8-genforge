@@ -1,7 +1,7 @@
 {
   "name": "N8N",
   "description": {
-    "en": "n8n is a Workflow automation for technical people.",
+    "en": "n8n is a workflow automation tool for technical people, with a visual editor and integrations with hundreds of services.",
     "it": "n8n è uno strumento di automazione dei flussi di lavoro per persone tecniche."
   },
   "categories": [

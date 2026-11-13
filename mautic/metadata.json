@@ -1,7 +1,7 @@
 {
   "name": "mautic",
   "description": {
-    "en": "Mautic & Open Source Marketing Automation",
+    "en": "Mautic is an open source marketing automation platform to manage contacts, email campaigns, landing pages and lead scoring.",
     "it": "Mautic è una piattaforma open source di marketing automation."
   },
   "categories": [

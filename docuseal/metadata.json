@@ -1,7 +1,7 @@
 {
   "name": "docuseal",
   "description": {
-    "en": "DocuSeal. Open source document filling and signing",
+    "en": "DocuSeal is an open source platform to fill out and sign documents online, with templates, reminders and an audit trail.",
     "it": "DocuSeal è una piattaforma open source per compilare e firmare documenti online."
   },
   "categories": [

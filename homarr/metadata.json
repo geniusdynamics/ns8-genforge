@@ -1,7 +1,7 @@
 {
   "name": "Homarr",
   "description": {
-    "en": "A simple yet powerful dashboard for your server",
+    "en": "Homarr is a simple yet powerful dashboard that gathers the apps and services of your server on one customizable page.",
     "it": "Homarr è una dashboard semplice e potente per i servizi del proprio server."
   },
   "categories": [

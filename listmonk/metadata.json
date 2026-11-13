@@ -1,7 +1,7 @@
 {
   "name": "listmonk",
   "description": {
-    "en": "Self-hosted newsletter and mailing list manager",
+    "en": "listmonk is a self-hosted, high-performance newsletter and mailing list manager with a web admin and campaign analytics.",
     "it": "listmonk è un gestore self-hosted di newsletter e mailing list ad alte prestazioni."
   },
   "categories": [
