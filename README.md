@@ -300,6 +300,7 @@ All apps are sorted by categories and listed alphabetically. Click on the stars 
 | **Messaging** | [Element](https://element.io/)        | Enterprise communication platform                |        [![GitHub Stars](https://img.shields.io/github/stars/vector-im/element-web?style=social)](https://github.com/vector-im/element-web)        | [Slack](https://slack.com/) |  [NS8link](https://github.com/geniusdynamics/ns8-element/)   |
 | **Messaging** | [Mattermost](https://mattermost.com/) | Enterprise communication platform for developers | [![GitHub Stars](https://img.shields.io/github/stars/mattermost/mattermost-server?style=social)](https://github.com/mattermost/mattermost-server) | [Slack](https://slack.com/) | [NS8link](https://github.com/geniusdynamics/ns8-mattermost/) |
 | **Messaging** | [Rocket.chat](https://rocket.chat/)   | Enterprise communication platform                |       [![GitHub Stars](https://img.shields.io/github/stars/RocketChat/Rocket.Chat?style=social)](https://github.com/RocketChat/Rocket.Chat)       | [Slack](https://slack.com/) | [NS8link](https://github.com/geniusdynamics/ns8-rocketchat/) |
+| **Messaging** | [Zusam](https://github.com/zusam/zusam) | Private forums for groups of friends and family | [![GitHub Stars](https://img.shields.io/github/stars/zusam/zusam?style=social)](https://github.com/zusam/zusam) | [Facebook Groups](https://www.facebook.com/groups/) | [NS8link](https://github.com/geniusdynamics/ns8-zusam/) |
 
 ## 11) No Code Database
 
