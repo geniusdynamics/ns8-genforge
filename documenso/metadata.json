@@ -1,0 +1,24 @@
+{
+  "name": "Documenso",
+  "description": {
+    "en": "Documenso is an open source document signing platform to send, sign and track contracts and other documents.",
+    "it": "Documenso è una piattaforma open source di firma dei documenti per inviare, firmare e seguire contratti e altri documenti."
+  },
+  "categories": [
+    "office",
+    "security"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.documenso.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-documenso/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-documenso",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-documenso/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/documenso"
+}
