@@ -1,9 +1,12 @@
 {
   "name": "Authentik",
   "description": {
-    "en": "authentik is an open-source Identity Provider, focused on flexibility and versatility."
+    "en": "authentik is an open-source Identity Provider, focused on flexibility and versatility.",
+    "it": "authentik è un provider di identità open source con SSO, MFA e flussi di accesso flessibili."
   },
-  "categories": ["security"],
+  "categories": [
+    "security"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

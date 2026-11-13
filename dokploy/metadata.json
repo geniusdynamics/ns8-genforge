@@ -1,9 +1,12 @@
 {
   "name": "dokploy",
   "description": {
-    "en": "Dokploy. multi-server deployments, advanced user control, and flexible database management—all with Dokploy’s developer-focused features."
+    "en": "Dokploy. multi-server deployments, advanced user control, and flexible database management—all with Dokploy’s developer-focused features.",
+    "it": "Dokploy è una piattaforma self-hosted per distribuire e gestire applicazioni e database con Docker."
   },
-  "categories": ["development"],
+  "categories": [
+    "development"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

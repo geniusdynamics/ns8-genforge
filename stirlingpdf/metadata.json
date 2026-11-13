@@ -1,9 +1,12 @@
 {
   "name": "stirlingpdf",
   "description": {
-    "en": "#1 Locally hosted web application that allows you to perform various operations on PDF files"
+    "en": "#1 Locally hosted web application that allows you to perform various operations on PDF files",
+    "it": "Stirling PDF è una cassetta degli attrezzi self-hosted per unire, dividere, convertire, firmare e modificare file PDF dal browser."
   },
-  "categories": [ "collaboration" ],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

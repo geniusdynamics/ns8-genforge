@@ -1,9 +1,12 @@
 {
   "name": "2Fauth",
   "description": {
-    "en": "m A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes"
+    "en": "m A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
+    "it": "Gestore self-hosted di codici di autenticazione a due fattori, con interfaccia web e importazione dei token."
   },
-  "categories": ["office"],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

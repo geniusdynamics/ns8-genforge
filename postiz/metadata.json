@@ -1,9 +1,12 @@
 {
   "name": "postiz",
   "description": {
-    "en": "postiz offers everything you need to manage your social media posts, build an audience, capture leads, and grow your business faster with AI"
+    "en": "postiz offers everything you need to manage your social media posts, build an audience, capture leads, and grow your business faster with AI",
+    "it": "Postiz è uno strumento self-hosted per pianificare e pubblicare contenuti sui social con assistenza AI."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

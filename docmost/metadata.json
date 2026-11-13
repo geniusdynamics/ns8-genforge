@@ -1,9 +1,12 @@
 {
   "name": "docmost",
   "description": {
-    "en": "Docmost. Open-source collaborative wiki and documentation software"
+    "en": "Docmost is open-source collaborative wiki and documentation software with spaces, pages, comments and real-time editing.",
+    "it": "Docmost è un software open source di wiki e documentazione collaborativa."
   },
-  "categories": ["office"],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

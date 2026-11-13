@@ -1,8 +1,12 @@
 {
   "name": "Calibre Web",
   "description": {
-    "en": "calibre-Web is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database"},
-  "categories": ["collaboration"],
+    "en": "calibre-Web is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database",
+    "it": "Calibre-Web è un'interfaccia web per sfogliare, leggere e scaricare gli ebook di una libreria Calibre."
+  },
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

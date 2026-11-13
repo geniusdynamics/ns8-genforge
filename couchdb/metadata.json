@@ -1,9 +1,13 @@
 {
   "name": "COUCHDB",
   "description": {
-    "en": "CouchDB is a terrific single-node database that works just like any other database behind an application server of your choice."
+    "en": "CouchDB is a terrific single-node database that works just like any other database behind an application server of your choice.",
+    "it": "Apache CouchDB è un database a documenti che memorizza dati JSON e li sincronizza tra dispositivi tramite API HTTP."
   },
-  "categories": ["development", "database"],
+  "categories": [
+    "development",
+    "database"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",
