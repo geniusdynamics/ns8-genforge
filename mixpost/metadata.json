@@ -1,0 +1,23 @@
+{
+  "name": "mixpost",
+  "description": {
+    "en": "Self-hosted social media management tool to schedule posts, manage accounts and review their statistics.",
+    "it": "Mixpost è uno strumento self-hosted per pianificare e pubblicare contenuti sui social."
+  },
+  "categories": [
+    "web"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.mixpost.app",
+    "bug_url": "https://github.com/geniusdynamics/ns8-mixpost/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-mixpost",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-mixpost/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/mixpost"
+}
