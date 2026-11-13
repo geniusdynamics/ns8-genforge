@@ -1,0 +1,24 @@
+{
+  "name": "infisical",
+  "description": {
+    "en": "All-in-one platform to securely manage application configuration and secrets across your team and infrastructure.",
+    "it": "Infisical gestisce in modo sicuro i segreti e la configurazione delle applicazioni per tutto il team."
+  },
+  "categories": [
+    "security",
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://infisical.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-infisical/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-infisical",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-infisical/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/infisical"
+}
