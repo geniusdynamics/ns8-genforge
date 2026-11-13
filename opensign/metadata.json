@@ -1,0 +1,24 @@
+{
+  "name": "opensign",
+  "description": {
+    "en": "OpenSign is an open source document signing platform to prepare, send and sign documents with legally valid signatures.",
+    "it": "OpenSign è una piattaforma open source di firma dei documenti per preparare, inviare e firmare documenti con firme valide."
+  },
+  "categories": [
+    "office",
+    "security"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.opensignlabs.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-opensign/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-opensign",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-opensign/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/opensign"
+}
