@@ -250,6 +250,7 @@ All apps are sorted by categories and listed alphabetically. Click on the stars 
 | :-------------------- | :--------------------------------- | :----------------------------- | :-----------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------: | :---------------------------------------------------------: |
 | **Digital Signature** | [DocuSeal](https://docuseal.co)    | Digital signing infrastructure | [![GitHub Stars](https://img.shields.io/github/stars/docusealco/docuseal?style=social)](https://github.com/docusealco/docuseal) | [DocuSign](https://www.docusign.com/) | [NS8link](https://github.com/geniusdynamics/ns8-docuseal/)  |
 | **Digital Signature** | [Documenso](https://documenso.com) | Digital signing infrastructure | [![GitHub Stars](https://img.shields.io/github/stars/documenso/documenso?style=social)](https://github.com/documenso/documenso) | [DocuSign](https://www.docusign.com/) | [NS8link](https://github.com/geniusdynamics/ns8-documenso/) |
+| **Digital Signature** | [OpenSign](https://www.opensignlabs.com/) | Document signing platform to prepare, send and sign documents | [![GitHub Stars](https://img.shields.io/github/stars/OpenSignLabs/OpenSign?style=social)](https://github.com/OpenSignLabs/OpenSign) | [DocuSign](https://www.docusign.com/) | [NS8link](https://github.com/geniusdynamics/ns8-opensign/) |
 
 ## 5) ERP & CRM
 
