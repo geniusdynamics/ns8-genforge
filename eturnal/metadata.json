@@ -1,9 +1,12 @@
 {
   "name": "eturnal",
   "description": {
-    "en": "eturnal is a clean, scalable STUN and TURN server for Unix-like operating systems and Microsoft Windows"
+    "en": "eturnal is a clean, scalable STUN and TURN server for Unix-like operating systems and Microsoft Windows",
+    "it": "eturnal è un server STUN e TURN per chiamate e videochiamate, adatto a Matrix e altre applicazioni WebRTC."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

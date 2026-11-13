@@ -7,7 +7,7 @@
     "es": "Gestor de secretos para almacenar y controlar el acceso a tokens, contraseñas, certificados y claves de cifrado. Fork de código abierto de HashiCorp Vault con almacenamiento Raft, PKI, registro de auditoría e inicio de sesión de directorio",
     "eu": "Sekretuen kudeatzailea tokenak, pasahitzak, ziurtagiriak eta zifratze-gakoak gordetzeko eta haietarako sarbidea kontrolatzeko. HashiCorp Vault-en iturburu irekiko forka, Raft biltegiratzea, PKI, auditoretza-erregistroa eta direktorio bidezko saio-hasiera dituena",
     "fr": "Gestionnaire de secrets pour stocker et contrôler l'accès aux jetons, mots de passe, certificats et clés de chiffrement. Fork open source de HashiCorp Vault avec stockage Raft, PKI, journal d'audit et connexion par annuaire",
-    "it": "Gestore di segreti per archiviare e controllare l'accesso a token, password, certificati e chiavi di cifratura. Fork open source di HashiCorp Vault con storage Raft, PKI, log di audit e login tramite directory",
+    "it": "OpenBao è un archivio di segreti open source per gestire token, password e certificati.",
     "pt": "Gestor de segredos para armazenar e controlar o acesso a tokens, palavras-passe, certificados e chaves de cifragem. Fork de código aberto do HashiCorp Vault com armazenamento Raft, PKI, registo de auditoria e início de sessão por diretório",
     "pt_BR": "Gerenciador de segredos para armazenar e controlar o acesso a tokens, senhas, certificados e chaves de criptografia. Fork de código aberto do HashiCorp Vault com armazenamento Raft, PKI, log de auditoria e login por diretório"
   },

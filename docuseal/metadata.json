@@ -1,9 +1,12 @@
 {
   "name": "docuseal",
   "description": {
-    "en": "DocuSeal. Open source document filling and signing"
+    "en": "DocuSeal. Open source document filling and signing",
+    "it": "DocuSeal è una piattaforma open source per compilare e firmare documenti online."
   },
-  "categories": ["office"],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

@@ -1,9 +1,12 @@
 {
   "name": "IT-Tools",
   "description": {
-    "en": "Useful tools for developer and people working in IT"
+    "en": "Useful tools for developer and people working in IT",
+    "it": "Raccolta di strumenti utili per sviluppatori e personale IT, eseguiti nel browser."
   },
-  "categories": [ "development" ],
+  "categories": [
+    "development"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

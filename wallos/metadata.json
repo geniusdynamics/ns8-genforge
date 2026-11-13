@@ -1,9 +1,12 @@
 {
   "name": "wallos",
   "description": {
-    "en": "Wallos is a powerful, open-source, and self-hostable web application designed to empower you in managing your finances with ease."
+    "en": "Wallos is a powerful, open-source, and self-hostable web application designed to empower you in managing your finances with ease.",
+    "it": "Wallos è un tracker self-hosted degli abbonamenti ricorrenti che mostra costi, scadenze e spese per categoria."
   },
-  "categories": ["office"],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

@@ -22,6 +22,8 @@ ap.add_argument("--kickstart", help="path of a NethServer/ns8-kickstart checkout
 ap.add_argument("--owner", default="geniusdynamics", help="GitHub organization of the module")
 ap.add_argument("--author-name", default="Genius Dynamics")
 ap.add_argument("--author-email", default="support@genius.ke")
+ap.add_argument("--conservative", action="store_true",
+                help="only workflows, tooling, UI toolchain, build script and test layout: no code, metadata or unit changes (for released modules)")
 args = ap.parse_args()
 repo = os.path.abspath(args.repo)
 name = args.name or re.sub(r"^ns8-", "", os.path.basename(repo.rstrip("/")))
@@ -115,12 +117,15 @@ if "org.nethserver.authorizations" not in bi:
 cp(f"{K}/tests/__init__.robot", p("tests/__init__.robot"))
 if os.path.exists(p("tests/kickstart.robot")):
     subprocess.run(["git", "-C", repo, "rm", "-q", "-f", "tests/kickstart.robot"], check=False)
-if not os.path.exists(p(f"tests/{name}.robot")):
+if not os.path.exists(p(f"tests/{name}.robot")) and not args.conservative:
     write(p(f"tests/{name}.robot"), read(f"{K}/tests/kickstart.robot").replace("kickstart", name))
     todo.append(f"tests/{name}.robot generated from template: set real configure payload and URL check")
 
 # 6. metadata (only fill the template placeholders)
 mp = p("ui/public/metadata.json")
+if args.conservative:
+    print("\n".join("TODO " + t for t in todo))
+    sys.exit(0)
 md = json.load(open(mp))
 md["name"] = md.get("name") or name
 md["authors"] = [{"name": args.author_name, "email": args.author_email}]

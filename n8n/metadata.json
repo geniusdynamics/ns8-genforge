@@ -1,9 +1,12 @@
 {
   "name": "N8N",
   "description": {
-    "en": "Workflow automation for technical people"
+    "en": "n8n is a Workflow automation for technical people.",
+    "it": "n8n è uno strumento di automazione dei flussi di lavoro per persone tecniche."
   },
-  "categories": [ "development" ],
+  "categories": [
+    "development"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

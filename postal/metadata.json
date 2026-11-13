@@ -1,9 +1,12 @@
 {
   "name": "postal",
   "description": {
-    "en": "Postal is a complete and fully featured mail server for use by websites & web servers. Think Sendgrid, Mailgun or Postmark but open source and ready for you to run on your own servers."
+    "en": "Postal is a complete and fully featured mail server for use by websites & web servers. Think Sendgrid, Mailgun or Postmark but open source and ready for you to run on your own servers.",
+    "it": "Postal è una piattaforma self-hosted per inviare e tracciare email transazionali e massive dalle applicazioni."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

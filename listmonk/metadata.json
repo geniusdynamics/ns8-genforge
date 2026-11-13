@@ -1,9 +1,12 @@
 {
   "name": "listmonk",
   "description": {
-    "en": "Self-hosted newsletter and mailing list manager"
+    "en": "Self-hosted newsletter and mailing list manager",
+    "it": "listmonk è un gestore self-hosted di newsletter e mailing list ad alte prestazioni."
   },
-  "categories": [],
+  "categories": [
+    "communication"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

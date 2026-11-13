@@ -1,9 +1,12 @@
 {
   "name": "umami",
   "description": {
-    "en": "umami. Effortless analytics and real-time insights."
+    "en": "Umami is a simple, privacy-friendly web analytics tool that shows visits and events without tracking individual users.",
+    "it": "Umami è uno strumento di analisi web semplice e rispettoso della privacy, che mostra visite ed eventi senza tracciare i singoli utenti."
   },
-  "categories": ["office"],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

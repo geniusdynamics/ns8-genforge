@@ -1,9 +1,12 @@
 {
   "name": "Maybe",
   "description": {
-    "en": "Maybe: The OS for your personal finances."
+    "en": "OS for your personal finances",
+    "it": "Maybe è un'applicazione per gestire le proprie finanze personali, investimenti e patrimonio."
   },
-  "categories": ["office"],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

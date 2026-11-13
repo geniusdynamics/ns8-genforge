@@ -1,9 +1,12 @@
 {
   "name": "Homarr",
   "description": {
-    "en": "A simple yet powerful dashboard for your server"
+    "en": "A simple yet powerful dashboard for your server",
+    "it": "Homarr è una dashboard semplice e potente per i servizi del proprio server."
   },
-  "categories": ["monitoring"],
+  "categories": [
+    "monitoring"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

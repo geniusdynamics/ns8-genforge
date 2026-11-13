@@ -1,9 +1,12 @@
 {
   "name": "Linkwarden",
   "description": {
-    "en": "Webpage Management for Individuals and Teams"
+    "en": "Webpage Management for Individuals and Teams",
+    "it": "Linkwarden salva, organizza e archivia pagine web, per singoli e per team."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

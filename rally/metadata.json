@@ -1,9 +1,12 @@
 {
   "name": "Rally",
   "description": {
-    "en": "Rallly is an open-source scheduling and collaboration tool designed to make organizing events and meetings easier."
+    "en": "Rallly is an open-source scheduling and collaboration tool designed to make organizing events and meetings easier.",
+    "it": "Rallly semplifica la scelta della data di una riunione con sondaggi di disponibilità."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

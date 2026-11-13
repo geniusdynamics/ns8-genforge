@@ -1,9 +1,12 @@
 {
   "name": "bookstack",
   "description": {
-    "en": "Simple & Free Wiki Software"
+    "en": "BookStack is a simple, self-hosted wiki to organize and share documentation in books, chapters and pages.",
+    "it": "BookStack è una wiki semplice e self-hosted per organizzare e condividere la documentazione in libri, capitoli e pagine."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

@@ -1,9 +1,12 @@
 {
   "name": "mautic",
   "description": {
-    "en": "Mautic & Open Source Marketing Automation"
+    "en": "Mautic & Open Source Marketing Automation",
+    "it": "Mautic è una piattaforma open source di marketing automation."
   },
-  "categories": ["office"],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",
