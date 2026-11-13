@@ -1,0 +1,23 @@
+{
+  "name": "solidinvoice",
+  "description": {
+    "en": "SolidInvoice is a self-hosted invoicing application to manage clients, quotes, invoices and payments.",
+    "it": "SolidInvoice è un'applicazione di fatturazione self-hosted per gestire clienti, preventivi, fatture e pagamenti."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.solidinvoice.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-solidinvoice/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-solidinvoice",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-solidinvoice/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/solidinvoice"
+}
