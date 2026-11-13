@@ -1,0 +1,12 @@
+{
+  "org": "geniusdynamics",
+  "forge_repo": "ns8-genforge",
+  "domain": "forge.genius.ke",
+  "tools": [
+    "ns8-module-generator",
+    "ns8-ui-lib",
+    "ns8-generator-module-template",
+    "ns8-new-ui-starter-kit"
+  ],
+  "exclude": []
+}
