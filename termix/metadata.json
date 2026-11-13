@@ -5,7 +5,8 @@
     "it": "Termix è un terminale SSH e un gestore di server accessibile dal browser."
   },
   "categories": [
-    "collaboration"
+    "monitoring",
+    "development"
   ],
   "authors": [
     {

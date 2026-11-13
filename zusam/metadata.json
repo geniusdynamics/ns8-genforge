@@ -1,0 +1,24 @@
+{
+  "name": "zusam",
+  "description": {
+    "en": "Zusam (/tsuˈzam/) is a free and open-source way to self-host private forums for groups of friends. Composed of a server written in PHP exposing a REST API and a lightweight webapp, Zusam is extensible and easy to install.",
+    "it": "Zusam è un modo gratuito e open source per ospitare forum privati per gruppi di amici."
+  },
+  "categories": [
+    "collaboration",
+    "communication"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/zusam/zusam/tree/master/documentation",
+    "bug_url": "https://github.com/geniusdynamics/ns8-zusam/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-zusam",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-zusam/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/zusam"
+}

@@ -5,7 +5,7 @@
     "it": "Bugsink è un sistema di tracciamento errori self-hosted che raccoglie i crash delle applicazioni e li raggruppa per il debug."
   },
   "categories": [
-    "collaboration"
+    "monitoring"
   ],
   "authors": [
     {
