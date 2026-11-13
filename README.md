@@ -302,6 +302,7 @@ All apps are sorted by categories and listed alphabetically. Click on the stars 
 | :------------------- | :-------------------------------- | :---------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------: | :-------------------------------: | :--------------------------------------------------------: |
 | **No-code Database** | [NocoDB](https://www.nocodb.com/) | No-code database and Airtable alternative |     [![GitHub Stars](https://img.shields.io/github/stars/nocodb/nocodb?style=social)](https://github.com/nocodb/nocodb)     | [Airtable](https://airtable.com/) |  [NS8link](https://github.com/geniusdynamics/ns8-nocodb/)  |
 | **No-code Database** | [Seatable](https://seatable.io/)  | Spreadsheet with database functionalities | [![GitHub Stars](https://img.shields.io/github/stars/seatable/seatable?style=social)](https://github.com/seatable/seatable) | [Airtable](https://airtable.com/) | [NS8link](https://github.com/geniusdynamics/ns8-seatable/) |
+| **No-code Database** | [Grist](https://www.getgrist.com/) | Relational spreadsheet that combines the flexibility of a spreadsheet with the robustness of a database | [![GitHub Stars](https://img.shields.io/github/stars/gristlabs/grist-core?style=social)](https://github.com/gristlabs/grist-core) | [Airtable](https://www.airtable.com/), [Google Sheets](https://www.google.com/sheets/about/) | [NS8link](https://github.com/geniusdynamics/ns8-grist/) |
 
 ## 12) Note Taking
 
