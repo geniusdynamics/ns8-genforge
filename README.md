@@ -355,6 +355,7 @@ All apps are sorted by categories and listed alphabetically. Click on the stars 
 | **Web Analytics** | [Plausible](https://plausible.io/) | Google Analytics alternative | [![GitHub Stars](https://img.shields.io/github/stars/plausible/analytics?style=social)](https://github.com/plausible/analytics) | [Google Analytics](https://analytics.google.com/) | [NS8link](https://github.com/geniusdynamics/ns8-plausible/) |
 | **Web Analytics** | [Swetrix](https://swetrix.com)     | Google Analytics alternative | [![GitHub Stars](https://img.shields.io/github/stars/Swetrix/swetrix-api?style=social)](https://github.com/Swetrix/swetrix-api) | [Google Analytics](https://analytics.google.com/) |  [NS8link](https://github.com/geniusdynamics/ns8-swetrix/)  |
 | **Web Analytics** | [Umami](https://umami.is)          | Google Analytics alternative |       [![GitHub Stars](https://img.shields.io/github/stars/mikecao/umami?style=social)](https://github.com/mikecao/umami)       | [Google Analytics](https://analytics.google.com/) |   [NS8link](https://github.com/geniusdynamics/ns8-umami/)   |
+| **Business Intelligence** | [Metabase](https://www.metabase.com/) | Analytics and dashboards to let your company explore data on their own | [![GitHub Stars](https://img.shields.io/github/stars/metabase/metabase?style=social)](https://github.com/metabase/metabase) | [Tableau](https://www.tableau.com/), [Power BI](https://www.microsoft.com/power-platform/products/power-bi) | [NS8link](https://github.com/geniusdynamics/ns8-metabase/) |
 
 ## 19) Workflow Automation
 
