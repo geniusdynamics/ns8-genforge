@@ -1,9 +1,12 @@
 {
   "name": "JoplinServer",
   "description": {
-    "en": "Joplin is an open source note-taking app. Capture your thoughts and securely access them from any device."
+    "en": "Joplin is an open source note-taking app. Capture your thoughts and securely access them from any device.",
+    "it": "Joplin Server sincronizza note e allegati tra le applicazioni Joplin e consente di condividere i quaderni con altri utenti."
   },
-  "categories": [ "collaboration" ],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

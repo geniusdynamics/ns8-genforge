@@ -1,9 +1,12 @@
 {
   "name": "dolibarr",
   "description": {
-    "en": "Open Source ERP & CRM for business"
+    "en": "Dolibarr is a web suite for small and medium businesses covering invoicing, CRM, stock and accounting.",
+    "it": "Dolibarr è una suite web per piccole e medie imprese con fatturazione, CRM, magazzino e contabilità."
   },
-  "categories": [ "office" ],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

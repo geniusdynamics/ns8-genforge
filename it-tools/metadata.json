@@ -1,9 +1,12 @@
 {
   "name": "IT-Tools",
   "description": {
-    "en": "Useful tools for developer and people working in IT"
+    "en": "IT-Tools is a collection of handy online tools for developers and IT people, such as converters, generators and encoders, run from the browser.",
+    "it": "Raccolta di strumenti utili per sviluppatori e personale IT, eseguiti nel browser."
   },
-  "categories": [ "development" ],
+  "categories": [
+    "development"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

@@ -1,9 +1,12 @@
 {
   "name": "semaphoreui",
   "description": {
-    "en": "Semaphore is a responsive web UI for running Ansible playbooks, Terraform/OpenTofu and Pulumi code."
+    "en": "Semaphore is a responsive web UI for running Ansible playbooks, Terraform/OpenTofu and Pulumi code.",
+    "it": "Semaphore UI è un'interfaccia web per eseguire Ansible, Terraform e altri strumenti di automazione."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

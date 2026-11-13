@@ -1,9 +1,12 @@
 {
   "name": "coolify",
   "description": {
-    "en": "Coolify. An open-source & self-hostable Heroku / Netlify / Vercel alternative."
+    "en": "Coolify. An open-source & self-hostable Heroku / Netlify / Vercel alternative.",
+    "it": "Coolify è una piattaforma self-hosted per distribuire applicazioni, database e servizi sui propri server."
   },
-  "categories": ["development"],
+  "categories": [
+    "development"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

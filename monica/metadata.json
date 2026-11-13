@@ -1,9 +1,12 @@
 {
   "name": "monica",
   "description": {
-    "en": "Personal CRM"
+    "en": "Monica is a personal CRM that helps you remember details about friends, family and contacts, and keep in touch.",
+    "it": "Monica è un CRM personale che aiuta a ricordare i dettagli di amici, familiari e contatti e a mantenere i rapporti."
   },
-  "categories": ["office"],
+  "categories": [
+    "office"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

@@ -1,9 +1,12 @@
 {
   "name": "ntfy",
   "description": {
-    "en": "ntfy is a simple HTTP-based pub-sub notification service. It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API."
+    "en": "ntfy is a simple HTTP-based pub-sub notification service. It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API.",
+    "it": "ntfy invia notifiche push al telefono o al desktop da script e applicazioni tramite semplici richieste HTTP."
   },
-  "categories": ["communication"],
+  "categories": [
+    "communication"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

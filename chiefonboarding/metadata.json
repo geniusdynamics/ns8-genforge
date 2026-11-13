@@ -1,9 +1,12 @@
 {
   "name": "chiefonboarding",
   "description": {
-    "en": "Onboarding a new hire is often complicated and chaotic, especially in remote teams. We will help you structure your onboarding process for IT, HR, managers, buddies, and, of course, your new hires.."
+    "en": "Onboarding a new hire is often complicated and chaotic, especially in remote teams. We will help you structure your onboarding process for IT, HR, managers, buddies, and, of course, your new hires..",
+    "it": "Chief Onboarding guida i nuovi dipendenti nell'inserimento con attività, risorse ed elenchi di cose da fare."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

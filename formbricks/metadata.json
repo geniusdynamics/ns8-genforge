@@ -1,9 +1,12 @@
 {
   "name": "formbricks",
   "description": {
-    "en": "Formbricks is an Experience Management Suite built on the largest open source survey stack worldwide."
+    "en": "Formbricks is an Experience Management Suite built on the largest open source survey stack worldwide.",
+    "it": "Formbricks è una suite open source per sondaggi e raccolta di feedback dagli utenti."
   },
-  "categories": ["collaboration"],
+  "categories": [
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

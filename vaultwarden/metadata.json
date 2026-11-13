@@ -1,9 +1,13 @@
 {
   "name": "Vaultwarden",
   "description": {
-    "en": "Alternative implementation of the Bitwarden server API written in Rust and compatible with upstream Bitwarden clients*, perfect for self-hosted deployment where running the official resource-heavy service might not be ideal.."
+    "en": "Alternative implementation of the Bitwarden server API written in Rust and compatible with upstream Bitwarden clients*, perfect for self-hosted deployment where running the official resource-heavy service might not be ideal..",
+    "it": "Vaultwarden è un server di password compatibile con Bitwarden, leggero e self-hosted."
   },
-  "categories": ["security", "collaboration"],
+  "categories": [
+    "security",
+    "collaboration"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",

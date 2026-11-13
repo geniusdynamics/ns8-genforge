@@ -1,9 +1,12 @@
 {
   "name": "Password Pusher",
   "description": {
-    "en": "an open source application to communicate passwords over the web. Links to passwords expire after a certain number of views and/or time has passed."
+    "en": "an open source application to communicate passwords over the web. Links to passwords expire after a certain number of views and/or time has passed.",
+    "it": "Password Pusher condivide informazioni sensibili con scadenza e cancellazione automatica dopo un certo numero di visualizzazioni."
   },
-  "categories": ["security"],
+  "categories": [
+    "security"
+  ],
   "authors": [
     {
       "name": "Genius Dynamics",
