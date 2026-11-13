@@ -1,0 +1,23 @@
+{
+  "name": "Dashy",
+  "description": {
+    "en": "Dashy is a self-hosted start page that gathers links and status checks for your services in one customizable dashboard.",
+    "it": "Dashy è una pagina iniziale self-hosted che raccoglie link e stato dei servizi in un'unica dashboard personalizzabile."
+  },
+  "categories": [
+    "system_administration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://dashy.to/docs",
+    "bug_url": "https://github.com/geniusdynamics/ns8-dashy/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-dashy",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-dashy/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/dashy"
+}
