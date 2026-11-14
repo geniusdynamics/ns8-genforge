@@ -130,7 +130,8 @@ input.field::placeholder { color: var(--faint); }
 /* Dialog */
 dialog { width: min(820px, calc(100vw - 24px)); max-height: calc(100vh - 32px); padding: 0; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
 dialog::backdrop { background: rgba(4, 7, 12, .7); }
-.dlg { padding: 24px; display: grid; gap: 20px; }
+.dlg { padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.dlg > * { min-width: 0; }
 .dlg-head { display: flex; gap: 16px; align-items: center; }
 .dlg-head .logo { width: 64px; height: 64px; }
 .dlg-head h2 { margin: 0; }
@@ -150,6 +151,21 @@ ul.checks li.pass::before { content: "●"; color: var(--ok); }
 ul.facts li { display: flex; gap: 10px; }
 ul.facts span:first-child { color: var(--faint); min-width: 92px; flex: none; }
 ul.facts span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.upstream-summary { display: grid; gap: 5px; font-size: 12px; color: var(--muted); }
+.upstream-summary .version-line { overflow-wrap: anywhere; }
+.upstream-status { font-size: 12px; color: var(--muted); }
+.upstream-status.update_available { color: var(--warn); }
+.upstream-status.current { color: var(--ok); }
+.upstream-panel { border: 1px solid var(--border); border-radius: 10px; padding: 16px; min-width: 0; }
+.upstream-panel p { margin: 6px 0 12px; font-size: 13px; color: var(--muted); }
+.image-list { display: grid; gap: 10px; }
+.image-row { padding: 10px 0; border-top: 1px solid var(--border); min-width: 0; }
+.image-row:first-child { border-top: 0; }
+.image-row code, .image-row a { overflow-wrap: anywhere; font-size: 13px; }
+.image-versions { overflow-wrap: anywhere; display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 5px 0; font-size: 13px; }
+.upstream-panel details { margin-top: 12px; }
+.upstream-panel summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+@media (max-width: 420px) { .grid { grid-template-columns: minmax(0, 1fr); } .dlg { padding: 16px; } }
 .links { display: flex; flex-wrap: wrap; gap: 8px; }
 
 footer { padding: 28px 0 44px; color: var(--faint); font-size: 14px; }
@@ -419,12 +435,72 @@ function scoreBadge(x) {
   return el("span", { class: "score " + cls, title: "Listing quality: " + x.score + " of 9 checks" }, el("i"), x.score + "/9");
 }
 
+const UPSTREAM_STATUS = {
+  update_available: "Upstream update available",
+  current: "No newer matching version",
+  unknown: "Upstream version unverified"
+};
+function upstreamStatus(status) {
+  return el("span", { class: "upstream-status " + (status || "unknown"), text: UPSTREAM_STATUS[status] || UPSTREAM_STATUS.unknown });
+}
+function upstreamData(m) {
+  const check = m.x.upstream_check;
+  // Ignore stale enrichment for a different module release; older catalogs still work.
+  return check && check.module_version === m.shown && Array.isArray(check.images)
+    && check.images.every((i) => i && typeof i.reference === "string") ? check : null;
+}
+function upstreamSummary(m) {
+  const check = upstreamData(m);
+  if (!check) return null;
+  const image = check.images.find((i) => i.reference === check.primary_image);
+  const release = check.release;
+  const mapped = release && release.packaged;
+  const packaged = mapped ? release.packaged : image && image.tag;
+  const latest = mapped ? release.latest : image && image.latest;
+  return el("div", { class: "upstream-summary" },
+    upstreamStatus(check.status),
+    packaged ? el("span", { class: "version-line", text: (mapped ? "App " : "Image tag ") + packaged + (latest ? " · " + (mapped ? "latest upstream " : image.complete ? "latest matching " : "newest found ") + latest : " · latest unavailable") })
+      : release && release.latest ? el("span", { class: "version-line", text: "Upstream release " + release.latest + " · packaged version unknown" }) : null);
+}
+function imageRow(image) {
+  const url = safeUrl(image.url);
+  return el("div", { class: "image-row" },
+    url ? ext(url, image.registry + "/" + image.repository) : el("code", { text: image.registry + "/" + image.repository }),
+    el("div", { class: "image-versions" },
+      el("span", { text: "Packaged: " + (image.tag || image.digest || "unknown") }),
+      el("span", { text: (image.complete ? "Latest matching tag: " : "Newest matching tag found: ") + (image.latest || "unavailable") })),
+    upstreamStatus(image.status),
+    image.digest ? el("div", {}, el("code", { text: "Pinned digest: " + image.digest })) : null,
+    image.reason ? el("p", { text: image.reason }) : null);
+}
+function upstreamPanel(m) {
+  const check = upstreamData(m);
+  if (!check) return null;
+  const primary = check.images.find((i) => i.reference === check.primary_image);
+  const rest = check.images.filter((i) => i !== primary);
+  const release = check.release;
+  const date = new Date(check.checked_at);
+  const checked = Number.isNaN(date.getTime()) ? "Time unavailable" : date.toLocaleString();
+  return el("section", { class: "upstream-panel", "aria-label": "Upstream versions" },
+    el("h4", { text: "Upstream versions" }),
+    upstreamStatus(check.status),
+    el("p", { text: "Compared with NS8 module " + check.module_version + ". Checked " + checked + ". Updates need module maintainer review and NS8 testing." }),
+    release && release.latest ? el("div", { class: "image-row" },
+      el("div", { class: "image-versions" },
+        release.packaged ? el("span", { text: "Packaged app: " + release.packaged }) : null,
+        safeUrl(release.url) ? ext(safeUrl(release.url), "Latest GitHub release: " + release.latest) : el("span", { text: "Latest GitHub release: " + release.latest })),
+      !release.packaged ? el("p", { text: "Project release shown for reference; image tags can use a different version scheme." }) : null) : null,
+    primary ? imageRow(primary) : el("p", { text: "The primary application image has not been mapped. Container references are listed below." }),
+    rest.length ? el("details", {}, el("summary", { text: (primary ? "Supporting containers" : "Container images") + " (" + rest.length + ")" }),
+      el("div", { class: "image-list" }, ...rest.map(imageRow))) : null);
+}
+
 function moduleCard(m) {
   const stop = (e) => e.stopPropagation();
   const link = (url, text) => { const u = safeUrl(url); if (!u) return null; const a = ext(u, text); a.addEventListener("click", stop); return a; };
   const released = ago(m.x.released_at);
   return el("article", { class: "card", tabindex: "0", role: "button", "aria-label": m.name + ", details",
-    onclick: () => openDetails(m), onkeydown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetails(m); } } },
+    onclick: () => openDetails(m), onkeydown: (e) => { if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openDetails(m); } } },
     el("div", { class: "card-head" },
       logoBox(m.logo, m.name),
       el("div", { class: "card-title" },
@@ -434,6 +510,7 @@ function moduleCard(m) {
           !m.stable && m.testing ? el("span", { class: "tag testing", text: "Testing" }) : null,
           m.categories[0] ? el("span", { class: "tag", text: label(m.categories[0]) }) : null))),
     el("p", { class: "desc", text: m.description }),
+    upstreamSummary(m),
     el("div", { class: "card-foot" },
       link(m.docs.code_url, "Code"), link(m.docs.documentation_url, "Docs"), link(m.docs.bug_url, "Bugs"),
       el("span", { class: "right" }, released ? el("span", { text: "Released " + released }) : null, scoreBadge(m.x))));
@@ -543,6 +620,7 @@ function openDetails(m) {
       el("h4", { text: "Install from the command line" }),
       el("div", { class: "cmd" }, cmdCode, el("button", { class: "btn", type: "button", onclick: (e) => copy(cmd, e.currentTarget) }, "Copy")),
       el("p", { class: "muted", style: "margin:8px 0 0;font-size:13px", text: "Or add this repository to your cluster and install " + m.name + " from the Software Center." })),
+    upstreamPanel(m),
     el("div", { class: "cols" },
       el("div", {},
         el("h4", { text: "Details" }),

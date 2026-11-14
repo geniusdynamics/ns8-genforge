@@ -1,0 +1,45 @@
+name: Catalog checks
+on:
+  pull_request:
+    paths:
+      - 'buildsite.py'
+      - 'upstream.py'
+      - 'upstream.json'
+      - '.site/**'
+      - '.tests/**'
+      - '.github/workflows/catalog-checks.yml'
+  push:
+    branches: [dev, main]
+    paths:
+      - 'buildsite.py'
+      - 'upstream.py'
+      - 'upstream.json'
+      - '.site/**'
+      - '.tests/**'
+      - '.github/workflows/catalog-checks.yml'
+permissions:
+  contents: read
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test version comparisons, registry failures and offline catalog builds
+        run: python -m unittest discover -s .tests -v
+      - name: Validate configuration and browser script syntax
+        run: |
+          python -m json.tool upstream.json > /dev/null
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path('.site/index.html').read_text()
+          Path('/tmp/genforge-site.js').write_text('\n'.join(re.findall(r'<script>(.*?)</script>', html, re.S)))
+          PY
+          node --check /tmp/genforge-site.js
+          node --check .tests/test_site.cjs
