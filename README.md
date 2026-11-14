@@ -453,3 +453,42 @@ All apps are sorted by categories and listed alphabetically. Click on the stars 
 [//]: #
 [//]: # "| Category                 | Company                                      | Description                                                                                     |                                                                     GitHub Stars                                                                      |                                                                            Alternative to                                                                            |                            NS8link                             |"
 [//]: # "|:-------------------------|:---------------------------------------------|:------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------:|"
+
+## Upstream version checks
+
+The website compares the container tags in the selected NS8 release's
+`org.nethserver.images` label with public Docker Hub and GHCR tags. The card shows
+its primary application; app details show registry links, packaged and newest
+matching tags, the check time, and supporting containers. GitHub's latest stable
+project release is shown separately when a README upstream repository is available.
+An upstream update is a prompt for module maintainer review and NS8 testing.
+
+These checks add optional `upstream_check` data to `catalog.json` and never change
+`repodata.json`, installation commands or image pins. They refresh with the
+existing publishing schedule. Older or missing catalogs continue to work, and
+checks for a different NS8 module release are ignored by the page.
+
+`upstream.json` maps ambiguous app names to a primary image using its full registry
+and repository, without a tag. Otherwise a unique repository basename matching
+the module ID is used. Custom-built images may use module version numbers rather
+than application versions: for these, set `github` and an explicit `versions`
+mapping from **released NS8 module tag** to **packaged upstream application version**.
+A new module release requires its own mapping; no old mapping is carried forward.
+For example, SuiteCRM module `1.0.0` packages application `8.10.2`.
+
+Comparison is conservative: numeric versions are ordered numerically, prereleases
+and moving tags are not compared, and image prefixes/variants must match exactly. NetBox’s documented composite
+application/container version suffix is compared numerically.
+The checker does not assume the newest database major or image variant is compatible.
+Pinned digests are displayed, but digest-only rebuilds are not checked. Unknown
+version schemes, unsupported/private registries, missing tags, rate limits and
+incomplete scans appear as unverified, rather than current. A newer matching tag
+found during a partial scan can still flag an update; it is labelled as the newest
+found rather than guaranteed latest. Registry queries are deduplicated, limited to
+five pages per repository, have timeouts, and run only during the build.
+
+Run without external upstream calls with `python3 buildsite.py --skip-upstream`.
+`--org-repos` also disables all upstream network checks for offline builds. Run
+comparison and failure-handling tests with `python3 -m unittest discover -s .tests`.
+The optional browser regression check is `node .tests/test_site.cjs` (requires
+Playwright and Chromium; set `CHROMIUM_PATH` if Chromium is installed elsewhere).

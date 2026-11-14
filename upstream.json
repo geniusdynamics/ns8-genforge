@@ -1,0 +1,122 @@
+{
+  "2Fauth": {
+    "image": "docker.io/2fauth/2fauth"
+  },
+  "PenPot": {
+    "image": "docker.io/penpotapp/frontend"
+  },
+  "SurrealDB": {
+    "image": "docker.io/surrealdb/surrealdb"
+  },
+  "agentzeroai": {
+    "image": "docker.io/agent0ai/agent-zero"
+  },
+  "authentik": {
+    "image": "ghcr.io/goauthentik/server"
+  },
+  "bigcapital": {
+    "image": "docker.io/bigcapitalhq/webapp"
+  },
+  "bookstack": {
+    "image": "docker.io/linuxserver/bookstack"
+  },
+  "calibre-Web": {
+    "image": "lscr.io/linuxserver/calibre-web"
+  },
+  "chiefonboarding": {
+    "image": "docker.io/chiefonboarding/chiefonboarding"
+  },
+  "colanode": {
+    "image": "ghcr.io/colanode/server"
+  },
+  "couchdb": {
+    "image": "docker.io/apache/couchdb"
+  },
+  "docmost": {
+    "image": "docker.io/docmost/docmost"
+  },
+  "firefly-iii": {
+    "image": "docker.io/fireflyiii/core"
+  },
+  "frappe-press": {
+    "image": "docker.io/geniusdynamics/press"
+  },
+  "grist": {
+    "image": "docker.io/gristlabs/grist"
+  },
+  "infisical": {
+    "image": "docker.io/infisical/infisical"
+  },
+  "it-tools": {
+    "image": "docker.io/corentinth/it-tools"
+  },
+  "joplin": {
+    "image": "docker.io/joplin/server"
+  },
+  "kobotoolbox": {
+    "image": "docker.io/kobotoolbox/kpi"
+  },
+  "matomo": {
+    "image": "ghcr.io/geniusdynamics/matomo-app",
+    "versions": {},
+    "github": "matomo-org/matomo"
+  },
+  "minthcm": {
+    "image": "docker.io/minthcm/minthcm"
+  },
+  "netbox": {
+    "image": "docker.io/netboxcommunity/netbox"
+  },
+  "ntfy": {
+    "image": "docker.io/binwiederhier/ntfy"
+  },
+  "opensign": {
+    "image": "docker.io/opensign/opensign"
+  },
+  "opnform": {
+    "image": "docker.io/jhumanj/opnform-api"
+  },
+  "pastevault": {
+    "image": "ghcr.io/arc53/pastevault-backend"
+  },
+  "postal": {
+    "image": "ghcr.io/postalserver/postal"
+  },
+  "postiz": {
+    "image": "ghcr.io/gitroomhq/postiz-app"
+  },
+  "pwpush": {
+    "image": "docker.io/pglombardo/pwpush"
+  },
+  "rally": {
+    "image": "docker.io/lukevella/rallly"
+  },
+  "rocketchat": {
+    "image": "docker.io/rocketchat/rocket.chat"
+  },
+  "semaphore": {
+    "image": "docker.io/semaphoreui/semaphore"
+  },
+  "stirlingpdf": {
+    "image": "docker.io/stirlingtools/stirling-pdf"
+  },
+  "tacticalrmm": {
+    "image": "docker.io/tacticalrmm/tactical"
+  },
+  "vaultwarden": {
+    "image": "docker.io/vaultwarden/server"
+  },
+  "wallos": {
+    "image": "docker.io/bellamy/wallos"
+  },
+  "xibosignage": {
+    "image": "ghcr.io/xibosignage/xibo-cms"
+  },
+  "suitecrm": {
+    "image": "ghcr.io/geniusdynamics/suitecrm-app",
+    "github": "SuiteCRM/SuiteCRM-Core",
+    "versions": {
+      "1.0.0": "8.10.2"
+    }
+  }
+}
