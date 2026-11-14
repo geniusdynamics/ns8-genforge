@@ -12,6 +12,8 @@ const image = {reference: 'docker.io/netboxcommunity/netbox:v4.7.5-5.1.2', regis
 const check = {module_version: '1.0.0', checked_at: '2026-11-14T00:00:00Z', status: 'update_available', primary_image: image.reference,
   images: [image, {...image, reference: 'postgres:18.0', repository: 'library/postgres', tag: '18.0', latest: null, status: 'unknown', reason: 'Registry unavailable.'}]};
 const repodata = ['NetBox', 'Current', 'Unknown', 'Legacy', 'Stale'].map(app);
+repodata.find(m => m.id === 'NetBox').screenshots = ['screenshots/landscape.png', 'screenshots/portrait.png'];
+repodata.find(m => m.id === 'Current').categories = ['security'];
 const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0, license: 'GPL-3.0', released_at: '2026-11-13T00:00:00Z', checks: {topic:true,categories:true,logo:true,screenshots:true,description:true,translations:false,docs:true,min_core:true,license:true}},
   {id: 'Current', upstream_check: {...check, status: 'current', images: [{...image, status: 'current', complete: true, latest: image.tag}]}},
   {id: 'Unknown', upstream_check: {...check, status: 'unknown', primary_image: null, images: []}},
@@ -29,6 +31,10 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       let data = catalog;
       await page.route('**/*', route => {
         const pathname = new URL(route.request().url()).pathname;
+        if (pathname.endsWith('/landscape.png') || pathname.endsWith('/portrait.png')) {
+          const [w,h] = pathname.endsWith('/portrait.png') ? [900,1600] : [1600,900];
+          return route.fulfill({contentType: 'image/svg+xml', body: `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect width="${w}" height="${h}" fill="#163d62"/><text x="40" y="100" font-size="44" fill="white">Application screenshot</text></svg>`});
+        }
         if (pathname === '/') return route.fulfill({contentType: 'text/html', body: html});
         if (pathname.endsWith('repodata.json')) return route.fulfill({json: repodata});
         if (pathname.endsWith('catalog.json')) return data === null ? route.fulfill({status: 404, body: ''}) : route.fulfill({json: data});
@@ -38,6 +44,23 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       await page.locator('#grid .card').first().waitFor();
       assert.equal(await page.locator('#grid .card').count(), 5);
       assert.equal(await page.locator('.upstream-summary').count(), 3); // Legacy + stale catalogs ignored.
+      const status = page.getByRole('combobox', {name: 'Filter by version status', exact: true});
+      await status.selectOption({label: 'Latest Version'});
+      assert.equal(await page.locator('#grid .card').count(), 1);
+      assert.equal(await page.locator('#grid h3').innerText(), 'Current'); // Missing/stale/unverified checks excluded.
+      await page.getByRole('button', {name: /^Office/}).click();
+      assert.equal(await page.locator('#grid .card').count(), 0);
+      assert.match(await page.locator('#grid').innerText(), /No module matches these filters/);
+      await status.selectOption({label: 'Need Updates'});
+      assert.equal(await page.locator('#grid h3').innerText(), 'NetBox');
+      await page.locator('#q').fill('Current');
+      assert.equal(await page.locator('#grid .card').count(), 0);
+      await page.locator('#q').fill('NetBox');
+      await page.getByRole('combobox', {name: 'Sort modules', exact: true}).selectOption('stars');
+      assert.equal(await page.locator('#grid h3').innerText(), 'NetBox');
+      await page.locator('#q').fill(''); await status.selectOption('all');
+      await page.locator('#chips .chip').first().click();
+      assert.equal(await page.locator('#grid .card').count(), 5);
       const card = page.locator('#grid .card').filter({has: page.getByRole('heading', {name: 'NetBox', exact: true})});
       await card.click();
       await page.getByRole('dialog').waitFor();
@@ -52,6 +75,19 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       };
       await selected('Details');
       assert.match(await page.getByRole('tabpanel').innerText(), /A useful application/);
+      await page.waitForFunction(() => [...document.querySelectorAll('.shots img')].every(i => i.complete && i.naturalWidth > 0));
+      const geometry = await page.locator('.shots').evaluate(gallery => ({
+        height: gallery.clientHeight, scrollHeight: gallery.scrollHeight, width: gallery.clientWidth, scrollWidth: gallery.scrollWidth,
+        images: [...gallery.querySelectorAll('img')].map(img => ({width: img.clientWidth, height: img.clientHeight, objectFit: getComputedStyle(img).objectFit})),
+        frameHeight: gallery.querySelector('a').getBoundingClientRect().height
+      }));
+      assert.ok(geometry.height > 120, 'Screenshot strip must not collapse inside the tab grid');
+      assert.ok(geometry.height >= geometry.frameHeight, 'Full screenshot frame is visible');
+      assert.ok(geometry.scrollHeight <= geometry.height + 1, 'Screenshot strip has no inner vertical scroll');
+      assert.ok(geometry.scrollWidth > geometry.width, 'Multiple screenshots use horizontal navigation');
+      assert.ok(geometry.images.every(i => i.width > 180 && i.height > 120 && i.objectFit === 'contain'));
+      assert.equal(await page.locator('.shots a').first().getAttribute('target'), '_blank');
+      assert.match(await page.locator('.shots a').first().getAttribute('href'), /landscape.png$/);
       assert.equal(await page.locator('#module-panel-details .facts li').count(), 8);
       assert.equal(await page.locator('#module-panel-details .checks li').count(), 9);
       assert.match(await page.getByRole('tabpanel').innerText(), /LISTING QUALITY · 8 OF 9/);
@@ -99,6 +135,9 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       data = {apps: []}; await page.reload();
       await page.locator('#grid .card').first().waitFor();
       assert.equal(await page.locator('.upstream-summary').count(), 0);
+      await status.selectOption('current'); assert.equal(await page.locator('#grid .card').count(), 0);
+      await status.selectOption('update_available'); assert.equal(await page.locator('#grid .card').count(), 0);
+      await status.selectOption('all');
       await card.click(); await selected('Details');
       await maintenance.click(); await selected('Maintenance');
       assert.match(await page.getByRole('tabpanel').innerText(), /checks are unavailable for this catalog/);
@@ -113,7 +152,7 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
       assert.deepEqual(errors, []);
       await page.close();
-      console.log('PASS: tabs, commands, keyboard, responsive layout and catalog fallbacks at ' + width + 'px');
+      console.log('PASS: screenshot sizing, version filters, tabs, commands and catalog fallbacks at ' + width + 'px');
     }
   } finally {await browser.close();}
 })().catch(e => {console.error(e); process.exitCode = 1;});
