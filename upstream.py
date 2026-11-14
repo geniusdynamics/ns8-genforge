@@ -1,8 +1,12 @@
 """Best-effort upstream image checks for the website; never changes repodata.json."""
 import base64
+import collections
 import json
 import os
 import re
+import sys
+import threading
+import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -72,6 +76,35 @@ REGISTRIES = {
 }
 
 
+# Why lookups failed, by registry and error kind, for one summary line in the build log.
+# Only error classes and HTTP codes are recorded, never URLs, headers or response bodies.
+FAILURES = collections.Counter()
+_notes = set()
+_lock = threading.Lock()
+
+
+def note_once(message):
+    with _lock:
+        if message not in _notes:
+            _notes.add(message)
+            print(f"[WARNING] {message}", file=sys.stderr)
+
+
+def error_kind(ex):
+    return f"HTTP {ex.code}" if isinstance(ex, urllib.error.HTTPError) else type(ex).__name__
+
+
+def pull_token(token_url, query, auth):
+    """Registry pull token; rejected Docker Hub credentials fall back to anonymous access."""
+    url = f"{token_url}?{query}"
+    if auth:
+        try:
+            return get_json(url, {"Authorization": auth})[0]
+        except urllib.error.HTTPError as ex:
+            note_once(f"Docker Hub rejected the configured credentials ({error_kind(ex)}); using anonymous access.")
+    return get_json(url)[0]
+
+
 def docker_hub_auth():
     """Basic auth for the Docker Hub token service, from the workflow secrets, or None for anonymous."""
     user = os.environ.get("DOCKER_HUB_USERNAME")
@@ -96,7 +129,7 @@ def registry_tags(key):
         query = urllib.parse.urlencode({"service": service, "scope": f"repository:{repo}:pull"})
         # Credentials go to the token service only, never to the registry or a pagination URL.
         auth = docker_hub_auth() if registry == "docker.io" else None
-        token, _ = get_json(f"{token_url}?{query}", {"Authorization": auth} if auth else None)
+        token = pull_token(token_url, query, auth)
         headers = {"Authorization": "Bearer " + token["token"]}
         url = f"https://{host}/v2/{repo}/tags/list?n=10000"
         for _ in range(MAX_PAGES):
@@ -114,8 +147,10 @@ def registry_tags(key):
                 raise ValueError("Unexpected pagination URL")
             url = next_url
         return {"tags": tags, "complete": False, "reason": "Registry tag scan reached its page limit."}
-    except Exception:
+    except Exception as ex:
         # Do not put registry auth responses or tokens in the public catalog or logs.
+        with _lock:
+            FAILURES[f"{registry} {error_kind(ex)}"] += 1
         return {"tags": tags, "complete": False, "reason": "Registry could not be checked (unavailable, private or rate limited)."}
 
 
@@ -223,6 +258,9 @@ def enrich(apps, repodata, config, github_get, token, version_for, offline=False
     else:
         with ThreadPoolExecutor(8) as pool:
             results = dict(zip(keys, pool.map(registry_tags, keys)))
+        if FAILURES:
+            summary = ", ".join(f"{k}: {v}" for k, v in sorted(FAILURES.items()))
+            print(f"[WARNING] registry lookups failed for {sum(FAILURES.values())} of {len(keys)} images ({summary})", file=sys.stderr)
 
     def attach(app):
         cfg = dict(config.get(app["id"], {}))
