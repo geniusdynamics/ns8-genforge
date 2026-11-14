@@ -12,6 +12,7 @@ const image = {reference: 'docker.io/netboxcommunity/netbox:v4.7.5-5.1.2', regis
 const check = {module_version: '1.0.0', checked_at: '2026-11-14T00:00:00Z', status: 'update_available', primary_image: image.reference,
   images: [image, {...image, reference: 'postgres:18.0', repository: 'library/postgres', tag: '18.0', latest: null, status: 'unknown', reason: 'Registry unavailable.'}]};
 const repodata = ['NetBox', 'Current', 'Unknown', 'Legacy', 'Stale'].map(app);
+repodata.find(m => m.id === 'NetBox').categories = ['system_administration', 'office'];
 repodata.find(m => m.id === 'NetBox').screenshots = ['screenshots/landscape.png', 'screenshots/portrait.png'];
 repodata.find(m => m.id === 'Current').categories = ['security'];
 const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0, license: 'GPL-3.0', released_at: '2026-11-13T00:00:00Z', checks: {topic:true,categories:true,logo:true,screenshots:true,description:true,translations:false,docs:true,min_core:true,license:true}},

@@ -134,8 +134,10 @@ dialog::backdrop { background: rgba(4, 7, 12, .7); }
 .dlg > * { min-width: 0; }
 .dlg-head { display: flex; gap: 16px; align-items: center; }
 .dlg-head .logo { width: 64px; height: 64px; }
-.dlg-head h2 { margin: 0; }
-.dlg-close { margin-left: auto; align-self: start; }
+.dlg-head > div:not(.logo) { min-width: 0; flex: 1; }
+.dlg-head h2 { margin: 0; overflow-wrap: anywhere; }
+.dlg-head .tag { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.dlg-close { margin-left: auto; align-self: start; flex-shrink: 0; }
 .detail-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
 .detail-tab { flex: 1; min-width: 0; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--muted); padding: 8px; font-size: 14px; cursor: pointer; }
 .detail-tab:hover { color: var(--text); background: var(--surface-2); }
@@ -147,7 +149,7 @@ dialog::backdrop { background: rgba(4, 7, 12, .7); }
 .shots a { flex: 0 0 min(100%, 480px); min-width: 0; scroll-snap-align: start; }
 .shots img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; border-radius: 8px; border: 1px solid var(--border); display: block; background: var(--surface-2); }
 .dlg h4 { margin: 0 0 8px; font: 600 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
-.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px; }
 .cmd { display: flex; gap: 8px; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 6px 6px 12px; }
 .cmd code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; font: 13px var(--mono); }
 ul.checks, ul.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; font-size: 14px; }
