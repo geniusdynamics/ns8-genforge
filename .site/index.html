@@ -459,7 +459,7 @@ function upstreamSummary(m) {
   const latest = mapped ? release.latest : image && image.latest;
   return el("div", { class: "upstream-summary" },
     upstreamStatus(check.status),
-    packaged ? el("span", { class: "version-line", text: (mapped ? "App " : "Image tag ") + packaged + (latest ? " · " + (mapped ? "latest upstream " : image.complete ? "latest matching " : "newest found ") + latest : " · latest unavailable") })
+    packaged ? el("span", { class: "version-line", text: (mapped ? "App " : image.complete ? "Image Tag: " : "Image tag ") + packaged + (latest ? (mapped ? " · latest upstream " : image.complete ? " . Matching: " : " · Newest ") + latest : " · latest unavailable") })
       : release && release.latest ? el("span", { class: "version-line", text: "Upstream release " + release.latest + " · packaged version unknown" }) : null);
 }
 function imageRow(image) {
