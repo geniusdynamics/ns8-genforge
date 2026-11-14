@@ -1,0 +1,23 @@
+{
+  "name": "Chibisafe",
+  "description": {
+    "en": "Chibisafe is a self-hosted file vault with fast chunked uploads, albums, share links and a web interface.",
+    "it": "Chibisafe è un archivio file self-hosted con caricamento, album, link di condivisione e interfaccia web."
+  },
+  "categories": [
+    "storage"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://chibisafe.app/docs/intro",
+    "bug_url": "https://github.com/geniusdynamics/ns8-chibisafe/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-chibisafe",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-chibisafe/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/chibisafe"
+}
