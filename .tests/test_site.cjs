@@ -8,16 +8,17 @@ const app = (id) => ({ id, name: id, description: {en: 'A useful application for
   categories: ['office'], source: 'ghcr.io/geniusdynamics/' + id,
   authors: [{name: 'Genius Dynamics'}], docs: {code_url: 'https://github.com/geniusdynamics/ns8-' + id}, versions: [{tag: '1.0.0', labels: {'org.nethserver.min-core': '3.0.0', 'org.nethserver.images': 'docker.io/postgres:18.0 docker.io/netboxcommunity/netbox:v4.7.5-5.1.2'}}] });
 const image = {reference: 'docker.io/netboxcommunity/netbox:v4.7.5-5.1.2', registry: 'docker.io', repository: 'netboxcommunity/netbox',
-  tag: 'v4.7.5-5.1.2', latest: 'v4.8.0-5.1.2', complete: false, status: 'update_available', url: 'https://hub.docker.com/r/netboxcommunity/netbox/tags'};
-const check = {module_version: '1.0.0', checked_at: '2026-11-14T00:00:00Z', status: 'update_available', primary_image: image.reference,
+  tag: 'v4.7.5-5.1.2', latest: 'v4.8.0-5.1.2', latest_major: 'v5.0.1-1.0.0', complete: false, status: 'update_available', url: 'https://hub.docker.com/r/netboxcommunity/netbox/tags'};
+const check = {module_version: '1.0.0', checked_at: '2026-11-14T00:00:00Z', status: 'update_available', primary_image: image.reference, dependency_updates: 1, dependency_majors: 0,
   images: [image, {...image, reference: 'postgres:18.0', repository: 'library/postgres', tag: '18.0', latest: null, status: 'unknown', reason: 'Registry unavailable.'}]};
 const repodata = ['NetBox', 'Current', 'Unknown', 'Legacy', 'Stale'].map(app);
 repodata.find(m => m.id === 'NetBox').categories = ['system_administration', 'office'];
 repodata.find(m => m.id === 'NetBox').screenshots = ['screenshots/landscape.png', 'screenshots/portrait.png'];
 repodata.find(m => m.id === 'Current').categories = ['security'];
 const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0, license: 'GPL-3.0', released_at: '2026-11-13T00:00:00Z', checks: {topic:true,categories:true,logo:true,screenshots:true,description:true,translations:false,docs:true,min_core:true,license:true}},
-  {id: 'Current', upstream_check: {...check, status: 'current', images: [{...image, status: 'current', complete: true, latest: image.tag}]}},
-  {id: 'Unknown', upstream_check: {...check, status: 'unknown', primary_image: null, images: []}},
+  {id: 'Current', upstream_check: {...check, status: 'current', dependency_updates: 0, dependency_majors: 1, images: [{...image, status: 'current', complete: true, latest: image.tag, latest_major: null}]}},
+  {id: 'Legacy', upstream_check: {...check, status: 'major_available', dependency_updates: 0, images: [{...image, status: 'major_available', complete: true, latest: image.tag}]}},
+  {id: 'Unknown', upstream_check: {...check, status: 'unknown', primary_image: null, images: [], dependency_updates: 0}},
   {id: 'Stale', upstream_check: {...check, module_version: '0.9.0'}}]};
 (async () => {
   const browser = await chromium.launch({headless: true, executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox']});
@@ -44,7 +45,7 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       await page.goto('http://genforge.test/');
       await page.locator('#grid .card').first().waitFor();
       assert.equal(await page.locator('#grid .card').count(), 5);
-      assert.equal(await page.locator('.upstream-summary').count(), 3); // Legacy + stale catalogs ignored.
+      assert.equal(await page.locator('.upstream-summary').count(), 4); // Stale catalog ignored.
       const status = page.getByRole('combobox', {name: 'Filter by version status', exact: true});
       await status.selectOption({label: 'Latest Version'});
       assert.equal(await page.locator('#grid .card').count(), 1);
@@ -52,6 +53,14 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       await page.getByRole('button', {name: /^Office/}).click();
       assert.equal(await page.locator('#grid .card').count(), 0);
       assert.match(await page.locator('#grid').innerText(), /No module matches these filters/);
+      await page.locator('#chips .chip').first().click();
+      await status.selectOption({label: 'Major Upgrades'});
+      assert.equal(await page.locator('#grid h3').innerText(), 'Legacy');
+      assert.equal(await page.locator('#grid .upstream-status').innerText(), 'Major Upgrade Available');
+      await status.selectOption({label: 'Dependency Updates'});
+      assert.equal(await page.locator('#grid h3').innerText(), 'NetBox');
+      assert.match(await page.locator('#grid .dependency-line').innerText(), /^1 dependency update$/);
+      await page.getByRole('button', {name: /^Office/}).click();
       await status.selectOption({label: 'Need Updates'});
       assert.equal(await page.locator('#grid h3').innerText(), 'NetBox');
       await page.locator('#q').fill('Current');
@@ -110,10 +119,12 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       await installation.focus(); await page.keyboard.press('End');
       await selected('Maintenance');
       assert.match(await page.getByRole('tabpanel').innerText(), /Newest matching tag found: v4.8.0-5.1.2/);
+      assert.match(await page.getByRole('tabpanel').innerText(), /Next major version: v5.0.1-1.0.0/);
       assert.match(await page.locator('.upstream-panel').innerText(), /Compared to NS8.V 1.0.0/);
       assert.match(await page.locator('.upstream-panel').innerText(), /subject to review and testing/);
       assert.equal(await page.locator('.upstream-panel .upstream-status').first().innerText(), 'Updates Available');
       assert.equal(await page.locator('#grid .card').filter({has: page.getByRole('heading', {name: 'Current', exact: true})}).locator('.upstream-status').innerText(), 'Latest Version');
+      assert.equal(await page.locator('#grid .card').filter({has: page.getByRole('heading', {name: 'Current', exact: true})}).locator('.dependency-line').innerText(), '1 major dependency upgrade');
       await page.getByText('Supporting containers (1)', {exact: true}).click();
       assert.equal(await page.getByText('Registry unavailable.', {exact: true}).isVisible(), true);
       if (process.env.SCREENSHOT_DIR) await page.screenshot({path: path.join(process.env.SCREENSHOT_DIR, 'maintenance-' + width + '.png')});
