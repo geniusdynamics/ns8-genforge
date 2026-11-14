@@ -1,5 +1,7 @@
 """Best-effort upstream image checks for the website; never changes repodata.json."""
+import base64
 import json
+import os
 import re
 import urllib.parse
 import urllib.request
@@ -7,7 +9,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
 TIMEOUT = 8
-MAX_PAGES = 5
+# GHCR returns at most 1,000 tags per page; LinuxServer images have several thousand build tags.
+MAX_PAGES = 20
 HEADERS = {"User-Agent": "GenForge-upstream-checker", "Accept": "application/json"}
 
 
@@ -36,8 +39,9 @@ def image_ref(value):
         repo = "library/" + repo
     if not re.fullmatch(r"[a-z0-9][a-z0-9._/-]*", repo) or ".." in repo or "//" in repo:
         return None
+    # lscr.io is LinuxServer's alias of their GHCR images, so it links to the same package page.
     url = (f"https://hub.docker.com/r/{repo}/tags" if registry == "docker.io" else
-           f"https://github.com/{repo.split('/')[0]}/pkgs/container/{urllib.parse.quote(repo.split('/', 1)[-1], safe='')}" if registry == "ghcr.io" else None)
+           f"https://github.com/{repo.split('/')[0]}/pkgs/container/{urllib.parse.quote(repo.split('/', 1)[-1], safe='')}" if registry in ("ghcr.io", "lscr.io") else None)
     return {"reference": value, "registry": registry, "repository": repo, "tag": tag,
             "digest": digest or None, "url": url}
 
@@ -59,31 +63,48 @@ def stable_tag(tag, container_build=False):
     return nums + (0,) * (4 - len(nums)), (prefix or "", suffix)
 
 
+# Registries that serve the OCI distribution API, and where to get a pull token for them.
+# lscr.io images are published under the same name on ghcr.io, which has a public API.
+REGISTRIES = {
+    "docker.io": ("registry-1.docker.io", "https://auth.docker.io/token", "registry.docker.io"),
+    "ghcr.io": ("ghcr.io", "https://ghcr.io/token", "ghcr.io"),
+    "lscr.io": ("ghcr.io", "https://ghcr.io/token", "ghcr.io"),
+}
+
+
+def docker_hub_auth():
+    """Basic auth for the Docker Hub token service, from the workflow secrets, or None for anonymous."""
+    user = os.environ.get("DOCKER_HUB_USERNAME")
+    secret = os.environ.get("DOCKER_HUB_ACCESS_TOKEN")
+    if not user or not secret:
+        return None
+    return "Basic " + base64.b64encode(f"{user}:{secret}".encode()).decode()
+
+
 def registry_tags(key):
-    """Bounded, unauthenticated public-registry lookup, with explicit partial results."""
+    """Full tag list from the registry API, with explicit partial results.
+
+    The tags/list endpoint returns every tag, so the packaged tag is always found when it
+    exists. It is not a pull, so it does not count against Docker Hub pull limits.
+    """
     registry, repo = key
     tags = []
+    if registry not in REGISTRIES:
+        return {"tags": [], "complete": False, "reason": "Registry is not supported yet."}
+    host, token_url, service = REGISTRIES[registry]
     try:
-        if registry == "docker.io":
-            url = f"https://hub.docker.com/v2/repositories/{repo}/tags?page_size=100&ordering=last_updated"
-            headers = {}
-        elif registry == "ghcr.io":
-            query = urllib.parse.urlencode({"service": "ghcr.io", "scope": f"repository:{repo}:pull"})
-            token, _ = get_json("https://ghcr.io/token?" + query)
-            headers = {"Authorization": "Bearer " + token["token"]}
-            url = f"https://ghcr.io/v2/{repo}/tags/list?n=1000"
-        else:
-            return {"tags": [], "complete": False, "reason": "Registry is not supported yet."}
+        query = urllib.parse.urlencode({"service": service, "scope": f"repository:{repo}:pull"})
+        # Credentials go to the token service only, never to the registry or a pagination URL.
+        auth = docker_hub_auth() if registry == "docker.io" else None
+        token, _ = get_json(f"{token_url}?{query}", {"Authorization": auth} if auth else None)
+        headers = {"Authorization": "Bearer " + token["token"]}
+        url = f"https://{host}/v2/{repo}/tags/list?n=10000"
         for _ in range(MAX_PAGES):
             data, response_headers = get_json(url, headers)
-            if registry == "docker.io":
-                tags.extend(x["name"] for x in data.get("results", []))
-                next_url = data.get("next")
-            else:
-                tags.extend(data.get("tags") or [])
-                link = response_headers.get("Link", "")
-                match = re.search(r'<([^>]+)>;\s*rel="?next"?', link)
-                next_url = urllib.parse.urljoin(url, match.group(1)) if match else None
+            tags.extend(data.get("tags") or [])
+            link = response_headers.get("Link", "")
+            match = re.search(r'<([^>]+)>;\s*rel="?next"?', link)
+            next_url = urllib.parse.urljoin(url, match.group(1)) if match else None
             if not next_url:
                 return {"tags": tags, "complete": True, "reason": None}
             # Follow pagination only on the original registry host; never forward auth elsewhere.
@@ -98,8 +119,14 @@ def registry_tags(key):
         return {"tags": tags, "complete": False, "reason": "Registry could not be checked (unavailable, private or rate limited)."}
 
 
+def major(version):
+    """First number of a parsed version: a change there usually needs a migration, not just a pull."""
+    return version[0]
+
+
 def compare_image(image, result):
-    item = {**image, "latest": None, "status": "unknown", "complete": result["complete"], "reason": result.get("reason")}
+    item = {**image, "latest": None, "latest_major": None, "status": "unknown",
+            "complete": result["complete"], "reason": result.get("reason")}
     if image["registry"] == "ghcr.io" and image["repository"].startswith("geniusdynamics/"):
         item["reason"] = "Custom-built image: its tag is a module version, not an upstream application version."
         return item
@@ -114,10 +141,32 @@ def compare_image(image, result):
     if not candidates:
         item["reason"] = item["reason"] or "No stable tag with the same image variant was found."
         return item
-    newest, tag = max(candidates)
-    item["latest"] = tag
-    if newest > current[0]:
+    # A jump from a small major to a year-like one (0.6 -> 2021.12) is a change of version
+    # scheme, often an old date tag, not an upgrade: such tags are left out.
+    if major(current[0]) < 1000:
+        candidates = [c for c in candidates if major(c[0]) < 1000]
+    if not candidates:
+        item["reason"] = item["reason"] or "No stable tag with the same image variant was found."
+        return item
+    # Updates within the packaged major version are routine; a newer major is reported separately.
+    same_major = [c for c in candidates if major(c[0]) == major(current[0])]
+    newest_any = max(candidates)
+    if same_major:
+        newest, item["latest"] = max(same_major)
+    else:
+        newest = None
+    if major(newest_any[0]) > major(current[0]):
+        item["latest_major"] = newest_any[1]
+    packaged_found = image["tag"] in result["tags"]
+    if newest and newest > current[0]:
         item["status"] = "update_available"
+    elif not packaged_found:
+        # Without the packaged tag the comparison is not trustworthy, so no major upgrade is claimed.
+        item["reason"] = "Packaged tag was not found in the registry." if result["complete"] else item["reason"]
+    elif item["latest_major"]:
+        item["status"] = "major_available"
+        item["reason"] = ("A newer major version exists. Major upgrades can change data formats or "
+                          "configuration, so they need a migration plan and testing.")
     elif result["complete"] and image["tag"] in result["tags"]:
         item["status"] = "current"
         item["reason"] = "No newer stable tag with the same image variant was found."
@@ -151,7 +200,10 @@ def release_check(config, module_tag, github_get, token):
     latest = stable_tag(entry["latest"])
     # Release prefixes (v/release-) have no meaning for a mapped application version.
     if current and latest and current[1][1] == latest[1][1]:
-        entry["status"] = "update_available" if latest[0] > current[0] else "current"
+        if major(latest[0]) > major(current[0]):
+            entry["status"] = "major_available"
+        else:
+            entry["status"] = "update_available" if latest[0] > current[0] else "current"
     return entry
 
 
@@ -183,8 +235,12 @@ def enrich(apps, repodata, config, github_get, token, version_for, offline=False
         module = raw[app["id"]]
         release = release_check(cfg, version_for(module), github_get, token) if not offline else None
         status = ((release if cfg.get("versions") else primary) or {}).get("status", "unknown")
+        # Supporting containers (databases, caches) are summarised apart from the application.
+        supporting = [i for i in images if i is not primary]
         app["upstream_check"] = {"checked_at": checked, "module_version": version_for(module),
                                  "status": status, "primary_image": primary["reference"] if primary else None,
-                                 "images": images, "release": release}
+                                 "images": images, "release": release,
+                                 "dependency_updates": sum(i["status"] == "update_available" for i in supporting),
+                                 "dependency_majors": sum(i["status"] == "major_available" for i in supporting)}
     with ThreadPoolExecutor(8) as pool:
         list(pool.map(attach, apps))
