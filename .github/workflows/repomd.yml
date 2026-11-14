@@ -31,6 +31,7 @@ jobs:
       name: "Build the website data"
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        PYTHONDONTWRITEBYTECODE: "1"
       run: |
         # The website still works without catalog.json, so a failure here must not stop the publish.
         if ! python3 buildsite.py --repodata repodata.json --output catalog.json; then
