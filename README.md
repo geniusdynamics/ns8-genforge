@@ -479,13 +479,29 @@ For example, SuiteCRM module `1.0.0` packages application `8.10.2`.
 Comparison is conservative: numeric versions are ordered numerically, prereleases
 and moving tags are not compared, and image prefixes/variants must match exactly. NetBox’s documented composite
 application/container version suffix is compared numerically.
-The checker does not assume the newest database major or image variant is compatible.
+
+Updates are split by major version. A newer tag with the same major version
+(for example Postgres `15.20` → `15.21`) is an **update**. A newer major version
+(Postgres `15` → `18`) is reported separately as a **major upgrade**, because it can
+change data formats or configuration and needs a migration plan. Each image shows
+both its newest matching tag and, when there is one, its next major version. The
+app's own status comes from its primary image only; databases, caches and other
+supporting containers are counted apart as dependency updates and major dependency
+upgrades. The website can filter by updates, major upgrades or dependency updates.
 Pinned digests are displayed, but digest-only rebuilds are not checked. Unknown
 version schemes, unsupported/private registries, missing tags, rate limits and
 incomplete scans appear as unverified, rather than current. A newer matching tag
 found during a partial scan can still flag an update; it is labelled as the newest
-found rather than guaranteed latest. Registry queries are deduplicated, limited to
-five pages per repository, have timeouts, and run only during the build.
+found rather than guaranteed latest. Registry queries are deduplicated, have timeouts,
+and run only during the build.
+
+Tags are read from each registry's `tags/list` API, which returns every tag (up to
+10,000 per page on Docker Hub and 1,000 on GHCR, up to 20 pages), so the packaged tag is found when it exists. Listing
+tags is not an image pull and does not count against Docker Hub pull limits.
+Docker Hub requests use the organisation secrets `DOCKER_HUB_USERNAME` and
+`DOCKER_HUB_ACCESS_TOKEN` when they are set, and run anonymously otherwise. The
+credentials are only sent to Docker's token service, never to the registry or into
+`catalog.json`. `lscr.io` images are read from the same LinuxServer images on GHCR.
 
 Run without external upstream calls with `python3 buildsite.py --skip-upstream`.
 `--org-repos` also disables all upstream network checks for offline builds. Run

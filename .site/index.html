@@ -165,6 +165,8 @@ ul.facts span:last-child { min-width: 0; overflow-wrap: anywhere; }
 .upstream-status { font-size: 12px; color: var(--muted); }
 .upstream-status.update_available { color: var(--warn); }
 .upstream-status.current { color: var(--ok); }
+.upstream-status.major_available { color: var(--link); }
+.dependency-line { font-size: 12px; color: var(--muted); }
 .upstream-panel { border: 1px solid var(--border); border-radius: 10px; padding: 16px; min-width: 0; }
 .upstream-panel p { margin: 6px 0 12px; font-size: 13px; color: var(--muted); }
 .image-list { display: grid; gap: 10px; }
@@ -282,6 +284,8 @@ footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
           <option value="all">All Versions</option>
           <option value="current">Latest Version</option>
           <option value="update_available">Need Updates</option>
+          <option value="major_available">Major Upgrades</option>
+          <option value="dependencies">Dependency Updates</option>
         </select>
         <select class="field" id="sort" aria-label="Sort modules">
           <option value="name">Name</option>
@@ -452,6 +456,7 @@ function scoreBadge(x) {
 
 const UPSTREAM_STATUS = {
   update_available: "Updates Available",
+  major_available: "Major Upgrade Available",
   current: "Latest Version",
   unknown: "Upstream version unverified"
 };
@@ -475,7 +480,18 @@ function upstreamSummary(m) {
   return el("div", { class: "upstream-summary" },
     upstreamStatus(check.status),
     packaged ? el("span", { class: "version-line", text: (mapped ? "App " : image.complete ? "Image Tag: " : "Image tag ") + packaged + (latest ? (mapped ? " · latest upstream " : image.complete ? " . Matching: " : " · Newest ") + latest : " · latest unavailable") })
-      : release && release.latest ? el("span", { class: "version-line", text: "Upstream release " + release.latest + " · packaged version unknown" }) : null);
+      : release && release.latest ? el("span", { class: "version-line", text: "Upstream release " + release.latest + " · packaged version unknown" }) : null,
+    dependencyLine(check));
+}
+// Databases and caches are counted apart, so their major upgrades do not read as routine app updates.
+function dependencyLine(check) {
+  const updates = Number(check.dependency_updates) || 0;
+  const majors = Number(check.dependency_majors) || 0;
+  if (!updates && !majors) return null;
+  const parts = [];
+  if (updates) parts.push(updates + (updates === 1 ? " dependency update" : " dependency updates"));
+  if (majors) parts.push(majors + (majors === 1 ? " major dependency upgrade" : " major dependency upgrades"));
+  return el("span", { class: "dependency-line", text: parts.join(" · ") });
 }
 function imageRow(image) {
   const url = safeUrl(image.url);
@@ -483,7 +499,8 @@ function imageRow(image) {
     url ? ext(url, image.registry + "/" + image.repository) : el("code", { text: image.registry + "/" + image.repository }),
     el("div", { class: "image-versions" },
       el("span", { text: "Packaged: " + (image.tag || image.digest || "unknown") }),
-      el("span", { text: (image.complete ? "Latest matching tag: " : "Newest matching tag found: ") + (image.latest || "unavailable") })),
+      el("span", { text: (image.complete ? "Latest matching tag: " : "Newest matching tag found: ") + (image.latest || "unavailable") }),
+      image.latest_major ? el("span", { text: "Next major version: " + image.latest_major }) : null),
     upstreamStatus(image.status),
     image.digest ? el("div", {}, el("code", { text: "Pinned digest: " + image.digest })) : null,
     image.reason ? el("p", { text: image.reason }) : null);
@@ -500,6 +517,7 @@ function upstreamPanel(m) {
     el("h4", { text: "Upstream versions" }),
     upstreamStatus(check.status),
     el("p", { text: "Compared to NS8.V " + check.module_version + ". Checked " + checked + "; subject to review and testing." }),
+    dependencyLine(check),
     release && release.latest ? el("div", { class: "image-row" },
       el("div", { class: "image-versions" },
         release.packaged ? el("span", { text: "Packaged app: " + release.packaged }) : null,
@@ -573,7 +591,9 @@ function renderModules() {
 
   const q = state.q.trim().toLowerCase();
   let list = state.modules.filter((m) => {
-    if (state.versionStatus !== "all" && (upstreamData(m) || {}).status !== state.versionStatus) return false;
+    if (state.versionStatus === "dependencies") {
+      if (!((upstreamData(m) || {}).dependency_updates > 0)) return false;
+    } else if (state.versionStatus !== "all" && (upstreamData(m) || {}).status !== state.versionStatus) return false;
     if (state.cat === "@testing" ? m.stable : state.cat !== "all" && !(m.categories.length ? m.categories : ["other"]).includes(state.cat)) return false;
     return !q || [m.name, m.id, m.description, m.upstream || "", m.categories.join(" ")].join(" ").toLowerCase().includes(q);
   });
