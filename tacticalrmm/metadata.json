@@ -1,0 +1,23 @@
+{
+  "name": "tacticalrmm",
+  "description": {
+    "en": "Tactical RMM is a remote monitoring & management tool built with Django, Vue and Golang",
+    "it": "Tactical RMM è uno strumento di monitoraggio e gestione remota basato su Django, Vue e Go."
+  },
+  "categories": [
+    "system_administration",
+    "monitoring"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.tacticalrmm.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-tacticalrmm/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-tacticalrmm"
+  },
+  "source": "ghcr.io/geniusdynamics/tacticalrmm"
+}
