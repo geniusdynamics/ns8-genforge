@@ -1,0 +1,22 @@
+{
+  "name": "suitecrm",
+  "description": {
+    "en": "SuiteCRM is an open source CRM for sales, marketing and customer support with workflows and reporting.",
+    "it": "SuiteCRM è un CRM open source per vendite, marketing e assistenza clienti con flussi di lavoro e report."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.suitecrm.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-suitecrm/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-suitecrm"
+  },
+  "source": "ghcr.io/geniusdynamics/suitecrm"
+}
