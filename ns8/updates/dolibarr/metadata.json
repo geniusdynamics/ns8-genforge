@@ -1,0 +1,22 @@
+{
+  "name": "dolibarr",
+  "description": {
+    "en": "Dolibarr is a web suite for small and medium businesses covering invoicing, CRM, stock and accounting.",
+    "it": "Dolibarr è una suite web per piccole e medie imprese con fatturazione, CRM, magazzino e contabilità."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.dolibarr.org/documentation-home.php",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-dolibarr"
+  },
+  "source": "ghcr.io/geniusdynamics/dolibarr"
+}

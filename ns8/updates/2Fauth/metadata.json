@@ -1,0 +1,22 @@
+{
+  "name": "2Fauth",
+  "description": {
+    "en": "m A Web app to manage your Two-Factor Authentication (2FA) accounts and generate their security codes",
+    "it": "Gestore self-hosted di codici di autenticazione a due fattori, con interfaccia web e importazione dei token."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.2fauth.app/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-2fauth"
+  },
+  "source": "ghcr.io/geniusdynamics/2fauth"
+}

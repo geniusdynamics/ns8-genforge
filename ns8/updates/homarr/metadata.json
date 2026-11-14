@@ -1,0 +1,22 @@
+{
+  "name": "Homarr",
+  "description": {
+    "en": "Homarr is a simple yet powerful dashboard that gathers the apps and services of your server on one customizable page.",
+    "it": "Homarr è una dashboard semplice e potente per i servizi del proprio server."
+  },
+  "categories": [
+    "monitoring"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://homarr.dev/docs",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-homarr"
+  },
+  "source": "ghcr.io/geniusdynamics/homarr"
+}

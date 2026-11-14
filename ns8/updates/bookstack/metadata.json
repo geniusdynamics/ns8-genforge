@@ -1,0 +1,22 @@
+{
+  "name": "bookstack",
+  "description": {
+    "en": "BookStack is a simple, self-hosted wiki to organize and share documentation in books, chapters and pages.",
+    "it": "BookStack è una wiki semplice e self-hosted per organizzare e condividere la documentazione in libri, capitoli e pagine."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.bookstackapp.com/docs/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-bookstack"
+  },
+  "source": "ghcr.io/geniusdynamics/bookstack"
+}

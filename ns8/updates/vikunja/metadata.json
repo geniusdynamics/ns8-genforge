@@ -1,0 +1,22 @@
+{
+  "name": "vikunja",
+  "description": {
+    "en": "The open-source to-do app. Organize everything, on all platforms.",
+    "it": "Vikunja è un'applicazione self-hosted di attività e project management con liste, kanban, promemoria e condivisione."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://vikunja.io/docs",
+    "bug_url": "https://github.com/geniusdynamic/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-vikunja"
+  },
+  "source": "ghcr.io/geniusdynamics/vikunja"
+}

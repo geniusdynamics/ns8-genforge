@@ -1,0 +1,22 @@
+{
+  "name": "monica",
+  "description": {
+    "en": "Monica is a personal CRM that helps you remember details about friends, family and contacts, and keep in touch.",
+    "it": "Monica è un CRM personale che aiuta a ricordare i dettagli di amici, familiari e contatti e a mantenere i rapporti."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.monicahq.com/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-monica"
+  },
+  "source": "ghcr.io/geniusdynamics/monica"
+}

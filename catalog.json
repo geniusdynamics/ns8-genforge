@@ -1,0 +1,6601 @@
+{
+ "generated_at": "2026-11-14T08:52:45+00:00",
+ "org": "geniusdynamics",
+ "forge_repo": "geniusdynamics/ns8-genforge",
+ "domain": "forge.genius.ke",
+ "apps": [
+  {
+   "id": "zusam",
+   "repo": "https://github.com/geniusdynamics/ns8-zusam",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:50:11Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:48:24Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Zusam",
+   "upstream_url": "https://github.com/zusam/zusam",
+   "upstream_repo": "https://github.com/zusam/zusam",
+   "alternatives": [
+    {
+     "name": "Facebook Groups",
+     "url": "https://www.facebook.com/groups/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/zusam/zusam:0.6.1",
+    "images": [
+     {
+      "reference": "docker.io/zusam/zusam:0.6.1",
+      "registry": "docker.io",
+      "repository": "zusam/zusam",
+      "tag": "0.6.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/zusam/zusam/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "zusam/zusam",
+     "packaged": null,
+     "latest": "0.6.1",
+     "url": "https://github.com/zusam/zusam/releases/tag/0.6.1",
+     "status": "unknown",
+     "published_at": "2026-03-02T01:43:06Z"
+    }
+   }
+  },
+  {
+   "id": "it-tools",
+   "repo": "https://github.com/geniusdynamics/ns8-it-tools",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:31:51Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:23:44Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.1",
+    "status": "unknown",
+    "primary_image": "docker.io/corentinth/it-tools:2024.10.22-7ca5933",
+    "images": [
+     {
+      "reference": "docker.io/corentinth/it-tools:2024.10.22-7ca5933",
+      "registry": "docker.io",
+      "repository": "corentinth/it-tools",
+      "tag": "2024.10.22-7ca5933",
+      "digest": null,
+      "url": "https://hub.docker.com/r/corentinth/it-tools/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "leantime",
+   "repo": "https://github.com/geniusdynamics/ns8-leantime",
+   "stars": 0,
+   "pushed_at": "2026-11-13T12:48:24Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:29:52Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Leantime",
+   "upstream_url": "https://leantime.io/",
+   "upstream_repo": "https://github.com/Leantime/leantime",
+   "alternatives": [
+    {
+     "name": "Asana",
+     "url": "https://asana.com/"
+    },
+    {
+     "name": "Monday",
+     "url": "https://monday.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "docker.io/leantime/leantime:3.1.4",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:13.0.2",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "13.0.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/leantime/leantime:3.1.4",
+      "registry": "docker.io",
+      "repository": "leantime/leantime",
+      "tag": "3.1.4",
+      "digest": null,
+      "url": "https://hub.docker.com/r/leantime/leantime/tags",
+      "latest": "3.14.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "Leantime/leantime",
+     "packaged": null,
+     "latest": "v3.14.0",
+     "url": "https://github.com/Leantime/leantime/releases/tag/v3.14.0",
+     "status": "unknown",
+     "published_at": "2026-11-10T23:49:30Z"
+    }
+   }
+  },
+  {
+   "id": "erpnext",
+   "repo": "https://github.com/geniusdynamics/ns8-erpnext",
+   "stars": 7,
+   "pushed_at": "2026-11-14T05:04:38Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-06-07T09:02:11Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": false,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "Monica HQ",
+   "upstream_url": "https://www.monicahq.com/",
+   "upstream_repo": "https://github.com/monicahq/monica",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "4.1.0",
+    "status": "unknown",
+    "primary_image": null,
+    "images": [
+     {
+      "reference": "docker.io/mariadb:10.11.5",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.5",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:6.2-alpine",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "6.2-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3-alpine",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "monicahq/monica",
+     "packaged": null,
+     "latest": "v4.1.2",
+     "url": "https://github.com/monicahq/monica/releases/tag/v4.1.2",
+     "status": "unknown",
+     "published_at": "2024-05-04T08:06:50Z"
+    }
+   }
+  },
+  {
+   "id": "calibre",
+   "repo": "https://github.com/geniusdynamics/ns8-calibre",
+   "stars": 0,
+   "pushed_at": "2026-11-13T11:55:32Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:53:56Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Calibre",
+   "upstream_url": "https://calibre-ebook.com/",
+   "upstream_repo": "https://github.com/kovidgoyal/calibre",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "update_available",
+    "primary_image": "docker.io/linuxserver/calibre:9.17.0",
+    "images": [
+     {
+      "reference": "docker.io/linuxserver/calibre:9.17.0",
+      "registry": "docker.io",
+      "repository": "linuxserver/calibre",
+      "tag": "9.17.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/linuxserver/calibre/tags",
+      "latest": "9.18.0",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "kovidgoyal/calibre",
+     "packaged": null,
+     "latest": "v9.18.0",
+     "url": "https://github.com/kovidgoyal/calibre/releases/tag/v9.18.0",
+     "status": "unknown",
+     "published_at": "2026-11-06T02:37:50Z"
+    }
+   }
+  },
+  {
+   "id": "postal",
+   "repo": "https://github.com/geniusdynamics/ns8-postal",
+   "stars": 0,
+   "pushed_at": "2026-11-14T03:13:43Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T03:13:24Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": false,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "current",
+    "primary_image": "ghcr.io/postalserver/postal:3.3.7",
+    "images": [
+     {
+      "reference": "ghcr.io/postalserver/postal:3.3.7",
+      "registry": "ghcr.io",
+      "repository": "postalserver/postal",
+      "tag": "3.3.7",
+      "digest": null,
+      "url": "https://github.com/postalserver/pkgs/container/postal",
+      "latest": "3.3.7",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/mariadb:13.0.2",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "13.0.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/caddy:2.11.9",
+      "registry": "docker.io",
+      "repository": "library/caddy",
+      "tag": "2.11.9",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/caddy/tags",
+      "latest": "2.11.9",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "umami",
+   "repo": "https://github.com/geniusdynamics/ns8-umami",
+   "stars": 0,
+   "pushed_at": "2026-11-13T11:58:14Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:57:55Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Umami",
+   "upstream_url": "https://umami.is",
+   "upstream_repo": "https://github.com/mikecao/umami",
+   "alternatives": [
+    {
+     "name": "Google Analytics",
+     "url": "https://analytics.google.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/umami-software/umami:postgresql-v2.19.0",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/umami-software/umami:postgresql-v2.19.0",
+      "registry": "ghcr.io",
+      "repository": "umami-software/umami",
+      "tag": "postgresql-v2.19.0",
+      "digest": null,
+      "url": "https://github.com/umami-software/pkgs/container/umami",
+      "latest": "postgresql-v2.20.2",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "mikecao/umami",
+     "packaged": null,
+     "latest": "v3.5.0",
+     "url": "https://github.com/umami-software/umami/releases/tag/v3.5.0",
+     "status": "unknown",
+     "published_at": "2026-11-12T02:57:20Z"
+    }
+   }
+  },
+  {
+   "id": "grist",
+   "repo": "https://github.com/geniusdynamics/ns8-grist",
+   "stars": 0,
+   "pushed_at": "2026-11-13T08:08:15Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T07:58:25Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Grist",
+   "upstream_url": "https://www.getgrist.com/",
+   "upstream_repo": "https://github.com/gristlabs/grist-core",
+   "alternatives": [
+    {
+     "name": "Airtable",
+     "url": "https://www.airtable.com/"
+    },
+    {
+     "name": "Google Sheets",
+     "url": "https://www.google.com/sheets/about/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "current",
+    "primary_image": "docker.io/gristlabs/grist:1.7.22",
+    "images": [
+     {
+      "reference": "docker.io/gristlabs/grist:1.7.22",
+      "registry": "docker.io",
+      "repository": "gristlabs/grist",
+      "tag": "1.7.22",
+      "digest": null,
+      "url": "https://hub.docker.com/r/gristlabs/grist/tags",
+      "latest": "1.7.22",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "gristlabs/grist-core",
+     "packaged": null,
+     "latest": "v1.7.22",
+     "url": "https://github.com/gristlabs/grist-core/releases/tag/v1.7.22",
+     "status": "unknown",
+     "published_at": "2026-10-29T15:57:26Z"
+    }
+   }
+  },
+  {
+   "id": "suitecrm",
+   "repo": "https://github.com/geniusdynamics/ns8-suitecrm",
+   "stars": 0,
+   "pushed_at": "2026-11-14T05:16:48Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T05:16:32Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "SuiteCRM",
+   "upstream_url": "https://suitecrm.com/",
+   "upstream_repo": "https://github.com/SuiteCRM/SuiteCRM-Core",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "current",
+    "primary_image": "ghcr.io/geniusdynamics/suitecrm-app:1.0.0",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:11.4.13",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "11.4.13",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/geniusdynamics/suitecrm-app:1.0.0",
+      "registry": "ghcr.io",
+      "repository": "geniusdynamics/suitecrm-app",
+      "tag": "1.0.0",
+      "digest": null,
+      "url": "https://github.com/geniusdynamics/pkgs/container/suitecrm-app",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Custom-built image: its tag is a module version, not an upstream application version."
+     }
+    ],
+    "release": {
+     "repository": "SuiteCRM/SuiteCRM-Core",
+     "packaged": "8.10.2",
+     "latest": "v8.10.2",
+     "url": "https://github.com/SuiteCRM/SuiteCRM-Core/releases/tag/v8.10.2",
+     "status": "current",
+     "published_at": "2026-07-31T13:38:56Z"
+    }
+   }
+  },
+  {
+   "id": "bookstack",
+   "repo": "https://github.com/geniusdynamics/ns8-bookstack",
+   "stars": 0,
+   "pushed_at": "2026-11-13T11:03:22Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:03:23Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Bookstack",
+   "upstream_url": "https://www.bookstackapp.com/",
+   "upstream_repo": "https://github.com/BookStackApp/BookStack",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.4.0",
+    "status": "unknown",
+    "primary_image": "docker.io/linuxserver/bookstack:v26.09.2-ls292",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:10.11.19",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/linuxserver/bookstack:v26.09.2-ls292",
+      "registry": "docker.io",
+      "repository": "linuxserver/bookstack",
+      "tag": "v26.09.2-ls292",
+      "digest": null,
+      "url": "https://hub.docker.com/r/linuxserver/bookstack/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     }
+    ],
+    "release": {
+     "repository": "BookStackApp/BookStack",
+     "packaged": null,
+     "latest": "v26.09.3",
+     "url": "https://github.com/BookStackApp/BookStack/releases/tag/v26.09.3",
+     "status": "unknown",
+     "published_at": "2026-11-11T11:43:37Z"
+    }
+   }
+  },
+  {
+   "id": "PenPot",
+   "repo": "https://github.com/geniusdynamics/ns8-penpot",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:56:44Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:55:54Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Penpot",
+   "upstream_url": "https://penpot.app/",
+   "upstream_repo": "https://github.com/penpot/penpot",
+   "alternatives": [
+    {
+     "name": "Figma",
+     "url": "https://www.figma.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/penpotapp/frontend:2.12.1",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:7.4.12",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.4.12",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/penpotapp/frontend:2.12.1",
+      "registry": "docker.io",
+      "repository": "penpotapp/frontend",
+      "tag": "2.12.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/penpotapp/frontend/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/penpotapp/backend:2.12.1",
+      "registry": "docker.io",
+      "repository": "penpotapp/backend",
+      "tag": "2.12.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/penpotapp/backend/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/penpotapp/exporter:2.12.1",
+      "registry": "docker.io",
+      "repository": "penpotapp/exporter",
+      "tag": "2.12.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/penpotapp/exporter/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "penpot/penpot",
+     "packaged": null,
+     "latest": "2.19.1",
+     "url": "https://github.com/penpot/penpot/releases/tag/2.19.1",
+     "status": "unknown",
+     "published_at": "2026-11-11T10:03:30Z"
+    }
+   }
+  },
+  {
+   "id": "dokploy",
+   "repo": "https://github.com/geniusdynamics/ns8-dokploy",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:17:33Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:15:12Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "current",
+    "primary_image": "docker.io/dokploy/dokploy:v0.31.2",
+    "images": [
+     {
+      "reference": "docker.io/postgres:16.16",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "16.16",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:7.4.12",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.4.12",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/dokploy/dokploy:v0.31.2",
+      "registry": "docker.io",
+      "repository": "dokploy/dokploy",
+      "tag": "v0.31.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/dokploy/dokploy/tags",
+      "latest": "v0.31.2",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "minthcm",
+   "repo": "https://github.com/geniusdynamics/ns8-minthcm",
+   "stars": 1,
+   "pushed_at": "2026-11-13T12:45:47Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T12:38:59Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "MintHCM",
+   "upstream_url": "https://minthcm.org/",
+   "upstream_repo": "https://github.com/minthcm/minthcm",
+   "alternatives": [
+    {
+     "name": "BambooHR",
+     "url": "https://www.bamboohr.com/"
+    },
+    {
+     "name": "Workday",
+     "url": "https://www.workday.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/minthcm/minthcm:latest",
+    "images": [
+     {
+      "reference": "docker.io/percona:9.7",
+      "registry": "docker.io",
+      "repository": "library/percona",
+      "tag": "9.7",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/percona/tags",
+      "latest": "9.7",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/minthcm/minthcm:latest",
+      "registry": "docker.io",
+      "repository": "minthcm/minthcm",
+      "tag": "latest",
+      "digest": null,
+      "url": "https://hub.docker.com/r/minthcm/minthcm/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.elastic.co/elasticsearch/elasticsearch:7.9.3",
+      "registry": "docker.elastic.co",
+      "repository": "elasticsearch/elasticsearch",
+      "tag": "7.9.3",
+      "digest": null,
+      "url": null,
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry is not supported yet."
+     }
+    ],
+    "release": {
+     "repository": "minthcm/minthcm",
+     "packaged": null,
+     "latest": "4.3.6",
+     "url": "https://github.com/minthcm/minthcm/releases/tag/4.3.6",
+     "status": "unknown",
+     "published_at": "2026-11-06T08:33:52Z"
+    }
+   }
+  },
+  {
+   "id": "ntfy",
+   "repo": "https://github.com/geniusdynamics/ns8-ntfy",
+   "stars": 0,
+   "pushed_at": "2026-11-13T15:15:29Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T15:15:07Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "NTFY",
+   "upstream_url": "https://ntfy.sh/",
+   "upstream_repo": "https://github.com/binwiederhier/ntfy",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "update_available",
+    "primary_image": "docker.io/binwiederhier/ntfy:v2.37.2",
+    "images": [
+     {
+      "reference": "docker.io/binwiederhier/ntfy:v2.37.2",
+      "registry": "docker.io",
+      "repository": "binwiederhier/ntfy",
+      "tag": "v2.37.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/binwiederhier/ntfy/tags",
+      "latest": "v2.38.0",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "binwiederhier/ntfy",
+     "packaged": null,
+     "latest": "v2.38.0",
+     "url": "https://github.com/binwiederhier/ntfy/releases/tag/v2.38.0",
+     "status": "unknown",
+     "published_at": "2026-11-14T08:01:39Z"
+    }
+   }
+  },
+  {
+   "id": "warpgate",
+   "repo": "https://github.com/geniusdynamics/ns8-warpgate",
+   "stars": 0,
+   "pushed_at": "2026-11-13T08:25:17Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T08:03:04Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Warpgate",
+   "upstream_url": "https://warpgate.null.page/",
+   "upstream_repo": "https://github.com/warp-tech/warpgate",
+   "alternatives": [
+    {
+     "name": "Teleport",
+     "url": "https://goteleport.com/"
+    },
+    {
+     "name": "Apache Guacamole",
+     "url": "https://guacamole.apache.org/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "unknown",
+    "primary_image": "ghcr.io/warp-tech/warpgate:0.30.4",
+    "images": [
+     {
+      "reference": "ghcr.io/warp-tech/warpgate:0.30.4",
+      "registry": "ghcr.io",
+      "repository": "warp-tech/warpgate",
+      "tag": "0.30.4",
+      "digest": null,
+      "url": "https://github.com/warp-tech/pkgs/container/warpgate",
+      "latest": "0.29.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "warp-tech/warpgate",
+     "packaged": null,
+     "latest": "v0.30.4",
+     "url": "https://github.com/warp-tech/warpgate/releases/tag/v0.30.4",
+     "status": "unknown",
+     "published_at": "2026-11-03T07:22:59Z"
+    }
+   }
+  },
+  {
+   "id": "windmill",
+   "repo": "https://github.com/geniusdynamics/ns8-windmill",
+   "stars": 0,
+   "pushed_at": "2026-11-14T04:42:52Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T04:42:36Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Windmill",
+   "upstream_url": "https://www.windmill.dev/",
+   "upstream_repo": "https://github.com/windmill-labs/windmill",
+   "alternatives": [
+    {
+     "name": "Retool",
+     "url": "https://retool.com/"
+    },
+    {
+     "name": "Zapier",
+     "url": "https://zapier.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "update_available",
+    "primary_image": "ghcr.io/windmill-labs/windmill:1.873.1",
+    "images": [
+     {
+      "reference": "ghcr.io/windmill-labs/windmill:1.873.1",
+      "registry": "ghcr.io",
+      "repository": "windmill-labs/windmill",
+      "tag": "1.873.1",
+      "digest": null,
+      "url": "https://github.com/windmill-labs/pkgs/container/windmill",
+      "latest": "1.874.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/windmill-labs/windmill-extra:1.873.1",
+      "registry": "ghcr.io",
+      "repository": "windmill-labs/windmill-extra",
+      "tag": "1.873.1",
+      "digest": null,
+      "url": "https://github.com/windmill-labs/pkgs/container/windmill-extra",
+      "latest": "1.874.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/windmill-labs/caddy-l4:2.11.4-1",
+      "registry": "ghcr.io",
+      "repository": "windmill-labs/caddy-l4",
+      "tag": "2.11.4-1",
+      "digest": null,
+      "url": "https://github.com/windmill-labs/pkgs/container/caddy-l4",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.io/postgres:18.7",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "windmill-labs/windmill",
+     "packaged": null,
+     "latest": "v1.874.0",
+     "url": "https://github.com/windmill-labs/windmill/releases/tag/v1.874.0",
+     "status": "unknown",
+     "published_at": "2026-11-14T07:20:30Z"
+    }
+   }
+  },
+  {
+   "id": "authentik",
+   "repo": "https://github.com/geniusdynamics/ns8-goauthentik",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:19:27Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:19:28Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Authentik",
+   "upstream_url": "https://goauthentik.io/",
+   "upstream_repo": "https://github.com/goauthentik/authentik",
+   "alternatives": [
+    {
+     "name": "Okta",
+     "url": "https://okta.com/"
+    },
+    {
+     "name": "Auth0",
+     "url": "https://auth0.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.1.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/goauthentik/server:2025.12.6",
+    "images": [
+     {
+      "reference": "docker.io/library/postgres:16.16-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "16.16-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/library/redis:alpine",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "ghcr.io/goauthentik/server:2025.12.6",
+      "registry": "ghcr.io",
+      "repository": "goauthentik/server",
+      "tag": "2025.12.6",
+      "digest": null,
+      "url": "https://github.com/goauthentik/pkgs/container/server",
+      "latest": "2026.8.5",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "goauthentik/authentik",
+     "packaged": null,
+     "latest": "version/2026.8.5",
+     "url": "https://github.com/goauthentik/authentik/releases/tag/version/2026.8.5",
+     "status": "unknown",
+     "published_at": "2026-10-21T12:57:59Z"
+    }
+   }
+  },
+  {
+   "id": "nocodb",
+   "repo": "https://github.com/geniusdynamics/ns8-nocodb",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:17:44Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:11:44Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "NocoDB",
+   "upstream_url": "https://www.nocodb.com/",
+   "upstream_repo": "https://github.com/nocodb/nocodb",
+   "alternatives": [
+    {
+     "name": "Airtable",
+     "url": "https://airtable.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "update_available",
+    "primary_image": "docker.io/nocodb/nocodb:0.265.1",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/nocodb/nocodb:0.265.1",
+      "registry": "docker.io",
+      "repository": "nocodb/nocodb",
+      "tag": "0.265.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/nocodb/nocodb/tags",
+      "latest": "2026.10.1",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "nocodb/nocodb",
+     "packaged": null,
+     "latest": "2026.10.1",
+     "url": "https://github.com/nocodb/nocodb/releases/tag/2026.10.1",
+     "status": "unknown",
+     "published_at": "2026-10-29T11:19:16Z"
+    }
+   }
+  },
+  {
+   "id": "homarr",
+   "repo": "https://github.com/geniusdynamics/ns8-homarr",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:21:00Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:21:01Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Homarr",
+   "upstream_url": "https://homarr.dev/",
+   "upstream_repo": "https://github.com/ajnart/homarr",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.1",
+    "status": "update_available",
+    "primary_image": "ghcr.io/homarr-labs/homarr:v1.77.2",
+    "images": [
+     {
+      "reference": "ghcr.io/homarr-labs/homarr:v1.77.2",
+      "registry": "ghcr.io",
+      "repository": "homarr-labs/homarr",
+      "tag": "v1.77.2",
+      "digest": null,
+      "url": "https://github.com/homarr-labs/pkgs/container/homarr",
+      "latest": "v2.13.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "ajnart/homarr",
+     "packaged": null,
+     "latest": "v0.16.0",
+     "url": "https://github.com/ajnart/homarr/releases/tag/v0.16.0",
+     "status": "unknown",
+     "published_at": "2025-08-02T17:25:46Z"
+    }
+   }
+  },
+  {
+   "id": "dolibarr",
+   "repo": "https://github.com/geniusdynamics/ns8-dolibarr",
+   "stars": 0,
+   "pushed_at": "2026-11-13T15:12:06Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T15:12:06Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Dolibarr",
+   "upstream_url": "https://www.dolibarr.org/",
+   "upstream_repo": "https://github.com/Dolibarr/dolibarr",
+   "alternatives": [
+    {
+     "name": "Oracle Fusion ERP",
+     "url": "https://www.oracle.com/erp"
+    },
+    {
+     "name": "Odoo",
+     "url": "https://odoo.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/dolibarr/dolibarr:24.0.3",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:10.11.19",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/dolibarr/dolibarr:24.0.3",
+      "registry": "docker.io",
+      "repository": "dolibarr/dolibarr",
+      "tag": "24.0.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/dolibarr/dolibarr/tags",
+      "latest": "24.0.2",
+      "status": "unknown",
+      "complete": true,
+      "reason": "Packaged tag was not found in the registry."
+     }
+    ],
+    "release": {
+     "repository": "Dolibarr/dolibarr",
+     "packaged": null,
+     "latest": "24.0.3",
+     "url": "https://github.com/Dolibarr/dolibarr/releases/tag/24.0.3",
+     "status": "unknown",
+     "published_at": "2026-11-11T13:29:07Z"
+    }
+   }
+  },
+  {
+   "id": "opensign",
+   "repo": "https://github.com/geniusdynamics/ns8-opensign",
+   "stars": 0,
+   "pushed_at": "2026-11-13T18:02:26Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T12:42:35Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "OpenSign",
+   "upstream_url": "https://www.opensignlabs.com/",
+   "upstream_repo": "https://github.com/OpenSignLabs/OpenSign",
+   "alternatives": [
+    {
+     "name": "DocuSign",
+     "url": "https://www.docusign.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "unknown",
+    "primary_image": "docker.io/opensign/opensign:main",
+    "images": [
+     {
+      "reference": "docker.io/mongo:9.0.8",
+      "registry": "docker.io",
+      "repository": "library/mongo",
+      "tag": "9.0.8",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mongo/tags",
+      "latest": "9.0.8",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/opensign/opensign:main",
+      "registry": "docker.io",
+      "repository": "opensign/opensign",
+      "tag": "main",
+      "digest": null,
+      "url": "https://hub.docker.com/r/opensign/opensign/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.io/opensign/opensignserver:main",
+      "registry": "docker.io",
+      "repository": "opensign/opensignserver",
+      "tag": "main",
+      "digest": null,
+      "url": "https://hub.docker.com/r/opensign/opensignserver/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     }
+    ],
+    "release": {
+     "repository": "OpenSignLabs/OpenSign",
+     "packaged": null,
+     "latest": "v3.1.1",
+     "url": "https://github.com/OpenSignLabs/OpenSign/releases/tag/v3.1.1",
+     "status": "unknown",
+     "published_at": "2026-11-10T05:07:40Z"
+    }
+   }
+  },
+  {
+   "id": "firefly-iii",
+   "repo": "https://github.com/geniusdynamics/ns8-fireflyiii",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:34:09Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:28:00Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Fireflyiii",
+   "upstream_url": "https://www.firefly-iii.org/",
+   "upstream_repo": "https://github.com/firefly-iii/firefly-iii",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.2.0",
+    "status": "current",
+    "primary_image": "docker.io/fireflyiii/core:version-6.7.9",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/fireflyiii/core:version-6.7.9",
+      "registry": "docker.io",
+      "repository": "fireflyiii/core",
+      "tag": "version-6.7.9",
+      "digest": null,
+      "url": "https://hub.docker.com/r/fireflyiii/core/tags",
+      "latest": "version-6.7.9",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "firefly-iii/firefly-iii",
+     "packaged": null,
+     "latest": "v6.7.9",
+     "url": "https://github.com/firefly-iii/firefly-iii/releases/tag/v6.7.9",
+     "status": "unknown",
+     "published_at": "2026-10-11T19:16:51Z"
+    }
+   }
+  },
+  {
+   "id": "vikunja",
+   "repo": "https://github.com/geniusdynamics/ns8-vikunja",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:40:53Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:39:17Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Vikunja",
+   "upstream_url": "https://vikunja.io/",
+   "upstream_repo": "https://github.com/go-vikunja/api",
+   "alternatives": [
+    {
+     "name": "Todoist",
+     "url": "https://todoist.com"
+    },
+    {
+     "name": "Trello",
+     "url": "https://trello.com"
+    },
+    {
+     "name": "Asana",
+     "url": "https://asana.com"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "unknown",
+    "primary_image": "docker.io/vikunja/vikunja:1.1.0",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/vikunja/vikunja:1.1.0",
+      "registry": "docker.io",
+      "repository": "vikunja/vikunja",
+      "tag": "1.1.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/vikunja/vikunja/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "go-vikunja/api",
+     "packaged": null,
+     "latest": "v2.8.0",
+     "url": "https://github.com/go-vikunja/vikunja/releases/tag/v2.8.0",
+     "status": "unknown",
+     "published_at": "2026-11-05T20:44:21Z"
+    }
+   }
+  },
+  {
+   "id": "keila",
+   "repo": "https://github.com/geniusdynamics/ns8-keila",
+   "stars": 0,
+   "pushed_at": "2026-11-14T07:30:46Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T07:30:32Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Keila",
+   "upstream_url": "https://www.keila.io/",
+   "upstream_repo": "https://github.com/pentacent/keila",
+   "alternatives": [
+    {
+     "name": "Mailchimp",
+     "url": "https://mailchimp.com"
+    },
+    {
+     "name": "Sendinblue",
+     "url": "https://www.sendinblue.com"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "unknown",
+    "primary_image": "docker.io/pentacent/keila:0.40",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/pentacent/keila:0.40",
+      "registry": "docker.io",
+      "repository": "pentacent/keila",
+      "tag": "0.40",
+      "digest": null,
+      "url": "https://hub.docker.com/r/pentacent/keila/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "pentacent/keila",
+     "packaged": null,
+     "latest": "0.40.2",
+     "url": "https://github.com/pentacent/keila/releases/tag/0.40.2",
+     "status": "unknown",
+     "published_at": "2026-11-04T14:04:45Z"
+    }
+   }
+  },
+  {
+   "id": "matomo",
+   "repo": "https://github.com/geniusdynamics/ns8-matomo",
+   "stars": 0,
+   "pushed_at": "2026-11-14T03:37:44Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T03:37:44Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": false,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "Matomo",
+   "upstream_url": "https://matomo.org/",
+   "upstream_repo": "https://github.com/matomo-org/matomo",
+   "alternatives": [
+    {
+     "name": "Google Analytics",
+     "url": "https://analytics.google.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "3.4.0",
+    "status": "unknown",
+    "primary_image": "ghcr.io/geniusdynamics/matomo-app:3.4.0",
+    "images": [
+     {
+      "reference": "ghcr.io/geniusdynamics/matomo-app:3.4.0",
+      "registry": "ghcr.io",
+      "repository": "geniusdynamics/matomo-app",
+      "tag": "3.4.0",
+      "digest": null,
+      "url": "https://github.com/geniusdynamics/pkgs/container/matomo-app",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Custom-built image: its tag is a module version, not an upstream application version."
+     },
+     {
+      "reference": "docker.io/library/mariadb:10.11.19@sha256:ab2006938ed319f467ea98b3bb6c944757c2f10b953b3038a8a8113bd81e1b75",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.19",
+      "digest": "sha256:ab2006938ed319f467ea98b3bb6c944757c2f10b953b3038a8a8113bd81e1b75",
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit. Tag versions only; pinned digest changes are not checked."
+     }
+    ],
+    "release": {
+     "repository": "matomo-org/matomo",
+     "packaged": null,
+     "latest": "5.14.2",
+     "url": "https://github.com/matomo-org/matomo/releases/tag/5.14.2",
+     "status": "unknown",
+     "published_at": "2026-10-22T02:49:53Z"
+    }
+   }
+  },
+  {
+   "id": "opnform",
+   "repo": "https://github.com/geniusdynamics/ns8-opnform",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:26:57Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:20:26Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "OpnForm",
+   "upstream_url": "https://opnform.com/",
+   "upstream_repo": "https://github.com/OpnForm/OpnForm",
+   "alternatives": [
+    {
+     "name": "Typeform",
+     "url": "https://www.typeform.com/"
+    },
+    {
+     "name": "Google Forms",
+     "url": "https://www.google.com/forms/about/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "current",
+    "primary_image": "docker.io/jhumanj/opnform-api:2.8.4",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/jhumanj/opnform-client:2.8.4",
+      "registry": "docker.io",
+      "repository": "jhumanj/opnform-client",
+      "tag": "2.8.4",
+      "digest": null,
+      "url": "https://hub.docker.com/r/jhumanj/opnform-client/tags",
+      "latest": "2.8.4",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/jhumanj/opnform-api:2.8.4",
+      "registry": "docker.io",
+      "repository": "jhumanj/opnform-api",
+      "tag": "2.8.4",
+      "digest": null,
+      "url": "https://hub.docker.com/r/jhumanj/opnform-api/tags",
+      "latest": "2.8.4",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/redis:8.10.3",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/nginx:1.31.8",
+      "registry": "docker.io",
+      "repository": "library/nginx",
+      "tag": "1.31.8",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/nginx/tags",
+      "latest": "1.31.8",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "OpnForm/OpnForm",
+     "packaged": null,
+     "latest": "v2.8.4",
+     "url": "https://github.com/OpnForm/OpnForm/releases/tag/v2.8.4",
+     "status": "unknown",
+     "published_at": "2026-11-05T13:01:45Z"
+    }
+   }
+  },
+  {
+   "id": "xibosignage",
+   "repo": "https://github.com/geniusdynamics/ns8-xibosignage",
+   "stars": 0,
+   "pushed_at": "2026-11-13T18:18:31Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T18:18:13Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Xibo",
+   "upstream_url": "https://xibosignage.com/",
+   "upstream_repo": "https://github.com/xibosignage/xibo-cms",
+   "alternatives": [
+    {
+     "name": "ScreenCloud",
+     "url": "https://screencloud.com/"
+    },
+    {
+     "name": "Yodeck",
+     "url": "https://www.yodeck.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/xibosignage/xibo-cms:release-4.0.13",
+    "images": [
+     {
+      "reference": "docker.io/mysql:8.4.9",
+      "registry": "docker.io",
+      "repository": "library/mysql",
+      "tag": "8.4.9",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mysql/tags",
+      "latest": "26.10.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/xibosignage/xibo-xmr:1.5",
+      "registry": "ghcr.io",
+      "repository": "xibosignage/xibo-xmr",
+      "tag": "1.5",
+      "digest": null,
+      "url": "https://github.com/xibosignage/pkgs/container/xibo-xmr",
+      "latest": "1.5",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "ghcr.io/xibosignage/xibo-cms:release-4.0.13",
+      "registry": "ghcr.io",
+      "repository": "xibosignage/xibo-cms",
+      "tag": "release-4.0.13",
+      "digest": null,
+      "url": "https://github.com/xibosignage/pkgs/container/xibo-cms",
+      "latest": "release-4.5.6",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/memcached:1.6.45-alpine",
+      "registry": "docker.io",
+      "repository": "library/memcached",
+      "tag": "1.6.45-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/memcached/tags",
+      "latest": "1.6.45-alpine",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/ianw/quickchart:v1.8.1",
+      "registry": "docker.io",
+      "repository": "ianw/quickchart",
+      "tag": "v1.8.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/ianw/quickchart/tags",
+      "latest": "v1.8.1",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "xibosignage/xibo-cms",
+     "packaged": null,
+     "latest": "4.5.6",
+     "url": "https://github.com/xibosignage/xibo-cms/releases/tag/4.5.6",
+     "status": "unknown",
+     "published_at": "2026-10-30T13:34:27Z"
+    }
+   }
+  },
+  {
+   "id": "rocketchat",
+   "repo": "https://github.com/geniusdynamics/ns8-rocketchat",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:09:01Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:27:38Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Rocket.chat",
+   "upstream_url": "https://rocket.chat/",
+   "upstream_repo": "https://github.com/RocketChat/Rocket.Chat",
+   "alternatives": [
+    {
+     "name": "Slack",
+     "url": "https://slack.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/rocketchat/rocket.chat:8.9.1",
+    "images": [
+     {
+      "reference": "docker.io/library/mongo:8.0.38",
+      "registry": "docker.io",
+      "repository": "library/mongo",
+      "tag": "8.0.38",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mongo/tags",
+      "latest": "9.0.8",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/rocketchat/rocket.chat:8.9.1",
+      "registry": "docker.io",
+      "repository": "rocketchat/rocket.chat",
+      "tag": "8.9.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/rocketchat/rocket.chat/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "RocketChat/Rocket.Chat",
+     "packaged": null,
+     "latest": "9.0.0",
+     "url": "https://github.com/RocketChat/Rocket.Chat/releases/tag/9.0.0",
+     "status": "unknown",
+     "published_at": "2026-11-10T19:01:15Z"
+    }
+   }
+  },
+  {
+   "id": "coolify",
+   "repo": "https://github.com/geniusdynamics/ns8-coolify",
+   "stars": 0,
+   "pushed_at": "2026-11-14T08:03:02Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T08:02:44Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Coolify",
+   "upstream_url": "https://coolify.io/",
+   "upstream_repo": "https://github.com/coollabsio/coolify",
+   "alternatives": [
+    {
+     "name": "Heroku",
+     "url": "https://www.heroku.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.8.1",
+    "status": "current",
+    "primary_image": "ghcr.io/coollabsio/coolify:4.7.5",
+    "images": [
+     {
+      "reference": "ghcr.io/coollabsio/coolify:4.7.5",
+      "registry": "ghcr.io",
+      "repository": "coollabsio/coolify",
+      "tag": "4.7.5",
+      "digest": null,
+      "url": "https://github.com/coollabsio/pkgs/container/coolify",
+      "latest": "4.7.5",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:7.4.12-alpine3.22",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.4.12-alpine3.22",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.4.8-alpine3.22",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "coollabsio/coolify",
+     "packaged": null,
+     "latest": "v4.7.5",
+     "url": "https://github.com/coollabsio/coolify/releases/tag/v4.7.5",
+     "status": "unknown",
+     "published_at": "2026-11-10T14:57:53Z"
+    }
+   }
+  },
+  {
+   "id": "frappe-press",
+   "repo": "https://github.com/geniusdynamics/ns8-frappe-press",
+   "stars": 1,
+   "pushed_at": "2026-11-13T14:52:05Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:51:14Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Frappe Press",
+   "upstream_url": "https://frappe.io/cloud",
+   "upstream_repo": "https://github.com/frappe/press",
+   "alternatives": [
+    {
+     "name": "Frappe Cloud",
+     "url": "https://frappecloud.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "docker.io/geniusdynamics/press:0.11.0",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:13.0.2",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "13.0.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/geniusdynamics/press:0.11.0",
+      "registry": "docker.io",
+      "repository": "geniusdynamics/press",
+      "tag": "0.11.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/geniusdynamics/press/tags",
+      "latest": "0.22.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/redis:8.10.3-alpine3.23",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3-alpine3.23",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3-alpine3.23",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "frappe/press",
+     "packaged": null,
+     "latest": "v0.189.0",
+     "url": "https://github.com/frappe/press/releases/tag/v0.189.0",
+     "status": "unknown",
+     "published_at": "2026-11-14T08:51:09Z"
+    }
+   }
+  },
+  {
+   "id": "monica",
+   "repo": "https://github.com/geniusdynamics/ns8-monica",
+   "stars": 0,
+   "pushed_at": "2026-11-13T15:37:37Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T15:37:19Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": false,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "unknown",
+    "primary_image": "docker.io/monica:5.0.0-beta.5-apache@sha256:624b2b9931b4327b84080bd0efcaa2880c9046074bdf660179f7216903f0b359",
+    "images": [
+     {
+      "reference": "docker.io/library/redis:7.4.12-bookworm",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.4.12-bookworm",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.4.0-bookworm",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/getmeili/meilisearch:latest",
+      "registry": "docker.io",
+      "repository": "getmeili/meilisearch",
+      "tag": "latest",
+      "digest": null,
+      "url": "https://hub.docker.com/r/getmeili/meilisearch/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.io/monica:5.0.0-beta.5-apache@sha256:624b2b9931b4327b84080bd0efcaa2880c9046074bdf660179f7216903f0b359",
+      "registry": "docker.io",
+      "repository": "library/monica",
+      "tag": "5.0.0-beta.5-apache",
+      "digest": "sha256:624b2b9931b4327b84080bd0efcaa2880c9046074bdf660179f7216903f0b359",
+      "url": "https://hub.docker.com/r/library/monica/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.io/mariadb:10.11.19",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "postiz",
+   "repo": "https://github.com/geniusdynamics/ns8-postiz",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:09:20Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:02:40Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": false,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/gitroomhq/postiz-app:v2.25.3",
+    "images": [
+     {
+      "reference": "ghcr.io/gitroomhq/postiz-app:v2.25.3",
+      "registry": "ghcr.io",
+      "repository": "gitroomhq/postiz-app",
+      "tag": "v2.25.3",
+      "digest": null,
+      "url": "https://github.com/gitroomhq/pkgs/container/postiz-app",
+      "latest": "v2.26.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/getsentry/spotlight:4.12.1",
+      "registry": "ghcr.io",
+      "repository": "getsentry/spotlight",
+      "tag": "4.12.1",
+      "digest": null,
+      "url": "https://github.com/getsentry/pkgs/container/spotlight",
+      "latest": "4.12.1",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/temporalio/ui:2.34.0",
+      "registry": "docker.io",
+      "repository": "temporalio/ui",
+      "tag": "2.34.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/temporalio/ui/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/postgres:17.12-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "17.12-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:7.2.14-alpine",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.2.14-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3-alpine",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/elasticsearch:7.17.27",
+      "registry": "docker.io",
+      "repository": "library/elasticsearch",
+      "tag": "7.17.27",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/elasticsearch/tags",
+      "latest": "9.5.5",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/temporalio/auto-setup:1.28.1",
+      "registry": "docker.io",
+      "repository": "temporalio/auto-setup",
+      "tag": "1.28.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/temporalio/auto-setup/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/temporalio/admin-tools:1.28.1-tctl-1.18.4-cli-1.4.1",
+      "registry": "docker.io",
+      "repository": "temporalio/admin-tools",
+      "tag": "1.28.1-tctl-1.18.4-cli-1.4.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/temporalio/admin-tools/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "chibisafe",
+   "repo": "https://github.com/geniusdynamics/ns8-chibisafe",
+   "stars": 0,
+   "pushed_at": "2026-11-14T02:53:45Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T02:53:24Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Chibisafe",
+   "upstream_url": "https://chibisafe.app/",
+   "upstream_repo": "https://github.com/chibisafe/chibisafe",
+   "alternatives": [
+    {
+     "name": "WeTransfer",
+     "url": "https://wetransfer.com/"
+    },
+    {
+     "name": "Imgur",
+     "url": "https://imgur.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "current",
+    "primary_image": "docker.io/chibisafe/chibisafe:v6.7.0",
+    "images": [
+     {
+      "reference": "docker.io/chibisafe/chibisafe:v6.7.0",
+      "registry": "docker.io",
+      "repository": "chibisafe/chibisafe",
+      "tag": "v6.7.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/chibisafe/chibisafe/tags",
+      "latest": "v6.7.0",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/chibisafe/chibisafe-server:v6.7.0",
+      "registry": "docker.io",
+      "repository": "chibisafe/chibisafe-server",
+      "tag": "v6.7.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/chibisafe/chibisafe-server/tags",
+      "latest": "v6.7.0",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/library/caddy:2.11.9",
+      "registry": "docker.io",
+      "repository": "library/caddy",
+      "tag": "2.11.9",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/caddy/tags",
+      "latest": "2.11.9",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "chibisafe/chibisafe",
+     "packaged": null,
+     "latest": "v6.7.0",
+     "url": "https://github.com/chibisafe/chibisafe/releases/tag/v6.7.0",
+     "status": "unknown",
+     "published_at": "2026-10-22T09:31:36Z"
+    }
+   }
+  },
+  {
+   "id": "bigcapital",
+   "repo": "https://github.com/geniusdynamics/ns8-bigcapital",
+   "stars": 0,
+   "pushed_at": "2026-11-13T12:41:00Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T12:36:30Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Bigcapital",
+   "upstream_url": "https://bigcapital.app/",
+   "upstream_repo": "https://github.com/bigcapitalhq/bigcapital",
+   "alternatives": [
+    {
+     "name": "QuickBooks",
+     "url": "https://quickbooks.intuit.com/"
+    },
+    {
+     "name": "Xero",
+     "url": "https://www.xero.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "current",
+    "primary_image": "docker.io/bigcapitalhq/webapp:v0.25.45",
+    "images": [
+     {
+      "reference": "docker.io/redis:8.10.3",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/mariadb:13.0.2",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "13.0.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/gotenberg/gotenberg:8.40.0",
+      "registry": "docker.io",
+      "repository": "gotenberg/gotenberg",
+      "tag": "8.40.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/gotenberg/gotenberg/tags",
+      "latest": "9.5.0",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/bigcapitalhq/webapp:v0.25.45",
+      "registry": "docker.io",
+      "repository": "bigcapitalhq/webapp",
+      "tag": "v0.25.45",
+      "digest": null,
+      "url": "https://hub.docker.com/r/bigcapitalhq/webapp/tags",
+      "latest": "v0.25.45",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/bigcapitalhq/server:v0.25.45",
+      "registry": "docker.io",
+      "repository": "bigcapitalhq/server",
+      "tag": "v0.25.45",
+      "digest": null,
+      "url": "https://hub.docker.com/r/bigcapitalhq/server/tags",
+      "latest": "v0.25.45",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "bigcapitalhq/bigcapital",
+     "packaged": null,
+     "latest": "v0.25.45",
+     "url": "https://github.com/bigcapitalhq/bigcapital/releases/tag/v0.25.45",
+     "status": "unknown",
+     "published_at": "2026-10-23T08:25:30Z"
+    }
+   }
+  },
+  {
+   "id": "joplin",
+   "repo": "https://github.com/geniusdynamics/ns8-joplinserver",
+   "stars": 1,
+   "pushed_at": "2026-11-13T14:28:59Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:29:00Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "update_available",
+    "primary_image": "docker.io/joplin/server:3.4.3",
+    "images": [
+     {
+      "reference": "docker.io/postgres:16.16",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "16.16",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/joplin/server:3.4.3",
+      "registry": "docker.io",
+      "repository": "joplin/server",
+      "tag": "3.4.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/joplin/server/tags",
+      "latest": "3.7.5",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "pastevault",
+   "repo": "https://github.com/geniusdynamics/ns8-pastevault",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:52:41Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:50:02Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "PasteVault",
+   "upstream_url": "https://pastevault.dev/",
+   "upstream_repo": "https://github.com/arc53/pastevault",
+   "alternatives": [
+    {
+     "name": "Pastebin",
+     "url": "https://pastebin.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/arc53/pastevault-backend:v0.1.5",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/arc53/pastevault-backend:v0.1.5",
+      "registry": "ghcr.io",
+      "repository": "arc53/pastevault-backend",
+      "tag": "v0.1.5",
+      "digest": null,
+      "url": "https://github.com/arc53/pkgs/container/pastevault-backend",
+      "latest": "v1.2.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/arc53/pastevault-frontend:v0.1.5",
+      "registry": "ghcr.io",
+      "repository": "arc53/pastevault-frontend",
+      "tag": "v0.1.5",
+      "digest": null,
+      "url": "https://github.com/arc53/pkgs/container/pastevault-frontend",
+      "latest": "v1.2.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "arc53/pastevault",
+     "packaged": null,
+     "latest": "v1.2.0",
+     "url": "https://github.com/arc53/pastevault/releases/tag/v1.2.0",
+     "status": "unknown",
+     "published_at": "2026-10-17T10:06:56Z"
+    }
+   }
+  },
+  {
+   "id": "linkstack",
+   "repo": "https://github.com/geniusdynamics/ns8-linkstack",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:09:50Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:31:20Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "LinkStack",
+   "upstream_url": "https://linkstack.org/",
+   "upstream_repo": "https://github.com/LinkStackOrg/LinkStack",
+   "alternatives": [
+    {
+     "name": "Linktree",
+     "url": "https://linktr.ee/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "current",
+    "primary_image": "docker.io/linkstackorg/linkstack:v4.8.8",
+    "images": [
+     {
+      "reference": "docker.io/linkstackorg/linkstack:v4.8.8",
+      "registry": "docker.io",
+      "repository": "linkstackorg/linkstack",
+      "tag": "v4.8.8",
+      "digest": null,
+      "url": "https://hub.docker.com/r/linkstackorg/linkstack/tags",
+      "latest": "v4.8.8",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "LinkStackOrg/LinkStack",
+     "packaged": null,
+     "latest": "v4.8.8",
+     "url": "https://github.com/LinkStackOrg/LinkStack/releases/tag/v4.8.8",
+     "status": "unknown",
+     "published_at": "2026-10-22T07:10:16Z"
+    }
+   }
+  },
+  {
+   "id": "listmonk",
+   "repo": "https://github.com/geniusdynamics/ns8-listmonk",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:47:50Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:35:55Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "List Monk",
+   "upstream_url": "https://listmonk.app/",
+   "upstream_repo": "https://github.com/knadh/listmonk",
+   "alternatives": [
+    {
+     "name": "Keila",
+     "url": "https://www.keila.io/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.5.0",
+    "status": "current",
+    "primary_image": "docker.io/listmonk/listmonk:v6.2.0",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/listmonk/listmonk:v6.2.0",
+      "registry": "docker.io",
+      "repository": "listmonk/listmonk",
+      "tag": "v6.2.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/listmonk/listmonk/tags",
+      "latest": "v6.2.0",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "knadh/listmonk",
+     "packaged": null,
+     "latest": "v7.0.0-beta.2",
+     "url": "https://github.com/knadh/listmonk/releases/tag/v7.0.0-beta.2",
+     "status": "unknown",
+     "published_at": "2026-11-10T11:03:52Z"
+    }
+   }
+  },
+  {
+   "id": "stirlingpdf",
+   "repo": "https://github.com/geniusdynamics/ns8-Stirling-PDF",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:14:18Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:14:18Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Striling PDF",
+   "upstream_url": "https://stirlingtools.com/",
+   "upstream_repo": "https://github.com/Stirling-Tools/Stirling-PDF",
+   "alternatives": [
+    {
+     "name": "Adobe Acrobat Reader",
+     "url": "https://get.adobe.com/reader/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.3.0",
+    "status": "unknown",
+    "primary_image": "docker.io/stirlingtools/stirling-pdf:2.14.3",
+    "images": [
+     {
+      "reference": "docker.io/stirlingtools/stirling-pdf:2.14.3",
+      "registry": "docker.io",
+      "repository": "stirlingtools/stirling-pdf",
+      "tag": "2.14.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/stirlingtools/stirling-pdf/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "Stirling-Tools/Stirling-PDF",
+     "packaged": null,
+     "latest": "v3.3.0",
+     "url": "https://github.com/Stirling-Tools/Stirling-PDF/releases/tag/v3.3.0",
+     "status": "unknown",
+     "published_at": "2026-11-05T08:24:34Z"
+    }
+   }
+  },
+  {
+   "id": "solidinvoice",
+   "repo": "https://github.com/geniusdynamics/ns8-solidinvoice",
+   "stars": 0,
+   "pushed_at": "2026-11-13T12:45:26Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T12:40:28Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "SolidInvoice",
+   "upstream_url": "https://solidinvoice.co/",
+   "upstream_repo": "https://github.com/SolidInvoice/SolidInvoice",
+   "alternatives": [
+    {
+     "name": "FreshBooks",
+     "url": "https://www.freshbooks.com/"
+    },
+    {
+     "name": "QuickBooks",
+     "url": "https://quickbooks.intuit.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "unknown",
+    "primary_image": "docker.io/solidinvoice/solidinvoice:2.2.6",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:13.0.2",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "13.0.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/solidinvoice/solidinvoice:2.2.6",
+      "registry": "docker.io",
+      "repository": "solidinvoice/solidinvoice",
+      "tag": "2.2.6",
+      "digest": null,
+      "url": "https://hub.docker.com/r/solidinvoice/solidinvoice/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "SolidInvoice/SolidInvoice",
+     "packaged": null,
+     "latest": "3.1.3",
+     "url": "https://github.com/SolidInvoice/SolidInvoice/releases/tag/3.1.3",
+     "status": "unknown",
+     "published_at": "2026-11-10T12:00:37Z"
+    }
+   }
+  },
+  {
+   "id": "semaphore",
+   "repo": "https://github.com/geniusdynamics/ns8-semaphoreui",
+   "stars": 1,
+   "pushed_at": "2026-11-13T11:48:46Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:48:46Z",
+   "checks": {
+    "topic": false,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "Semaphore UI",
+   "upstream_url": "https://semaphoreui.com/",
+   "upstream_repo": "https://github.com/semaphoreui/semaphore",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "unknown",
+    "primary_image": "docker.io/semaphoreui/semaphore:v2.15.0",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:10.11.19",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/semaphoreui/semaphore:v2.15.0",
+      "registry": "docker.io",
+      "repository": "semaphoreui/semaphore",
+      "tag": "v2.15.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/semaphoreui/semaphore/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "semaphoreui/semaphore",
+     "packaged": null,
+     "latest": "v2.20.23",
+     "url": "https://github.com/semaphoreui/semaphore/releases/tag/v2.20.23",
+     "status": "unknown",
+     "published_at": "2026-11-10T08:04:07Z"
+    }
+   }
+  },
+  {
+   "id": "espocrm",
+   "repo": "https://github.com/geniusdynamics/ns8-espocrm",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:11:52Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-10-24T19:55:45Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": false,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "Espo CRM",
+   "upstream_url": "https://www.espocrm.com/",
+   "upstream_repo": "https://github.com/espocrm/espocrm",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "update_available",
+    "primary_image": "docker.io/espocrm/espocrm:9.3.10-apache",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:10.11.5",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.5",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/espocrm/espocrm:9.3.10-apache",
+      "registry": "docker.io",
+      "repository": "espocrm/espocrm",
+      "tag": "9.3.10-apache",
+      "digest": null,
+      "url": "https://hub.docker.com/r/espocrm/espocrm/tags",
+      "latest": "10.1.1-apache",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "espocrm/espocrm",
+     "packaged": null,
+     "latest": "10.1.1",
+     "url": "https://github.com/espocrm/espocrm/releases/tag/10.1.1",
+     "status": "unknown",
+     "published_at": "2026-11-10T12:32:22Z"
+    }
+   }
+  },
+  {
+   "id": "affine",
+   "repo": "https://github.com/geniusdynamics/ns8-affine",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:03:01Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:02:37Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/toeverything/affine:0.26.3",
+    "images": [
+     {
+      "reference": "docker.io/pgvector/pgvector:pg18",
+      "registry": "docker.io",
+      "repository": "pgvector/pgvector",
+      "tag": "pg18",
+      "digest": null,
+      "url": "https://hub.docker.com/r/pgvector/pgvector/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "ghcr.io/toeverything/affine:0.26.3",
+      "registry": "ghcr.io",
+      "repository": "toeverything/affine",
+      "tag": "0.26.3",
+      "digest": null,
+      "url": "https://github.com/toeverything/pkgs/container/affine",
+      "latest": "0.27.4",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/redis:8.10.3",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "openbao",
+   "repo": "https://github.com/geniusdynamics/ns8-openbao",
+   "stars": 0,
+   "pushed_at": "2026-11-13T08:09:01Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T08:00:29Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "OpenBao",
+   "upstream_url": "https://openbao.org/",
+   "upstream_repo": "https://github.com/openbao/openbao",
+   "alternatives": [
+    {
+     "name": "HashiCorp Vault",
+     "url": "https://www.vaultproject.io/"
+    },
+    {
+     "name": "AWS Secrets Manager",
+     "url": "https://aws.amazon.com/secrets-manager/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.1",
+    "status": "unknown",
+    "primary_image": "docker.io/openbao/openbao:2.7.2",
+    "images": [
+     {
+      "reference": "docker.io/openbao/openbao:2.7.2",
+      "registry": "docker.io",
+      "repository": "openbao/openbao",
+      "tag": "2.7.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/openbao/openbao/tags",
+      "latest": "2.7.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "ghcr.io/openbao/openbao-plugin-auth-ldap:v0.2.0",
+      "registry": "ghcr.io",
+      "repository": "openbao/openbao-plugin-auth-ldap",
+      "tag": "v0.2.0",
+      "digest": null,
+      "url": "https://github.com/openbao/pkgs/container/openbao-plugin-auth-ldap",
+      "latest": "v0.2.0",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "openbao/openbao",
+     "packaged": null,
+     "latest": "v2.7.2",
+     "url": "https://github.com/openbao/openbao/releases/tag/v2.7.2",
+     "status": "unknown",
+     "published_at": "2026-10-26T20:24:37Z"
+    }
+   }
+  },
+  {
+   "id": "mautic",
+   "repo": "https://github.com/geniusdynamics/ns8-mautic",
+   "stars": 0,
+   "pushed_at": "2026-11-14T06:52:20Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T06:52:00Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Mautic",
+   "upstream_url": "https://www.mautic.org/",
+   "upstream_repo": "https://github.com/mautic/mautic",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.4.0",
+    "status": "update_available",
+    "primary_image": "docker.io/mautic/mautic:6.0.10-apache",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:10.11.19",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/mautic/mautic:6.0.10-apache",
+      "registry": "docker.io",
+      "repository": "mautic/mautic",
+      "tag": "6.0.10-apache",
+      "digest": null,
+      "url": "https://hub.docker.com/r/mautic/mautic/tags",
+      "latest": "7.2.2-apache",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "mautic/mautic",
+     "packaged": null,
+     "latest": "7.2.2",
+     "url": "https://github.com/mautic/mautic/releases/tag/7.2.2",
+     "status": "unknown",
+     "published_at": "2026-10-26T10:40:08Z"
+    }
+   }
+  },
+  {
+   "id": "tacticalrmm",
+   "repo": "https://github.com/geniusdynamics/ns8-tacticalrmm",
+   "stars": 0,
+   "pushed_at": "2026-11-14T05:21:36Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T05:21:19Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Tactical RMM",
+   "upstream_url": "https://tacticalrmm.com/",
+   "upstream_repo": "https://github.com/amidaware/tacticalrmm",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "unknown",
+    "primary_image": "docker.io/tacticalrmm/tactical:1.6.1",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:8.10.3-alpine3.23",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3-alpine3.23",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3-alpine3.23",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/tacticalrmm/tactical:1.6.1",
+      "registry": "docker.io",
+      "repository": "tacticalrmm/tactical",
+      "tag": "1.6.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/tacticalrmm/tactical/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/tacticalrmm/tactical-nats:1.6.1",
+      "registry": "docker.io",
+      "repository": "tacticalrmm/tactical-nats",
+      "tag": "1.6.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/tacticalrmm/tactical-nats/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/tacticalrmm/tactical-meshcentral:1.6.1",
+      "registry": "docker.io",
+      "repository": "tacticalrmm/tactical-meshcentral",
+      "tag": "1.6.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/tacticalrmm/tactical-meshcentral/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/tacticalrmm/tactical-frontend:1.6.1",
+      "registry": "docker.io",
+      "repository": "tacticalrmm/tactical-frontend",
+      "tag": "1.6.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/tacticalrmm/tactical-frontend/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/tacticalrmm/tactical-nginx:1.6.1",
+      "registry": "docker.io",
+      "repository": "tacticalrmm/tactical-nginx",
+      "tag": "1.6.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/tacticalrmm/tactical-nginx/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "amidaware/tacticalrmm",
+     "packaged": null,
+     "latest": "v1.6.1",
+     "url": "https://github.com/amidaware/tacticalrmm/releases/tag/v1.6.1",
+     "status": "unknown",
+     "published_at": "2026-10-27T01:29:07Z"
+    }
+   }
+  },
+  {
+   "id": "checkcle",
+   "repo": "https://github.com/geniusdynamics/ns8-checkcle",
+   "stars": 0,
+   "pushed_at": "2026-11-13T11:06:28Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:05:04Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "unknown",
+    "primary_image": "docker.io/operacle/checkcle:v1.6.0",
+    "images": [
+     {
+      "reference": "docker.io/operacle/checkcle:v1.6.0",
+      "registry": "docker.io",
+      "repository": "operacle/checkcle",
+      "tag": "v1.6.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/operacle/checkcle/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "couchdb",
+   "repo": "https://github.com/geniusdynamics/ns8-couchdb",
+   "stars": 1,
+   "pushed_at": "2026-11-13T13:07:07Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:04:58Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": false,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "CouchDB",
+   "upstream_url": "https://couchdb.apache.org/",
+   "upstream_repo": "https://github.com/surrealdb/surrealdb",
+   "alternatives": [
+    {
+     "name": "PostgresDB",
+     "url": "https://www.postgresql.org/"
+    },
+    {
+     "name": "MariaDB",
+     "url": "https://mariadb.org/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.2.0",
+    "status": "current",
+    "primary_image": "docker.io/apache/couchdb:3.5.3",
+    "images": [
+     {
+      "reference": "docker.io/apache/couchdb:3.5.3",
+      "registry": "docker.io",
+      "repository": "apache/couchdb",
+      "tag": "3.5.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/apache/couchdb/tags",
+      "latest": "3.5.3",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "surrealdb/surrealdb",
+     "packaged": null,
+     "latest": "v4.0.1",
+     "url": "https://github.com/surrealdb/surrealdb/releases/tag/v4.0.1",
+     "status": "unknown",
+     "published_at": "2026-11-09T16:56:21Z"
+    }
+   }
+  },
+  {
+   "id": "agentzeroai",
+   "repo": "https://github.com/geniusdynamics/ns8-agentzeroai",
+   "stars": 0,
+   "pushed_at": "2026-11-13T11:04:05Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:00:38Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.2.1",
+    "status": "current",
+    "primary_image": "docker.io/agent0ai/agent-zero:v2.15",
+    "images": [
+     {
+      "reference": "docker.io/agent0ai/agent-zero:v2.15",
+      "registry": "docker.io",
+      "repository": "agent0ai/agent-zero",
+      "tag": "v2.15",
+      "digest": null,
+      "url": "https://hub.docker.com/r/agent0ai/agent-zero/tags",
+      "latest": "v2.15",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "linkwarden",
+   "repo": "https://github.com/geniusdynamics/ns8-linkwarden",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:32:49Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:26:25Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Linkwarden",
+   "upstream_url": "https://linkwarden.app/",
+   "upstream_repo": "https://github.com/linkwarden/linkwarden",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/linkwarden/linkwarden:v2.16.3",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/linkwarden/linkwarden:v2.16.3",
+      "registry": "ghcr.io",
+      "repository": "linkwarden/linkwarden",
+      "tag": "v2.16.3",
+      "digest": null,
+      "url": "https://github.com/linkwarden/pkgs/container/linkwarden",
+      "latest": "v2.17.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "linkwarden/linkwarden",
+     "packaged": null,
+     "latest": "v2.17.0",
+     "url": "https://github.com/linkwarden/linkwarden/releases/tag/v2.17.0",
+     "status": "unknown",
+     "published_at": "2026-11-10T18:30:29Z"
+    }
+   }
+  },
+  {
+   "id": "docmost",
+   "repo": "https://github.com/geniusdynamics/ns8-docmost",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:12:48Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-10-25T10:12:41Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": false,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "Docmost",
+   "upstream_url": "https://docmost.com/",
+   "upstream_repo": "https://github.com/docmost/docmost",
+   "alternatives": [
+    {
+     "name": "Notion",
+     "url": "https://www.notion.so/"
+    },
+    {
+     "name": "Confluence",
+     "url": "https://www.confluence.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.4.0",
+    "status": "update_available",
+    "primary_image": "docker.io/docmost/docmost:0.96",
+    "images": [
+     {
+      "reference": "docker.io/postgres:16-alpine",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "16-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.io/docmost/docmost:0.96",
+      "registry": "docker.io",
+      "repository": "docmost/docmost",
+      "tag": "0.96",
+      "digest": null,
+      "url": "https://hub.docker.com/r/docmost/docmost/tags",
+      "latest": "0.97.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/redis:7.2-alpine",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.2-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3-alpine",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "docmost/docmost",
+     "packaged": null,
+     "latest": "v0.97.0",
+     "url": "https://github.com/docmost/docmost/releases/tag/v0.97.0",
+     "status": "unknown",
+     "published_at": "2026-10-25T14:12:25Z"
+    }
+   }
+  },
+  {
+   "id": "invoiceninja",
+   "repo": "https://github.com/geniusdynamics/ns8-invoiceninja",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:03:20Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:53:04Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Invoice Ninja",
+   "upstream_url": "https://invoiceninja.com/",
+   "upstream_repo": "https://github.com/invoiceninja/invoiceninja",
+   "alternatives": [
+    {
+     "name": "FreshBooks",
+     "url": "https://www.freshbooks.com/"
+    },
+    {
+     "name": "QuickBooks",
+     "url": "https://quickbooks.intuit.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/invoiceninja/invoiceninja:5.13.53",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:13.0.2",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "13.0.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/invoiceninja/invoiceninja:5.13.53",
+      "registry": "docker.io",
+      "repository": "invoiceninja/invoiceninja",
+      "tag": "5.13.53",
+      "digest": null,
+      "url": "https://hub.docker.com/r/invoiceninja/invoiceninja/tags",
+      "latest": "5.13.53",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/library/nginx:1.31.8",
+      "registry": "docker.io",
+      "repository": "library/nginx",
+      "tag": "1.31.8",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/nginx/tags",
+      "latest": "1.31.8",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "invoiceninja/invoiceninja",
+     "packaged": null,
+     "latest": "v5.13.53",
+     "url": "https://github.com/invoiceninja/invoiceninja/releases/tag/v5.13.53",
+     "status": "unknown",
+     "published_at": "2026-11-02T02:31:29Z"
+    }
+   }
+  },
+  {
+   "id": "wekan",
+   "repo": "https://github.com/geniusdynamics/ns8-wekan",
+   "stars": 0,
+   "pushed_at": "2026-11-13T18:19:55Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T18:19:35Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "WeKan",
+   "upstream_url": "https://wekan.fi/",
+   "upstream_repo": "https://github.com/wekan/wekan",
+   "alternatives": [
+    {
+     "name": "Trello",
+     "url": "https://trello.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/wekan/wekan:v13.09",
+    "images": [
+     {
+      "reference": "docker.io/mongo:9.0.8",
+      "registry": "docker.io",
+      "repository": "library/mongo",
+      "tag": "9.0.8",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mongo/tags",
+      "latest": "9.0.8",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/wekan/wekan:v13.09",
+      "registry": "ghcr.io",
+      "repository": "wekan/wekan",
+      "tag": "v13.09",
+      "digest": null,
+      "url": "https://github.com/wekan/pkgs/container/wekan",
+      "latest": "v13.11",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "wekan/wekan",
+     "packaged": null,
+     "latest": "v13.11",
+     "url": "https://github.com/wekan/wekan/releases/tag/v13.11",
+     "status": "unknown",
+     "published_at": "2026-11-13T18:15:46Z"
+    }
+   }
+  },
+  {
+   "id": "metabase",
+   "repo": "https://github.com/geniusdynamics/ns8-metabase",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:09:13Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:26:43Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Metabase",
+   "upstream_url": "https://www.metabase.com/",
+   "upstream_repo": "https://github.com/metabase/metabase",
+   "alternatives": [
+    {
+     "name": "Tableau",
+     "url": "https://www.tableau.com/"
+    },
+    {
+     "name": "Power BI",
+     "url": "https://www.microsoft.com/power-platform/products/power-bi"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "docker.io/metabase/metabase:v0.50.18.1",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/metabase/metabase:v0.50.18.1",
+      "registry": "docker.io",
+      "repository": "metabase/metabase",
+      "tag": "v0.50.18.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/metabase/metabase/tags",
+      "latest": "v0.65.4.4",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "metabase/metabase",
+     "packaged": null,
+     "latest": "v0.65.4",
+     "url": "https://github.com/metabase/metabase/releases/tag/v0.65.4",
+     "status": "unknown",
+     "published_at": "2026-11-13T02:32:58Z"
+    }
+   }
+  },
+  {
+   "id": "SurrealDB",
+   "repo": "https://github.com/geniusdynamics/ns8-surrealdb",
+   "stars": 1,
+   "pushed_at": "2026-11-13T14:34:29Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:34:29Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "SurrealDB",
+   "upstream_url": "https://surrealdb.com/",
+   "upstream_repo": "https://github.com/surrealdb/surrealdb",
+   "alternatives": [
+    {
+     "name": "PostgresDB",
+     "url": "https://www.postgresql.org/"
+    },
+    {
+     "name": "MariaDB",
+     "url": "https://mariadb.org/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.2.0",
+    "status": "unknown",
+    "primary_image": "docker.io/surrealdb/surrealdb:v3.0",
+    "images": [
+     {
+      "reference": "docker.io/surrealdb/surrealdb:v3.0",
+      "registry": "docker.io",
+      "repository": "surrealdb/surrealdb",
+      "tag": "v3.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/surrealdb/surrealdb/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "surrealdb/surrealdb",
+     "packaged": null,
+     "latest": "v4.0.1",
+     "url": "https://github.com/surrealdb/surrealdb/releases/tag/v4.0.1",
+     "status": "unknown",
+     "published_at": "2026-11-09T16:56:21Z"
+    }
+   }
+  },
+  {
+   "id": "2Fauth",
+   "repo": "https://github.com/geniusdynamics/ns8-2fauth",
+   "stars": 0,
+   "pushed_at": "2026-11-14T04:21:15Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T04:21:16Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "2FAuth",
+   "upstream_url": "https://docs.2fauth.app/",
+   "upstream_repo": "https://github.com/Bubka/2FAuth",
+   "alternatives": [
+    {
+     "name": "Google Authenticator",
+     "url": "https://github.com/google/google-authenticator"
+    },
+    {
+     "name": "Microsoft authenticator",
+     "url": "https://www.microsoft.com/en-us/security/mobile-authenticator-app"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "current",
+    "primary_image": "docker.io/2fauth/2fauth:9.0.1",
+    "images": [
+     {
+      "reference": "docker.io/2fauth/2fauth:9.0.1",
+      "registry": "docker.io",
+      "repository": "2fauth/2fauth",
+      "tag": "9.0.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/2fauth/2fauth/tags",
+      "latest": "9.0.1",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "Bubka/2FAuth",
+     "packaged": null,
+     "latest": "v9.0.1",
+     "url": "https://github.com/Bubka/2FAuth/releases/tag/v9.0.1",
+     "status": "unknown",
+     "published_at": "2026-11-02T07:57:46Z"
+    }
+   }
+  },
+  {
+   "id": "gitea",
+   "repo": "https://github.com/geniusdynamics/ns8-gitea",
+   "stars": 0,
+   "pushed_at": "2026-11-14T05:13:25Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T05:13:10Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Gitea",
+   "upstream_url": "https://about.gitea.com/",
+   "upstream_repo": "https://github.com/go-gitea/gitea",
+   "alternatives": [
+    {
+     "name": "Github",
+     "url": "https://github.com/"
+    },
+    {
+     "name": "Gitlab",
+     "url": "https://www.gitlab.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.1",
+    "status": "unknown",
+    "primary_image": "docker.io/gitea/gitea:28.3.0",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/gitea/gitea:28.3.0",
+      "registry": "docker.io",
+      "repository": "gitea/gitea",
+      "tag": "28.3.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/gitea/gitea/tags",
+      "latest": "28.3.0",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "go-gitea/gitea",
+     "packaged": null,
+     "latest": "v28.3.0",
+     "url": "https://github.com/go-gitea/gitea/releases/tag/v28.3.0",
+     "status": "unknown",
+     "published_at": "2026-11-01T09:55:07Z"
+    }
+   }
+  },
+  {
+   "id": "eturnal",
+   "repo": "https://github.com/geniusdynamics/ns8-eturnal",
+   "stars": 0,
+   "pushed_at": "2026-11-14T08:46:32Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T15:34:58Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": false,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "current",
+    "primary_image": "ghcr.io/processone/eturnal:1.12.3",
+    "images": [
+     {
+      "reference": "ghcr.io/processone/eturnal:1.12.3",
+      "registry": "ghcr.io",
+      "repository": "processone/eturnal",
+      "tag": "1.12.3",
+      "digest": null,
+      "url": "https://github.com/processone/pkgs/container/eturnal",
+      "latest": "1.12.3",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "bugsink",
+   "repo": "https://github.com/geniusdynamics/ns8-bugsink",
+   "stars": 0,
+   "pushed_at": "2026-11-13T15:03:37Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T15:03:20Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": false,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.2.0",
+    "status": "current",
+    "primary_image": "docker.io/bugsink/bugsink:2.6.3",
+    "images": [
+     {
+      "reference": "docker.io/mysql:9.7.4",
+      "registry": "docker.io",
+      "repository": "library/mysql",
+      "tag": "9.7.4",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mysql/tags",
+      "latest": "26.10.0",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/bugsink/bugsink:2.6.3",
+      "registry": "docker.io",
+      "repository": "bugsink/bugsink",
+      "tag": "2.6.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/bugsink/bugsink/tags",
+      "latest": "2.6.3",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "mailcow",
+   "repo": "https://github.com/geniusdynamics/ns8-mailcow",
+   "stars": 0,
+   "pushed_at": "2026-11-14T06:05:41Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T06:05:24Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Mailcow",
+   "upstream_url": "https://mailcow.email/",
+   "upstream_repo": "https://github.com/mailcow/mailcow-dockerized",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0-testing.1",
+    "status": "unknown",
+    "primary_image": null,
+    "images": [
+     {
+      "reference": "docker.io/library/mariadb:10.11.19",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/library/redis:7.4.12-alpine",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.4.12-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3-alpine",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/mailcow/unbound:1.24",
+      "registry": "ghcr.io",
+      "repository": "mailcow/unbound",
+      "tag": "1.24",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/unbound",
+      "latest": "1.25",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/mailcow/clamd:1.71",
+      "registry": "ghcr.io",
+      "repository": "mailcow/clamd",
+      "tag": "1.71",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/clamd",
+      "latest": "1.71",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "ghcr.io/mailcow/rspamd:3.14.2",
+      "registry": "ghcr.io",
+      "repository": "mailcow/rspamd",
+      "tag": "3.14.2",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/rspamd",
+      "latest": "3.14.2",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "ghcr.io/mailcow/phpfpm:8.2.29-1",
+      "registry": "ghcr.io",
+      "repository": "mailcow/phpfpm",
+      "tag": "8.2.29-1",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/phpfpm",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "ghcr.io/mailcow/sogo:5.12.4-1",
+      "registry": "ghcr.io",
+      "repository": "mailcow/sogo",
+      "tag": "5.12.4-1",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/sogo",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "ghcr.io/mailcow/dovecot:2.3.21.1-1",
+      "registry": "ghcr.io",
+      "repository": "mailcow/dovecot",
+      "tag": "2.3.21.1-1",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/dovecot",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "ghcr.io/mailcow/postfix:3.7.11-1",
+      "registry": "ghcr.io",
+      "repository": "mailcow/postfix",
+      "tag": "3.7.11-1",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/postfix",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "ghcr.io/mailcow/postfix-tlspol:1.8.22",
+      "registry": "ghcr.io",
+      "repository": "mailcow/postfix-tlspol",
+      "tag": "1.8.22",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/postfix-tlspol",
+      "latest": "1.14.5",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/library/memcached:1.6.45-alpine",
+      "registry": "docker.io",
+      "repository": "library/memcached",
+      "tag": "1.6.45-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/memcached/tags",
+      "latest": "1.6.45-alpine",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "ghcr.io/mailcow/nginx:1.05",
+      "registry": "ghcr.io",
+      "repository": "mailcow/nginx",
+      "tag": "1.05",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/nginx",
+      "latest": "1.06",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/mailcow/acme:1.95",
+      "registry": "ghcr.io",
+      "repository": "mailcow/acme",
+      "tag": "1.95",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/acme",
+      "latest": "1.99",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/mailcow/netfilter:1.63",
+      "registry": "ghcr.io",
+      "repository": "mailcow/netfilter",
+      "tag": "1.63",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/netfilter",
+      "latest": "1.67",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/mailcow/watchdog:2.09",
+      "registry": "ghcr.io",
+      "repository": "mailcow/watchdog",
+      "tag": "2.09",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/watchdog",
+      "latest": "2.13",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/mailcow/dockerapi:2.11",
+      "registry": "ghcr.io",
+      "repository": "mailcow/dockerapi",
+      "tag": "2.11",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/dockerapi",
+      "latest": "2.16",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "ghcr.io/mailcow/olefy:1.15",
+      "registry": "ghcr.io",
+      "repository": "mailcow/olefy",
+      "tag": "1.15",
+      "digest": null,
+      "url": "https://github.com/mailcow/pkgs/container/olefy",
+      "latest": "1.16",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/mcuadros/ofelia:v3.0.8",
+      "registry": "docker.io",
+      "repository": "mcuadros/ofelia",
+      "tag": "v3.0.8",
+      "digest": null,
+      "url": "https://hub.docker.com/r/mcuadros/ofelia/tags",
+      "latest": "v3.0.8",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "mailcow/mailcow-dockerized",
+     "packaged": null,
+     "latest": "2026-11",
+     "url": "https://github.com/mailcow/mailcow-dockerized/releases/tag/2026-11",
+     "status": "unknown",
+     "published_at": "2026-11-05T10:23:25Z"
+    }
+   }
+  },
+  {
+   "id": "formbricks",
+   "repo": "https://github.com/geniusdynamics/ns8-formbricks",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:19:51Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:17:09Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Formbricks",
+   "upstream_url": "https://formbricks.com/",
+   "upstream_repo": "https://github.com/formbricks/formbricks",
+   "alternatives": [
+    {
+     "name": "Typeform",
+     "url": "https://www.typeform.com/"
+    },
+    {
+     "name": "Google Forms",
+     "url": "https://forms.google.com"
+    },
+    {
+     "name": "React Hook Form",
+     "url": "https://react-hook-form.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/formbricks/formbricks:v3.15.0",
+    "images": [
+     {
+      "reference": "docker.io/pgvector/pgvector:pg17",
+      "registry": "docker.io",
+      "repository": "pgvector/pgvector",
+      "tag": "pg17",
+      "digest": null,
+      "url": "https://hub.docker.com/r/pgvector/pgvector/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "ghcr.io/formbricks/formbricks:v3.15.0",
+      "registry": "ghcr.io",
+      "repository": "formbricks/formbricks",
+      "tag": "v3.15.0",
+      "digest": null,
+      "url": "https://github.com/formbricks/pkgs/container/formbricks",
+      "latest": "v3.16.1",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/library/redis:7.4.12",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.4.12",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "formbricks/formbricks",
+     "packaged": null,
+     "latest": "6.2.0",
+     "url": "https://github.com/formbricks/formbricks/releases/tag/6.2.0",
+     "status": "unknown",
+     "published_at": "2026-11-13T05:39:18Z"
+    }
+   }
+  },
+  {
+   "id": "colanode",
+   "repo": "https://github.com/geniusdynamics/ns8-colanode",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:11:59Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:10:10Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Colanode",
+   "upstream_url": "https://colanode.com/",
+   "upstream_repo": "https://github.com/colanode/colanode",
+   "alternatives": [
+    {
+     "name": "Slack",
+     "url": "https://slack.com/"
+    },
+    {
+     "name": "Notion",
+     "url": "https://www.notion.so/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "current",
+    "primary_image": "ghcr.io/colanode/server:0.4.7",
+    "images": [
+     {
+      "reference": "docker.io/pgvector/pgvector:0.8.7-pg17",
+      "registry": "docker.io",
+      "repository": "pgvector/pgvector",
+      "tag": "0.8.7-pg17",
+      "digest": null,
+      "url": "https://hub.docker.com/r/pgvector/pgvector/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.io/valkey/valkey:9.2",
+      "registry": "docker.io",
+      "repository": "valkey/valkey",
+      "tag": "9.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/valkey/valkey/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "ghcr.io/colanode/server:0.4.7",
+      "registry": "ghcr.io",
+      "repository": "colanode/server",
+      "tag": "0.4.7",
+      "digest": null,
+      "url": "https://github.com/colanode/pkgs/container/server",
+      "latest": "0.4.7",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "ghcr.io/colanode/web:0.4.7",
+      "registry": "ghcr.io",
+      "repository": "colanode/web",
+      "tag": "0.4.7",
+      "digest": null,
+      "url": "https://github.com/colanode/pkgs/container/web",
+      "latest": "0.4.7",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "colanode/colanode",
+     "packaged": null,
+     "latest": "v0.4.7",
+     "url": "https://github.com/colanode/colanode/releases/tag/v0.4.7",
+     "status": "unknown",
+     "published_at": "2026-04-03T15:31:23Z"
+    }
+   }
+  },
+  {
+   "id": "chiefonboarding",
+   "repo": "https://github.com/geniusdynamics/ns8-chiefonboarding",
+   "stars": 0,
+   "pushed_at": "2026-11-13T11:13:55Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T11:09:05Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Chief On Boarding",
+   "upstream_url": "https://chiefonboarding.com/",
+   "upstream_repo": "https://github.com/chiefonboarding/ChiefOnboarding",
+   "alternatives": [
+    {
+     "name": "MintHCM",
+     "url": "https://minthcm.org/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "current",
+    "primary_image": "docker.io/chiefonboarding/chiefonboarding:v2.5.2",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/chiefonboarding/chiefonboarding:v2.5.2",
+      "registry": "docker.io",
+      "repository": "chiefonboarding/chiefonboarding",
+      "tag": "v2.5.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/chiefonboarding/chiefonboarding/tags",
+      "latest": "v2.5.2",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "chiefonboarding/ChiefOnboarding",
+     "packaged": null,
+     "latest": "v2.5.2",
+     "url": "https://github.com/chiefonboarding/ChiefOnboarding/releases/tag/v2.5.2",
+     "status": "unknown",
+     "published_at": "2026-11-08T01:05:43Z"
+    }
+   }
+  },
+  {
+   "id": "kutt",
+   "repo": "https://github.com/geniusdynamics/ns8-kutt",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:41:12Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:40:16Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Kutt",
+   "upstream_url": "https://kutt.to/",
+   "upstream_repo": "https://github.com/thedevs-network/kutt",
+   "alternatives": [
+    {
+     "name": "Bitly",
+     "url": "https://bitly.com/"
+    },
+    {
+     "name": "TinyURL",
+     "url": "https://tinyurl.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "current",
+    "primary_image": "docker.io/kutt/kutt:v3.2.6",
+    "images": [
+     {
+      "reference": "docker.io/kutt/kutt:v3.2.6",
+      "registry": "docker.io",
+      "repository": "kutt/kutt",
+      "tag": "v3.2.6",
+      "digest": null,
+      "url": "https://hub.docker.com/r/kutt/kutt/tags",
+      "latest": "v3.2.6",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/postgres:18.7-alpine",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:8.8.4-alpine",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.8.4-alpine",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3-alpine",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "thedevs-network/kutt",
+     "packaged": null,
+     "latest": "v3.2.6",
+     "url": "https://github.com/thedevs-network/kutt/releases/tag/v3.2.6",
+     "status": "unknown",
+     "published_at": "2026-07-05T10:38:58Z"
+    }
+   }
+  },
+  {
+   "id": "docuseal",
+   "repo": "https://github.com/geniusdynamics/ns8-docuseal",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:12:45Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:12:45Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "DocuSeal",
+   "upstream_url": "https://docuseal.co",
+   "upstream_repo": "https://github.com/docusealco/docuseal",
+   "alternatives": [
+    {
+     "name": "DocuSign",
+     "url": "https://www.docusign.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "update_available",
+    "primary_image": "docker.io/docuseal/docuseal:2.5.2",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/docuseal/docuseal:2.5.2",
+      "registry": "docker.io",
+      "repository": "docuseal/docuseal",
+      "tag": "2.5.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/docuseal/docuseal/tags",
+      "latest": "3.3.6",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "docusealco/docuseal",
+     "packaged": null,
+     "latest": "3.3.6",
+     "url": "https://github.com/docusealco/docuseal/releases/tag/3.3.6",
+     "status": "unknown",
+     "published_at": "2026-11-09T14:00:29Z"
+    }
+   }
+  },
+  {
+   "id": "infisical",
+   "repo": "https://github.com/geniusdynamics/ns8-infisical",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:21:46Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:18:45Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Infisical",
+   "upstream_url": "https://infisical.com/",
+   "upstream_repo": "https://github.com/Infisical/infisical",
+   "alternatives": [
+    {
+     "name": "HashiCorp Vault",
+     "url": "https://www.vaultproject.io/"
+    },
+    {
+     "name": "Doppler",
+     "url": "https://www.doppler.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/infisical/infisical:v0.77.2-postgres",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:8.10.3",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/infisical/infisical:v0.77.2-postgres",
+      "registry": "docker.io",
+      "repository": "infisical/infisical",
+      "tag": "v0.77.2-postgres",
+      "digest": null,
+      "url": "https://hub.docker.com/r/infisical/infisical/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "Infisical/infisical",
+     "packaged": null,
+     "latest": "v0.167.10",
+     "url": "https://github.com/Infisical/infisical/releases/tag/v0.167.10",
+     "status": "unknown",
+     "published_at": "2026-11-13T13:33:30Z"
+    }
+   }
+  },
+  {
+   "id": "documenso",
+   "repo": "https://github.com/geniusdynamics/ns8-documenso",
+   "stars": 1,
+   "pushed_at": "2026-11-13T12:52:37Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T12:46:41Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Documenso",
+   "upstream_url": "https://documenso.com",
+   "upstream_repo": "https://github.com/documenso/documenso",
+   "alternatives": [
+    {
+     "name": "DocuSign",
+     "url": "https://www.docusign.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "current",
+    "primary_image": "docker.io/documenso/documenso:v2.22.0",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/documenso/documenso:v2.22.0",
+      "registry": "docker.io",
+      "repository": "documenso/documenso",
+      "tag": "v2.22.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/documenso/documenso/tags",
+      "latest": "v2.22.0",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "documenso/documenso",
+     "packaged": null,
+     "latest": "v2.22.0",
+     "url": "https://github.com/documenso/documenso/releases/tag/v2.22.0",
+     "status": "unknown",
+     "published_at": "2026-11-13T01:34:30Z"
+    }
+   }
+  },
+  {
+   "id": "rally",
+   "repo": "https://github.com/geniusdynamics/ns8-rally",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:38:54Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:30:06Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.3.0",
+    "status": "current",
+    "primary_image": "docker.io/lukevella/rallly:4.17.0",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.20-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/lukevella/rallly:4.17.0",
+      "registry": "docker.io",
+      "repository": "lukevella/rallly",
+      "tag": "4.17.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/lukevella/rallly/tags",
+      "latest": "4.17.0",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "dashy",
+   "repo": "https://github.com/geniusdynamics/ns8-dashy",
+   "stars": 0,
+   "pushed_at": "2026-11-13T18:17:22Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T18:17:04Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Dashy",
+   "upstream_url": "https://dashy.to/",
+   "upstream_repo": "https://github.com/Lissy93/dashy",
+   "alternatives": [
+    {
+     "name": "Heimdall",
+     "url": "https://heimdall.site/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "docker.io/lissy93/dashy:4.9.17",
+    "images": [
+     {
+      "reference": "docker.io/lissy93/dashy:4.9.17",
+      "registry": "docker.io",
+      "repository": "lissy93/dashy",
+      "tag": "4.9.17",
+      "digest": null,
+      "url": "https://hub.docker.com/r/lissy93/dashy/tags",
+      "latest": "4.9.18",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "Lissy93/dashy",
+     "packaged": null,
+     "latest": "4.9.0",
+     "url": "https://github.com/lissy93/dashy/releases/tag/4.9.0",
+     "status": "unknown",
+     "published_at": "2026-10-23T13:13:23Z"
+    }
+   }
+  },
+  {
+   "id": "limesurvey",
+   "repo": "https://github.com/geniusdynamics/ns8-limesurvey",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:09:06Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:07:45Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "LimeSurvey",
+   "upstream_url": "https://www.limesurvey.org/",
+   "upstream_repo": "https://github.com/LimeSurvey/LimeSurvey",
+   "alternatives": [
+    {
+     "name": "SurveyMonkey",
+     "url": "https://www.surveymonkey.com/"
+    },
+    {
+     "name": "Typeform",
+     "url": "https://www.typeform.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.1",
+    "status": "unknown",
+    "primary_image": "docker.io/martialblog/limesurvey:7.9.1-261102-apache",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:13.0.2",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "13.0.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/martialblog/limesurvey:7.9.1-261102-apache",
+      "registry": "docker.io",
+      "repository": "martialblog/limesurvey",
+      "tag": "7.9.1-261102-apache",
+      "digest": null,
+      "url": "https://hub.docker.com/r/martialblog/limesurvey/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     }
+    ],
+    "release": {
+     "repository": "LimeSurvey/LimeSurvey",
+     "packaged": null,
+     "latest": null,
+     "url": null,
+     "status": "unknown"
+    }
+   }
+  },
+  {
+   "id": "n8n",
+   "repo": "https://github.com/geniusdynamics/ns8-n8n",
+   "stars": 0,
+   "pushed_at": "2026-11-14T06:21:10Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T06:19:15Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "N8N",
+   "upstream_url": "https://n8n.io/",
+   "upstream_repo": "https://github.com/n8n-io/n8n",
+   "alternatives": [
+    {
+     "name": "Zapier",
+     "url": "https://zapier.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.1.0",
+    "status": "update_available",
+    "primary_image": "docker.io/n8nio/n8n:2.48.4",
+    "images": [
+     {
+      "reference": "docker.io/library/redis:7.4.12-bookworm",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7.4.12-bookworm",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.4.0-bookworm",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/library/postgres:15.20-bookworm",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.20-bookworm",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-bookworm",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/n8nio/n8n:2.48.4",
+      "registry": "docker.io",
+      "repository": "n8nio/n8n",
+      "tag": "2.48.4",
+      "digest": null,
+      "url": "https://hub.docker.com/r/n8nio/n8n/tags",
+      "latest": "3.2.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/n8nio/runners:2.48.2",
+      "registry": "docker.io",
+      "repository": "n8nio/runners",
+      "tag": "2.48.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/n8nio/runners/tags",
+      "latest": "3.2.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "n8n-io/n8n",
+     "packaged": null,
+     "latest": "n8n@2.47.7",
+     "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.47.7",
+     "status": "unknown",
+     "published_at": "2026-11-13T09:44:36Z"
+    }
+   }
+  },
+  {
+   "id": "keycloak",
+   "repo": "https://github.com/geniusdynamics/ns8-keycloak",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:09:54Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T07:51:49Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Keycloak",
+   "upstream_url": "https://www.keycloak.org/",
+   "upstream_repo": "https://github.com/keycloak/keycloak",
+   "alternatives": [
+    {
+     "name": "Okta",
+     "url": "https://okta.com/"
+    },
+    {
+     "name": "Auth0",
+     "url": "https://auth0.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "quay.io/keycloak/keycloak:26.8.2",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "quay.io/keycloak/keycloak:26.8.2",
+      "registry": "quay.io",
+      "repository": "keycloak/keycloak",
+      "tag": "26.8.2",
+      "digest": null,
+      "url": null,
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry is not supported yet."
+     }
+    ],
+    "release": {
+     "repository": "keycloak/keycloak",
+     "packaged": null,
+     "latest": "26.8.2",
+     "url": "https://github.com/keycloak/keycloak/releases/tag/26.8.2",
+     "status": "unknown",
+     "published_at": "2026-11-05T16:00:19Z"
+    }
+   }
+  },
+  {
+   "id": "netbox",
+   "repo": "https://github.com/geniusdynamics/ns8-netbox",
+   "stars": 0,
+   "pushed_at": "2026-11-14T03:25:29Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T03:25:11Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "NetBox",
+   "upstream_url": "https://netboxlabs.com/",
+   "upstream_repo": "https://github.com/netbox-community/netbox",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/netboxcommunity/netbox:v4.7.5-5.1.2",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/netboxcommunity/netbox:v4.7.5-5.1.2",
+      "registry": "docker.io",
+      "repository": "netboxcommunity/netbox",
+      "tag": "v4.7.5-5.1.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/netboxcommunity/netbox/tags",
+      "latest": "v4.7.5-5.1.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/redis:8.10.3-alpine3.23",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3-alpine3.23",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3-alpine3.23",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "netbox-community/netbox",
+     "packaged": null,
+     "latest": "v4.7.5",
+     "url": "https://github.com/netbox-community/netbox/releases/tag/v4.7.5",
+     "status": "unknown",
+     "published_at": "2026-11-10T16:34:32Z"
+    }
+   }
+  },
+  {
+   "id": "termix",
+   "repo": "https://github.com/geniusdynamics/ns8-termix",
+   "stars": 1,
+   "pushed_at": "2026-11-13T07:30:24Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-12T03:50:56Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": false,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": null,
+   "upstream_url": null,
+   "upstream_repo": null,
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "current",
+    "primary_image": "ghcr.io/termix-ssh/termix:26.11.1",
+    "images": [
+     {
+      "reference": "ghcr.io/termix-ssh/termix:26.11.1",
+      "registry": "ghcr.io",
+      "repository": "termix-ssh/termix",
+      "tag": "26.11.1",
+      "digest": null,
+      "url": "https://github.com/termix-ssh/pkgs/container/termix",
+      "latest": "26.11.1",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": null
+   }
+  },
+  {
+   "id": "glpi",
+   "repo": "https://github.com/geniusdynamics/ns8-glpi",
+   "stars": 0,
+   "pushed_at": "2026-11-13T15:13:46Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T15:13:48Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "GLPI",
+   "upstream_url": "https://glpi-project.org/",
+   "upstream_repo": "https://github.com/glpi-project/glpi",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.1.0",
+    "status": "update_available",
+    "primary_image": "docker.io/glpi/glpi:11.0.13",
+    "images": [
+     {
+      "reference": "docker.io/mariadb:10.11.19",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "10.11.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/glpi/glpi:11.0.13",
+      "registry": "docker.io",
+      "repository": "glpi/glpi",
+      "tag": "11.0.13",
+      "digest": null,
+      "url": "https://hub.docker.com/r/glpi/glpi/tags",
+      "latest": "12.0.2",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "glpi-project/glpi",
+     "packaged": null,
+     "latest": "12.0.2",
+     "url": "https://github.com/glpi-project/glpi/releases/tag/12.0.2",
+     "status": "unknown",
+     "published_at": "2026-11-12T08:35:07Z"
+    }
+   }
+  },
+  {
+   "id": "maybe",
+   "repo": "https://github.com/geniusdynamics/ns8-maybe",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:13:27Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2025-08-24T17:12:18Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": false,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "Maybe",
+   "upstream_url": "https://maybe.co/",
+   "upstream_repo": "https://github.com/maybe-finance/maybe",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.1",
+    "status": "current",
+    "primary_image": "ghcr.io/maybe-finance/maybe:0.6.0",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.5-alpine3.19",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.5-alpine3.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/maybe-finance/maybe:0.6.0",
+      "registry": "ghcr.io",
+      "repository": "maybe-finance/maybe",
+      "tag": "0.6.0",
+      "digest": null,
+      "url": "https://github.com/maybe-finance/pkgs/container/maybe",
+      "latest": "0.6.0",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/redis:7",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "7",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     }
+    ],
+    "release": {
+     "repository": "maybe-finance/maybe",
+     "packaged": null,
+     "latest": "v0.6.0",
+     "url": "https://github.com/maybe-finance/maybe/releases/tag/v0.6.0",
+     "status": "unknown",
+     "published_at": "2025-07-24T22:05:26Z"
+    }
+   }
+  },
+  {
+   "id": "coder",
+   "repo": "https://github.com/geniusdynamics/ns8-coder",
+   "stars": 0,
+   "pushed_at": "2026-11-13T18:25:56Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T18:25:56Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Coder",
+   "upstream_url": "https://coder.com/",
+   "upstream_repo": "https://github.com/coder/coder",
+   "alternatives": [
+    {
+     "name": "GitHub Codespaces",
+     "url": "https://github.com/features/codespaces"
+    },
+    {
+     "name": "Gitpod",
+     "url": "https://www.gitpod.io/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/coder/coder:v2.8.3",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/coder/coder:v2.8.3",
+      "registry": "ghcr.io",
+      "repository": "coder/coder",
+      "tag": "v2.8.3",
+      "digest": null,
+      "url": "https://github.com/coder/pkgs/container/coder",
+      "latest": "v2.39.1",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     },
+     {
+      "reference": "docker.io/codercom/code-server:ubuntu",
+      "registry": "docker.io",
+      "repository": "codercom/code-server",
+      "tag": "ubuntu",
+      "digest": null,
+      "url": "https://hub.docker.com/r/codercom/code-server/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     }
+    ],
+    "release": {
+     "repository": "coder/coder",
+     "packaged": null,
+     "latest": "v2.38.7",
+     "url": "https://github.com/coder/coder/releases/tag/v2.38.7",
+     "status": "unknown",
+     "published_at": "2026-11-10T15:56:09Z"
+    }
+   }
+  },
+  {
+   "id": "wallos",
+   "repo": "https://github.com/geniusdynamics/ns8-wallos",
+   "stars": 1,
+   "pushed_at": "2026-11-13T10:14:07Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-10-24T19:57:08Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": false,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "Wallos",
+   "upstream_url": "https://wallosapp.com/",
+   "upstream_repo": "https://github.com/ellite/Wallos",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.3.0",
+    "status": "update_available",
+    "primary_image": "docker.io/bellamy/wallos:5.10.1",
+    "images": [
+     {
+      "reference": "docker.io/bellamy/wallos:5.10.1",
+      "registry": "docker.io",
+      "repository": "bellamy/wallos",
+      "tag": "5.10.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/bellamy/wallos/tags",
+      "latest": "5.11.1",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "ellite/Wallos",
+     "packaged": null,
+     "latest": "v5.11.1",
+     "url": "https://github.com/ellite/Wallos/releases/tag/v5.11.1",
+     "status": "unknown",
+     "published_at": "2026-11-07T22:43:55Z"
+    }
+   }
+  },
+  {
+   "id": "mixpost",
+   "repo": "https://github.com/geniusdynamics/ns8-mixpost",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:46:24Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T12:19:22Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Mixpost",
+   "upstream_url": "https://mixpost.app/",
+   "upstream_repo": "https://github.com/inovector/mixpost",
+   "alternatives": [
+    {
+     "name": "Buffer",
+     "url": "https://buffer.com/"
+    },
+    {
+     "name": "Hootsuite",
+     "url": "https://www.hootsuite.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "current",
+    "primary_image": "docker.io/inovector/mixpost:v2.6.0",
+    "images": [
+     {
+      "reference": "docker.io/inovector/mixpost:v2.6.0",
+      "registry": "docker.io",
+      "repository": "inovector/mixpost",
+      "tag": "v2.6.0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/inovector/mixpost/tags",
+      "latest": "v2.6.0",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     },
+     {
+      "reference": "docker.io/mariadb:13.0.2",
+      "registry": "docker.io",
+      "repository": "library/mariadb",
+      "tag": "13.0.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mariadb/tags",
+      "latest": "13.0.2",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:8.10.3",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     }
+    ],
+    "release": {
+     "repository": "inovector/mixpost",
+     "packaged": null,
+     "latest": "2.6.0",
+     "url": "https://github.com/inovector/mixpost/releases/tag/2.6.0",
+     "status": "unknown",
+     "published_at": "2026-03-16T10:06:21Z"
+    }
+   }
+  },
+  {
+   "id": "vaultwarden",
+   "repo": "https://github.com/geniusdynamics/ns8-vaultwarden",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:37:39Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T14:36:37Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "VaultWarden",
+   "upstream_url": "https://vaultwarden.co/",
+   "upstream_repo": "https://github.com/dani-garcia/vaultwarden",
+   "alternatives": [
+    {
+     "name": "1Password",
+     "url": "https://1password.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.4.0",
+    "status": "unknown",
+    "primary_image": "docker.io/vaultwarden/server:1.37.1",
+    "images": [
+     {
+      "reference": "docker.io/vaultwarden/server:1.37.1",
+      "registry": "docker.io",
+      "repository": "vaultwarden/server",
+      "tag": "1.37.1",
+      "digest": null,
+      "url": "https://hub.docker.com/r/vaultwarden/server/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "dani-garcia/vaultwarden",
+     "packaged": null,
+     "latest": "1.37.5",
+     "url": "https://github.com/dani-garcia/vaultwarden/releases/tag/1.37.5",
+     "status": "unknown",
+     "published_at": "2026-11-01T22:16:50Z"
+    }
+   }
+  },
+  {
+   "id": "calibre-Web",
+   "repo": "https://github.com/geniusdynamics/ns8-calibre-web",
+   "stars": 0,
+   "pushed_at": "2026-11-13T13:18:17Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T13:17:15Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Calibre-web",
+   "upstream_url": "https://github.com/janeczku/calibre-web",
+   "upstream_repo": "https://github.com/janeczku/calibre-web",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "unknown",
+    "primary_image": "lscr.io/linuxserver/calibre-web:0.6.25",
+    "images": [
+     {
+      "reference": "lscr.io/linuxserver/calibre-web:0.6.25",
+      "registry": "lscr.io",
+      "repository": "linuxserver/calibre-web",
+      "tag": "0.6.25",
+      "digest": null,
+      "url": null,
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry is not supported yet."
+     }
+    ],
+    "release": {
+     "repository": "janeczku/calibre-web",
+     "packaged": null,
+     "latest": "0.6.27",
+     "url": "https://github.com/janeczku/calibre-web/releases/tag/0.6.27",
+     "status": "unknown",
+     "published_at": "2026-08-08T16:09:50Z"
+    }
+   }
+  },
+  {
+   "id": "outline",
+   "repo": "https://github.com/geniusdynamics/ns8-outline",
+   "stars": 0,
+   "pushed_at": "2026-11-14T02:45:29Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T02:45:12Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Outline",
+   "upstream_url": "https://www.getoutline.com/",
+   "upstream_repo": "https://github.com/outline/outline",
+   "alternatives": [
+    {
+     "name": "Notion",
+     "url": "https://notion.so"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/outlinewiki/outline:1.9.2-0",
+    "images": [
+     {
+      "reference": "docker.io/postgres:18.7-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "18.7-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/redis:8.10.3",
+      "registry": "docker.io",
+      "repository": "library/redis",
+      "tag": "8.10.3",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/redis/tags",
+      "latest": "8.10.3",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/outlinewiki/outline:1.9.2-0",
+      "registry": "docker.io",
+      "repository": "outlinewiki/outline",
+      "tag": "1.9.2-0",
+      "digest": null,
+      "url": "https://hub.docker.com/r/outlinewiki/outline/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     }
+    ],
+    "release": {
+     "repository": "outline/outline",
+     "packaged": null,
+     "latest": "v1.12.0",
+     "url": "https://github.com/outline/outline/releases/tag/v1.12.0",
+     "status": "unknown",
+     "published_at": "2026-10-23T11:52:56Z"
+    }
+   }
+  },
+  {
+   "id": "flatnotes",
+   "repo": "https://github.com/geniusdynamics/ns8-flatnotes",
+   "stars": 0,
+   "pushed_at": "2026-11-13T14:46:00Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T04:21:52Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Flatnotes",
+   "upstream_url": "https://github.com/dullage/flatnotes",
+   "upstream_repo": "https://github.com/dullage/flatnotes",
+   "alternatives": [
+    {
+     "name": "Evernote",
+     "url": "https://evernote.com/"
+    },
+    {
+     "name": "Google Keep",
+     "url": "https://keep.google.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "current",
+    "primary_image": "docker.io/dullage/flatnotes:v5.5.5",
+    "images": [
+     {
+      "reference": "docker.io/dullage/flatnotes:v5.5.5",
+      "registry": "docker.io",
+      "repository": "dullage/flatnotes",
+      "tag": "v5.5.5",
+      "digest": null,
+      "url": "https://hub.docker.com/r/dullage/flatnotes/tags",
+      "latest": "v5.5.5",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "dullage/flatnotes",
+     "packaged": null,
+     "latest": "v5.5.5",
+     "url": "https://github.com/dullage/flatnotes/releases/tag/v5.5.5",
+     "status": "unknown",
+     "published_at": "2026-08-29T07:09:03Z"
+    }
+   }
+  },
+  {
+   "id": "kobotoolbox",
+   "repo": "https://github.com/geniusdynamics/ns8-kobotoolbox",
+   "stars": 0,
+   "pushed_at": "2026-11-14T05:14:48Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-14T05:14:34Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "KoboToolbox",
+   "upstream_url": "https://www.kobotoolbox.org/",
+   "upstream_repo": "https://github.com/kobotoolbox/kpi",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.0.0",
+    "status": "unknown",
+    "primary_image": "docker.io/kobotoolbox/kpi:2.026.37g",
+    "images": [
+     {
+      "reference": "docker.io/postgis/postgis:17-3.7",
+      "registry": "docker.io",
+      "repository": "postgis/postgis",
+      "tag": "17-3.7",
+      "digest": null,
+      "url": "https://hub.docker.com/r/postgis/postgis/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.io/valkey/valkey:9.1.3-alpine3.24",
+      "registry": "docker.io",
+      "repository": "valkey/valkey",
+      "tag": "9.1.3-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/valkey/valkey/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     },
+     {
+      "reference": "docker.io/mongo:8.0.38",
+      "registry": "docker.io",
+      "repository": "library/mongo",
+      "tag": "8.0.38",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/mongo/tags",
+      "latest": "9.0.8",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/nginx:1.31.8-alpine3.24",
+      "registry": "docker.io",
+      "repository": "library/nginx",
+      "tag": "1.31.8-alpine3.24",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/nginx/tags",
+      "latest": "1.31.8-alpine3.24",
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/kobotoolbox/kpi:2.026.37g",
+      "registry": "docker.io",
+      "repository": "kobotoolbox/kpi",
+      "tag": "2.026.37g",
+      "digest": null,
+      "url": "https://hub.docker.com/r/kobotoolbox/kpi/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": true,
+      "reason": "Moving, prerelease or nonstandard tag; packaged version cannot be compared safely."
+     },
+     {
+      "reference": "docker.io/kobotoolbox/enketo-express-extra-widgets:7.6.5",
+      "registry": "docker.io",
+      "repository": "kobotoolbox/enketo-express-extra-widgets",
+      "tag": "7.6.5",
+      "digest": null,
+      "url": "https://hub.docker.com/r/kobotoolbox/enketo-express-extra-widgets/tags",
+      "latest": "7.6.5",
+      "status": "current",
+      "complete": true,
+      "reason": "No newer stable tag with the same image variant was found."
+     }
+    ],
+    "release": {
+     "repository": "kobotoolbox/kpi",
+     "packaged": null,
+     "latest": "2.026.37g",
+     "url": "https://github.com/kobotoolbox/kpi/releases/tag/2.026.37g",
+     "status": "unknown",
+     "published_at": "2026-11-11T14:41:10Z"
+    }
+   }
+  },
+  {
+   "id": "zitadel",
+   "repo": "https://github.com/geniusdynamics/ns8-zitadel",
+   "stars": 1,
+   "pushed_at": "2026-11-14T03:06:13Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-11-13T10:33:56Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": true,
+    "license": true
+   },
+   "score": 9,
+   "upstream_name": "Zitadel",
+   "upstream_url": "https://zitadel.com/",
+   "upstream_repo": "https://github.com/zitadel/zitadel",
+   "alternatives": [
+    {
+     "name": "Okta",
+     "url": "https://okta.com/"
+    },
+    {
+     "name": "Auth0",
+     "url": "https://auth0.com/"
+    }
+   ],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "2.0.0",
+    "status": "update_available",
+    "primary_image": "ghcr.io/zitadel/zitadel:v4.20.1",
+    "images": [
+     {
+      "reference": "docker.io/postgres:17.12",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "17.12",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": "18.7",
+      "status": "update_available",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "ghcr.io/zitadel/zitadel:v4.20.1",
+      "registry": "ghcr.io",
+      "repository": "zitadel/zitadel",
+      "tag": "v4.20.1",
+      "digest": null,
+      "url": "https://github.com/zitadel/pkgs/container/zitadel",
+      "latest": "v4.20.3",
+      "status": "update_available",
+      "complete": true,
+      "reason": null
+     }
+    ],
+    "release": {
+     "repository": "zitadel/zitadel",
+     "packaged": null,
+     "latest": "v4.20.3",
+     "url": "https://github.com/zitadel/zitadel/releases/tag/v4.20.3",
+     "status": "unknown",
+     "published_at": "2026-11-13T14:15:14Z"
+    }
+   }
+  },
+  {
+   "id": "pwpush",
+   "repo": "https://github.com/geniusdynamics/ns8-passwordpusher",
+   "stars": 0,
+   "pushed_at": "2026-11-13T10:13:41Z",
+   "archived": false,
+   "license": "GPL-3.0",
+   "released_at": "2026-03-31T17:34:52Z",
+   "checks": {
+    "topic": true,
+    "categories": true,
+    "logo": true,
+    "screenshots": true,
+    "description": true,
+    "translations": true,
+    "docs": true,
+    "min_core": false,
+    "license": true
+   },
+   "score": 8,
+   "upstream_name": "Password Pusher",
+   "upstream_url": "https://docs.pwpush.com/",
+   "upstream_repo": "https://github.com/pglombardo/PasswordPusher",
+   "alternatives": [],
+   "upstream_check": {
+    "checked_at": "2026-11-14T08:52:39+00:00",
+    "module_version": "1.1.0",
+    "status": "unknown",
+    "primary_image": "docker.io/pglombardo/pwpush:2.2",
+    "images": [
+     {
+      "reference": "docker.io/postgres:15.5-alpine3.19",
+      "registry": "docker.io",
+      "repository": "library/postgres",
+      "tag": "15.5-alpine3.19",
+      "digest": null,
+      "url": "https://hub.docker.com/r/library/postgres/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry tag scan reached its page limit."
+     },
+     {
+      "reference": "docker.io/pglombardo/pwpush:2.2",
+      "registry": "docker.io",
+      "repository": "pglombardo/pwpush",
+      "tag": "2.2",
+      "digest": null,
+      "url": "https://hub.docker.com/r/pglombardo/pwpush/tags",
+      "latest": null,
+      "status": "unknown",
+      "complete": false,
+      "reason": "Registry could not be checked (unavailable, private or rate limited)."
+     }
+    ],
+    "release": {
+     "repository": "pglombardo/PasswordPusher",
+     "packaged": null,
+     "latest": "v2.17.2",
+     "url": "https://github.com/pglombardo/PasswordPusher/releases/tag/v2.17.2",
+     "status": "unknown",
+     "published_at": "2026-11-09T09:39:30Z"
+    }
+   }
+  }
+ ],
+ "development": [
+  {
+   "name": "ns8-copilot",
+   "title": "copilot",
+   "url": "https://github.com/geniusdynamics/ns8-copilot",
+   "description": "this is an ns8 App for docfotress copilot ",
+   "stars": 0,
+   "pushed_at": "2026-11-14T05:26:30Z",
+   "license": "GPL-3.0",
+   "release": null,
+   "status": "development",
+   "upstream_url": null,
+   "alternatives": []
+  },
+  {
+   "name": "ns8-arkcase",
+   "title": "arkcase",
+   "url": "https://github.com/geniusdynamics/ns8-arkcase",
+   "description": "This is a Nethserver App that implements arkcase Practise management system ",
+   "stars": 0,
+   "pushed_at": "2026-11-14T04:07:51Z",
+   "license": "GPL-3.0",
+   "release": null,
+   "status": "development",
+   "upstream_url": null,
+   "alternatives": []
+  }
+ ],
+ "tools": [
+  {
+   "name": "ns8-generator-module-template",
+   "title": "generator-module-template",
+   "url": "https://github.com/geniusdynamics/ns8-generator-module-template",
+   "description": "nethserver 8 module generator template",
+   "stars": 0,
+   "pushed_at": "2026-11-12T23:13:22Z",
+   "license": "GPL-3.0",
+   "release": {
+    "tag": "v0.0.4",
+    "prerelease": false,
+    "published_at": "2026-02-07T22:47:51Z"
+   },
+   "status": "tool",
+   "upstream_url": null,
+   "alternatives": []
+  },
+  {
+   "name": "ns8-module-generator",
+   "title": "module-generator",
+   "url": "https://github.com/geniusdynamics/ns8-module-generator",
+   "description": "NEthserver 8 Modules generator, that takes an existing compose yaml file and converts it into a nethserver 8 module",
+   "stars": 4,
+   "pushed_at": "2025-10-28T10:28:03Z",
+   "license": null,
+   "release": {
+    "tag": "v0.1.9",
+    "prerelease": false,
+    "published_at": "2025-10-28T10:28:03Z"
+   },
+   "status": "tool",
+   "upstream_url": null,
+   "alternatives": []
+  },
+  {
+   "name": "ns8-new-ui-starter-kit",
+   "title": "new-ui-starter-kit",
+   "url": "https://github.com/geniusdynamics/ns8-new-ui-starter-kit",
+   "description": "",
+   "stars": 0,
+   "pushed_at": "2026-03-16T05:08:11Z",
+   "license": "GPL-3.0",
+   "release": null,
+   "status": "tool",
+   "upstream_url": null,
+   "alternatives": []
+  },
+  {
+   "name": "ns8-ui-lib",
+   "title": "ui-lib",
+   "url": "https://github.com/geniusdynamics/ns8-ui-lib",
+   "description": "",
+   "stars": 0,
+   "pushed_at": "2026-03-15T13:28:58Z",
+   "license": null,
+   "release": {
+    "tag": "1.0.5",
+    "prerelease": false,
+    "published_at": "2026-03-15T03:31:39Z"
+   },
+   "status": "tool",
+   "upstream_url": null,
+   "alternatives": []
+  }
+ ]
+}

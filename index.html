@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GenForge · NS8 modules by Genius Dynamics</title>
+<meta name="description" content="GenForge is the NethServer 8 software repository of Genius Dynamics: free and open source apps you install from the Software Center.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root {
+  --bg: #0b0f17;
+  --bg-alt: #0e131d;
+  --surface: #131924;
+  --surface-2: #1a2130;
+  --border: #232b3a;
+  --text: #e6eaf2;
+  --muted: #94a0b4;
+  --faint: #6b778c;
+  --link: #6cc4ff;
+  --accent: #f5a524;
+  --accent-ink: #1a1203;
+  --ok: #3ecf8e;
+  --warn: #f5a524;
+  --off: #55607a;
+  --logo-bg: #ffffff;
+  --shadow: 0 12px 40px rgba(0, 0, 0, .45);
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+:root[data-theme="light"] {
+  --bg: #f6f7f9; --bg-alt: #eef0f4; --surface: #ffffff; --surface-2: #f1f3f7; --border: #dde1e9;
+  --text: #141a26; --muted: #556074; --faint: #7d8799; --link: #0b6bcb; --accent: #d98200; --accent-ink: #ffffff;
+  --ok: #12855a; --warn: #b96a00; --off: #a3acbb; --shadow: 0 12px 40px rgba(20, 26, 38, .16);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+h1 { font-size: clamp(26px, 4.4vw, 36px); line-height: 1.2; margin: 0 0 16px; letter-spacing: -.02em; }
+h2 { font-size: 21px; margin: 0 0 4px; letter-spacing: -.01em; }
+h3 { font-size: 16px; margin: 0; }
+.muted { color: var(--muted); }
+.mono { font-family: var(--mono); }
+
+/* Header */
+header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+header.top .wrap { display: flex; align-items: center; gap: 16px; height: 56px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); }
+.brand:hover { text-decoration: none; }
+.brand svg { width: 28px; height: 28px; }
+nav.main { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+nav.main a { color: var(--muted); font-size: 14px; }
+nav.main a:hover { color: var(--text); text-decoration: none; }
+.icon-btn { border: 1px solid var(--border); background: var(--surface); border-radius: 8px; width: 34px; height: 34px; cursor: pointer; display: grid; place-items: center; }
+@media (max-width: 640px) { nav.main a.hide-s { display: none; } }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; padding: 56px 0; }
+.hero p.lead { max-width: 560px; margin: 0 0 22px; color: var(--muted); font-size: 16px; }
+.repo-url { display: flex; align-items: center; gap: 8px; max-width: 640px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 6px 6px 6px 14px; }
+.repo-url code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; font: 14px var(--mono); scrollbar-width: none; }
+.btn { border: 1px solid var(--border); background: var(--surface-2); border-radius: 8px; padding: 7px 14px; cursor: pointer; font-weight: 600; font-size: 14px; color: var(--text); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.btn:hover { text-decoration: none; border-color: var(--faint); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.hero .help { margin-top: 12px; font-size: 14px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.stats { border-left: 1px solid var(--border); padding-left: 28px; display: grid; gap: 18px; min-width: 190px; }
+.stat b { display: block; font-size: 28px; line-height: 1.1; letter-spacing: -.02em; }
+.stat span { color: var(--muted); font-size: 14px; }
+@media (max-width: 820px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 36px 0; }
+  .stats { border-left: 0; padding-left: 0; grid-template-columns: repeat(3, 1fr); min-width: 0; border-top: 1px solid var(--border); padding-top: 20px; }
+  .stat b { font-size: 22px; }
+}
+
+/* Info cards */
+.duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 14px; }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.panel p { margin: 0; color: var(--muted); }
+.eyebrow { font: 600 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+.panel .actions { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 10px; }
+.steps { margin: 0; padding-left: 20px; color: var(--muted); }
+.steps li { margin: 4px 0; }
+
+/* Toolbar */
+.sec-head { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; justify-content: space-between; margin-bottom: 18px; }
+.controls { display: flex; gap: 10px; flex-wrap: wrap; }
+.field { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; min-width: 0; }
+input.field { width: 230px; }
+input.field::placeholder { color: var(--faint); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.chip { border: 1px solid var(--border); background: transparent; border-radius: 999px; padding: 4px 13px; font-size: 13px; color: var(--muted); cursor: pointer; }
+.chip:hover { color: var(--text); border-color: var(--faint); }
+.chip[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.chip small { color: var(--faint); margin-left: 4px; }
+
+/* Module cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px; text-align: left; cursor: pointer; transition: border-color .15s, transform .15s; min-width: 0; }
+.card:hover { border-color: var(--faint); transform: translateY(-1px); }
+.card-head { display: flex; gap: 14px; align-items: center; min-width: 0; }
+.logo { width: 48px; height: 48px; flex: none; border-radius: 10px; background: var(--logo-bg); display: grid; place-items: center; overflow: hidden; border: 1px solid var(--border); }
+.logo img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+.logo.blank { background: var(--surface-2); color: var(--muted); font-weight: 700; font-size: 18px; }
+.card-title { min-width: 0; }
+.card-title h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 3px; }
+.ver { font: 13px var(--mono); color: var(--muted); }
+.tag { font-size: 12px; border: 1px solid var(--border); border-radius: 999px; padding: 0 8px; color: var(--muted); line-height: 20px; white-space: nowrap; }
+.tag.testing { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 55%, transparent); }
+.tag.built { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 55%, transparent); }
+.desc { color: var(--muted); font-size: 14px; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; min-height: 4.8em; }
+.card-foot { margin-top: auto; border-top: 1px solid var(--border); padding-top: 12px; display: flex; gap: 14px; align-items: center; font-size: 14px; }
+.card-foot .right { margin-left: auto; color: var(--faint); font-size: 13px; display: flex; gap: 12px; align-items: center; white-space: nowrap; }
+.score { display: inline-flex; align-items: center; gap: 5px; }
+.score i { width: 8px; height: 8px; border-radius: 50%; background: var(--off); }
+.score.good i { background: var(--ok); }
+.score.mid i { background: var(--warn); }
+.empty { color: var(--muted); padding: 32px; text-align: center; border: 1px dashed var(--border); border-radius: 12px; }
+.more { margin-top: 18px; text-align: center; }
+
+/* Callout */
+.callout { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+.callout p { margin: 4px 0 0; color: var(--muted); max-width: 600px; }
+
+/* Dialog */
+dialog { width: min(820px, calc(100vw - 24px)); height: min(780px, calc(100vh - 32px)); max-height: calc(100vh - 32px); overflow: hidden; padding: 0; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+dialog::backdrop { background: rgba(4, 7, 12, .7); }
+.dlg { height: 100%; padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto minmax(0, 1fr); gap: 20px; }
+.dlg > * { min-width: 0; }
+.dlg-head { display: flex; gap: 16px; align-items: center; }
+.dlg-head .logo { width: 64px; height: 64px; }
+.dlg-head > div:not(.logo) { min-width: 0; flex: 1; }
+.dlg-head h2 { margin: 0; overflow-wrap: anywhere; }
+.dlg-head .tag { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.dlg-close { margin-left: auto; align-self: start; flex-shrink: 0; }
+.detail-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.detail-tab { flex: 1; min-width: 0; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--muted); padding: 8px; font-size: 14px; cursor: pointer; }
+.detail-tab:hover { color: var(--text); background: var(--surface-2); }
+.detail-tab[aria-selected="true"] { color: var(--accent); border-color: var(--border); background: var(--surface-2); font-weight: 600; }
+.detail-panel { display: grid; grid-template-columns: minmax(0, 1fr); grid-auto-rows: max-content; gap: 20px; min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; align-content: start; scrollbar-gutter: stable; padding: 2px; }
+.detail-panel > * { min-width: 0; }
+.detail-panel[hidden] { display: none; }
+.shots { display: flex; gap: 10px; overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+.shots a { flex: 0 0 min(100%, 480px); min-width: 0; scroll-snap-align: start; }
+.shots img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; border-radius: 8px; border: 1px solid var(--border); display: block; background: var(--surface-2); }
+.dlg h4 { margin: 0 0 8px; font: 600 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px; }
+.cmd { display: flex; gap: 8px; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 6px 6px 12px; }
+.cmd code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; font: 13px var(--mono); }
+ul.checks, ul.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; font-size: 14px; }
+ul.checks li { display: flex; gap: 8px; align-items: baseline; color: var(--muted); }
+ul.checks li::before { content: "○"; color: var(--off); }
+ul.checks li.pass { color: var(--text); }
+ul.checks li.pass::before { content: "●"; color: var(--ok); }
+ul.facts li { display: flex; gap: 10px; }
+ul.facts span:first-child { color: var(--faint); min-width: 92px; flex: none; }
+ul.facts span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.upstream-summary { display: grid; gap: 5px; font-size: 12px; color: var(--muted); }
+.upstream-summary .version-line { overflow-wrap: anywhere; }
+.upstream-status { font-size: 12px; color: var(--muted); }
+.upstream-status.update_available { color: var(--warn); }
+.upstream-status.current { color: var(--ok); }
+.upstream-panel { border: 1px solid var(--border); border-radius: 10px; padding: 16px; min-width: 0; }
+.upstream-panel p { margin: 6px 0 12px; font-size: 13px; color: var(--muted); }
+.image-list { display: grid; gap: 10px; }
+.image-row { padding: 10px 0; border-top: 1px solid var(--border); min-width: 0; }
+.image-row:first-child { border-top: 0; }
+.image-row code, .image-row a { overflow-wrap: anywhere; font-size: 13px; }
+.image-versions { overflow-wrap: anywhere; display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 5px 0; font-size: 13px; }
+.upstream-panel details { margin-top: 12px; }
+.upstream-panel summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+@media (max-width: 420px) { .grid { grid-template-columns: minmax(0, 1fr); } .dlg { padding: 16px; } .detail-tab { font-size: 13px; padding: 8px 4px; } }
+@media (max-width: 360px) { .detail-tab { font-size: 12px; padding: 8px 2px; } }
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+
+footer { padding: 28px 0 44px; color: var(--faint); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: space-between; }
+footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="GenForge home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#f5a524"/><path d="M6 11h14c0 3 2 5 6 5v2h-6.5c-.6 1.4-1.6 2.3-3 2.8V23H20v2H9v-2h3.5v-2.2C10 20 8.4 18 8 15H6z" fill="#1a1203"/></svg>
+      GenForge
+    </a>
+    <nav class="main" aria-label="Sections">
+      <a href="#modules">Modules</a>
+      <a href="#development" class="hide-s" id="nav-dev" hidden>In development</a>
+      <a href="#services" class="hide-s">Services</a>
+      <a href="https://github.com/sponsors/geniusdynamics" class="hide-s" target="_blank" rel="noopener">Sponsor</a>
+      <a href="https://github.com/geniusdynamics/ns8-genforge" class="hide-s" target="_blank" rel="noopener">GitHub</a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch between dark and light theme" title="Switch theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap" id="home">
+  <div class="hero">
+    <div>
+      <h1>NethServer 8 modules by Genius Dynamics</h1>
+      <p class="lead">Free and open source apps for <a href="https://www.nethserver.org/" target="_blank" rel="noopener">NethServer 8</a>. Add this repository to your cluster, then install the modules from the Software Center.</p>
+      <div class="repo-url">
+        <code id="repo-url"></code>
+        <button class="btn primary" type="button" data-copy="#repo-url">Copy</button>
+      </div>
+      <div class="help">
+        <a href="https://docs.nethserver.org/projects/ns8/en/latest/modules.html#software-repositories" target="_blank" rel="noopener">How to add a software repository</a>
+        <a id="mirror-link" href="#" data-copy-text="">Copy the GitHub mirror URL</a>
+      </div>
+    </div>
+    <div class="stats" aria-label="Repository figures">
+      <div class="stat"><b id="st-modules">–</b><span>modules published</span></div>
+      <div class="stat"><b id="st-stable">–</b><span>with a stable release</span></div>
+      <div class="stat"><b id="st-dev">–</b><span>more in development</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="services" style="border-top:1px solid var(--border); background: var(--bg-alt)">
+  <div class="wrap duo">
+    <div class="panel">
+      <span class="eyebrow">Services</span>
+      <h3>Need help with NethServer 8?</h3>
+      <p><a href="https://genius.africa/" target="_blank" rel="noopener">Genius Dynamics</a> is a technology consultancy in East Africa. We build and maintain the modules listed here, and we can do the same for you.</p>
+      <ul class="steps">
+        <li>Package your application as a NethServer 8 module</li>
+        <li>Deploy, migrate and support NethServer clusters</li>
+        <li>Process automation and system integration</li>
+        <li>Cloud and managed infrastructure services</li>
+      </ul>
+      <ul class="facts">
+        <li><span>Email</span><span><a href="mailto:hello@genius.africa">hello@genius.africa</a></span></li>
+        <li><span>Website</span><span><a href="https://genius.africa/" target="_blank" rel="noopener">genius.africa</a></span></li>
+      </ul>
+      <div class="actions">
+        <a class="btn" href="https://genius.africa/" target="_blank" rel="noopener">Visit genius.africa →</a>
+      </div>
+    </div>
+    <div class="panel">
+      <span class="eyebrow">Donation</span>
+      <h3>Support this work</h3>
+      <p>These modules are free and open source. Building, testing and hosting them is not. If they help you, a donation keeps the work going.</p>
+      <p>Do you earn your living with these modules? Please consider a recurring sponsorship.</p>
+      <p style="font-size:13px">Not a donor? A star on GitHub, a bug report or a translation helps too.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/sponsors/geniusdynamics" target="_blank" rel="noopener">♥ Sponsor on GitHub</a>
+      </div>
+    </div>
+    <div class="panel" id="contribute">
+      <span class="eyebrow">Community</span>
+      <h3>Missing an app, or found a bug?</h3>
+      <p>Every module has its own repository on GitHub. Report a bug there, ask for a new app, or send a pull request.</p>
+      <p>To install: open <b>Settings › Software repositories</b> on your cluster, add the URL above, then use the <b>Software Center</b>. Turn on <b>Testing</b> only if you want pre-releases.</p>
+      <div class="actions">
+        <a class="btn" href="https://github.com/geniusdynamics/ns8-genforge/issues" target="_blank" rel="noopener">Request an app</a>
+        <a class="btn" href="https://github.com/geniusdynamics" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modules">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Modules</h2>
+        <div class="muted" id="modules-sub">Loading the repository…</div>
+      </div>
+      <div class="controls">
+        <input class="field" id="q" type="search" placeholder="Search a module" aria-label="Search a module">
+        <select class="field" id="version-status" aria-label="Filter by version status">
+          <option value="all">All Versions</option>
+          <option value="current">Latest Version</option>
+          <option value="update_available">Need Updates</option>
+        </select>
+        <select class="field" id="sort" aria-label="Sort modules">
+          <option value="name">Name</option>
+          <option value="recent">Latest release</option>
+          <option value="quality">Best quality</option>
+          <option value="stars">Most stars</option>
+        </select>
+      </div>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="development" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>In development</h2>
+        <div class="muted" id="dev-sub"></div>
+      </div>
+      <div class="controls">
+        <input class="field" id="dq" type="search" placeholder="Search" aria-label="Search modules in development">
+      </div>
+    </div>
+    <div class="chips" id="dev-chips" role="group" aria-label="Filter by status"></div>
+    <div class="grid" id="dev-grid"></div>
+    <div class="more"><button class="btn" id="dev-more" type="button" hidden>Show all</button></div>
+  </div>
+</section>
+
+<section id="tools" hidden>
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Tools for module developers</h2><div class="muted">Helpers we use to build NS8 modules.</div></div></div>
+    <div class="grid" id="tools-grid"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap callout">
+    <div>
+      <h2>Looking for more NS8 apps?</h2>
+      <p>The NS8 App Index lists every NethServer 8 app from the official and community repositories, in one searchable catalog.</p>
+    </div>
+    <a class="btn" href="https://nethserver.github.io/ns8-apps/" target="_blank" rel="noopener">Open the NS8 App Index</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="generated">GenForge, the NS8 software repository of Genius Dynamics.</span>
+    <nav aria-label="Footer">
+      <a href="https://github.com/geniusdynamics/ns8-genforge/issues" target="_blank" rel="noopener">Report a bug</a>
+      <a href="https://genius.africa/" target="_blank" rel="noopener">genius.africa</a>
+      <a href="https://github.com/sponsors/geniusdynamics" target="_blank" rel="noopener">Sponsor</a>
+      <a href="https://github.com/geniusdynamics/ns8-genforge" target="_blank" rel="noopener">GitHub</a>
+      <a href="ns8/updates/repodata.json">repodata.json</a>
+      <a href="https://github.com/geniusdynamics/ns8-genforge#quality-score" target="_blank" rel="noopener">Quality score</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title"></dialog>
+
+<script>
+"use strict";
+const BASE = "ns8/updates/";
+const MIRROR = "https://raw.githubusercontent.com/geniusdynamics/ns8-genforge/repomd/ns8/updates/";
+const CHECKS = {
+  topic: "GitHub topic ns8",
+  categories: "Standard categories",
+  logo: "Logo",
+  screenshots: "Screenshots",
+  description: "Description of 60+ characters",
+  translations: "Translated description",
+  docs: "Documentation and bug links",
+  min_core: "Minimum core label",
+  license: "License file"
+};
+const DEV_PAGE = 12;
+const state = { modules: [], dev: [], cat: "all", q: "", sort: "name", versionStatus: "all", devStatus: "all", dq: "", devAll: false };
+const $ = (sel) => document.querySelector(sel);
+
+function el(tag, attrs, ...children) {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k === "class") node.className = v;
+    else if (k === "text") node.textContent = v;
+    else if (k.startsWith("on")) node.addEventListener(k.slice(2), v);
+    else node.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of children.flat()) if (c) node.append(c);
+  return node;
+}
+const ext = (href, text, cls) => el("a", { href, target: "_blank", rel: "noopener", class: cls, text });
+// Only http(s) links from metadata are rendered.
+const safeUrl = (u) => (typeof u === "string" && /^https?:\/\//i.test(u.trim()) ? u.trim() : null);
+
+function versionKey(tag) {
+  const [main, ...pre] = tag.replace(/^v/i, "").split("-");
+  const nums = (main.match(/\d+/g) || []).slice(0, 4).map(Number);
+  while (nums.length < 4) nums.push(0);
+  return nums.concat(pre.length ? 0 : 1, (pre.join("-").match(/\d+/g) || []).map(Number));
+}
+function cmpVersion(a, b) {
+  const ka = versionKey(a), kb = versionKey(b);
+  for (let i = 0; i < Math.max(ka.length, kb.length); i++) {
+    const d = (ka[i] || 0) - (kb[i] || 0);
+    if (d) return d;
+  }
+  return 0;
+}
+const label = (s) => s.replace(/_/g, " ").replace(/^./, (c) => c.toUpperCase());
+
+function ago(iso) {
+  if (!iso) return null;
+  const days = Math.floor((Date.now() - new Date(iso)) / 864e5);
+  if (isNaN(days)) return null;
+  if (days < 1) return "today";
+  if (days < 2) return "yesterday";
+  if (days < 60) return days + " days ago";
+  if (days < 730) return Math.round(days / 30.4) + " months ago";
+  return Math.round(days / 365) + " years ago";
+}
+
+function toModules(repodata, extra) {
+  const byId = new Map((extra && extra.apps || []).map((a) => [a.id, a]));
+  const lang = (navigator.language || "en").replace("-", "_");
+  return repodata.filter((m) => m && m.id).map((m) => {
+    const tags = (m.versions || []).map((v) => v.tag).filter(Boolean).sort(cmpVersion).reverse();
+    const stable = tags.find((t) => !t.includes("-")) || null;
+    const testing = tags.length && tags[0] !== stable ? tags[0] : null;
+    const shown = stable || testing;
+    const labels = ((m.versions || []).find((v) => v.tag === shown) || {}).labels || {};
+    const d = typeof m.description === "string" ? { en: m.description } : (m.description || {});
+    const x = byId.get(m.id) || {};
+    let name = m.name || m.id;
+    if (name === name.toLowerCase()) name = name.replace(/^./, (c) => c.toUpperCase());
+    return {
+      id: m.id, name, stable, testing, shown, labels,
+      description: d[lang] || d[lang.split("_")[0]] || d.en || Object.values(d)[0] || "",
+      categories: (m.categories || []).map((c) => String(c).toLowerCase()).filter((c) => c !== "unknown"),
+      logo: m.logo ? BASE + encodeURIComponent(m.id) + "/" + m.logo : null,
+      screenshots: (m.screenshots || []).map((s) => BASE + encodeURIComponent(m.id) + "/" + s),
+      docs: m.docs || {}, source: m.source || "",
+      authors: (m.authors || []).map((a) => a.name).filter(Boolean),
+      upstream: m.upstream_name || x.upstream_name || null,
+      x
+    };
+  });
+}
+
+function logoBox(src, name) {
+  if (!src) return el("div", { class: "logo blank", "aria-hidden": "true", text: (name || "?").charAt(0).toUpperCase() });
+  const img = el("img", { src, alt: "", loading: "lazy" });
+  const box = el("div", { class: "logo" }, img);
+  img.addEventListener("error", () => { box.className = "logo blank"; box.textContent = (name || "?").charAt(0).toUpperCase(); });
+  return box;
+}
+
+function scoreBadge(x) {
+  if (!x || typeof x.score !== "number") return null;
+  const cls = x.score >= 8 ? "good" : x.score >= 5 ? "mid" : "";
+  return el("span", { class: "score " + cls, title: "Listing quality: " + x.score + " of 9 checks" }, el("i"), x.score + "/9");
+}
+
+const UPSTREAM_STATUS = {
+  update_available: "Updates Available",
+  current: "Latest Version",
+  unknown: "Upstream version unverified"
+};
+function upstreamStatus(status) {
+  return el("span", { class: "upstream-status " + (status || "unknown"), text: UPSTREAM_STATUS[status] || UPSTREAM_STATUS.unknown });
+}
+function upstreamData(m) {
+  const check = m.x.upstream_check;
+  // Ignore stale enrichment for a different module release; older catalogs still work.
+  return check && check.module_version === m.shown && Array.isArray(check.images)
+    && check.images.every((i) => i && typeof i.reference === "string") ? check : null;
+}
+function upstreamSummary(m) {
+  const check = upstreamData(m);
+  if (!check) return null;
+  const image = check.images.find((i) => i.reference === check.primary_image);
+  const release = check.release;
+  const mapped = release && release.packaged;
+  const packaged = mapped ? release.packaged : image && image.tag;
+  const latest = mapped ? release.latest : image && image.latest;
+  return el("div", { class: "upstream-summary" },
+    upstreamStatus(check.status),
+    packaged ? el("span", { class: "version-line", text: (mapped ? "App " : image.complete ? "Image Tag: " : "Image tag ") + packaged + (latest ? (mapped ? " · latest upstream " : image.complete ? " . Matching: " : " · Newest ") + latest : " · latest unavailable") })
+      : release && release.latest ? el("span", { class: "version-line", text: "Upstream release " + release.latest + " · packaged version unknown" }) : null);
+}
+function imageRow(image) {
+  const url = safeUrl(image.url);
+  return el("div", { class: "image-row" },
+    url ? ext(url, image.registry + "/" + image.repository) : el("code", { text: image.registry + "/" + image.repository }),
+    el("div", { class: "image-versions" },
+      el("span", { text: "Packaged: " + (image.tag || image.digest || "unknown") }),
+      el("span", { text: (image.complete ? "Latest matching tag: " : "Newest matching tag found: ") + (image.latest || "unavailable") })),
+    upstreamStatus(image.status),
+    image.digest ? el("div", {}, el("code", { text: "Pinned digest: " + image.digest })) : null,
+    image.reason ? el("p", { text: image.reason }) : null);
+}
+function upstreamPanel(m) {
+  const check = upstreamData(m);
+  if (!check) return null;
+  const primary = check.images.find((i) => i.reference === check.primary_image);
+  const rest = check.images.filter((i) => i !== primary);
+  const release = check.release;
+  const date = new Date(check.checked_at);
+  const checked = Number.isNaN(date.getTime()) ? "Time unavailable" : date.toLocaleString();
+  return el("section", { class: "upstream-panel", "aria-label": "Upstream versions" },
+    el("h4", { text: "Upstream versions" }),
+    upstreamStatus(check.status),
+    el("p", { text: "Compared to NS8.V " + check.module_version + ". Checked " + checked + "; subject to review and testing." }),
+    release && release.latest ? el("div", { class: "image-row" },
+      el("div", { class: "image-versions" },
+        release.packaged ? el("span", { text: "Packaged app: " + release.packaged }) : null,
+        safeUrl(release.url) ? ext(safeUrl(release.url), "Latest GitHub release: " + release.latest) : el("span", { text: "Latest GitHub release: " + release.latest })),
+      !release.packaged ? el("p", { text: "Project release shown for reference; image tags can use a different version scheme." }) : null) : null,
+    primary ? imageRow(primary) : el("p", { text: "The primary application image has not been mapped. Container references are listed below." }),
+    rest.length ? el("details", {}, el("summary", { text: (primary ? "Supporting containers" : "Container images") + " (" + rest.length + ")" }),
+      el("div", { class: "image-list" }, ...rest.map(imageRow))) : null);
+}
+
+function moduleCard(m) {
+  const stop = (e) => e.stopPropagation();
+  const link = (url, text) => { const u = safeUrl(url); if (!u) return null; const a = ext(u, text); a.addEventListener("click", stop); return a; };
+  const released = ago(m.x.released_at);
+  return el("article", { class: "card", tabindex: "0", role: "button", "aria-label": m.name + ", details",
+    onclick: () => openDetails(m), onkeydown: (e) => { if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openDetails(m); } } },
+    el("div", { class: "card-head" },
+      logoBox(m.logo, m.name),
+      el("div", { class: "card-title" },
+        el("h3", { text: m.name }),
+        el("div", { class: "meta" },
+          m.shown ? el("span", { class: "ver", text: m.shown }) : el("span", { class: "tag", text: "No release yet" }),
+          !m.stable && m.testing ? el("span", { class: "tag testing", text: "Testing" }) : null,
+          m.categories[0] ? el("span", { class: "tag", text: label(m.categories[0]) }) : null))),
+    el("p", { class: "desc", text: m.description }),
+    upstreamSummary(m),
+    el("div", { class: "card-foot" },
+      link(m.docs.code_url, "Code"), link(m.docs.documentation_url, "Docs"), link(m.docs.bug_url, "Bugs"),
+      el("span", { class: "right" }, released ? el("span", { text: "Released " + released }) : null, scoreBadge(m.x))));
+}
+
+function devCard(d) {
+  const stop = (e) => e.stopPropagation();
+  const status = d.status === "built" ? el("span", { class: "tag built", text: "Built, not published" })
+    : d.status === "tool" ? el("span", { class: "tag", text: "Tool" })
+    : el("span", { class: "tag", text: "In development" });
+  const title = d.title ? d.title.replace(/^./, (c) => c.toUpperCase()) : d.name;
+  const active = ago(d.pushed_at);
+  const up = safeUrl(d.upstream_url);
+  const upLink = up ? ext(up, "Project") : null;
+  if (upLink) upLink.addEventListener("click", stop);
+  const code = ext(d.url, "Code");
+  code.addEventListener("click", stop);
+  return el("article", { class: "card", onclick: () => window.open(d.url, "_blank", "noopener") },
+    el("div", { class: "card-head" },
+      logoBox(null, title),
+      el("div", { class: "card-title" },
+        el("h3", { text: title }),
+        el("div", { class: "meta" },
+          d.release && d.release.tag ? el("span", { class: "ver", text: d.release.tag }) : null, status))),
+    el("p", { class: "desc", text: d.description || "No description yet." }),
+    el("div", { class: "card-foot" }, code, upLink,
+      el("span", { class: "right" }, active ? el("span", { text: "Updated " + active }) : null)));
+}
+
+function chip(text, count, pressed, onclick) {
+  return el("button", { class: "chip", type: "button", "aria-pressed": pressed ? "true" : "false", onclick },
+    text, typeof count === "number" ? el("small", { text: count }) : null);
+}
+
+function renderModules() {
+  const cats = new Map();
+  for (const m of state.modules) for (const c of (m.categories.length ? m.categories : ["other"])) cats.set(c, (cats.get(c) || 0) + 1);
+  const testing = state.modules.filter((m) => !m.stable).length;
+  const chips = $("#chips");
+  chips.replaceChildren(...[
+    chip("All", state.modules.length, state.cat === "all", () => { state.cat = "all"; renderModules(); }),
+    ...[...cats.keys()].sort().map((c) => chip(label(c), cats.get(c), state.cat === c, () => { state.cat = c; renderModules(); })),
+    testing ? chip("Testing only", testing, state.cat === "@testing", () => { state.cat = "@testing"; renderModules(); }) : null
+  ].filter(Boolean));
+
+  const q = state.q.trim().toLowerCase();
+  let list = state.modules.filter((m) => {
+    if (state.versionStatus !== "all" && (upstreamData(m) || {}).status !== state.versionStatus) return false;
+    if (state.cat === "@testing" ? m.stable : state.cat !== "all" && !(m.categories.length ? m.categories : ["other"]).includes(state.cat)) return false;
+    return !q || [m.name, m.id, m.description, m.upstream || "", m.categories.join(" ")].join(" ").toLowerCase().includes(q);
+  });
+  const byName = (a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
+  const sorters = {
+    name: byName,
+    recent: (a, b) => (b.x.released_at || "").localeCompare(a.x.released_at || "") || byName(a, b),
+    quality: (a, b) => (b.x.score || 0) - (a.x.score || 0) || byName(a, b),
+    stars: (a, b) => (b.x.stars || 0) - (a.x.stars || 0) || byName(a, b)
+  };
+  list.sort(sorters[state.sort] || byName);
+  $("#grid").replaceChildren(...(list.length ? list.map(moduleCard) : [el("div", { class: "empty", text: "No module matches these filters." })]));
+}
+
+function renderDev() {
+  const built = state.dev.filter((d) => d.status === "built").length;
+  $("#dev-chips").replaceChildren(...[
+    chip("All", state.dev.length, state.devStatus === "all", () => { state.devStatus = "all"; renderDev(); }),
+    built ? chip("Built, not published", built, state.devStatus === "built", () => { state.devStatus = "built"; renderDev(); }) : null,
+    built ? chip("In development", state.dev.length - built, state.devStatus === "development", () => { state.devStatus = "development"; renderDev(); }) : null
+  ].filter(Boolean));
+  const q = state.dq.trim().toLowerCase();
+  const list = state.dev.filter((d) => (state.devStatus === "all" || d.status === state.devStatus)
+    && (!q || (d.name + " " + d.title + " " + d.description).toLowerCase().includes(q)));
+  const shown = state.devAll || q ? list : list.slice(0, DEV_PAGE);
+  $("#dev-grid").replaceChildren(...(shown.length ? shown.map(devCard) : [el("div", { class: "empty", text: "Nothing matches your search." })]));
+  const more = $("#dev-more");
+  more.hidden = shown.length >= list.length;
+  more.textContent = "Show all " + list.length;
+}
+
+function openDetails(m) {
+  const dlg = $("#dlg");
+  const x = m.x;
+  const words = (k) => (m.labels[k] || "").split(/\s+/).filter(Boolean);
+  const tag = m.shown || "latest";
+  const cmd = "add-module " + m.source + ":" + tag + " 1";
+  const instance = (m.source.split("/").pop() || m.id) + "1";
+  const updateCmd = "update-module " + m.source + ":" + tag + " " + instance;
+  const fact = (k, v) => (v ? el("li", {}, el("span", { text: k }), el("span", {}, v)) : null);
+  const images = words("org.nethserver.images").map((i) => i.replace(/^(docker\.io|ghcr\.io|quay\.io)\/(library\/)?/, "").split("@")[0]);
+  const links = [["Code", m.docs.code_url], ["Documentation", m.docs.documentation_url], ["Bugs", m.docs.bug_url],
+    ["Release notes", m.docs.relnotes_url], ["Terms", m.docs.terms_url], ["Upstream project", x.upstream_url]]
+    .map(([t, u]) => (safeUrl(u) ? ext(safeUrl(u), t, "btn") : null));
+  const alternatives = (x.alternatives || []).filter((a) => safeUrl(a.url));
+  const cmdCode = el("code", { text: cmd });
+
+  const panel = (id, ...children) => el("div", { class: "detail-panel", id: "module-panel-" + id,
+    role: "tabpanel", "aria-labelledby": "module-tab-" + id, tabindex: "0", hidden: id !== "details" }, ...children);
+  const panels = [
+    panel("details",
+      el("p", { style: "margin:0", class: "muted", text: m.description }),
+      m.screenshots.length ? el("div", { class: "shots" }, m.screenshots.map((s, i) =>
+        el("a", { href: s, target: "_blank", rel: "noopener" }, el("img", { src: s, loading: "lazy", alt: m.name + " screenshot " + (i + 1) })))) : null,
+      el("div", { class: "cols" },
+        el("div", {},
+          el("h4", { text: "Details" }),
+          el("ul", { class: "facts" },
+            fact("Module", m.id),
+            fact("Upstream", m.upstream),
+            fact("Released", x.released_at ? new Date(x.released_at).toLocaleDateString(undefined, { dateStyle: "medium" }) : null),
+            fact("Min. core", m.labels["org.nethserver.min-core"]),
+            fact("Runs as", m.shown ? (m.labels["org.nethserver.rootfull"] === "1" ? "root" : "rootless container") : null),
+            fact("Images", images.join(", ")),
+            fact("License", x.license && x.license !== "NOASSERTION" ? x.license : null),
+            fact("Stars", typeof x.stars === "number" ? String(x.stars) : null),
+            fact("Authors", m.authors.join(", ")),
+            fact("Alternative to", alternatives.length ? alternatives.flatMap((a, i) => [i ? ", " : "", ext(safeUrl(a.url), a.name)]) : null))),
+        x.checks ? el("div", {},
+          el("h4", { text: "Listing quality · " + x.score + " of 9" }),
+          el("ul", { class: "checks" }, Object.entries(CHECKS).map(([k, t]) => el("li", { class: x.checks[k] ? "pass" : "", text: t })))) : null),
+      el("div", { class: "links" }, links)),
+    panel("installation",
+      el("div", {},
+        el("h4", { text: "Install from the command line" }),
+        el("div", { class: "cmd" }, cmdCode, el("button", { class: "btn", type: "button", "aria-label": "Copy install command", onclick: (e) => copy(cmd, e.currentTarget) }, "Copy")),
+        el("p", { class: "muted", style: "margin:8px 0 0;font-size:13px", text: "Or add this repository to your cluster and install " + m.name + " from the Software Center." })),
+      el("div", {},
+        el("h4", { text: "Update from CLI" }),
+        el("div", { class: "cmd" }, el("code", { text: updateCmd }), el("button", { class: "btn", type: "button", "aria-label": "Copy update command", onclick: (e) => copy(updateCmd, e.currentTarget) }, "Copy")),
+        el("p", { class: "muted", style: "margin:8px 0 0;font-size:13px", text: "Replace " + instance + " with the ID of your installed module instance, as shown in the Software Center." }))),
+    panel("maintenance", upstreamPanel(m) || el("div", {},
+      el("h4", { text: "Upstream versions" }),
+      el("p", { class: "muted", text: "Upstream version checks are unavailable for this catalog." }),
+      el("h4", { text: "Container images" }),
+      words("org.nethserver.images").length ? el("div", { class: "image-list" }, ...words("org.nethserver.images").map((ref) =>
+        el("div", { class: "image-row" }, el("code", { text: ref }))))
+        : el("p", { class: "muted", text: "No container references are listed for this release." })))
+  ];
+  let tabs;
+  const selectTab = (index, focus = false) => {
+    tabs.forEach((tab, i) => {
+      tab.setAttribute("aria-selected", String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      panels[i].hidden = i !== index;
+    });
+    if (focus) tabs[index].focus();
+    dlg.scrollTop = 0;
+  };
+  tabs = [["details", "Details"], ["installation", "Installation"], ["maintenance", "Maintenance"]].map(([id, title], index) =>
+    el("button", { class: "detail-tab", id: "module-tab-" + id, type: "button", role: "tab",
+      "aria-controls": "module-panel-" + id, "aria-selected": String(index === 0), tabindex: index === 0 ? "0" : "-1",
+      onclick: () => selectTab(index), onkeydown: (event) => {
+        const targets = { ArrowRight: (index + 1) % 3, ArrowLeft: (index + 2) % 3, Home: 0, End: 2 };
+        if (Object.hasOwn(targets, event.key)) {
+          event.preventDefault();
+          selectTab(targets[event.key], true);
+        }
+      }, text: title }));
+
+  dlg.replaceChildren(el("div", { class: "dlg" },
+    el("div", { class: "dlg-head" },
+      logoBox(m.logo, m.name),
+      el("div", {},
+        el("h2", { id: "dlg-title", text: m.name }),
+        el("div", { class: "meta" },
+          m.stable ? el("span", { class: "ver", text: m.stable }) : null,
+          m.testing ? el("span", { class: "tag testing", text: "Testing " + m.testing }) : null,
+          ...m.categories.map((c) => el("span", { class: "tag", text: label(c) })))),
+      el("button", { class: "icon-btn dlg-close", type: "button", "aria-label": "Close", onclick: () => dlg.close() }, "✕")),
+    el("div", { class: "detail-tabs", role: "tablist", "aria-label": "Module information" }, ...tabs),
+    ...panels));
+  dlg.showModal();
+}
+
+function copy(text, btn) {
+  const done = () => { const old = btn.textContent; btn.textContent = "Copied"; setTimeout(() => { btn.textContent = old; }, 1500); };
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, () => {});
+  else {
+    const ta = el("textarea", { style: "position:fixed;opacity:0" }); ta.value = text; document.body.append(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) { /* nothing to do */ }
+    ta.remove();
+  }
+}
+
+// The repository URL follows the address the page is served from, so the custom domain and github.io both work.
+const here = location.protocol.startsWith("http") ? new URL(BASE, location.href).href : MIRROR;
+$("#repo-url").textContent = here;
+document.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => copy($(b.dataset.copy).textContent, b)));
+$("#mirror-link").addEventListener("click", (e) => { e.preventDefault(); copy(MIRROR, e.currentTarget); });
+$("#dlg").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+$("#q").addEventListener("input", (e) => { state.q = e.target.value; renderModules(); });
+$("#version-status").addEventListener("change", (e) => { state.versionStatus = e.target.value; renderModules(); });
+$("#sort").addEventListener("change", (e) => { state.sort = e.target.value; renderModules(); });
+$("#dq").addEventListener("input", (e) => { state.dq = e.target.value; renderDev(); });
+$("#dev-more").addEventListener("click", () => { state.devAll = true; renderDev(); });
+$("#theme").addEventListener("click", () => {
+  const root = document.documentElement;
+  root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) { /* private mode */ }
+});
+try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) { /* private mode */ }
+
+const getJSON = (url) => fetch(url, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : Promise.reject(new Error(url + ": " + r.status))));
+Promise.all([getJSON(BASE + "repodata.json"), getJSON("catalog.json").catch(() => null)]).then(([repodata, extra]) => {
+  state.modules = toModules(repodata, extra);
+  const stable = state.modules.filter((m) => m.stable).length;
+  $("#st-modules").textContent = state.modules.length;
+  $("#st-stable").textContent = stable;
+  $("#modules-sub").textContent = state.modules.length + " modules available. Metadata refresh every 6 hours.";
+  renderModules();
+
+  state.dev = (extra && extra.development) || [];
+  $("#st-dev").textContent = extra ? state.dev.length : "–";
+  if (state.dev.length) {
+    $("#development").hidden = false;
+    $("#nav-dev").hidden = false;
+    $("#dev-sub").textContent = state.dev.length + " modules we are working on. They are not in the repository yet, so they cannot be installed from the Software Center.";
+    renderDev();
+  }
+  const tools = (extra && extra.tools) || [];
+  if (tools.length) {
+    $("#tools").hidden = false;
+    $("#tools-grid").replaceChildren(...tools.map(devCard));
+  }
+  if (extra && extra.generated_at) {
+    $("#generated").textContent = "Generated on " + new Date(extra.generated_at).toLocaleString(undefined, { dateStyle: "long", timeStyle: "short" }) + ".";
+  }
+  const wanted = decodeURIComponent(location.hash.slice(1));
+  const target = wanted && state.modules.find((m) => m.id === wanted);
+  if (target) openDetails(target);
+}).catch((err) => {
+  console.error(err);
+  $("#modules-sub").textContent = "The module list could not be loaded.";
+  $("#grid").replaceChildren(el("div", { class: "empty" }, "The module list could not be loaded. You can still open ",
+    el("a", { href: BASE + "repodata.json", text: "repodata.json" }), " directly."));
+});
+</script>
+</body>
+</html>

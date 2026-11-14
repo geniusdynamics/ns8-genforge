@@ -1,0 +1,22 @@
+{
+  "name": "docuseal",
+  "description": {
+    "en": "DocuSeal is an open source platform to fill out and sign documents online, with templates, reminders and an audit trail.",
+    "it": "DocuSeal è una piattaforma open source per compilare e firmare documenti online."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.docuseal.co/docs/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-docuseal"
+  },
+  "source": "ghcr.io/geniusdynamics/docuseal"
+}

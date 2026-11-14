@@ -1,0 +1,23 @@
+{
+  "name": "WeKan",
+  "description": {
+    "en": "Experience efficient task management with WeKan - the Open-Source, customizable, and privacy-focused kanban.",
+    "it": "WeKan è una lavagna kanban open source, personalizzabile e attenta alla privacy."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://wekan.github.io/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-wekan/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-wekan",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-wekan/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/wekan"
+}

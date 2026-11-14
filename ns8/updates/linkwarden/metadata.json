@@ -1,0 +1,22 @@
+{
+  "name": "Linkwarden",
+  "description": {
+    "en": "Linkwarden is a self-hosted bookmark manager that saves, organizes and archives web pages, for individuals and teams.",
+    "it": "Linkwarden salva, organizza e archivia pagine web, per singoli e per team."
+  },
+  "categories": [
+    "web"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.linkwarden.app/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-linkwarden"
+  },
+  "source": "ghcr.io/geniusdynamics/linkwarden"
+}

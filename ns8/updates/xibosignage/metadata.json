@@ -1,0 +1,23 @@
+{
+  "name": "Xibo",
+  "description": {
+    "en": "Xibo is an open source digital signage platform to schedule and publish content to screens from a web CMS.",
+    "it": "Xibo è una piattaforma open source di digital signage per pianificare e pubblicare contenuti sugli schermi da un CMS web."
+  },
+  "categories": [
+    "multimedia"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.xibosignage.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-xibosignage/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-xibosignage",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-xibosignage/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/xibosignage"
+}

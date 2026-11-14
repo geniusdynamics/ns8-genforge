@@ -1,0 +1,24 @@
+{
+  "name": "Outline",
+  "description": {
+    "en": "Outline is a fast knowledge base for teams, with real-time editing, search and integrations for wikis and documentation.",
+    "it": "Outline è una knowledge base veloce per i team, con modifica in tempo reale, ricerca e integrazioni per wiki e documentazione."
+  },
+  "categories": [
+    "documentation",
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.outline.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-outline/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-outline",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-outline/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/outline"
+}

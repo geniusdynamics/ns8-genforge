@@ -1,0 +1,22 @@
+{
+  "name": "umami",
+  "description": {
+    "en": "Umami is a simple, privacy-friendly web analytics tool that shows visits and events without tracking individual users.",
+    "it": "Umami è uno strumento di analisi web semplice e rispettoso della privacy, che mostra visite ed eventi senza tracciare i singoli utenti."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://umami.is/docs",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-umami"
+  },
+  "source": "ghcr.io/geniusdynamics/umami"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Metabase",
+  "description": {
+    "en": "Fast analytics with the friendly UX and integrated tooling to let your company explore data on their own.",
+    "it": "Metabase permette di interrogare i dati e creare dashboard senza scrivere codice."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.metabase.com/docs/latest/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-metabase/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-metabase",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-metabase/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/metabase"
+}

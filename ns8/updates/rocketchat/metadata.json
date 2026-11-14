@@ -1,0 +1,23 @@
+{
+  "name": "rocketchat",
+  "description": {
+    "en": "Rocket.Chat, an open source team chat platform with channels, direct messages and video calls, running with its own MongoDB.",
+    "it": "Rocket.Chat è una piattaforma open source di chat per team con canali, messaggi diretti e videochiamate."
+  },
+  "categories": [
+    "communication"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.rocketchat.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-rocketchat/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-rocketchat",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-rocketchat/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/rocketchat"
+}
