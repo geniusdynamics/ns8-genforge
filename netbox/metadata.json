@@ -1,0 +1,22 @@
+{
+  "name": "netbox",
+  "description": {
+    "en": "NetBox is a source of truth for network infrastructure, with IP address management, racks, devices and circuits.",
+    "it": "NetBox è la fonte di verità per l'infrastruttura di rete, con gestione degli indirizzi IP, rack, dispositivi e circuiti."
+  },
+  "categories": [
+    "system_administration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.netbox.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-netbox/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-netbox"
+  },
+  "source": "ghcr.io/geniusdynamics/netbox"
+}
