@@ -110,6 +110,21 @@ class Versions(unittest.TestCase):
         self.assertTrue(calls[1][0].startswith('https://registry-1.docker.io/v2/library/postgres/tags/list'))
         self.assertNotIn('pat-secret', str(r))
 
+    def test_rejected_docker_hub_credentials_fall_back_to_anonymous(self):
+        calls = []
+        def get(url, headers=None):
+            calls.append(headers or {})
+            if 'auth.docker.io' in url and headers and headers.get('Authorization', '').startswith('Basic '):
+                raise u.urllib.error.HTTPError(url, 401, 'Unauthorized', {}, None)
+            return ({'token': 'anon'}, {}) if 'auth.docker.io' in url else ({'tags': ['1.0.0']}, {})
+        env = {'DOCKER_HUB_USERNAME': 'bot', 'DOCKER_HUB_ACCESS_TOKEN': 'pat-secret'}
+        with patch.dict(u.os.environ, env), patch.object(u, 'get_json', side_effect=get), patch('sys.stderr') as err:
+            r = u.registry_tags(('docker.io', 'library/redis'))
+        self.assertTrue(r['complete'])
+        self.assertEqual(calls[1], {})
+        self.assertEqual(calls[2]['Authorization'], 'Bearer anon')
+        self.assertNotIn('pat-secret', str(err.mock_calls))
+
     def test_docker_hub_without_credentials_is_anonymous(self):
         calls = []
         def get(url, headers=None):
