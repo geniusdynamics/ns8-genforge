@@ -1,0 +1,22 @@
+{
+  "name": "mailcow",
+  "description": {
+    "en": "Mailcow is a complete mail server suite with SMTP, IMAP, webmail, spam filtering and multi-domain administration.",
+    "it": "Mailcow è una suite completa per server di posta con SMTP, IMAP, webmail, filtro antispam e gestione di più domini."
+  },
+  "categories": [
+    "communication"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.mailcow.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-mailcow/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-mailcow"
+  },
+  "source": "ghcr.io/geniusdynamics/mailcow"
+}
