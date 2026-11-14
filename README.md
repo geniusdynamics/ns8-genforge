@@ -461,7 +461,7 @@ The website compares the container tags in the selected NS8 release's
 its primary application; app details show registry links, packaged and newest
 matching tags, the check time, and supporting containers. GitHub's latest stable
 project release is shown separately when a README upstream repository is available.
-An upstream update is a prompt for module maintainer review and NS8 testing.
+Updates are subject to review and testing.
 
 These checks add optional `upstream_check` data to `catalog.json` and never change
 `repodata.json`, installation commands or image pins. They refresh with the

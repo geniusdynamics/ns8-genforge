@@ -436,8 +436,8 @@ function scoreBadge(x) {
 }
 
 const UPSTREAM_STATUS = {
-  update_available: "Upstream update available",
-  current: "No newer matching version",
+  update_available: "Updates Available",
+  current: "Latest Version",
   unknown: "Upstream version unverified"
 };
 function upstreamStatus(status) {
@@ -484,7 +484,7 @@ function upstreamPanel(m) {
   return el("section", { class: "upstream-panel", "aria-label": "Upstream versions" },
     el("h4", { text: "Upstream versions" }),
     upstreamStatus(check.status),
-    el("p", { text: "Compared with NS8 module " + check.module_version + ". Checked " + checked + ". Updates need module maintainer review and NS8 testing." }),
+    el("p", { text: "Compared to NS8.V " + check.module_version + ". Checked " + checked + "; subject to review and testing." }),
     release && release.latest ? el("div", { class: "image-row" },
       el("div", { class: "image-versions" },
         release.packaged ? el("span", { text: "Packaged app: " + release.packaged }) : null,
@@ -595,6 +595,8 @@ function openDetails(m) {
   const words = (k) => (m.labels[k] || "").split(/\s+/).filter(Boolean);
   const tag = m.shown || "latest";
   const cmd = "add-module " + m.source + ":" + tag + " 1";
+  const instance = (m.source.split("/").pop() || m.id) + "1";
+  const updateCmd = "update-module " + m.source + ":" + tag + " " + instance;
   const fact = (k, v) => (v ? el("li", {}, el("span", { text: k }), el("span", {}, v)) : null);
   const images = words("org.nethserver.images").map((i) => i.replace(/^(docker\.io|ghcr\.io|quay\.io)\/(library\/)?/, "").split("@")[0]);
   const links = [["Code", m.docs.code_url], ["Documentation", m.docs.documentation_url], ["Bugs", m.docs.bug_url],
@@ -618,8 +620,12 @@ function openDetails(m) {
       el("a", { href: s, target: "_blank", rel: "noopener" }, el("img", { src: s, loading: "lazy", alt: m.name + " screenshot " + (i + 1) })))) : null,
     el("div", {},
       el("h4", { text: "Install from the command line" }),
-      el("div", { class: "cmd" }, cmdCode, el("button", { class: "btn", type: "button", onclick: (e) => copy(cmd, e.currentTarget) }, "Copy")),
+      el("div", { class: "cmd" }, cmdCode, el("button", { class: "btn", type: "button", "aria-label": "Copy install command", onclick: (e) => copy(cmd, e.currentTarget) }, "Copy")),
       el("p", { class: "muted", style: "margin:8px 0 0;font-size:13px", text: "Or add this repository to your cluster and install " + m.name + " from the Software Center." })),
+    el("div", {},
+      el("h4", { text: "Update from CLI" }),
+      el("div", { class: "cmd" }, el("code", { text: updateCmd }), el("button", { class: "btn", type: "button", "aria-label": "Copy update command", onclick: (e) => copy(updateCmd, e.currentTarget) }, "Copy")),
+      el("p", { class: "muted", style: "margin:8px 0 0;font-size:13px", text: "Replace " + instance + " with the ID of your installed module instance, as shown in the Software Center." })),
     upstreamPanel(m),
     el("div", { class: "cols" },
       el("div", {},
