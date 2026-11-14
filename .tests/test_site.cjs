@@ -23,6 +23,9 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check},
       const page = await browser.newPage({viewport: {width, height: 900}});
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
+      await page.addInitScript(() => {
+        document.execCommand = () => { window.__copied = document.querySelector('textarea').value; return true; };
+      });
       let data = catalog;
       await page.route('**/*', route => {
         const pathname = new URL(route.request().url()).pathname;
@@ -39,7 +42,17 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check},
       await card.click();
       await page.getByRole('dialog').waitFor();
       assert.match(await page.locator('#dlg').innerText(), /Newest matching tag found: v4.8.0-5.1.2/);
-      assert.match(await page.locator('#dlg .cmd').innerText(), /add-module ghcr.io\/geniusdynamics\/NetBox:1.0.0 1/);
+      assert.match(await page.locator('#dlg .cmd').first().innerText(), /add-module ghcr.io\/geniusdynamics\/NetBox:1.0.0 1/);
+      assert.match(await page.locator('#dlg').innerText(), /Update from CLI/i);
+      assert.match(await page.locator('#dlg .cmd').nth(1).innerText(), /update-module ghcr.io\/geniusdynamics\/NetBox:1.0.0 NetBox1/);
+      assert.match(await page.locator('.upstream-panel').innerText(), /Compared to NS8.V 1.0.0/);
+      assert.match(await page.locator('.upstream-panel').innerText(), /subject to review and testing/);
+      assert.equal(await page.locator('.upstream-panel .upstream-status').first().innerText(), 'Updates Available');
+      await page.getByRole('button', {name: 'Copy update command', exact: true}).click();
+      assert.equal(await page.evaluate(() => window.__copied), 'update-module ghcr.io/geniusdynamics/NetBox:1.0.0 NetBox1');
+      await page.getByRole('button', {name: 'Copy install command', exact: true}).click();
+      assert.equal(await page.evaluate(() => window.__copied), 'add-module ghcr.io/geniusdynamics/NetBox:1.0.0 1');
+      assert.equal(await page.locator('#grid .card').filter({has: page.getByRole('heading', {name: 'Current', exact: true})}).locator('.upstream-status').innerText(), 'Latest Version');
       await page.getByText('Supporting containers (1)', {exact: true}).click();
       assert.equal(await page.getByText('Registry unavailable.', {exact: true}).isVisible(), true);
       assert.equal(await page.locator('#dlg').evaluate(e => e.scrollWidth <= e.clientWidth), true);
