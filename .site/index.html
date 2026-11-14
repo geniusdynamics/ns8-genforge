@@ -140,12 +140,12 @@ dialog::backdrop { background: rgba(4, 7, 12, .7); }
 .detail-tab { flex: 1; min-width: 0; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--muted); padding: 8px; font-size: 14px; cursor: pointer; }
 .detail-tab:hover { color: var(--text); background: var(--surface-2); }
 .detail-tab[aria-selected="true"] { color: var(--accent); border-color: var(--border); background: var(--surface-2); font-weight: 600; }
-.detail-panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; align-content: start; scrollbar-gutter: stable; padding: 2px; }
+.detail-panel { display: grid; grid-template-columns: minmax(0, 1fr); grid-auto-rows: max-content; gap: 20px; min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; align-content: start; scrollbar-gutter: stable; padding: 2px; }
 .detail-panel > * { min-width: 0; }
 .detail-panel[hidden] { display: none; }
-.shots { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
-.shots a { flex: none; scroll-snap-align: start; }
-.shots img { height: 230px; max-width: 80vw; border-radius: 8px; border: 1px solid var(--border); display: block; background: var(--surface-2); }
+.shots { display: flex; gap: 10px; overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+.shots a { flex: 0 0 min(100%, 480px); min-width: 0; scroll-snap-align: start; }
+.shots img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; border-radius: 8px; border: 1px solid var(--border); display: block; background: var(--surface-2); }
 .dlg h4 { margin: 0 0 8px; font: 600 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 .cmd { display: flex; gap: 8px; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 6px 6px 12px; }
@@ -276,6 +276,11 @@ footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
       </div>
       <div class="controls">
         <input class="field" id="q" type="search" placeholder="Search a module" aria-label="Search a module">
+        <select class="field" id="version-status" aria-label="Filter by version status">
+          <option value="all">All Versions</option>
+          <option value="current">Latest Version</option>
+          <option value="update_available">Need Updates</option>
+        </select>
         <select class="field" id="sort" aria-label="Sort modules">
           <option value="name">Name</option>
           <option value="recent">Latest release</option>
@@ -356,7 +361,7 @@ const CHECKS = {
   license: "License file"
 };
 const DEV_PAGE = 12;
-const state = { modules: [], dev: [], cat: "all", q: "", sort: "name", devStatus: "all", dq: "", devAll: false };
+const state = { modules: [], dev: [], cat: "all", q: "", sort: "name", versionStatus: "all", devStatus: "all", dq: "", devAll: false };
 const $ = (sel) => document.querySelector(sel);
 
 function el(tag, attrs, ...children) {
@@ -566,6 +571,7 @@ function renderModules() {
 
   const q = state.q.trim().toLowerCase();
   let list = state.modules.filter((m) => {
+    if (state.versionStatus !== "all" && (upstreamData(m) || {}).status !== state.versionStatus) return false;
     if (state.cat === "@testing" ? m.stable : state.cat !== "all" && !(m.categories.length ? m.categories : ["other"]).includes(state.cat)) return false;
     return !q || [m.name, m.id, m.description, m.upstream || "", m.categories.join(" ")].join(" ").toLowerCase().includes(q);
   });
@@ -577,7 +583,7 @@ function renderModules() {
     stars: (a, b) => (b.x.stars || 0) - (a.x.stars || 0) || byName(a, b)
   };
   list.sort(sorters[state.sort] || byName);
-  $("#grid").replaceChildren(...(list.length ? list.map(moduleCard) : [el("div", { class: "empty", text: "No module matches your search." })]));
+  $("#grid").replaceChildren(...(list.length ? list.map(moduleCard) : [el("div", { class: "empty", text: "No module matches these filters." })]));
 }
 
 function renderDev() {
@@ -708,6 +714,7 @@ document.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("clic
 $("#mirror-link").addEventListener("click", (e) => { e.preventDefault(); copy(MIRROR, e.currentTarget); });
 $("#dlg").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 $("#q").addEventListener("input", (e) => { state.q = e.target.value; renderModules(); });
+$("#version-status").addEventListener("change", (e) => { state.versionStatus = e.target.value; renderModules(); });
 $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; renderModules(); });
 $("#dq").addEventListener("input", (e) => { state.dq = e.target.value; renderDev(); });
 $("#dev-more").addEventListener("click", () => { state.devAll = true; renderDev(); });
