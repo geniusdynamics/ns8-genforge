@@ -1,0 +1,23 @@
+{
+  "name": "colanode",
+  "description": {
+    "en": "Self-hosted team workspace for chat, documents and tasks, running on your own server with its web app.",
+    "it": "Colanode è uno spazio di lavoro collaborativo local-first con chat, documenti e database."
+  },
+  "categories": [
+    "documentation"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/colanode/colanode",
+    "bug_url": "https://github.com/geniusdynamics/ns8-colanode/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-colanode",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-colanode/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/colanode"
+}

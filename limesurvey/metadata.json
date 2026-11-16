@@ -1,0 +1,23 @@
+{
+  "name": "limesurvey",
+  "description": {
+    "en": "LimeSurvey is the simple, quick and anonymous online survey tool that's bursting with juicy insights. Calling students, professionals and enterprises: design a survey and get the best insights, it’s free and as easy as squeezing a lime. Make a free online survey now!",
+    "it": "LimeSurvey è uno strumento per sondaggi online semplice, rapido e anonimo."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.limesurvey.org/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-limesurvey/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-limesurvey",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-limesurvey/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/limesurvey"
+}

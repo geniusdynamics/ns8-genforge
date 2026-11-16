@@ -1,0 +1,23 @@
+{
+  "name": "opnform",
+  "description": {
+    "en": "Create beautiful forms and share them anywhere. It's super fast, you don't need to know how to code",
+    "it": "OpnForm crea moduli e sondaggi online senza codice, con risposte illimitate."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.opnform.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-opnform/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-opnform",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-opnform/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/opnform"
+}

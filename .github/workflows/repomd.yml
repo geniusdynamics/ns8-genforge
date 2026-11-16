@@ -31,6 +31,10 @@ jobs:
       name: "Build the website data"
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        PYTHONDONTWRITEBYTECODE: "1"
+        # Organisation secrets: an authenticated Docker Hub token avoids anonymous rate limits.
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       run: |
         # The website still works without catalog.json, so a failure here must not stop the publish.
         if ! python3 buildsite.py --repodata repodata.json --output catalog.json; then

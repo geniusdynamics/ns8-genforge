@@ -1,0 +1,23 @@
+{
+  "name": "Coder",
+  "description": {
+    "en": "Coder is an open source cloud development environment (CDE) that you download and host in your cloud. Deploy a single solution in seconds that provisions the infrastructure, IDE, language, and tools your developers desire.",
+    "it": "Coder offre ambienti di sviluppo cloud self-hosted, creati da modelli e raggiungibili dal browser o dall'IDE."
+  },
+  "categories": [
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://coder.com/docs",
+    "bug_url": "https://github.com/geniusdynamics/ns8-coder/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-coder",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-coder/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/coder"
+}

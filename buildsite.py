@@ -166,6 +166,8 @@ def main():
     parser.add_argument("--readme", default="README.md")
     parser.add_argument("--config", default="site.json")
     parser.add_argument("--output", default="catalog.json")
+    parser.add_argument("--skip-upstream", action="store_true", help="Build without upstream registry/release checks")
+    parser.add_argument("--upstream-config", default="upstream.json", help="Optional main-image and application-version mappings")
     parser.add_argument("--org-repos", help="JSON file with the repository list, to build without the GitHub API")
     args = parser.parse_args()
 
@@ -212,6 +214,14 @@ def main():
         results = list(pool.map(published, repodata))
     apps = [entry for _, entry in results]
     published_names = {name for name, _ in results if name}
+
+    # Optional website enrichment must never prevent publication of the existing catalog.
+    try:
+        from upstream import enrich
+        upstream_cfg = json.load(open(args.upstream_config)) if os.path.isfile(args.upstream_config) else {}
+        enrich(apps, repodata, upstream_cfg, github_get, token, shown_version, offline=offline or args.skip_upstream)
+    except Exception as ex:
+        log(f"[WARNING] upstream checks unavailable: {type(ex).__name__}")
 
     def unpublished(repo):
         name = repo["name"]

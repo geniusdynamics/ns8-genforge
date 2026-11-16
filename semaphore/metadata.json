@@ -5,7 +5,7 @@
     "it": "Semaphore UI è un'interfaccia web per eseguire Ansible, Terraform e altri strumenti di automazione."
   },
   "categories": [
-    "collaboration"
+    "monitoring"
   ],
   "authors": [
     {

@@ -1,0 +1,23 @@
+{
+  "name": "linkstack",
+  "description": {
+    "en": "LinkStack is a self-hosted link page where you publish all your links, social profiles and contacts in one place.",
+    "it": "LinkStack è una pagina di link self-hosted per pubblicare in un unico posto link, profili social e contatti."
+  },
+  "categories": [
+    "web"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.linkstack.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-linkstack/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-linkstack",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-linkstack/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/linkstack"
+}
