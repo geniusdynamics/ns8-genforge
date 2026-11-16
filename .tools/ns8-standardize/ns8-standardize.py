@@ -116,7 +116,13 @@ if "org.nethserver.authorizations" not in bi:
 # 5. tests
 cp(f"{K}/tests/__init__.robot", p("tests/__init__.robot"))
 if os.path.exists(p("tests/kickstart.robot")):
-    subprocess.run(["git", "-C", repo, "rm", "-q", "-f", "tests/kickstart.robot"], check=False)
+    if os.path.exists(p(f"tests/{name}.robot")):
+        subprocess.run(["git", "-C", repo, "rm", "-q", "-f", "tests/kickstart.robot"], check=False)
+    else:
+        # keep the module's only suite: rename it after the module
+        write(p(f"tests/{name}.robot"), read(p("tests/kickstart.robot")).replace("kickstart", name))
+        subprocess.run(["git", "-C", repo, "rm", "-q", "-f", "tests/kickstart.robot"], check=False)
+        todo.append(f"tests/kickstart.robot renamed to tests/{name}.robot: check the configure payload and URL check")
 if not os.path.exists(p(f"tests/{name}.robot")) and not args.conservative:
     write(p(f"tests/{name}.robot"), read(f"{K}/tests/kickstart.robot").replace("kickstart", name))
     todo.append(f"tests/{name}.robot generated from template: set real configure payload and URL check")
