@@ -22,6 +22,7 @@
   --ok: #3ecf8e;
   --warn: #f5a524;
   --off: #55607a;
+  --bad: #f87171;
   --logo-bg: #ffffff;
   --shadow: 0 12px 40px rgba(0, 0, 0, .45);
   --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
@@ -30,7 +31,7 @@
 :root[data-theme="light"] {
   --bg: #f6f7f9; --bg-alt: #eef0f4; --surface: #ffffff; --surface-2: #f1f3f7; --border: #dde1e9;
   --text: #141a26; --muted: #556074; --faint: #7d8799; --link: #0b6bcb; --accent: #d98200; --accent-ink: #ffffff;
-  --ok: #12855a; --warn: #b96a00; --off: #a3acbb; --shadow: 0 12px 40px rgba(20, 26, 38, .16);
+  --ok: #12855a; --warn: #b96a00; --off: #a3acbb; --bad: #c62828; --shadow: 0 12px 40px rgba(20, 26, 38, .16);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 72px; }
@@ -180,6 +181,62 @@ ul.facts span:last-child { min-width: 0; overflow-wrap: anywhere; }
 @media (max-width: 360px) { .detail-tab { font-size: 12px; padding: 8px 2px; } }
 .links { display: flex; flex-wrap: wrap; gap: 8px; }
 
+/* Pipeline dashboard */
+.pipe-btn { padding: 5px 12px; font-size: 13px; }
+dialog.pipe { width: min(1180px, calc(100vw - 24px)); }
+.pipe-dlg { height: 100%; padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto auto minmax(0, 1fr); gap: 14px; }
+.pipe-dlg > * { min-width: 0; }
+.pipe-head { display: flex; gap: 16px; align-items: start; }
+.pipe-head > div { min-width: 0; flex: 1; }
+.pipe-head h2 { margin: 0; }
+.pipe-asof { font-size: 13px; color: var(--muted); }
+.pipe-note { margin: 0; padding: 10px 14px; border-radius: 10px; font-size: 14px; border: 1px solid color-mix(in srgb, var(--warn) 55%, transparent); background: color-mix(in srgb, var(--warn) 10%, transparent); }
+.pipe-note[hidden] { display: none; }
+.pipe-counts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.pipe-count { border: 1px solid var(--border); background: var(--surface-2); border-radius: 10px; padding: 8px 12px; text-align: left; cursor: pointer; min-width: 0; }
+.pipe-count b { display: block; font-size: 22px; line-height: 1.2; }
+.pipe-count span { font-size: 13px; color: var(--muted); }
+.pipe-count[aria-pressed="true"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.pipe-count.passed b { color: var(--ok); }
+.pipe-count.failed b { color: var(--bad); }
+.pipe-count.running b { color: var(--link); }
+.pipe-count.none b { color: var(--muted); }
+.pipe-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.pipe-filters .field { flex: 1 1 150px; }
+.pipe-filters input.field { width: auto; flex: 2 1 200px; }
+.pipe-scroll { overflow: auto; overscroll-behavior: contain; border: 1px solid var(--border); border-radius: 10px; min-height: 0; }
+table.pipe-table { border-collapse: collapse; width: 100%; min-width: 880px; font-size: 14px; }
+.pipe-table caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pipe-table th { position: sticky; top: 0; z-index: 1; background: var(--surface-2); text-align: left; font: 600 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--faint); padding: 10px; white-space: nowrap; }
+.pipe-table td { padding: 9px 10px; border-top: 1px solid var(--border); vertical-align: top; }
+.pipe-table td.mod .name { font-weight: 600; }
+.pipe-table .sha { display: block; font: 12px var(--mono); color: var(--faint); }
+.pipe-table .err { display: block; font-size: 12px; color: var(--bad); }
+.pipe-table .prs { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.pipe-table .ahead { display: block; font-size: 12px; color: var(--faint); }
+.pipe-table td.next { min-width: 200px; color: var(--muted); }
+.st { display: inline-block; font-size: 12px; line-height: 20px; border-radius: 999px; padding: 0 9px; border: 1px solid var(--border); color: var(--muted); white-space: nowrap; }
+a.st:hover { text-decoration: none; border-color: var(--faint); }
+.st.passed { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 55%, transparent); }
+.st.failed, .st.error { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 55%, transparent); }
+.st.running, .st.queued { color: var(--link); border-color: color-mix(in srgb, var(--link) 55%, transparent); }
+.st.none, .st.cancelled, .st.skipped { color: var(--faint); }
+.pipe-empty { padding: 28px; text-align: center; color: var(--muted); }
+/* The module column stays visible while the table scrolls sideways. */
+.pipe-table th:first-child, .pipe-table td.mod { position: sticky; left: 0; background: var(--surface); }
+.pipe-table th:first-child { z-index: 2; background: var(--surface-2); }
+@media (max-width: 640px) {
+  .pipe-dlg { padding: 16px; gap: 10px; }
+  .pipe-counts { gap: 6px; }
+  .pipe-count { padding: 6px 8px; }
+  .pipe-count b { font-size: 18px; }
+  .pipe-count span { font-size: 12px; white-space: nowrap; }
+  table.pipe-table { font-size: 13px; }
+  .pipe-table td.mod { max-width: 130px; overflow-wrap: anywhere; box-shadow: 1px 0 0 var(--border); }
+}
+/* The Modules section follows the hero, so very narrow screens keep only Pipeline and the theme switch. */
+@media (max-width: 380px) { nav.main { gap: 10px; } nav.main a.hide-xs { display: none; } }
+
 footer { padding: 28px 0 44px; color: var(--faint); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 22px; justify-content: space-between; }
 footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
@@ -195,11 +252,12 @@ footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
       GenForge
     </a>
     <nav class="main" aria-label="Sections">
-      <a href="#modules">Modules</a>
+      <a href="#modules" class="hide-xs">Modules</a>
       <a href="#development" class="hide-s" id="nav-dev" hidden>In development</a>
       <a href="#services" class="hide-s">Services</a>
       <a href="https://github.com/sponsors/geniusdynamics" class="hide-s" target="_blank" rel="noopener">Sponsor</a>
       <a href="https://github.com/geniusdynamics/ns8-genforge" class="hide-s" target="_blank" rel="noopener">GitHub</a>
+      <button class="btn pipe-btn" id="pipeline-open" type="button" aria-haspopup="dialog" aria-controls="pipe-dlg">Pipeline</button>
       <button class="icon-btn" id="theme" type="button" aria-label="Switch between dark and light theme" title="Switch theme">◐</button>
     </nav>
   </div>
@@ -350,6 +408,25 @@ footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 </footer>
 
 <dialog id="dlg" aria-labelledby="dlg-title"></dialog>
+<dialog id="pipe-dlg" class="pipe" aria-labelledby="pipe-title" aria-describedby="pipe-asof">
+  <div class="pipe-dlg">
+    <div class="pipe-head">
+      <div>
+        <h2 id="pipe-title">Module pipeline</h2>
+        <div class="pipe-asof" id="pipe-asof" aria-live="polite">Loading the pipeline data…</div>
+      </div>
+      <button class="icon-btn dlg-close" id="pipe-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <p class="pipe-note" id="pipe-note" role="status" hidden></p>
+    <div class="pipe-counts" id="pipe-counts" role="group" aria-label="Filter by dev test result"></div>
+    <div class="pipe-filters">
+      <input class="field" id="pipe-q" type="search" placeholder="Search a module" aria-label="Search the pipeline">
+      <select class="field" id="pipe-group" aria-label="Filter by release group"></select>
+      <select class="field" id="pipe-status" aria-label="Filter by pipeline status"></select>
+    </div>
+    <div class="pipe-scroll" id="pipe-scroll" tabindex="0" role="region" aria-label="Pipeline of each module"></div>
+  </div>
+</dialog>
 
 <script>
 "use strict";
@@ -748,6 +825,141 @@ $("#theme").addEventListener("click", () => {
 try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) { /* private mode */ }
 
 const getJSON = (url) => fetch(url, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : Promise.reject(new Error(url + ": " + r.status))));
+// Pipeline dashboard: pipeline.json is published hourly by the pipeline workflow and only loaded when the dialog opens.
+const PIPE_STALE_HOURS = 3;
+const PIPE_GROUPS = { stable: "Stable release", testing: "Testing release", unreleased: "Not released" };
+const PIPE_STATUS = { passed: "Passed", failed: "Failed", running: "Running", none: "No run", error: "Error" };
+const RUN_LABEL = { passed: "Passed", failed: "Failed", running: "Running", queued: "Queued", cancelled: "Cancelled",
+  skipped: "Skipped", none: "No run", error: "Error" };
+const pipe = { data: null, loadedAt: 0, loading: null, missing: false, group: "all", status: "all", q: "", opener: null };
+
+function relTime(iso) {
+  const ms = Date.now() - new Date(iso);
+  if (isNaN(ms)) return null;
+  const min = Math.round(ms / 6e4);
+  if (min < 1) return "just now";
+  if (min < 60) return min + (min === 1 ? " minute ago" : " minutes ago");
+  const h = Math.round(min / 60);
+  if (h < 48) return h + (h === 1 ? " hour ago" : " hours ago");
+  return Math.round(h / 24) + " days ago";
+}
+function runChip(run, what) {
+  const st = (run && run.status) || "none";
+  const text = RUN_LABEL[st] || label(String(st));
+  const url = run && safeUrl(run.url);
+  return url ? el("a", { class: "st " + st, href: url, target: "_blank", rel: "noopener", "aria-label": what + ": " + text + " (opens the run)", text })
+    : el("span", { class: "st " + st, "aria-label": what + ": " + text, text });
+}
+const pipeStatus = (m) => (PIPE_STATUS[m.status] ? m.status : "none");
+
+function loadPipeline() {
+  // Reuse a fresh copy; reload after five minutes so a long-open page catches the hourly update.
+  if (pipe.loading) return pipe.loading;
+  if ((pipe.data || pipe.missing) && Date.now() - pipe.loadedAt < 3e5) return Promise.resolve();
+  pipe.loading = getJSON("pipeline.json").then((d) => {
+    if (!d || !Array.isArray(d.modules)) throw new Error("pipeline.json: unexpected format");
+    pipe.data = d; pipe.missing = false;
+  }).catch((err) => { console.warn(err.message); pipe.data = null; pipe.missing = true; })
+    .finally(() => { pipe.loadedAt = Date.now(); pipe.loading = null; });
+  return pipe.loading;
+}
+
+function pipeRow(m) {
+  const repo = safeUrl(m.repo);
+  const sha = typeof m.dev_sha === "string" ? m.dev_sha.slice(0, 7) : "";
+  const prLinks = (list, base) => (list || []).filter((p) => safeUrl(p.url)).map((p) =>
+    el("a", { href: safeUrl(p.url), target: "_blank", rel: "noopener", title: p.title || "", text: "#" + p.number + " → " + base }));
+  const prs = [...prLinks(m.prs_to_dev, "dev"), ...prLinks(m.prs_to_main, "main")];
+  const ahead = Number(m.dev_ahead_of_main) || 0;
+  return el("tr", {},
+    el("td", { class: "mod" },
+      repo ? el("a", { class: "name", href: repo, target: "_blank", rel: "noopener", text: m.module || m.name }) : el("span", { class: "name", text: m.module || m.name }),
+      sha && repo ? el("a", { class: "sha", href: repo + "/commit/" + encodeURIComponent(m.dev_sha), target: "_blank", rel: "noopener", "aria-label": "dev commit " + sha, text: "dev " + sha }) : null,
+      m.error ? el("span", { class: "err", text: m.error }) : null),
+    el("td", {}, el("span", { class: "tag" + (m.group === "testing" ? " testing" : ""), text: PIPE_GROUPS[m.group] || "Unknown" })),
+    el("td", {}, runChip(m.dev_publish, "Dev publish")),
+    el("td", {}, m.error ? el("span", { class: "st error", text: "Error" }) : runChip(m.dev_test, "Dev test")),
+    el("td", {}, runChip(m.main_test, "Main test")),
+    el("td", {}, prs.length ? el("div", { class: "prs" }, prs) : el("span", { class: "muted", text: "None" }),
+      ahead ? el("span", { class: "ahead", text: "dev " + ahead + (ahead === 1 ? " commit" : " commits") + " ahead of main" }) : null),
+    el("td", { class: "next", text: m.next_step || "" }));
+}
+
+function renderPipeline() {
+  const d = pipe.data;
+  const asof = $("#pipe-asof"), note = $("#pipe-note");
+  const scroll = $("#pipe-scroll");
+  if (!d) {
+    asof.textContent = pipe.missing ? "No pipeline data." : "Loading the pipeline data…";
+    note.hidden = !pipe.missing;
+    note.textContent = "The pipeline data (pipeline.json) is not available yet. It is published every hour by the pipeline workflow; try again later.";
+    $("#pipe-counts").replaceChildren();
+    $("#pipe-group").replaceChildren(); $("#pipe-status").replaceChildren();
+    scroll.replaceChildren(el("div", { class: "pipe-empty", text: pipe.missing ? "Nothing to show." : "Loading…" }));
+    return;
+  }
+  const when = new Date(d.generated_at);
+  const age = relTime(d.generated_at);
+  asof.textContent = isNaN(when) ? "Data time unknown." : "Data as of " + when.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + " (" + age + ").";
+  const stale = isNaN(when) || Date.now() - when > PIPE_STALE_HOURS * 36e5;
+  note.hidden = !stale;
+  note.textContent = "This data is " + (age || "of unknown age") + ": it is normally refreshed every hour, so the pipeline workflow may be failing. Check the runs on GitHub before acting on it.";
+
+  const modules = d.modules;
+  const count = (k, v) => modules.filter((m) => (k === "status" ? pipeStatus(m) : m.group) === v).length;
+  // The buttons are rebuilt on each change: keep the keyboard focus on the one that was used.
+  const focused = $("#pipe-counts").contains(document.activeElement) ? document.activeElement.dataset.status : null;
+  $("#pipe-counts").replaceChildren(...["passed", "failed", "running", "none"].map((s) =>
+    el("button", { class: "pipe-count " + s, type: "button", "data-status": s, "aria-pressed": String(pipe.status === s),
+      onclick: () => { pipe.status = pipe.status === s ? "all" : s; renderPipeline(); } },
+      el("b", { text: count("status", s) }), el("span", { text: PIPE_STATUS[s] }))));
+  if (focused) $("#pipe-counts [data-status='" + focused + "']").focus();
+  const option = (value, text, selected) => el("option", { value, selected: selected ? true : null, text });
+  $("#pipe-group").replaceChildren(option("all", "All groups (" + modules.length + ")", pipe.group === "all"),
+    ...Object.entries(PIPE_GROUPS).map(([k, t]) => option(k, t + " (" + count("group", k) + ")", pipe.group === k)));
+  const statuses = Object.keys(PIPE_STATUS).filter((s) => s !== "error" || count("status", "error"));
+  $("#pipe-status").replaceChildren(option("all", "All statuses", pipe.status === "all"),
+    ...statuses.map((s) => option(s, PIPE_STATUS[s] + " (" + count("status", s) + ")", pipe.status === s)));
+
+  const q = pipe.q.trim().toLowerCase();
+  const list = modules.filter((m) => (pipe.group === "all" || m.group === pipe.group)
+    && (pipe.status === "all" || pipeStatus(m) === pipe.status)
+    && (!q || [m.name, m.module, m.next_step].join(" ").toLowerCase().includes(q)))
+    .sort((a, b) => String(a.module || a.name).localeCompare(String(b.module || b.name), undefined, { sensitivity: "base" }));
+  if (!list.length) { scroll.replaceChildren(el("div", { class: "pipe-empty", text: "No module matches these filters." })); return; }
+  const head = ["Module", "Group", "Dev publish", "Dev test", "Main test", "Open PRs", "Next step"];
+  scroll.replaceChildren(el("table", { class: "pipe-table" },
+    el("caption", { text: list.length + " of " + modules.length + " modules" }),
+    el("thead", {}, el("tr", {}, head.map((h) => el("th", { scope: "col", text: h })))),
+    el("tbody", {}, list.map(pipeRow))));
+}
+
+function openPipeline() {
+  const dlg = $("#pipe-dlg");
+  pipe.opener = document.activeElement;
+  renderPipeline();
+  dlg.showModal();
+  $("#pipe-close").focus();
+  loadPipeline().then(() => { if (dlg.open) renderPipeline(); });
+}
+// Keep Tab and Shift+Tab inside the dialog, and give focus back to the button that opened it.
+function trapFocus(e) {
+  if (e.key !== "Tab") return;
+  const items = [...e.currentTarget.querySelectorAll("a[href], button, input, select, [tabindex]:not([tabindex='-1'])")].filter((n) => !n.disabled && n.offsetParent !== null);
+  if (!items.length) return;
+  const first = items[0], last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+}
+$("#pipeline-open").addEventListener("click", openPipeline);
+$("#pipe-close").addEventListener("click", () => $("#pipe-dlg").close());
+$("#pipe-dlg").addEventListener("keydown", trapFocus);
+$("#pipe-dlg").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+$("#pipe-dlg").addEventListener("close", () => { if (pipe.opener && pipe.opener.focus) pipe.opener.focus(); });
+$("#pipe-q").addEventListener("input", (e) => { pipe.q = e.target.value; renderPipeline(); });
+$("#pipe-group").addEventListener("change", (e) => { pipe.group = e.target.value; renderPipeline(); });
+$("#pipe-status").addEventListener("change", (e) => { pipe.status = e.target.value; renderPipeline(); });
+
 Promise.all([getJSON(BASE + "repodata.json"), getJSON("catalog.json").catch(() => null)]).then(([repodata, extra]) => {
   state.modules = toModules(repodata, extra);
   const stable = state.modules.filter((m) => m.stable).length;

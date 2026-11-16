@@ -56,6 +56,10 @@ jobs:
         cp -a $(ls -d */) .dst/ns8/updates/
         cp -av .site/. .dst/
         if [ -f catalog.json ]; then mv -v catalog.json .dst/; fi
+        # pipeline.json is committed on gh-pages by the pipeline workflow: keep it across this force push.
+        if git fetch --depth=1 origin gh-pages && git cat-file -e FETCH_HEAD:pipeline.json; then
+          git show FETCH_HEAD:pipeline.json > .dst/pipeline.json
+        fi
         touch .dst/.nojekyll
         echo "$DOMAIN" > .dst/CNAME
         git add -f .dst/

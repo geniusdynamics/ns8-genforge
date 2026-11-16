@@ -70,6 +70,7 @@ The `repomd` workflow builds everything and publishes one tree:
 | --- | --- |
 | `/index.html`, `/favicon.svg` | The website, copied from `.site/`. |
 | `/catalog.json` | Extra data for the website, built by `buildsite.py`. |
+| `/pipeline.json` | CI state of each module for the Pipeline dialog, built by `buildpipeline.py` (gh-pages only). |
 | `/ns8/updates/repodata.json` | The repository metadata NethServer reads, built by `createrepo.py`. |
 | `/ns8/updates/<module>/` | Logo and screenshots of each module. |
 | `/CNAME`, `/.nojekyll` | Custom domain and plain file serving for GitHub Pages. |
@@ -87,6 +88,27 @@ What each file does:
 - `buildsite.py` writes `catalog.json`: stars, release dates and the [quality score](#quality-score) of each published module, plus the `ns8-*` repositories of the organization that are not published yet. The website lists those under "In development". The "Alternative to" and upstream links come from the tables of this README.
 - `site.json` holds the settings: organization, custom domain, `tools` (`ns8-*` repositories that are not modules) and `exclude` (repositories to hide).
 - `.site/index.html` is the website. It loads `repodata.json` and `catalog.json` in the browser, and still works when `catalog.json` is missing.
+
+### Pipeline dashboard
+
+The **Pipeline** button in the website header opens a dialog with the CI state of every module:
+the release group (from the GitHub releases), the "Publish images" run of the current `dev` commit,
+the "Test dev on QEMU" run that followed it, the latest "Test main on QEMU" run, the open pull
+requests to `dev` and from `dev` to `main`, how far `dev` is ahead of `main`, and the next step.
+It can be filtered by group, by status and by name. The dialog loads `pipeline.json` only when it
+opens; when the file is missing or more than three hours old, it says so.
+
+- `buildpipeline.py` writes `pipeline.json` from the GitHub REST API, with `GITHUB_TOKEN`. It covers
+  every `ns8-*` repository of the organization with a `test-module.yml` ("Test module") workflow,
+  except the `tools` and `exclude` lists of `site.json`. It makes about five calls per module and stops
+  before the rate limit runs out; a repository that fails is reported on its row and does not stop the run.
+- The `pipeline` workflow runs it every hour and right after `repomd`, and commits only `pipeline.json`
+  on top of the current `gh-pages` tree. `repomd` copies the existing `pipeline.json` when it rebuilds
+  `gh-pages`, and the two workflows share one concurrency group so they never push at the same time.
+
+```bash
+GITHUB_TOKEN=$(gh auth token) python3 buildpipeline.py --output /tmp/forge/pipeline.json
+```
 
 To preview the website locally, build a copy of the published tree and serve it:
 

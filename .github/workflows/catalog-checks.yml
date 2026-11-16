@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'buildsite.py'
+      - 'buildpipeline.py'
       - 'upstream.py'
       - 'upstream.json'
       - '.site/**'
@@ -12,6 +13,7 @@ on:
     branches: [dev, main]
     paths:
       - 'buildsite.py'
+      - 'buildpipeline.py'
       - 'upstream.py'
       - 'upstream.json'
       - '.site/**'
