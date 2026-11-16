@@ -2,6 +2,9 @@ name: Catalog checks
 on:
   pull_request:
     paths:
+      - 'createrepo.py'
+      - 'createrepo.sh'
+      - 'pins.yml'
       - 'buildsite.py'
       - 'buildpipeline.py'
       - 'upstream.py'
@@ -12,6 +15,9 @@ on:
   push:
     branches: [dev, main]
     paths:
+      - 'createrepo.py'
+      - 'createrepo.sh'
+      - 'pins.yml'
       - 'buildsite.py'
       - 'buildpipeline.py'
       - 'upstream.py'
@@ -32,6 +38,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install repository generator dependencies
+        run: python -m pip install semver==3.0.1 filetype PyYAML
       - name: Test version comparisons, registry failures and offline catalog builds
         run: python -m unittest discover -s .tests -v
       - name: Validate configuration and browser script syntax

@@ -22,11 +22,60 @@ import urllib.request
 import yaml
 
 
+# Pin policies are safety controls: malformed/missing configuration must not
+# silently publish an unrestricted repository.
 try:
-    pins = yaml.safe_load(open("pins.yml")) or {}
+    with open("pins.yml") as pins_fp:
+        pins = yaml.safe_load(pins_fp)
+    if pins is None:
+        pins = {}
+    if not isinstance(pins, dict):
+        raise ValueError("pins.yml must contain a mapping of modules to rules")
+    for module, rules in pins.items():
+        if not isinstance(rules, list):
+            raise ValueError(f"{module}: pin rules must be a list")
+        for rule in rules:
+            if isinstance(rule, str):
+                semver.VersionInfo.parse(rule)
+                continue
+            if not isinstance(rule, dict):
+                raise ValueError(f"{module}: invalid pin rule")
+            if 'tag' in rule:
+                semver.VersionInfo.parse(rule['tag'])
+            if 'match' in rule:
+                semver.VersionInfo.parse('0.0.0').match(rule['match'])
+            if 'min_from' in rule:
+                semver.VersionInfo.parse(rule['min_from'])
+                if not rule.get('match') and not rule.get('tag'):
+                    raise ValueError(f"{module}: min_from requires a match or tag")
+            if rule.get('required') and not rule.get('tag'):
+                raise ValueError(f"{module}: required requires a tag")
 except Exception as ex:
-    print("[WARNING] while parsing pins.yml:", ex, file=sys.stderr)
-    pins = {}
+    raise SystemExit(f"[ERROR] invalid pin policy: {ex}")
+
+
+def required_pins(entry_name):
+    return any(isinstance(rule, dict) and rule.get('required') for rule in pins.get(entry_name, []))
+
+
+def apply_min_from(entry_name, version, labels):
+    """Apply the strictest matching repository floor, retaining image restrictions."""
+    floors = []
+    for rule in pins.get(entry_name, []):
+        if not isinstance(rule, dict) or not rule.get('min_from'):
+            continue
+        matches = (rule.get('tag') == str(version) or
+                   bool(rule.get('match') and version.match(rule['match'])))
+        if matches:
+            floors.append(semver.VersionInfo.parse(rule['min_from']))
+    if not floors:
+        return labels
+    try:
+        floors.append(semver.VersionInfo.parse(labels['org.nethserver.min-from']))
+    except (KeyError, ValueError, TypeError):
+        pass
+    return {**labels, 'org.nethserver.min-from': str(max(floors))}
+
 
 def pins_match_remove(entry_name, semver_tag):
     global pins
@@ -139,6 +188,8 @@ for entry_path in glob.glob(path + '/*'): # do not match .git and similar
 
     except Exception as ex:
         print(f'[ERROR] cannot inspect {metadata["source"]}', ex, file=sys.stderr)
+        if required_pins(entry_name):
+            raise SystemExit(f'[ERROR] cannot inspect module with required checkpoints: {entry_name}')
         continue
 
     testing_found = False # record if a testing release was found
@@ -158,7 +209,7 @@ for entry_path in glob.glob(path + '/*'): # do not match .git and similar
             # Fetch the image labels
             with subprocess.Popen(["skopeo", "inspect", f'docker://{metadata["source"]}:{tag}'], stdout=subprocess.PIPE, stderr=sys.stderr) as proc:
                 image_inspect = json.load(proc.stdout)
-            image_labels = image_inspect['Labels']
+            image_labels = apply_min_from(entry_name, semver_tag, image_inspect['Labels'])
         except Exception as ex:
             print(f'[ERROR] cannot inspect {metadata["source"]}:{tag}', ex, file=sys.stderr)
             continue
@@ -191,9 +242,11 @@ for entry_path in glob.glob(path + '/*'): # do not match .git and similar
             # Fetch the pinned image labels
             with subprocess.Popen(["skopeo", "inspect", f'docker://{metadata["source"]}:{tag}'], stdout=subprocess.PIPE, stderr=sys.stderr) as proc:
                 image_inspect = json.load(proc.stdout)
-            image_labels = image_inspect['Labels']
+            image_labels = apply_min_from(entry_name, semver_tag, image_inspect['Labels'])
         except Exception as ex:
             print(f'[ERROR] cannot inspect {metadata["source"]}:{tag}', ex, file=sys.stderr)
+            if isinstance(opin, dict) and opin.get('required'):
+                raise SystemExit(f'[ERROR] required checkpoint unavailable: {entry_name}:{tag}')
             continue
         image_version = {
             "tag": tag,

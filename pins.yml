@@ -1,6 +1,8 @@
 ---
-# Since the introduction of the labels `org.nethserver.min-core` and
-# `org.nethserver.min-from` in core 2.10, we can pin specific image tags
-# to ensure they are always visible to clients, allowing for gradual
-# upgrades between breaking releases.
-{}
+# Keep mandatory migration checkpoints visible and constrain NS8 upgrade offers.
+# NS8 core 2.10+ reads org.nethserver.min-from from repository metadata.
+erpnext:
+  - { tag: "4.2.0", prepend: false, required: true }
+  - { tag: "5.0.0", prepend: false, required: true }
+  - { match: ">4.2.0", min_from: "4.2.0" }
+  - { match: ">5.0.0", min_from: "5.0.0" }
