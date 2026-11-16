@@ -1,0 +1,21 @@
+{
+  "name": "KumoMTA",
+  "description": {
+    "en": "KumoMTA: high performance outbound and inbound MTA, smarthost and relay, managed from NethServer"
+  },
+  "categories": [
+    "communication"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.kumomta.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-kumomta/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-kumomta"
+  },
+  "source": "ghcr.io/geniusdynamics/kumomta"
+}
