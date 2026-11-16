@@ -1,0 +1,22 @@
+{
+  "name": "SOCFortress CoPilot",
+  "description": {
+    "en": "SOCFortress CoPilot: a single pane of glass for your security operations, with Wazuh, Graylog, Velociraptor and other SOC tools",
+    "it": "SOCFortress CoPilot: un unico pannello per le operazioni di sicurezza, con Wazuh, Graylog, Velociraptor e altri strumenti SOC"
+  },
+  "categories": [
+    "security"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.socfortress.co",
+    "bug_url": "https://github.com/geniusdynamics/ns8-copilot/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-copilot"
+  },
+  "source": "ghcr.io/geniusdynamics/socfortress-copilot"
+}
