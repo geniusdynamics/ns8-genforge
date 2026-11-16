@@ -20,8 +20,21 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
   {id: 'Legacy', upstream_check: {...check, status: 'major_available', dependency_updates: 0, images: [{...image, status: 'major_available', complete: true, latest: image.tag}]}},
   {id: 'Unknown', upstream_check: {...check, status: 'unknown', primary_image: null, images: [], dependency_updates: 0}},
   {id: 'Stale', upstream_check: {...check, module_version: '0.9.0'}}]};
+const runOf = (repo, id, status) => ({status, url: 'https://github.com/geniusdynamics/' + repo + '/actions/runs/' + id, created_at: '2026-11-14T04:00:00Z'});
+const pipeRow = (name, group, publish, test, status, extra = {}) => ({name: 'ns8-' + name, module: name, repo: 'https://github.com/geniusdynamics/ns8-' + name,
+  group, release: null, dev_sha: 'abcdef0123456789abcdef0123456789abcdef01', dev_publish: publish && runOf('ns8-' + name, 1, publish),
+  dev_test: test && runOf('ns8-' + name, 2, test), main_test: runOf('ns8-' + name, 3, 'passed'), prs_to_dev: [], prs_to_main: [],
+  dev_ahead_of_main: 0, status, next_step: 'Nothing to promote', error: null, ...extra});
+const pipelineFixture = (generated_at) => ({generated_at, org: 'geniusdynamics', modules: [
+  pipeRow('alpha', 'stable', 'passed', 'failed', 'failed', {next_step: 'Fix the failing QEMU test on dev', dev_ahead_of_main: 3,
+    prs_to_dev: [{number: 4, url: 'https://github.com/geniusdynamics/ns8-alpha/pull/4', title: 'Fix', head: 'fix'}]}),
+  pipeRow('bravo', 'stable', 'passed', 'passed', 'passed'),
+  pipeRow('charlie', 'stable', 'running', null, 'running', {next_step: 'Waiting for Publish images'}),
+  pipeRow('delta', 'testing', 'passed', 'passed', 'passed', {prs_to_main: [{number: 9, url: 'https://github.com/geniusdynamics/ns8-delta/pull/9', title: 'Release', head: 'dev'}]}),
+  pipeRow('evil', 'unreleased', null, null, 'none', {repo: 'javascript:alert(1)', main_test: {status: 'passed', url: 'javascript:alert(1)'}})]});
 (async () => {
-  const browser = await chromium.launch({headless: true, executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox']});
+  const executablePath = process.env.CHROMIUM_PATH || (fs.existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined);
+  const browser = await chromium.launch({headless: true, executablePath, args: ['--no-sandbox']});
   try {
     for (const width of [1440, 390, 320]) {
       const page = await browser.newPage({viewport: {width, height: 900}});
@@ -165,6 +178,111 @@ const catalog = {apps: [{id: 'NetBox', upstream_check: check, score: 8, stars: 0
       assert.deepEqual(errors, []);
       await page.close();
       console.log('PASS: screenshot sizing, version filters, tabs, commands and catalog fallbacks at ' + width + 'px');
+    }
+
+    // Pipeline dashboard: loaded on open, filtered, keyboard accessible, and optional.
+    for (const width of [1440, 390, 320]) {
+      const page = await browser.newPage({viewport: {width, height: 900}});
+      const errors = [];
+      page.on('pageerror', e => errors.push(e.message));
+      let pipeline = pipelineFixture(new Date().toISOString());
+      const requested = [];
+      await page.route('**/*', route => {
+        const pathname = new URL(route.request().url()).pathname;
+        requested.push(pathname);
+        if (pathname === '/') return route.fulfill({contentType: 'text/html', body: html});
+        if (pathname.endsWith('repodata.json')) return route.fulfill({json: repodata});
+        if (pathname.endsWith('catalog.json')) return route.fulfill({json: catalog});
+        if (pathname.endsWith('pipeline.json')) return pipeline === null ? route.fulfill({status: 404, body: ''}) : route.fulfill({json: pipeline});
+        return route.fulfill({status: 404, body: ''});
+      });
+      await page.goto('http://genforge.test/');
+      await page.locator('#grid .card').first().waitFor();
+      assert.equal(requested.some(p => p.endsWith('pipeline.json')), false, 'pipeline.json is loaded lazily');
+      const opener = page.getByRole('button', {name: 'Pipeline', exact: true});
+      await opener.click();
+      const dialog = page.getByRole('dialog', {name: 'Module pipeline'});
+      await dialog.waitFor();
+      assert.equal(await page.evaluate(() => document.activeElement.id), 'pipe-close', 'focus moves into the dialog');
+      await page.locator('#pipe-scroll tbody tr').first().waitFor();
+      assert.equal(requested.filter(p => p.endsWith('pipeline.json')).length, 1);
+      assert.equal(await page.locator('#pipe-scroll tbody tr').count(), 5);
+      assert.match(await page.locator('#pipe-asof').innerText(), /^Data as of .* \(just now\)\.$/);
+      assert.equal(await page.locator('#pipe-note').isVisible(), false);
+      const counts = await page.locator('#pipe-counts button').allInnerTexts();
+      assert.deepEqual(counts.map(t => t.replace(/\s+/g, ' ').trim()), ['2 Passed', '1 Failed', '1 Running', '1 No run']);
+      const alpha = page.locator('#pipe-scroll tbody tr').filter({hasText: 'alpha'});
+      assert.equal(await alpha.getByRole('link', {name: 'alpha', exact: true}).getAttribute('href'), 'https://github.com/geniusdynamics/ns8-alpha');
+      assert.equal(await alpha.getByRole('link', {name: 'Dev test: Failed (opens the run)'}).getAttribute('href'), 'https://github.com/geniusdynamics/ns8-alpha/actions/runs/2');
+      assert.equal(await alpha.getByRole('link', {name: '#4 → dev'}).getAttribute('href'), 'https://github.com/geniusdynamics/ns8-alpha/pull/4');
+      assert.match(await alpha.innerText(), /Fix the failing QEMU test on dev/);
+      assert.match(await alpha.innerText(), /dev 3 commits ahead of main/);
+      assert.equal(await page.locator('#pipe-scroll tbody tr').filter({hasText: 'evil'}).locator('a[href^="javascript"]').count(), 0);
+      // Filters: status, group, search and the summary buttons.
+      const group = page.getByRole('combobox', {name: 'Filter by release group'});
+      const status = page.getByRole('combobox', {name: 'Filter by pipeline status'});
+      await status.selectOption('passed');
+      assert.equal(await page.locator('#pipe-scroll tbody tr').count(), 2);
+      await group.selectOption('testing');
+      assert.deepEqual(await page.locator('#pipe-scroll tbody td.mod .name').allInnerTexts(), ['delta']);
+      await status.selectOption('all'); await group.selectOption('unreleased');
+      assert.deepEqual(await page.locator('#pipe-scroll tbody td.mod .name').allInnerTexts(), ['evil']);
+      await group.selectOption('all');
+      await page.getByRole('searchbox', {name: 'Search the pipeline'}).fill('bravo');
+      assert.deepEqual(await page.locator('#pipe-scroll tbody td.mod .name').allInnerTexts(), ['bravo']);
+      await page.getByRole('searchbox', {name: 'Search the pipeline'}).fill('zzz');
+      assert.match(await page.locator('#pipe-scroll').innerText(), /No module matches these filters/);
+      await page.getByRole('searchbox', {name: 'Search the pipeline'}).fill('');
+      await page.locator('#pipe-counts button.failed').click();
+      assert.equal(await page.locator('#pipe-counts button.failed').getAttribute('aria-pressed'), 'true');
+      assert.equal(await status.inputValue(), 'failed');
+      assert.deepEqual(await page.locator('#pipe-scroll tbody td.mod .name').allInnerTexts(), ['alpha']);
+      assert.equal(await page.evaluate(() => document.activeElement.dataset.status), 'failed', 'focus survives the re-render');
+      await page.locator('#pipe-counts button.failed').click();
+      assert.equal(await page.locator('#pipe-scroll tbody tr').count(), 5);
+      await page.locator('#pipe-close').focus();
+      // Layout: the table may scroll inside the dialog, the page never scrolls sideways.
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+      assert.equal(await page.locator('#pipe-dlg').evaluate(e => e.getBoundingClientRect().right <= innerWidth), true);
+      if (process.env.SCREENSHOT_DIR) await page.screenshot({path: path.join(process.env.SCREENSHOT_DIR, 'pipeline-fixture-' + width + '.png')});
+      // Keyboard: Tab wraps inside the dialog, Escape closes and returns focus.
+      assert.equal(await page.evaluate(() => document.activeElement.id), 'pipe-close');
+      await page.keyboard.press('Shift+Tab');
+      assert.equal(await page.evaluate(() => document.getElementById('pipe-dlg').contains(document.activeElement)), true);
+      await page.keyboard.press('Tab');
+      assert.equal(await page.evaluate(() => document.activeElement.id), 'pipe-close');
+      for (let i = 0; i < 40; i++) {
+        await page.keyboard.press('Tab');
+        assert.equal(await page.evaluate(() => document.getElementById('pipe-dlg').contains(document.activeElement)), true, 'focus stays in the dialog');
+      }
+      await page.keyboard.press('Escape');
+      assert.equal(await dialog.isVisible(), false);
+      assert.equal(await page.evaluate(() => document.activeElement.id), 'pipeline-open');
+      // Old data is flagged.
+      pipeline = pipelineFixture(new Date(Date.now() - 5 * 36e5).toISOString());
+      await page.reload(); await page.locator('#grid .card').first().waitFor();
+      await opener.click(); await page.locator('#pipe-scroll tbody tr').first().waitFor();
+      assert.match(await page.locator('#pipe-asof').innerText(), /\(5 hours ago\)/);
+      assert.match(await page.locator('#pipe-note').innerText(), /normally refreshed every hour/);
+      await page.getByRole('button', {name: 'Close', exact: true}).click();
+      // A missing pipeline.json shows a message and the rest of the page keeps working.
+      pipeline = null;
+      await page.reload(); await page.locator('#grid .card').first().waitFor();
+      await opener.click();
+      await page.locator('#pipe-note').waitFor({state: 'visible'});
+      assert.match(await page.locator('#pipe-note').innerText(), /pipeline data \(pipeline.json\) is not available yet/);
+      assert.equal(await page.locator('#pipe-counts button').count(), 0);
+      await page.keyboard.press('Escape');
+      assert.equal(await page.locator('#grid .card').count(), 5);
+      await page.locator('#q').fill('NetBox');
+      assert.equal(await page.locator('#grid .card').count(), 1);
+      await page.locator('#grid .card').first().click();
+      assert.equal(await page.getByRole('dialog', {name: 'NetBox'}).isVisible(), true);
+      await page.keyboard.press('Escape');
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+      assert.deepEqual(errors, []);
+      await page.close();
+      console.log('PASS: pipeline dialog, filters, keyboard, stale and missing data at ' + width + 'px');
     }
   } finally {await browser.close();}
 })().catch(e => {console.error(e); process.exitCode = 1;});

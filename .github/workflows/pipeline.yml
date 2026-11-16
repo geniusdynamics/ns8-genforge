@@ -1,0 +1,65 @@
+name: pipeline
+on:
+  workflow_dispatch:
+  # Hourly. At 0, 6, 12 and 18 UTC the run after repomd takes its place, so the GITHUB_TOKEN limit
+  # (1,000 requests per hour per repository, shared with buildsite.py) is not spent twice in that hour.
+  schedule:
+  - cron: '47 1-5,7-11,13-17,19-23 * * *'
+  # repomd replaces gh-pages; refresh the dashboard data right after it.
+  workflow_run:
+    workflows: ["repomd"]
+    types: [completed]
+
+# The job only pushes pipeline.json to gh-pages, so the token gets nothing else.
+permissions:
+  contents: write
+
+# Shared with repomd: the two workflows push gh-pages and must never do it at the same time.
+concurrency:
+  group: repomd
+  cancel-in-progress: false
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+    - id: checkout
+      uses: actions/checkout@v4
+
+    - id: build
+      name: "Build pipeline.json"
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        PYTHONDONTWRITEBYTECODE: "1"
+      run: |
+        python3 buildpipeline.py --output "$RUNNER_TEMP/pipeline.json"
+
+    - id: publish
+      name: "Publish pipeline.json on GitHub Pages"
+      run: |
+        git config user.name nethbot
+        git config user.email nethbot@nethesis.it
+        BRANCH=$(basename ${{ github.ref }})
+        COMMIT_MESSAGE="pipeline@$BRANCH"
+        DOMAIN=$(jq -r .domain site.json)
+        if ! git fetch --depth=1 origin gh-pages; then
+          echo "::warning::gh-pages does not exist yet: run repomd first"
+          exit 0
+        fi
+        PARENT=$(git rev-parse FETCH_HEAD)
+        # Build the new tree in a separate index: the published tree is copied as is, only pipeline.json changes.
+        export GIT_INDEX_FILE="$RUNNER_TEMP/pipeline.index"
+        git read-tree "$PARENT"
+        BLOB=$(git hash-object -w "$RUNNER_TEMP/pipeline.json")
+        git update-index --add --cacheinfo 100644,"$BLOB",pipeline.json
+        TREE=$(git write-tree)
+        COMMIT=$(git commit-tree -p "$PARENT" -m "${COMMIT_MESSAGE}" "$TREE")
+        # A fast-forward push: if repomd published in between, the push fails instead of undoing it.
+        git push origin "$COMMIT:refs/heads/gh-pages"
+        {
+          echo "Pipeline data has been published to"
+          echo ""
+          echo "- https://${DOMAIN}/pipeline.json"
+          echo ""
+          echo "Source: https://github.com/${{ github.repository }}/tree/gh-pages"
+        } >> $GITHUB_STEP_SUMMARY
