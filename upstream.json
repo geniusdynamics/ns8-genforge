@@ -118,5 +118,9 @@
     "versions": {
       "1.0.0": "8.10.2"
     }
+  },
+  "socfortress-copilot": {
+    "image": "ghcr.io/socfortress/copilot-frontend",
+    "github": "socfortress/CoPilot"
   }
 }
