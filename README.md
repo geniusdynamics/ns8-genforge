@@ -134,6 +134,8 @@ python3 -m http.server -d /tmp/forge 8000
 
 - `tag: <semver>`, `prepend: <True|False>` — ensure a specific tag is listed; prepend True puts it at the top, False appends it.
 - `match: "<Python semver match string>"`, `remove: True` — hide matching tags from clients. E.g. `<2.0.0`.
+- `match: "<Python semver match string>"` (or an exact `tag`), `min_from: <semver>` — require an installed module version before offering that target as an upgrade. The strictest matching floor wins; stricter image labels are preserved.
+- `required: True` on a pinned `tag` — fail generation if the checkpoint image cannot be inspected. Missing or malformed pin configuration also stops publication, preserving the previous published repository.
 
 Use cases:
 
@@ -164,6 +166,47 @@ Editing workflow:
 - Edit `pins.yml` and commit to `main` branch; metadata will rebuild automatically on schedule and on push.
 - Prefer `prepend: True` only for critical baseline tags; otherwise use `prepend: False` to keep natural ordering.
 - Use `remove: True` for temporary blacklisting; add comments with issue references for traceability.
+
+### ERPNext upgrade path
+
+GenForge keeps **4.2.0** and **5.0.0** available as mandatory migration checkpoints.
+NS8 Software Center and automatic updates use the generated
+`org.nethserver.min-from` labels to select the next eligible version:
+
+| Installed ERPNext module | Next upgrade offered |
+| --- | --- |
+| Below `4.2.0` | `4.2.0` |
+| `4.2.0` through versions below `5.0.0` | `5.0.0` |
+| `5.0.0` or newer | The newest eligible release newer than the installed version |
+
+These are NS8 **module** versions, not ERPNext application versions. New installs
+can still use the latest release. Pins retain both checkpoints even as later
+releases are published. Targets above `4.2.0` require at least `4.2.0`; targets
+above `5.0.0` require at least `5.0.0`. Pin order alone does not enforce this path:
+NS8 sorts versions before applying the minimum-version labels (core 2.10+).
+
+NS8 caches repository metadata for up to an hour. Refresh it before upgrading.
+An administrator can clear the configured repository's cache and then reopen
+Software Center (replace `REPOSITORY_NAME` with the configured repository name):
+
+```bash
+redis-cli DEL cluster/repository_cache/REPOSITORY_NAME
+```
+
+Direct `update-module` / `api-cli` commands bypass repository upgrade selection.
+Run only checkpoints newer than the installed version and wait for each upgrade
+to complete successfully. Replace `erpnext1` with the installed instance ID:
+
+```bash
+# Only when the installed module is below 4.2.0:
+update-module ghcr.io/geniusdynamics/erpnext:4.2.0 erpnext1
+
+# After reaching 4.2.0, and only while below 5.0.0:
+update-module ghcr.io/geniusdynamics/erpnext:5.0.0 erpnext1
+```
+
+Only after reaching `5.0.0` should a later published tag be selected for a manual
+CLI update. Do not use a latest-version CLI command to skip the checkpoints.
 
 ## Quality score
 
