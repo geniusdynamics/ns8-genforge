@@ -457,7 +457,6 @@ All apps are sorted by categories and listed alphabetically. Click on the stars 
 | :----------- | :------------------------------------- | :---------- | :-----------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------: | :---------------------------------------------------------: |
 | **Database** | [SurrealDB](https://surrealdb.com/)    | Database    | [![GitHub Stars](https://img.shields.io/github/stars/surrealdb/surrealdb?style=social)](https://github.com/surrealdb/surrealdb) | [PostgresDB](https://www.postgresql.org/), [MariaDB](https://mariadb.org/) | [NS8link](https://github.com/geniusdynamics/ns8-surrealdb/) |
 | **Database** | [CouchDB](https://couchdb.apache.org/) | Database    |   [![GitHub Stars](https://img.shields.io/github/stars/apache/couchdb?style=social)](https://github.com/surrealdb/surrealdb)    | [PostgresDB](https://www.postgresql.org/), [MariaDB](https://mariadb.org/) |  [NS8link](https://github.com/geniusdynamics/ns8-couchdb/)  |
-
 | **Database** | [Valkey](https://valkey.io/) | Key-value store for NS8 modules, standalone or as a highly available cluster across nodes | [![GitHub Stars](https://img.shields.io/github/stars/valkey-io/valkey?style=social)](https://github.com/valkey-io/valkey) | [Redis](https://redis.io/) | [NS8link](https://github.com/geniusdynamics/ns8-valkey/) |
 
 ## 21) Documents And Files
