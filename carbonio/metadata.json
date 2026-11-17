@@ -1,0 +1,25 @@
+{
+  "name": "Carbonio CE",
+  "upstream_name": "Carbonio CE 26.9",
+  "description": {
+    "en": "Mail and collaboration server: webmail, calendars, contacts, IMAP, POP3 and SMTP. Single server or multi-server. Unofficial, not endorsed by Zextras.",
+    "it": "Server di posta e collaborazione con webmail, calendari, contatti, IMAP, POP3 e SMTP. Installazione singola o multi-server. Modulo non ufficiale, non approvato da Zextras."
+  },
+  "categories": [
+    "communication",
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.africa"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-carbonio#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-carbonio/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-carbonio",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-carbonio/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/carbonio"
+}
