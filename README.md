@@ -372,6 +372,7 @@ All apps are sorted by categories and listed alphabetically. Click on the stars 
 | **Messaging** | [Zusam](https://github.com/zusam/zusam) | Private forums for groups of friends and family | [![GitHub Stars](https://img.shields.io/github/stars/zusam/zusam?style=social)](https://github.com/zusam/zusam) | [Facebook Groups](https://www.facebook.com/groups/) | [NS8link](https://github.com/geniusdynamics/ns8-zusam/) |
 | **Communication** | [KumoMTA](https://kumomta.com/) | High-performance mail transfer agent for outbound and inbound delivery, smarthost and relay, managed from NS8. | [![GitHub Stars](https://img.shields.io/github/stars/KumoCorp/kumomta?style=social)](https://github.com/KumoCorp/kumomta) | | [NS8link](https://github.com/geniusdynamics/ns8-kumomta/) |
 | **communication** | [Mailcow](https://mailcow.email/) | Mail server suite with SMTP, IMAP, webmail, spam filtering and multi-domain administration. | [![GitHub Stars](https://img.shields.io/github/stars/mailcow/mailcow-dockerized?style=social)](https://github.com/mailcow/mailcow-dockerized) | | [NS8link](https://github.com/geniusdynamics/ns8-mailcow/) |
+| **Communication** | [parsedmarc](https://domainaware.github.io/parsedmarc/) | DMARC aggregate, forensic and SMTP TLS report analysis with multi-tenant OpenSearch and Grafana dashboards. | [![GitHub Stars](https://img.shields.io/github/stars/domainaware/parsedmarc?style=social)](https://github.com/domainaware/parsedmarc) | | [NS8link](https://github.com/geniusdynamics/ns8-parsedmarc/) |
 
 ## 11) No Code Database
 
