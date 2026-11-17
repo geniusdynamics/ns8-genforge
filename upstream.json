@@ -76,6 +76,10 @@
   "opnform": {
     "image": "docker.io/jhumanj/opnform-api"
   },
+  "parsedmarc": {
+    "image": "ghcr.io/domainaware/parsedmarc",
+    "github": "domainaware/parsedmarc"
+  },
   "pastevault": {
     "image": "ghcr.io/arc53/pastevault-backend"
   },
