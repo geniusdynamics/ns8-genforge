@@ -1,0 +1,24 @@
+{
+  "name": "Carbonio CE edge proxy",
+  "upstream_name": "Carbonio CE 26.9",
+  "description": {
+    "en": "Extra entry point of a multi-server Carbonio CE installation: webmail, IMAP and POP3 routed to every mailbox server. Needs a Carbonio CE main server. Unofficial, not endorsed by Zextras.",
+    "it": "Punto di accesso aggiuntivo per installazioni Carbonio CE multi-server: instrada webmail, IMAP e POP3 ai server delle caselle di posta. Richiede un server Carbonio CE principale. Modulo non ufficiale, non approvato da Zextras."
+  },
+  "categories": [
+    "communication"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.africa"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-carbonio-proxy#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-carbonio-proxy/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-carbonio-proxy",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-carbonio-proxy/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/carbonio-proxy"
+}
