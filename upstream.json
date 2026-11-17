@@ -126,5 +126,9 @@
   "socfortress-copilot": {
     "image": "ghcr.io/socfortress/copilot-frontend",
     "github": "socfortress/CoPilot"
+  },
+  "valkey": {
+    "image": "docker.io/valkey/valkey",
+    "github": "valkey-io/valkey"
   }
 }
