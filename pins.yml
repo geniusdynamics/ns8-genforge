@@ -6,3 +6,7 @@ erpnext:
   - { tag: "5.0.0", prepend: false, required: true }
   - { match: ">4.2.0", min_from: "4.2.0" }
   - { match: ">5.0.0", min_from: "5.0.0" }
+
+lemonldapng:
+  - { tag: "1.1.0", prepend: false, required: true }
+  - { match: ">=2.0.0", min_from: "1.1.0" }

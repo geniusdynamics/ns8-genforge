@@ -1,0 +1,24 @@
+{
+  "name": "LemonLDAP::NG",
+  "description": {
+    "en": "LemonLDAP::NG is an open-source Web Single Sign-On (SSO) and Access Management system that provides authentication, authorization, and federation features for web applications",
+    "it": "LemonLDAP::NG fornisce accesso Single Sign-On, autenticazione, autorizzazione e federazione delle identità per le applicazioni web."
+  },
+  "categories": [
+    "security"
+  ],
+  "authors": [
+    {
+      "name": "KSAT Design",
+      "email": "support@ksatdesign.com.au"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-lemonldapng#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-lemonldapng/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-lemonldapng",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-lemonldapng/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/lemonldapng",
+  "upstream_name": "LemonLDAP::NG"
+}
