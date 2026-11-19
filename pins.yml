@@ -10,3 +10,10 @@ erpnext:
 lemonldapng:
   - { tag: "1.1.0", prepend: false, required: true }
   - { match: ">=2.0.0", min_from: "1.1.0" }
+
+authentik:
+  - { tag: "2.0.1", prepend: false, required: true, min_from: "2.0.0" }
+  - { tag: "2.0.3", prepend: false, required: true, min_from: "2.0.1" }
+  - { tag: "2.1.0", prepend: false, required: true, min_from: "2.0.3" }
+  - { tag: "2.1.1", prepend: false, required: true, min_from: "2.0.3" }
+  - { match: ">=2.1.0", min_from: "2.0.3" }
