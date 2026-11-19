@@ -17,3 +17,7 @@ authentik:
   - { tag: "2.1.0", prepend: false, required: true, min_from: "2.0.3" }
   - { tag: "2.1.1", prepend: false, required: true, min_from: "2.0.3" }
   - { match: ">=2.1.0", min_from: "2.0.3" }
+  - { tag: "2.2.0", prepend: false, required: true, min_from: "2.1.1" }
+  - { tag: "2.3.0", prepend: false, required: true, min_from: "2.2.0" }
+  - { tag: "2.4.0", prepend: false, required: true, min_from: "2.3.0" }
+  - { match: ">2.4.0", min_from: "2.4.0" }
