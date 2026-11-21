@@ -1,0 +1,21 @@
+{
+  "name": "ODK Central",
+  "description": {
+    "en": "Build forms, collect online and offline field data, and manage surveys, submissions and Entity Lists."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-odk#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-odk/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-odk",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-odk/releases/tag/1.0.0"
+  },
+  "source": "ghcr.io/geniusdynamics/odk"
+}
