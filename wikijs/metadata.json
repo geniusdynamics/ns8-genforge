@@ -1,0 +1,21 @@
+{
+  "name": "Wiki.js",
+  "description": {
+    "en": "Create and publish documentation and collaborative knowledge bases with Wiki.js."
+  },
+  "categories": [
+    "documentation"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-wikijs#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-wikijs/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-wikijs",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-wikijs/releases/tag/0.01-testing.1"
+  },
+  "source": "ghcr.io/geniusdynamics/wikijs"
+}
