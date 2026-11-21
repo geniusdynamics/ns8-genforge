@@ -1,0 +1,23 @@
+{
+  "name": "keycloak",
+  "description": {
+    "en": "Open source identity and access management with single sign-on, OpenID Connect and SAML, backed by PostgreSQL.",
+    "it": "Keycloak fornisce autenticazione unica, gestione delle identità e controllo degli accessi."
+  },
+  "categories": [
+    "security"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.keycloak.org/documentation",
+    "bug_url": "https://github.com/geniusdynamics/ns8-keycloak/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-keycloak",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-keycloak/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/keycloak"
+}

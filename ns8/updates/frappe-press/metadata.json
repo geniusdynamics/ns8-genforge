@@ -1,0 +1,23 @@
+{
+  "name": "Frappe Press",
+  "description": {
+    "en": "A powerful open source platform for building business applications: Frappe Press supports ERP, blogging, CRM, and more",
+    "it": "Frappe Press è la piattaforma di Frappe Cloud per ospitare e gestire siti, bench e server Frappe ed ERPNext."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://frappeframework.com/docs/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-frappe-press/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-frappe-press",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-frappe-press/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/frappe-press"
+}

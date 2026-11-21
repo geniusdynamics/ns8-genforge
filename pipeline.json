@@ -1,0 +1,2858 @@
+{
+ "generated_at": "2026-11-21T11:49:59+00:00",
+ "org": "geniusdynamics",
+ "groups": {
+  "stable": "Stable release",
+  "testing": "Testing release",
+  "unreleased": "Not released"
+ },
+ "counts": {
+  "passed": 84,
+  "failed": 2
+ },
+ "api_calls": 440,
+ "modules": [
+  {
+   "name": "ns8-2fauth",
+   "module": "2fauth",
+   "repo": "https://github.com/geniusdynamics/ns8-2fauth",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-2fauth/releases/tag/2.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "e445ec1816ef3328f68b2d6edf600261790a14b8",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-2fauth/actions/runs/43556038598",
+    "created_at": "2026-11-14T04:19:06Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-2fauth/actions/runs/43556132278",
+    "created_at": "2026-11-14T04:20:11Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-2fauth/actions/runs/43556344708",
+    "created_at": "2026-11-14T04:22:40Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-affine",
+   "module": "affine",
+   "repo": "https://github.com/geniusdynamics/ns8-affine",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-affine/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "58d52a07e892588e1e00612287dc2f21d2e2a2fc",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-affine/actions/runs/44450530804",
+    "created_at": "2026-11-19T03:18:41Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-affine/actions/runs/44450649550",
+    "created_at": "2026-11-19T03:19:42Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-affine/actions/runs/44453577367",
+    "created_at": "2026-11-19T03:44:54Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-agentzeroai",
+   "module": "agentzeroai",
+   "repo": "https://github.com/geniusdynamics/ns8-agentzeroai",
+   "group": "stable",
+   "release": {
+    "tag": "2.2.2",
+    "url": "https://github.com/geniusdynamics/ns8-agentzeroai/releases/tag/2.2.2",
+    "prerelease": false
+   },
+   "dev_sha": "7bcd9528223656e927352916179b0142a681f808",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-agentzeroai/actions/runs/44359887948",
+    "created_at": "2026-11-18T17:32:54Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-agentzeroai/actions/runs/44360066414",
+    "created_at": "2026-11-18T17:33:52Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-agentzeroai/actions/runs/44367707302",
+    "created_at": "2026-11-18T18:15:31Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-arkcase",
+   "module": "arkcase",
+   "repo": "https://github.com/geniusdynamics/ns8-arkcase",
+   "group": "unreleased",
+   "release": null,
+   "dev_sha": "25ee95f887899eef91764909a3b8840f790d174b",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-arkcase/actions/runs/43555087069",
+    "created_at": "2026-11-14T04:07:54Z"
+   },
+   "dev_test": {
+    "status": "failed",
+    "url": "https://github.com/geniusdynamics/ns8-arkcase/actions/runs/43555170683",
+    "created_at": "2026-11-14T04:08:56Z"
+   },
+   "main_test": {
+    "status": "failed",
+    "url": "https://github.com/geniusdynamics/ns8-arkcase/actions/runs/43324417607",
+    "created_at": "2026-11-12T22:56:06Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [
+    {
+     "number": 5,
+     "url": "https://github.com/geniusdynamics/ns8-arkcase/pull/5",
+     "title": "release: promote dev to main (NS8 standards)",
+     "head": "dev",
+     "draft": false
+    }
+   ],
+   "dev_ahead_of_main": 19,
+   "status": "failed",
+   "next_step": "Fix the failing QEMU test on dev",
+   "error": null
+  },
+  {
+   "name": "ns8-bigcapital",
+   "module": "bigcapital",
+   "repo": "https://github.com/geniusdynamics/ns8-bigcapital",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-bigcapital/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "4ed1a4a0d917c40ba32df3493fda33a6b0cc3f8d",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bigcapital/actions/runs/43426479120",
+    "created_at": "2026-11-13T12:35:35Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bigcapital/actions/runs/43427214626",
+    "created_at": "2026-11-13T12:40:46Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bigcapital/actions/runs/43432659959",
+    "created_at": "2026-11-13T13:19:19Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-bookstack",
+   "module": "bookstack",
+   "repo": "https://github.com/geniusdynamics/ns8-bookstack",
+   "group": "stable",
+   "release": {
+    "tag": "1.4.0",
+    "url": "https://github.com/geniusdynamics/ns8-bookstack/releases/tag/1.4.0",
+    "prerelease": false
+   },
+   "dev_sha": "5007e844a6392b3737e0612b8c85631f3f621846",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bookstack/actions/runs/43407104512",
+    "created_at": "2026-11-13T10:10:25Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bookstack/actions/runs/43407246406",
+    "created_at": "2026-11-13T10:11:27Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bookstack/actions/runs/43417570774",
+    "created_at": "2026-11-13T11:30:14Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-bugsink",
+   "module": "bugsink",
+   "repo": "https://github.com/geniusdynamics/ns8-bugsink",
+   "group": "stable",
+   "release": {
+    "tag": "1.2.0",
+    "url": "https://github.com/geniusdynamics/ns8-bugsink/releases/tag/1.2.0",
+    "prerelease": false
+   },
+   "dev_sha": "7c28a5e2df83f6eb8ec8864f1bdaa78b97793049",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bugsink/actions/runs/43445313149",
+    "created_at": "2026-11-13T14:42:38Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bugsink/actions/runs/43445529782",
+    "created_at": "2026-11-13T14:43:59Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-bugsink/actions/runs/43449026366",
+    "created_at": "2026-11-13T15:05:18Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-calibre-web",
+   "module": "calibre-web",
+   "repo": "https://github.com/geniusdynamics/ns8-calibre-web",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-calibre-web/releases/tag/1.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "855bff7cfe785e27f1d83429f1bf65c1d5ff78e3",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-calibre-web/actions/runs/43432259588",
+    "created_at": "2026-11-13T13:16:31Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-calibre-web/actions/runs/43435368502",
+    "created_at": "2026-11-13T13:38:10Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-calibre-web/actions/runs/43441020243",
+    "created_at": "2026-11-13T14:15:33Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-checkcle",
+   "module": "checkcle",
+   "repo": "https://github.com/geniusdynamics/ns8-checkcle",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-checkcle/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "47851e959d3a5ab43420fec3c1bc9b698c33e67a",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-checkcle/actions/runs/43407387252",
+    "created_at": "2026-11-13T10:12:27Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-checkcle/actions/runs/43407958922",
+    "created_at": "2026-11-13T10:16:45Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-checkcle/actions/runs/43416967131",
+    "created_at": "2026-11-13T11:25:36Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-chibisafe",
+   "module": "chibisafe",
+   "repo": "https://github.com/geniusdynamics/ns8-chibisafe",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-chibisafe/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "5c1a9893262af1253a69e66af09950e00ea9865c",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-chibisafe/actions/runs/43506842348",
+    "created_at": "2026-11-13T21:01:07Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-chibisafe/actions/runs/43506997585",
+    "created_at": "2026-11-13T21:02:07Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-chibisafe/actions/runs/43516228752",
+    "created_at": "2026-11-13T22:04:40Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-chiefonboarding",
+   "module": "chiefonboarding",
+   "repo": "https://github.com/geniusdynamics/ns8-chiefonboarding",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-chiefonboarding/releases/tag/1.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "e59017b2545aa47e0702b36ab46777ca4697a87d",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-chiefonboarding/actions/runs/43414599524",
+    "created_at": "2026-11-13T11:08:12Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-chiefonboarding/actions/runs/43417823438",
+    "created_at": "2026-11-13T11:32:02Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-chiefonboarding/actions/runs/43419687637",
+    "created_at": "2026-11-13T11:46:11Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-coder",
+   "module": "coder",
+   "repo": "https://github.com/geniusdynamics/ns8-coder",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-coder/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "3f88031e9016785eb7292f1f13f447735fa16e78",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-coder/actions/runs/43478949610",
+    "created_at": "2026-11-13T18:04:03Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-coder/actions/runs/43479126392",
+    "created_at": "2026-11-13T18:05:07Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-coder/actions/runs/43482818599",
+    "created_at": "2026-11-13T18:27:30Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-colanode",
+   "module": "colanode",
+   "repo": "https://github.com/geniusdynamics/ns8-colanode",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-colanode/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "7203782929617d82a2dcf62c7d25a3ba101904ed",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-colanode/actions/runs/43429546122",
+    "created_at": "2026-11-13T12:57:43Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-colanode/actions/runs/43431511733",
+    "created_at": "2026-11-13T13:11:26Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-colanode/actions/runs/43438066471",
+    "created_at": "2026-11-13T13:56:24Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-coolify",
+   "module": "coolify",
+   "repo": "https://github.com/geniusdynamics/ns8-coolify",
+   "group": "stable",
+   "release": {
+    "tag": "1.8.1",
+    "url": "https://github.com/geniusdynamics/ns8-coolify/releases/tag/1.8.1",
+    "prerelease": false
+   },
+   "dev_sha": "94b72533fa45f5ace5ff17989298c35a2199a477",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-coolify/actions/runs/43559123023",
+    "created_at": "2026-11-14T04:57:01Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-coolify/actions/runs/43559183876",
+    "created_at": "2026-11-14T04:57:51Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-coolify/actions/runs/43565725411",
+    "created_at": "2026-11-14T06:18:56Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-copilot",
+   "module": "copilot",
+   "repo": "https://github.com/geniusdynamics/ns8-copilot",
+   "group": "testing",
+   "release": {
+    "tag": "0.0.1-dev.1",
+    "url": "https://github.com/geniusdynamics/ns8-copilot/releases/tag/0.0.1-dev.1",
+    "prerelease": true
+   },
+   "dev_sha": "81582c660eec912f6ce47172bed4d8fff464f287",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-copilot/actions/runs/43693859038",
+    "created_at": "2026-11-15T08:18:10Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-copilot/actions/runs/43707026303",
+    "created_at": "2026-11-15T11:03:11Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-copilot/actions/runs/43695424022",
+    "created_at": "2026-11-15T08:38:04Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-couchdb",
+   "module": "couchdb",
+   "repo": "https://github.com/geniusdynamics/ns8-couchdb",
+   "group": "stable",
+   "release": {
+    "tag": "1.2.0",
+    "url": "https://github.com/geniusdynamics/ns8-couchdb/releases/tag/1.2.0",
+    "prerelease": false
+   },
+   "dev_sha": "c11fa0c31821fa3e032a9fd9d3601dc58781cab2",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-couchdb/actions/runs/43421277739",
+    "created_at": "2026-11-13T11:58:22Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-couchdb/actions/runs/43421455119",
+    "created_at": "2026-11-13T11:59:44Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-couchdb/actions/runs/43432587846",
+    "created_at": "2026-11-13T13:18:49Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-dashy",
+   "module": "dashy",
+   "repo": "https://github.com/geniusdynamics/ns8-dashy",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-dashy/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "0bd0bbd03cae184b7703928faf8efcee4a609119",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-dashy/actions/runs/43478911599",
+    "created_at": "2026-11-13T18:03:50Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-dashy/actions/runs/43479093273",
+    "created_at": "2026-11-13T18:04:55Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-dashy/actions/runs/43481379763",
+    "created_at": "2026-11-13T18:18:38Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-docmost",
+   "module": "docmost",
+   "repo": "https://github.com/geniusdynamics/ns8-docmost",
+   "group": "stable",
+   "release": {
+    "tag": "1.4.1",
+    "url": "https://github.com/geniusdynamics/ns8-docmost/releases/tag/1.4.1",
+    "prerelease": false
+   },
+   "dev_sha": "bc0b2b2d1937fd1889734fd90d7ee88071438ab6",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-docmost/actions/runs/43407439437",
+    "created_at": "2026-11-13T10:12:51Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-docmost/actions/runs/43408224089",
+    "created_at": "2026-11-13T10:19:06Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-docmost/actions/runs/43719570030",
+    "created_at": "2026-11-15T13:32:58Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-documenso",
+   "module": "documenso",
+   "repo": "https://github.com/geniusdynamics/ns8-documenso",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-documenso/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "5418e1ec55a2b8b282d81ef53634a8240c96d71c",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-documenso/actions/runs/43427695584",
+    "created_at": "2026-11-13T12:44:14Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-documenso/actions/runs/43429346080",
+    "created_at": "2026-11-13T12:56:12Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-documenso/actions/runs/43434367819",
+    "created_at": "2026-11-13T13:31:23Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-docuseal",
+   "module": "docuseal",
+   "repo": "https://github.com/geniusdynamics/ns8-docuseal",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-docuseal/releases/tag/2.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "5fef928063c6faf36569205d083a4509a9398b7d",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-docuseal/actions/runs/43407303003",
+    "created_at": "2026-11-13T10:11:52Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-docuseal/actions/runs/43407939291",
+    "created_at": "2026-11-13T10:16:34Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-docuseal/actions/runs/43409027510",
+    "created_at": "2026-11-13T10:26:06Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-dokploy",
+   "module": "dokploy",
+   "repo": "https://github.com/geniusdynamics/ns8-dokploy",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-dokploy/releases/tag/2.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "6c562f528707be5db4c4613a5fc3172ab50f4a20",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-dokploy/actions/runs/43407119996",
+    "created_at": "2026-11-13T10:10:31Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-dokploy/actions/runs/43407276551",
+    "created_at": "2026-11-13T10:11:40Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-dokploy/actions/runs/43409932364",
+    "created_at": "2026-11-13T10:33:12Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-dolibarr",
+   "module": "dolibarr",
+   "repo": "https://github.com/geniusdynamics/ns8-dolibarr",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-dolibarr/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "6fdc5454a5ad42f3211126edb4954257ceef740c",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-dolibarr/actions/runs/43445626586",
+    "created_at": "2026-11-13T14:44:34Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-dolibarr/actions/runs/43445966825",
+    "created_at": "2026-11-13T14:46:39Z"
+   },
+   "main_test": {
+    "status": "skipped",
+    "url": "https://github.com/geniusdynamics/ns8-dolibarr/actions/runs/43450527379",
+    "created_at": "2026-11-13T15:14:05Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-erpnext",
+   "module": "erpnext",
+   "repo": "https://github.com/geniusdynamics/ns8-erpnext",
+   "group": "stable",
+   "release": {
+    "tag": "5.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-erpnext/releases/tag/5.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "4afa67332dbf880f1f3988f791933d634d3c6f91",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-erpnext/actions/runs/43711583350",
+    "created_at": "2026-11-15T11:59:53Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-erpnext/actions/runs/43711687771",
+    "created_at": "2026-11-15T12:00:59Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-erpnext/actions/runs/43717251291",
+    "created_at": "2026-11-15T13:06:25Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-espocrm",
+   "module": "espocrm",
+   "repo": "https://github.com/geniusdynamics/ns8-espocrm",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.1",
+    "url": "https://github.com/geniusdynamics/ns8-espocrm/releases/tag/1.1.1",
+    "prerelease": false
+   },
+   "dev_sha": "0666710c8e3e61bbf1e50f2a00f46780e6c797b4",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-espocrm/actions/runs/43407313490",
+    "created_at": "2026-11-13T10:11:56Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-espocrm/actions/runs/43407856549",
+    "created_at": "2026-11-13T10:15:53Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-espocrm/actions/runs/43719400056",
+    "created_at": "2026-11-15T13:31:02Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-eturnal",
+   "module": "eturnal",
+   "repo": "https://github.com/geniusdynamics/ns8-eturnal",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.1",
+    "url": "https://github.com/geniusdynamics/ns8-eturnal/releases/tag/1.1.1",
+    "prerelease": false
+   },
+   "dev_sha": "9e0f7b01702bc0fd07bfbceec8f0e71e72d92978",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-eturnal/actions/runs/43437092638",
+    "created_at": "2026-11-13T13:49:53Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-eturnal/actions/runs/43438921773",
+    "created_at": "2026-11-13T14:02:05Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-eturnal/actions/runs/43578145647",
+    "created_at": "2026-11-14T08:56:20Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-fireflyiii",
+   "module": "fireflyiii",
+   "repo": "https://github.com/geniusdynamics/ns8-fireflyiii",
+   "group": "stable",
+   "release": {
+    "tag": "1.2.0",
+    "url": "https://github.com/geniusdynamics/ns8-fireflyiii/releases/tag/1.2.0",
+    "prerelease": false
+   },
+   "dev_sha": "51ba6e3f8b1502844477337565b6bf101cb14669",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-fireflyiii/actions/runs/43436225742",
+    "created_at": "2026-11-13T13:44:03Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-fireflyiii/actions/runs/43439102876",
+    "created_at": "2026-11-13T14:03:15Z"
+   },
+   "main_test": {
+    "status": "skipped",
+    "url": "https://github.com/geniusdynamics/ns8-fireflyiii/actions/runs/43441161666",
+    "created_at": "2026-11-13T14:16:25Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-flatnotes",
+   "module": "flatnotes",
+   "repo": "https://github.com/geniusdynamics/ns8-flatnotes",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-flatnotes/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "565fdca7be13a402d45d4acebdfe03c946e35245",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-flatnotes/actions/runs/43429496771",
+    "created_at": "2026-11-13T12:57:20Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-flatnotes/actions/runs/43432644179",
+    "created_at": "2026-11-13T13:19:13Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-flatnotes/actions/runs/43447374845",
+    "created_at": "2026-11-13T14:55:22Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-formbricks",
+   "module": "formbricks",
+   "repo": "https://github.com/geniusdynamics/ns8-formbricks",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-formbricks/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "4666e6ec2fd14b7464aa9a5ae4bebb201f238cab",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-formbricks/actions/runs/43407846928",
+    "created_at": "2026-11-13T10:15:49Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-formbricks/actions/runs/43408538983",
+    "created_at": "2026-11-13T10:21:56Z"
+   },
+   "main_test": {
+    "status": "failed",
+    "url": "https://github.com/geniusdynamics/ns8-formbricks/actions/runs/43411077414",
+    "created_at": "2026-11-13T10:41:55Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-frappe-press",
+   "module": "frappe-press",
+   "repo": "https://github.com/geniusdynamics/ns8-frappe-press",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-frappe-press/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "e0f6b1ea4721e58199b9545578721db812f7fced",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-frappe-press/actions/runs/43429333752",
+    "created_at": "2026-11-13T12:56:07Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-frappe-press/actions/runs/43431794920",
+    "created_at": "2026-11-13T13:13:22Z"
+   },
+   "main_test": {
+    "status": "failed",
+    "url": "https://github.com/geniusdynamics/ns8-frappe-press/actions/runs/43447440263",
+    "created_at": "2026-11-13T14:55:46Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-gitea",
+   "module": "gitea",
+   "repo": "https://github.com/geniusdynamics/ns8-gitea",
+   "group": "stable",
+   "release": {
+    "tag": "2.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-gitea/releases/tag/2.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "c5a72e944be63ade26ced53e53a5344dd9c64eb8",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-gitea/actions/runs/43633446213",
+    "created_at": "2026-11-14T19:41:23Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-gitea/actions/runs/43633529583",
+    "created_at": "2026-11-14T19:42:19Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-gitea/actions/runs/43634564382",
+    "created_at": "2026-11-14T19:53:54Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-glpi",
+   "module": "glpi",
+   "repo": "https://github.com/geniusdynamics/ns8-glpi",
+   "group": "stable",
+   "release": {
+    "tag": "2.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-glpi/releases/tag/2.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "d218d586ca25adcad4001baef45cfae700add539",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-glpi/actions/runs/43445395902",
+    "created_at": "2026-11-13T14:43:09Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-glpi/actions/runs/43445650677",
+    "created_at": "2026-11-13T14:44:44Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-glpi/actions/runs/43450846953",
+    "created_at": "2026-11-13T15:15:55Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-goauthentik",
+   "module": "goauthentik",
+   "repo": "https://github.com/geniusdynamics/ns8-goauthentik",
+   "group": "stable",
+   "release": {
+    "tag": "2.5.0",
+    "url": "https://github.com/geniusdynamics/ns8-goauthentik/releases/tag/2.5.0",
+    "prerelease": false
+   },
+   "dev_sha": "b8b72503e8940a5cce27d4f4d6f4c62cc1bb5e91",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-goauthentik/actions/runs/44602915098",
+    "created_at": "2026-11-19T19:53:05Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-goauthentik/actions/runs/44603093323",
+    "created_at": "2026-11-19T19:54:08Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-goauthentik/actions/runs/44606621824",
+    "created_at": "2026-11-19T20:14:31Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-grist",
+   "module": "grist",
+   "repo": "https://github.com/geniusdynamics/ns8-grist",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-grist/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "8ae6fe1c9dbc02912424b938315d0f63dac09674",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-grist/actions/runs/43385516714",
+    "created_at": "2026-11-13T07:24:18Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-grist/actions/runs/43387354430",
+    "created_at": "2026-11-13T07:39:52Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-grist/actions/runs/43396864894",
+    "created_at": "2026-11-13T08:54:06Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-homarr",
+   "module": "homarr",
+   "repo": "https://github.com/geniusdynamics/ns8-homarr",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-homarr/releases/tag/2.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "82f490fd44d594167e304fd5f551f878b78ab357",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-homarr/actions/runs/43385948783",
+    "created_at": "2026-11-13T07:28:00Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-homarr/actions/runs/43388644285",
+    "created_at": "2026-11-13T07:50:33Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-homarr/actions/runs/43410311614",
+    "created_at": "2026-11-13T10:36:01Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-infisical",
+   "module": "infisical",
+   "repo": "https://github.com/geniusdynamics/ns8-infisical",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-infisical/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "098ac4fdc42efe49f922d7463f20a33bdd1b4ee8",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-infisical/actions/runs/43429719992",
+    "created_at": "2026-11-13T12:59:01Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-infisical/actions/runs/43431466745",
+    "created_at": "2026-11-13T13:11:08Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-infisical/actions/runs/43438316032",
+    "created_at": "2026-11-13T13:58:08Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-invoiceninja",
+   "module": "invoiceninja",
+   "repo": "https://github.com/geniusdynamics/ns8-invoiceninja",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-invoiceninja/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "97a11adafd745b39c06e7f12f499ad6d3c3556f5",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-invoiceninja/actions/runs/43429661443",
+    "created_at": "2026-11-13T12:58:34Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-invoiceninja/actions/runs/43431630309",
+    "created_at": "2026-11-13T13:12:14Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-invoiceninja/actions/runs/43441025881",
+    "created_at": "2026-11-13T14:15:35Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-it-tools",
+   "module": "it-tools",
+   "repo": "https://github.com/geniusdynamics/ns8-it-tools",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.1",
+    "url": "https://github.com/geniusdynamics/ns8-it-tools/releases/tag/1.1.1",
+    "prerelease": false
+   },
+   "dev_sha": "abfd5aed55a2093c3e832774cb335aeca167eccd",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-it-tools/actions/runs/43407035539",
+    "created_at": "2026-11-13T10:09:56Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-it-tools/actions/runs/43407176773",
+    "created_at": "2026-11-13T10:10:56Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-it-tools/actions/runs/43413552918",
+    "created_at": "2026-11-13T11:00:39Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-joplinserver",
+   "module": "joplinserver",
+   "repo": "https://github.com/geniusdynamics/ns8-joplinserver",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-joplinserver/releases/tag/2.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "b9bf831843d84467055e61ead1ecfb5126b5b20e",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-joplinserver/actions/runs/43436336550",
+    "created_at": "2026-11-13T13:44:47Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-joplinserver/actions/runs/43437623789",
+    "created_at": "2026-11-13T13:53:25Z"
+   },
+   "main_test": {
+    "status": "skipped",
+    "url": "https://github.com/geniusdynamics/ns8-joplinserver/actions/runs/43439260169",
+    "created_at": "2026-11-13T14:04:16Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-keila",
+   "module": "keila",
+   "repo": "https://github.com/geniusdynamics/ns8-keila",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-keila/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "3ddca3842fb7b0f7757ffaba3972546e5eb81459",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-keila/actions/runs/43570998410",
+    "created_at": "2026-11-14T07:25:02Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-keila/actions/runs/43571072818",
+    "created_at": "2026-11-14T07:26:00Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-keila/actions/runs/43571552157",
+    "created_at": "2026-11-14T07:32:11Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-keycloak",
+   "module": "keycloak",
+   "repo": "https://github.com/geniusdynamics/ns8-keycloak",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-keycloak/releases/tag/1.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "9923bfe8ccb31596c7e85b6d677e3b47bb99e890",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-keycloak/actions/runs/44334381983",
+    "created_at": "2026-11-18T15:19:55Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-keycloak/actions/runs/44334593104",
+    "created_at": "2026-11-18T15:20:57Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-keycloak/actions/runs/44395193668",
+    "created_at": "2026-11-18T20:50:21Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-kobotoolbox",
+   "module": "kobotoolbox",
+   "repo": "https://github.com/geniusdynamics/ns8-kobotoolbox",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-kobotoolbox/releases/tag/1.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "4e0613b2086fb1cd6994e95ed2bfc56fc53b64b2",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-kobotoolbox/actions/runs/44694709128",
+    "created_at": "2026-11-20T07:24:14Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-kobotoolbox/actions/runs/44694825120",
+    "created_at": "2026-11-20T07:25:12Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-kobotoolbox/actions/runs/44695414372",
+    "created_at": "2026-11-20T07:30:07Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-leantime",
+   "module": "leantime",
+   "repo": "https://github.com/geniusdynamics/ns8-leantime",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-leantime/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "57a2dc04077ce81744d7a7347f485ff595e157ed",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-leantime/actions/runs/43428226758",
+    "created_at": "2026-11-13T12:47:59Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-leantime/actions/runs/43429306549",
+    "created_at": "2026-11-13T12:55:55Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-leantime/actions/runs/43432395172",
+    "created_at": "2026-11-13T13:17:28Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-limesurvey",
+   "module": "limesurvey",
+   "repo": "https://github.com/geniusdynamics/ns8-limesurvey",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-limesurvey/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "a3f46c39831c17df285833a08cc64b36ba970c1e",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-limesurvey/actions/runs/43427555461",
+    "created_at": "2026-11-13T12:43:13Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-limesurvey/actions/runs/43429576738",
+    "created_at": "2026-11-13T12:57:56Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-limesurvey/actions/runs/43432533067",
+    "created_at": "2026-11-13T13:18:27Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-linkstack",
+   "module": "linkstack",
+   "repo": "https://github.com/geniusdynamics/ns8-linkstack",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-linkstack/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "d48a760aa779f4f4e71a6a73b1e13f89d80ff581",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-linkstack/actions/runs/43429433470",
+    "created_at": "2026-11-13T12:56:51Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-linkstack/actions/runs/43430759928",
+    "created_at": "2026-11-13T13:06:16Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-linkstack/actions/runs/43432526789",
+    "created_at": "2026-11-13T13:18:24Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-linkwarden",
+   "module": "linkwarden",
+   "repo": "https://github.com/geniusdynamics/ns8-linkwarden",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-linkwarden/releases/tag/2.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "59c6c368fec1f559ccad5f3b1de32e12a1231950",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-linkwarden/actions/runs/43407498442",
+    "created_at": "2026-11-13T10:13:18Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-linkwarden/actions/runs/43408551240",
+    "created_at": "2026-11-13T10:22:03Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-linkwarden/actions/runs/43413647823",
+    "created_at": "2026-11-13T11:01:18Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-listmonk",
+   "module": "listmonk",
+   "repo": "https://github.com/geniusdynamics/ns8-listmonk",
+   "group": "stable",
+   "release": {
+    "tag": "1.5.0",
+    "url": "https://github.com/geniusdynamics/ns8-listmonk/releases/tag/1.5.0",
+    "prerelease": false
+   },
+   "dev_sha": "e23c8a263c392b57d377b60c92207c83b242812f",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-listmonk/actions/runs/43407280542",
+    "created_at": "2026-11-13T10:11:42Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-listmonk/actions/runs/43407591809",
+    "created_at": "2026-11-13T10:13:57Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-listmonk/actions/runs/43439121867",
+    "created_at": "2026-11-13T14:03:22Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-mailcow",
+   "module": "mailcow",
+   "repo": "https://github.com/geniusdynamics/ns8-mailcow",
+   "group": "stable",
+   "release": {
+    "tag": "11.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-mailcow/releases/tag/11.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "2bdb58158015a1ebc7dcf1416e1f72c5779d37c3",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mailcow/actions/runs/43684716858",
+    "created_at": "2026-11-15T06:16:57Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mailcow/actions/runs/43684795584",
+    "created_at": "2026-11-15T06:17:58Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mailcow/actions/runs/43688225953",
+    "created_at": "2026-11-15T07:03:41Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-matomo",
+   "module": "matomo",
+   "repo": "https://github.com/geniusdynamics/ns8-matomo",
+   "group": "stable",
+   "release": {
+    "tag": "3.4.0",
+    "url": "https://github.com/geniusdynamics/ns8-matomo/releases/tag/3.4.0",
+    "prerelease": false
+   },
+   "dev_sha": "bef041885a85b865fc23f2ff4051ccb1cdb63900",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-matomo/actions/runs/43552518476",
+    "created_at": "2026-11-14T03:36:37Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-matomo/actions/runs/43552696754",
+    "created_at": "2026-11-14T03:38:45Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-matomo/actions/runs/43552842472",
+    "created_at": "2026-11-14T03:40:31Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-mautic",
+   "module": "mautic",
+   "repo": "https://github.com/geniusdynamics/ns8-mautic",
+   "group": "stable",
+   "release": {
+    "tag": "1.4.0",
+    "url": "https://github.com/geniusdynamics/ns8-mautic/releases/tag/1.4.0",
+    "prerelease": false
+   },
+   "dev_sha": "3d53567563a17def41d9c10dcddd7a607348564a",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mautic/actions/runs/43567748441",
+    "created_at": "2026-11-14T06:43:42Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mautic/actions/runs/43567819132",
+    "created_at": "2026-11-14T06:44:38Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mautic/actions/runs/43568507708",
+    "created_at": "2026-11-14T06:53:30Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-maybe",
+   "module": "maybe",
+   "repo": "https://github.com/geniusdynamics/ns8-maybe",
+   "group": "stable",
+   "release": {
+    "tag": "1.2.0",
+    "url": "https://github.com/geniusdynamics/ns8-maybe/releases/tag/1.2.0",
+    "prerelease": false
+   },
+   "dev_sha": "a155f060e674f12e26e8039a12668d2639cbf911",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-maybe/actions/runs/43407528273",
+    "created_at": "2026-11-13T10:13:30Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-maybe/actions/runs/43407931093",
+    "created_at": "2026-11-13T10:16:30Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-maybe/actions/runs/43578988010",
+    "created_at": "2026-11-14T09:06:52Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-metabase",
+   "module": "metabase",
+   "repo": "https://github.com/geniusdynamics/ns8-metabase",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-metabase/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "0722c691a66c2b68fb2c2a6eafd2040be4b366a9",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-metabase/actions/runs/43429677110",
+    "created_at": "2026-11-13T12:58:41Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-metabase/actions/runs/43431755954",
+    "created_at": "2026-11-13T13:13:06Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-metabase/actions/runs/43434802359",
+    "created_at": "2026-11-13T13:34:19Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-minthcm",
+   "module": "minthcm",
+   "repo": "https://github.com/geniusdynamics/ns8-minthcm",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-minthcm/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "c0fd20aa02ecd36695c8020c9ca08f4558a1aae9",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-minthcm/actions/runs/43426846717",
+    "created_at": "2026-11-13T12:38:09Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-minthcm/actions/runs/43428386310",
+    "created_at": "2026-11-13T12:49:08Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-minthcm/actions/runs/43432760117",
+    "created_at": "2026-11-13T13:20:02Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-mixpost",
+   "module": "mixpost",
+   "repo": "https://github.com/geniusdynamics/ns8-mixpost",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-mixpost/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "f8e906ea39d3927fcf8be96091dae4ad32225e00",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mixpost/actions/runs/43429568208",
+    "created_at": "2026-11-13T12:57:52Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mixpost/actions/runs/43433496772",
+    "created_at": "2026-11-13T13:25:18Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-mixpost/actions/runs/43447388273",
+    "created_at": "2026-11-13T14:55:27Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-monica",
+   "module": "monica",
+   "repo": "https://github.com/geniusdynamics/ns8-monica",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-monica/releases/tag/1.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "d833dfe3bfa83f692dbd948abccce2d1a6d22229",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-monica/actions/runs/43407266308",
+    "created_at": "2026-11-13T10:11:36Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-monica/actions/runs/43407435447",
+    "created_at": "2026-11-13T10:12:49Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-monica/actions/runs/43454719827",
+    "created_at": "2026-11-13T15:39:01Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-n8n",
+   "module": "n8n",
+   "repo": "https://github.com/geniusdynamics/ns8-n8n",
+   "group": "stable",
+   "release": {
+    "tag": "2.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-n8n/releases/tag/2.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "68f7e4afe1786fa7334ecbead9ca7d25ae265654",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-n8n/actions/runs/43565654845",
+    "created_at": "2026-11-14T06:18:01Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-n8n/actions/runs/43565734292",
+    "created_at": "2026-11-14T06:19:03Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-n8n/actions/runs/43566087715",
+    "created_at": "2026-11-14T06:23:18Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-netbox",
+   "module": "netbox",
+   "repo": "https://github.com/geniusdynamics/ns8-netbox",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-netbox/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "ac888513653c1f5653eb735bf2f72f3477e8b526",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-netbox/actions/runs/43551468884",
+    "created_at": "2026-11-14T03:24:25Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-netbox/actions/runs/43551550370",
+    "created_at": "2026-11-14T03:25:19Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-netbox/actions/runs/43551713511",
+    "created_at": "2026-11-14T03:27:15Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-nocodb",
+   "module": "nocodb",
+   "repo": "https://github.com/geniusdynamics/ns8-nocodb",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-nocodb/releases/tag/2.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "9e21614a1edef481643ddc009d44b461202e5fb3",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-nocodb/actions/runs/43407169996",
+    "created_at": "2026-11-13T10:10:53Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-nocodb/actions/runs/43407319978",
+    "created_at": "2026-11-13T10:11:59Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-nocodb/actions/runs/43435454260",
+    "created_at": "2026-11-13T13:38:45Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-ntfy",
+   "module": "ntfy",
+   "repo": "https://github.com/geniusdynamics/ns8-ntfy",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-ntfy/releases/tag/2.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "fe9b5c318065cb999eb132309fcc3e74d1ab18f4",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-ntfy/actions/runs/43442620420",
+    "created_at": "2026-11-13T14:25:47Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-ntfy/actions/runs/43444524049",
+    "created_at": "2026-11-13T14:37:40Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-ntfy/actions/runs/43450956752",
+    "created_at": "2026-11-13T15:16:35Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-openbao",
+   "module": "openbao",
+   "repo": "https://github.com/geniusdynamics/ns8-openbao",
+   "group": "stable",
+   "release": {
+    "tag": "1.2.0",
+    "url": "https://github.com/geniusdynamics/ns8-openbao/releases/tag/1.2.0",
+    "prerelease": false
+   },
+   "dev_sha": "37f9844bf0f40290b05761f0cd03ea826c1bc838",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-openbao/actions/runs/44451811338",
+    "created_at": "2026-11-19T03:29:41Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-openbao/actions/runs/44451939462",
+    "created_at": "2026-11-19T03:30:43Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-openbao/actions/runs/44452303466",
+    "created_at": "2026-11-19T03:33:50Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-opensign",
+   "module": "opensign",
+   "repo": "https://github.com/geniusdynamics/ns8-opensign",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.2",
+    "url": "https://github.com/geniusdynamics/ns8-opensign/releases/tag/1.0.2",
+    "prerelease": false
+   },
+   "dev_sha": "296831364947ecf14f11249e04c39df0207d82af",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-opensign/actions/runs/43478688348",
+    "created_at": "2026-11-13T18:02:29Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-opensign/actions/runs/43478869540",
+    "created_at": "2026-11-13T18:03:34Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-opensign/actions/runs/43719092119",
+    "created_at": "2026-11-15T13:27:27Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-opnform",
+   "module": "opnform",
+   "repo": "https://github.com/geniusdynamics/ns8-opnform",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-opnform/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "d01d63f763f6b02458887ef452b671dd66288c4b",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-opnform/actions/runs/43429382764",
+    "created_at": "2026-11-13T12:56:28Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-opnform/actions/runs/43431582993",
+    "created_at": "2026-11-13T13:11:54Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-opnform/actions/runs/43444295280",
+    "created_at": "2026-11-13T14:36:16Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-outline",
+   "module": "outline",
+   "repo": "https://github.com/geniusdynamics/ns8-outline",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-outline/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "cc9968d2366cac7fe900cdf6c6f4a604431314ac",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-outline/actions/runs/43497898263",
+    "created_at": "2026-11-13T20:03:00Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-outline/actions/runs/43498063825",
+    "created_at": "2026-11-13T20:04:02Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-outline/actions/runs/43507381826",
+    "created_at": "2026-11-13T21:04:38Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-passwordpusher",
+   "module": "passwordpusher",
+   "repo": "https://github.com/geniusdynamics/ns8-passwordpusher",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.1",
+    "url": "https://github.com/geniusdynamics/ns8-passwordpusher/releases/tag/1.1.1",
+    "prerelease": false
+   },
+   "dev_sha": "5f099e11e62166a2c05da9758c38097170558545",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-passwordpusher/actions/runs/43407563914",
+    "created_at": "2026-11-13T10:13:45Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-passwordpusher/actions/runs/43408675622",
+    "created_at": "2026-11-13T10:23:14Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-passwordpusher/actions/runs/43719706487",
+    "created_at": "2026-11-15T13:34:30Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-pastevault",
+   "module": "pastevault",
+   "repo": "https://github.com/geniusdynamics/ns8-pastevault",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-pastevault/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "5b0130a64e7170bd47d2afd10052585736b81111",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-pastevault/actions/runs/43429367069",
+    "created_at": "2026-11-13T12:56:21Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-pastevault/actions/runs/43431023903",
+    "created_at": "2026-11-13T13:08:07Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-pastevault/actions/runs/43439859333",
+    "created_at": "2026-11-13T14:08:10Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-penpot",
+   "module": "penpot",
+   "repo": "https://github.com/geniusdynamics/ns8-penpot",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-penpot/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "53dfb28d0f984b2129f37d3f2ae93907e18e8fbe",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-penpot/actions/runs/43438639186",
+    "created_at": "2026-11-13T14:00:19Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-penpot/actions/runs/43440966884",
+    "created_at": "2026-11-13T14:15:15Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-penpot/actions/runs/43447013324",
+    "created_at": "2026-11-13T14:53:08Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-postal",
+   "module": "postal",
+   "repo": "https://github.com/geniusdynamics/ns8-postal",
+   "group": "stable",
+   "release": {
+    "tag": "2.3.0",
+    "url": "https://github.com/geniusdynamics/ns8-postal/releases/tag/2.3.0",
+    "prerelease": false
+   },
+   "dev_sha": "b0832cbe4c9d16c1c20529a9dd5243244d888db6",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-postal/actions/runs/44394424807",
+    "created_at": "2026-11-18T20:45:52Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-postal/actions/runs/44394641081",
+    "created_at": "2026-11-18T20:47:08Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-postal/actions/runs/44395378994",
+    "created_at": "2026-11-18T20:51:24Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-postiz",
+   "module": "postiz",
+   "repo": "https://github.com/geniusdynamics/ns8-postiz",
+   "group": "stable",
+   "release": {
+    "tag": "2.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-postiz/releases/tag/2.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "78a24c176f0107d6abdcb8568aabb5dd21d18f25",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-postiz/actions/runs/43407721285",
+    "created_at": "2026-11-13T10:14:53Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-postiz/actions/runs/43408501416",
+    "created_at": "2026-11-13T10:21:35Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-postiz/actions/runs/43444353416",
+    "created_at": "2026-11-13T14:36:38Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-rally",
+   "module": "rally",
+   "repo": "https://github.com/geniusdynamics/ns8-rally",
+   "group": "stable",
+   "release": {
+    "tag": "1.3.0",
+    "url": "https://github.com/geniusdynamics/ns8-rally/releases/tag/1.3.0",
+    "prerelease": false
+   },
+   "dev_sha": "bdbc2871c746c9e97db8d4b6aad44be6bfa7695d",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-rally/actions/runs/43407579031",
+    "created_at": "2026-11-13T10:13:52Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-rally/actions/runs/43408435495",
+    "created_at": "2026-11-13T10:21:00Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-rally/actions/runs/43413495085",
+    "created_at": "2026-11-13T11:00:15Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-rocketchat",
+   "module": "rocketchat",
+   "repo": "https://github.com/geniusdynamics/ns8-rocketchat",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-rocketchat/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "b7c1e6b220eaf3ce878b51cc7cf037dfa897c022",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-rocketchat/actions/runs/43429630011",
+    "created_at": "2026-11-13T12:58:20Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-rocketchat/actions/runs/43431561073",
+    "created_at": "2026-11-13T13:11:46Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-rocketchat/actions/runs/43435056632",
+    "created_at": "2026-11-13T13:36:01Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-semaphoreui",
+   "module": "semaphoreui",
+   "repo": "https://github.com/geniusdynamics/ns8-semaphoreui",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-semaphoreui/releases/tag/1.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "6c35feedf2bc0db2def3f2fb2e5644576821ca27",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-semaphoreui/actions/runs/43407709918",
+    "created_at": "2026-11-13T10:14:47Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-semaphoreui/actions/runs/43408703988",
+    "created_at": "2026-11-13T10:23:28Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-semaphoreui/actions/runs/43420724850",
+    "created_at": "2026-11-13T11:54:06Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-solidinvoice",
+   "module": "solidinvoice",
+   "repo": "https://github.com/geniusdynamics/ns8-solidinvoice",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-solidinvoice/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "6d0349af201062069315bb0f46986591a43460aa",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-solidinvoice/actions/runs/43427060546",
+    "created_at": "2026-11-13T12:39:41Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-solidinvoice/actions/runs/43428879104",
+    "created_at": "2026-11-13T12:52:49Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-solidinvoice/actions/runs/43432378637",
+    "created_at": "2026-11-13T13:17:20Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-Stirling-PDF",
+   "module": "Stirling-PDF",
+   "repo": "https://github.com/geniusdynamics/ns8-Stirling-PDF",
+   "group": "stable",
+   "release": {
+    "tag": "1.3.1",
+    "url": "https://github.com/geniusdynamics/ns8-Stirling-PDF/releases/tag/1.3.1",
+    "prerelease": false
+   },
+   "dev_sha": "4b92053e5d08d5621cd308e1f127ddd02f815713",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-Stirling-PDF/actions/runs/43434318406",
+    "created_at": "2026-11-13T13:31:03Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-Stirling-PDF/actions/runs/43439585001",
+    "created_at": "2026-11-13T14:06:22Z"
+   },
+   "main_test": {
+    "status": "skipped",
+    "url": "https://github.com/geniusdynamics/ns8-Stirling-PDF/actions/runs/43687111966",
+    "created_at": "2026-11-15T06:48:32Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-suitecrm",
+   "module": "suitecrm",
+   "repo": "https://github.com/geniusdynamics/ns8-suitecrm",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-suitecrm/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "d28d834a0d15e7951328a46e75a519b89de5b474",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-suitecrm/actions/runs/43559437686",
+    "created_at": "2026-11-14T05:01:00Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-suitecrm/actions/runs/43559653062",
+    "created_at": "2026-11-14T05:03:34Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-suitecrm/actions/runs/43561043121",
+    "created_at": "2026-11-14T05:20:20Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-surrealdb",
+   "module": "surrealdb",
+   "repo": "https://github.com/geniusdynamics/ns8-surrealdb",
+   "group": "stable",
+   "release": {
+    "tag": "1.2.0",
+    "url": "https://github.com/geniusdynamics/ns8-surrealdb/releases/tag/1.2.0",
+    "prerelease": false
+   },
+   "dev_sha": "a89590e4a0dd0729fc4eed0c0b10ae7f3ddc3861",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-surrealdb/actions/runs/43416619446",
+    "created_at": "2026-11-13T11:23:01Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-surrealdb/actions/runs/43418107796",
+    "created_at": "2026-11-13T11:34:09Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-surrealdb/actions/runs/43418766363",
+    "created_at": "2026-11-13T11:39:07Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-tacticalrmm",
+   "module": "tacticalrmm",
+   "repo": "https://github.com/geniusdynamics/ns8-tacticalrmm",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-tacticalrmm/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "5f4276e8963b3a0e0f617ba2c722be6905da7898",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-tacticalrmm/actions/runs/43559417111",
+    "created_at": "2026-11-14T05:00:48Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-tacticalrmm/actions/runs/43559499815",
+    "created_at": "2026-11-14T05:01:44Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-tacticalrmm/actions/runs/43561313509",
+    "created_at": "2026-11-14T05:23:36Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-termix",
+   "module": "termix",
+   "repo": "https://github.com/geniusdynamics/ns8-termix",
+   "group": "stable",
+   "release": {
+    "tag": "2.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-termix/releases/tag/2.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "6a8052d8c00a8518db7347f6e5cec76cdaf49feb",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-termix/actions/runs/44473620072",
+    "created_at": "2026-11-19T06:38:18Z"
+   },
+   "dev_test": {
+    "status": "failed",
+    "url": "https://github.com/geniusdynamics/ns8-termix/actions/runs/44473737579",
+    "created_at": "2026-11-19T06:39:16Z"
+   },
+   "main_test": {
+    "status": "failed",
+    "url": "https://github.com/geniusdynamics/ns8-termix/actions/runs/44474025064",
+    "created_at": "2026-11-19T06:41:38Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "failed",
+   "next_step": "Fix the failing QEMU test on dev",
+   "error": null
+  },
+  {
+   "name": "ns8-umami",
+   "module": "umami",
+   "repo": "https://github.com/geniusdynamics/ns8-umami",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-umami/releases/tag/1.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "55d3e5f73a0b292316a8c1241fc1dd7e645f10c6",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-umami/actions/runs/43407089329",
+    "created_at": "2026-11-13T10:10:18Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-umami/actions/runs/43407237434",
+    "created_at": "2026-11-13T10:11:23Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-umami/actions/runs/43421589643",
+    "created_at": "2026-11-13T12:00:41Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-vaultwarden",
+   "module": "vaultwarden",
+   "repo": "https://github.com/geniusdynamics/ns8-vaultwarden",
+   "group": "stable",
+   "release": {
+    "tag": "2.4.0",
+    "url": "https://github.com/geniusdynamics/ns8-vaultwarden/releases/tag/2.4.0",
+    "prerelease": false
+   },
+   "dev_sha": "e4c4dfcd3e5e226a765071767f6b3adc22fb77da",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-vaultwarden/actions/runs/43444154745",
+    "created_at": "2026-11-13T14:35:24Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-vaultwarden/actions/runs/43445080805",
+    "created_at": "2026-11-13T14:41:11Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-vaultwarden/actions/runs/43445661069",
+    "created_at": "2026-11-13T14:44:47Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-vikunja",
+   "module": "vikunja",
+   "repo": "https://github.com/geniusdynamics/ns8-vikunja",
+   "group": "stable",
+   "release": {
+    "tag": "1.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-vikunja/releases/tag/1.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "a3263b776a755c5adbda897107c5700988617ea7",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-vikunja/actions/runs/43407211897",
+    "created_at": "2026-11-13T10:11:12Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-vikunja/actions/runs/43407378347",
+    "created_at": "2026-11-13T10:12:24Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-vikunja/actions/runs/43445901752",
+    "created_at": "2026-11-13T14:46:15Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-wallos",
+   "module": "wallos",
+   "repo": "https://github.com/geniusdynamics/ns8-wallos",
+   "group": "stable",
+   "release": {
+    "tag": "1.3.1",
+    "url": "https://github.com/geniusdynamics/ns8-wallos/releases/tag/1.3.1",
+    "prerelease": false
+   },
+   "dev_sha": "da2c0156cb0841cedfcf473208b6aaf4cf894b35",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-wallos/actions/runs/43407624456",
+    "created_at": "2026-11-13T10:14:10Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-wallos/actions/runs/43408707734",
+    "created_at": "2026-11-13T10:23:30Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-wallos/actions/runs/43719119916",
+    "created_at": "2026-11-15T13:27:47Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-warpgate",
+   "module": "warpgate",
+   "repo": "https://github.com/geniusdynamics/ns8-warpgate",
+   "group": "stable",
+   "release": {
+    "tag": "1.2.0",
+    "url": "https://github.com/geniusdynamics/ns8-warpgate/releases/tag/1.2.0",
+    "prerelease": false
+   },
+   "dev_sha": "f0dab8b26a7013f3222e01a213de4ce6940a3c37",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-warpgate/actions/runs/44459827441",
+    "created_at": "2026-11-19T04:39:33Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-warpgate/actions/runs/44459960410",
+    "created_at": "2026-11-19T04:40:44Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-warpgate/actions/runs/44460302526",
+    "created_at": "2026-11-19T04:43:49Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-wekan",
+   "module": "wekan",
+   "repo": "https://github.com/geniusdynamics/ns8-wekan",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-wekan/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "1d28b68b9f8e88e9dcadad71768b6a81fc66e2d6",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-wekan/actions/runs/43478782978",
+    "created_at": "2026-11-13T18:03:04Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-wekan/actions/runs/43478981220",
+    "created_at": "2026-11-13T18:04:15Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-wekan/actions/runs/43481860157",
+    "created_at": "2026-11-13T18:21:34Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-windmill",
+   "module": "windmill",
+   "repo": "https://github.com/geniusdynamics/ns8-windmill",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.1",
+    "url": "https://github.com/geniusdynamics/ns8-windmill/releases/tag/1.0.1",
+    "prerelease": false
+   },
+   "dev_sha": "c2aab9794c95bc0368ad1c5470c2e12bb3ea0efc",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-windmill/actions/runs/43554823458",
+    "created_at": "2026-11-14T04:04:46Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-windmill/actions/runs/43554904514",
+    "created_at": "2026-11-14T04:05:42Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-windmill/actions/runs/43558162774",
+    "created_at": "2026-11-14T04:44:53Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-xibosignage",
+   "module": "xibosignage",
+   "repo": "https://github.com/geniusdynamics/ns8-xibosignage",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-xibosignage/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "d9b8614f78d06840efe9cd763d243a57d417e01b",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-xibosignage/actions/runs/43478840494",
+    "created_at": "2026-11-13T18:03:24Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-xibosignage/actions/runs/43479038831",
+    "created_at": "2026-11-13T18:04:36Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-xibosignage/actions/runs/43481690996",
+    "created_at": "2026-11-13T18:20:31Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-zitadel",
+   "module": "zitadel",
+   "repo": "https://github.com/geniusdynamics/ns8-zitadel",
+   "group": "stable",
+   "release": {
+    "tag": "2.1.0",
+    "url": "https://github.com/geniusdynamics/ns8-zitadel/releases/tag/2.1.0",
+    "prerelease": false
+   },
+   "dev_sha": "f79d8793a6644f29411f2b5420dc103bcf34b4e8",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-zitadel/actions/runs/44710244767",
+    "created_at": "2026-11-20T09:23:02Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-zitadel/actions/runs/44710392193",
+    "created_at": "2026-11-20T09:24:04Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-zitadel/actions/runs/44756709955",
+    "created_at": "2026-11-20T14:46:38Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  },
+  {
+   "name": "ns8-zusam",
+   "module": "zusam",
+   "repo": "https://github.com/geniusdynamics/ns8-zusam",
+   "group": "stable",
+   "release": {
+    "tag": "1.0.0",
+    "url": "https://github.com/geniusdynamics/ns8-zusam/releases/tag/1.0.0",
+    "prerelease": false
+   },
+   "dev_sha": "124f9f0c101cdfc01274d4e354534c2c325fc6fd",
+   "dev_publish": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-zusam/actions/runs/43446105471",
+    "created_at": "2026-11-13T14:47:30Z"
+   },
+   "dev_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-zusam/actions/runs/43446709700",
+    "created_at": "2026-11-13T14:51:14Z"
+   },
+   "main_test": {
+    "status": "passed",
+    "url": "https://github.com/geniusdynamics/ns8-zusam/actions/runs/43447279912",
+    "created_at": "2026-11-13T14:54:48Z"
+   },
+   "prs_to_dev": [],
+   "prs_to_main": [],
+   "dev_ahead_of_main": 0,
+   "status": "passed",
+   "next_step": "Nothing to promote",
+   "error": null
+  }
+ ]
+}

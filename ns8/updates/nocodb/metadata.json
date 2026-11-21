@@ -1,0 +1,22 @@
+{
+  "name": "NocoDB",
+  "description": {
+    "en": "NocoDB allows building no-code database solutions with ease of spreadsheets.",
+    "it": "NocoDB permette di creare database senza codice con la semplicità di un foglio di calcolo."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.nocodb.com/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-nocodb"
+  },
+  "source": "ghcr.io/geniusdynamics/nocodb"
+}

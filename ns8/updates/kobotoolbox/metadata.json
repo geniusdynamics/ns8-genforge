@@ -1,0 +1,22 @@
+{
+  "name": "kobotoolbox",
+  "description": {
+    "en": "Open source tool to design forms and collect data in the field, with offline collection and data export.",
+    "it": "KoboToolbox raccoglie dati sul campo con moduli e sondaggi, anche offline."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://support.kobotoolbox.org/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-kobotoolbox/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-kobotoolbox"
+  },
+  "source": "ghcr.io/geniusdynamics/kobotoolbox"
+}

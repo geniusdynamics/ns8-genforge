@@ -1,0 +1,22 @@
+{
+  "name": "IT-Tools",
+  "description": {
+    "en": "IT-Tools is a collection of handy online tools for developers and IT people, such as converters, generators and encoders, run from the browser.",
+    "it": "Raccolta di strumenti utili per sviluppatori e personale IT, eseguiti nel browser."
+  },
+  "categories": [
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://it-tools.tech/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-it-tools/"
+  },
+  "source": "ghcr.io/geniusdynamics/it-tools"
+}

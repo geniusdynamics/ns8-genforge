@@ -1,0 +1,23 @@
+{
+  "name": "parsedmarc",
+  "description": {
+    "en": "parsedmarc: DMARC aggregate, failure and SMTP TLS report analysis with OpenSearch, OpenSearch Dashboards and Grafana, multi-tenant",
+    "it": "Analisi dei report DMARC aggregati, forensi e SMTP TLS, con OpenSearch, OpenSearch Dashboards e Grafana e supporto per più tenant."
+  },
+  "categories": [
+    "communication",
+    "monitoring"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://domainaware.github.io/parsedmarc/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-parsedmarc/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-parsedmarc"
+  },
+  "source": "ghcr.io/geniusdynamics/parsedmarc"
+}

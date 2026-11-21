@@ -1,0 +1,22 @@
+{
+  "name": "bugsink",
+  "description": {
+    "en": "Bugsink is a self-hosted error tracker that collects crashes from your applications and groups them for debugging.",
+    "it": "Bugsink è un sistema di tracciamento errori self-hosted che raccoglie i crash delle applicazioni e li raggruppa per il debug."
+  },
+  "categories": [
+    "monitoring"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.bugsink.com/docs/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-bugsink"
+  },
+  "source": "ghcr.io/geniusdynamics/bugsink"
+}

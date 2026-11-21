@@ -1,0 +1,23 @@
+{
+  "name": "Kutt",
+  "description": {
+    "en": "Kutt URL shortener: short links with custom domains, statistics, password protection and an API",
+    "it": "Accorciatore di URL Kutt: link brevi con domini personalizzati, statistiche, protezione con password e API"
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-kutt#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-kutt/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-kutt",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-kutt/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/kutt"
+}

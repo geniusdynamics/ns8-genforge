@@ -1,0 +1,23 @@
+{
+  "name": "keila",
+  "description": {
+    "en": "Keila is a self-hosted newsletter tool to design campaigns, manage contacts and send email to your subscribers.",
+    "it": "Keila è uno strumento di newsletter self-hosted per creare campagne, gestire i contatti e inviare email agli iscritti."
+  },
+  "categories": [
+    "communication"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.keila.io/docs/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-keila/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-keila",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-keila/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/keila"
+}

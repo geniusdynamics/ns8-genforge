@@ -1,0 +1,22 @@
+{
+  "name": "checkcle",
+  "description": {
+    "en": "CheckCle is a self-hosted, open-source monitoring platform for seamless, real-time full-stack systems, applications, and infrastructure. It provides real-time uptime monitoring, distributed checks, incident tracking, and alerts. All deployable anywhere.",
+    "it": "CheckCle monitora siti e servizi con controlli di disponibilità, avvisi e pagine di stato."
+  },
+  "categories": [
+    "monitoring"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.checkcle.com/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-checkcle"
+  },
+  "source": "ghcr.io/geniusdynamics/checkcle"
+}

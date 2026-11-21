@@ -1,0 +1,22 @@
+{
+  "name": "Maybe",
+  "description": {
+    "en": "Maybe is an app to manage your personal finances, track accounts, investments and net worth in one place.",
+    "it": "Maybe è un'applicazione per gestire le proprie finanze personali, investimenti e patrimonio."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://maybe.co//",
+    "bug_url": "https://github.com/geniusdynamic/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-maybe"
+  },
+  "source": "ghcr.io/geniusdynamics/maybe"
+}
