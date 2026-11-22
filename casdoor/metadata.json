@@ -1,0 +1,23 @@
+{
+  "name": "Casdoor",
+  "description": {
+    "en": "Manage application identities and single sign-on with Casdoor, including integration with NS8 OpenLDAP or Samba AD.",
+    "it": "Gestisci le identità e il Single Sign-On delle applicazioni con Casdoor e integra un dominio NS8 OpenLDAP o Samba AD."
+  },
+  "categories": [
+    "security"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "resources@genius-dynamics.com"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-casdoor#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-casdoor/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-casdoor",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-casdoor/releases/tag/1.0.0"
+  },
+  "source": "ghcr.io/geniusdynamics/casdoor"
+}
