@@ -1,0 +1,24 @@
+{
+  "name": "PostgreSQL 19 HA",
+  "upstream_name": "PostgreSQL 19",
+  "description": {
+    "en": "Run PostgreSQL 19 for other NS8 modules as a standalone database or a high-availability cluster with Patroni and etcd.",
+    "it": "Esegui PostgreSQL 19 per altri moduli NS8 come database autonomo o in un cluster ad alta disponibilità con Patroni ed etcd."
+  },
+  "categories": [
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.africa"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-postgresql19c#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-postgresql19c/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-postgresql19c",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-postgresql19c/releases/tag/0.9.0"
+  },
+  "source": "ghcr.io/geniusdynamics/postgresql19c"
+}
