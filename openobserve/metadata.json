@@ -1,0 +1,21 @@
+{
+  "name": "OpenObserve",
+  "description": {
+    "en": "OpenObserve collects and explores logs, metrics and traces in one observability platform, with dashboards and alerts at low storage cost."
+  },
+  "categories": [
+    "monitoring"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-openobserve#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-openobserve/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-openobserve",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-openobserve/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/openobserve"
+}
