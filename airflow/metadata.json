@@ -1,0 +1,21 @@
+{
+  "name": "Apache Airflow",
+  "description": {
+    "en": "Apache Airflow is a platform to author, schedule and monitor data and automation workflows defined as Python DAGs, with a web interface."
+  },
+  "categories": [
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-airflow#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-airflow/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-airflow",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-airflow/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/airflow"
+}
