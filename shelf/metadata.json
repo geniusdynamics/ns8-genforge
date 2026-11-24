@@ -1,0 +1,21 @@
+{
+  "name": "Shelf",
+  "description": {
+    "en": "Shelf tracks equipment and assets: assign custody, book and check out shared equipment, and know where every item is."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-shelf#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-shelf/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-shelf",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-shelf/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/shelf"
+}
