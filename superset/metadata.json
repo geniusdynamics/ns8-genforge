@@ -1,0 +1,21 @@
+{
+  "name": "Apache Superset",
+  "description": {
+    "en": "Apache Superset is a data exploration and visualization platform to build interactive dashboards, charts and SQL queries over your databases."
+  },
+  "categories": [
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-superset#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-superset/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-superset",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-superset/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/superset"
+}
