@@ -1,0 +1,24 @@
+{
+  "name": "leantime",
+  "description": {
+    "en": "Leantime is an open source project management suite with tasks, timelines, goals and time tracking for teams.",
+    "it": "Leantime è una suite open source di project management con attività, cronologie, obiettivi e rilevazione del tempo."
+  },
+  "categories": [
+    "collaboration",
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.leantime.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-leantime/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-leantime",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-leantime/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/leantime"
+}

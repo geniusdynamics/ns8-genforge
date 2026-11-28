@@ -1,0 +1,24 @@
+{
+  "name": "Valkey",
+  "description": {
+    "en": "Valkey key-value store for other modules, standalone or as a highly available Valkey Cluster across nodes",
+    "it": "Archivio chiave-valore Valkey per gli altri moduli NethServer 8, disponibile come server autonomo o come cluster ad alta disponibilità distribuito su più nodi."
+  },
+  "categories": [
+    "database",
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.africa"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/geniusdynamics/ns8-valkey#readme",
+    "bug_url": "https://github.com/geniusdynamics/ns8-valkey/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-valkey",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-valkey/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/valkey"
+}

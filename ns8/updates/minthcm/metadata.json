@@ -1,0 +1,23 @@
+{
+  "name": "MintHCM",
+  "description": {
+    "en": "MintHCM is an open source human capital management system for employees, recruitment, leave and company records.",
+    "it": "MintHCM è un sistema open source di gestione del capitale umano per dipendenti, selezione, ferie e anagrafiche."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/minthcm/minthcm",
+    "bug_url": "https://github.com/geniusdynamics/ns8-minthcm/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-minthcm",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-minthcm/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/minthcm"
+}

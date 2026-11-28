@@ -1,0 +1,22 @@
+{
+  "name": "penpot",
+  "description": {
+    "en": "Penpot is the web-based open-source design tool that bridges the gap between designers and developers.",
+    "it": "Penpot è uno strumento open source di progettazione e prototipazione usato insieme da designer e sviluppatori nel browser."
+  },
+  "categories": [
+    "collaboration"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://help.penpot.app/technical-guide/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-penpot"
+  },
+  "source": "ghcr.io/geniusdynamics/penpot"
+}

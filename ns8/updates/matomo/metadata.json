@@ -1,0 +1,22 @@
+{
+  "name": "Matomo",
+  "description": {
+    "en": "Google Analytics alternative that protects your data and your customers' privacy:Take back control with Matomo; a powerful web analytics platform that gives you 100% data ownership.",
+    "it": "Matomo è una piattaforma di analisi web rispettosa della privacy, alternativa a Google Analytics."
+  },
+  "categories": [
+    "monitoring"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://matomo.org/help/",
+    "bug_url": "https://github.com/geniusdynamics/dev",
+    "code_url": "https://github.com/geniusdynamics/ns8-matomo/"
+  },
+  "source": "ghcr.io/geniusdynamics/matomo"
+}

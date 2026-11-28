@@ -1,0 +1,23 @@
+{
+  "name": "windmill",
+  "description": {
+    "en": "Open source platform to build internal tools, workflows and scripts in Python, TypeScript, Go and other languages.",
+    "it": "Piattaforma open source per creare strumenti interni, workflow e script in Python, TypeScript, Go e altri linguaggi."
+  },
+  "categories": [
+    "development"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://www.windmill.dev/docs",
+    "bug_url": "https://github.com/geniusdynamics/ns8-windmill/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-windmill",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-windmill/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/windmill"
+}

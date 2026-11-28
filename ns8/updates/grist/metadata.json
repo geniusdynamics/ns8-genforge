@@ -1,0 +1,23 @@
+{
+  "name": "grist",
+  "description": {
+    "en": "Relational spreadsheet that combines the flexibility of a spreadsheet with the robustness of a database, for self-hosted data management.",
+    "it": "Foglio di calcolo relazionale che unisce la flessibilità di un foglio elettronico alla robustezza di un database, per gestire i dati in self-hosting."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://support.getgrist.com/self-managed/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-grist/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-grist",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-grist/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/grist"
+}

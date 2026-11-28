@@ -1,0 +1,24 @@
+{
+  "name": "pastevault",
+  "description": {
+    "en": "PasteVault is a self-hosted paste service to share text and code snippets with optional expiry and encryption.",
+    "it": "PasteVault è un servizio self-hosted per condividere testo e frammenti di codice con scadenza e cifratura opzionali."
+  },
+  "categories": [
+    "storage",
+    "security"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://github.com/arc53/pastevault",
+    "bug_url": "https://github.com/geniusdynamics/ns8-pastevault/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-pastevault",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-pastevault/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/pastevault"
+}

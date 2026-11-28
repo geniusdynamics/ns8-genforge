@@ -1,0 +1,23 @@
+{
+  "name": "invoiceninja",
+  "description": {
+    "en": "Invoice Ninja is a self-hosted invoicing platform to create quotes and invoices, track expenses and accept payments.",
+    "it": "Invoice Ninja è una piattaforma di fatturazione self-hosted per preventivi, fatture, spese e pagamenti."
+  },
+  "categories": [
+    "office"
+  ],
+  "authors": [
+    {
+      "name": "Genius Dynamics",
+      "email": "support@genius.ke"
+    }
+  ],
+  "docs": {
+    "documentation_url": "https://docs.invoiceninja.com/",
+    "bug_url": "https://github.com/geniusdynamics/ns8-invoiceninja/issues",
+    "code_url": "https://github.com/geniusdynamics/ns8-invoiceninja",
+    "relnotes_url": "https://github.com/geniusdynamics/ns8-invoiceninja/releases"
+  },
+  "source": "ghcr.io/geniusdynamics/invoiceninja"
+}
